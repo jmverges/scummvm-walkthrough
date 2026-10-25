@@ -62,6 +62,7 @@ public:
 
 protected:
 	GUI::Dialog		*_helpDialog;
+	class ScummGuide	*_guide;
 };
 #endif
 

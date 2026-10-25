@@ -533,8 +533,11 @@ extern const char *const insaneKeymapId;
 /**
  * Base class for all SCUMM engines.
  */
+class ScummGuide;
+
 class ScummEngine : public Engine, public Common::Serializable {
 	friend class ScummDebugger;
+	friend class ScummGuide;
 	friend class CharsetRenderer;
 	friend class CharsetRendererClassic;
 	friend class CharsetRendererTownsClassic;
@@ -558,6 +561,7 @@ public:
 	Sound *_sound = nullptr;
 
 	VerbSlot *_verbs = nullptr;
+	ScummGuide *_guide = nullptr;	// the walkthrough player (guide.h)
 	ObjectData *_objs = nullptr;
 
 	// Core variables

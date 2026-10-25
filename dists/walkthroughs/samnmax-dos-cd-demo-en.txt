@@ -1,0 +1,19 @@
+# Sam & Max Hit the Road, DOS CD demo (English).
+# Verbs: 3 use, 4 look at, 5 pick up, 7 walk to.
+== Sam & Max's office
+s 4 69 ; Look at the rat hole
+s 5 69 ; Take the cash from the rat hole
+s 4 66 ; Look at the roach farm
+s 3 77 ; Throw darts at the dart board
+s 3 68 ; Turn off the lights
+s 5 63 ; Take the black light from the closet
+s 3 68 ; Turn the lights back on
+s 7 62 ; Leave the office
+== The hall
+s 4 85 ; Look at the pug
+s 7 82 ; Go down to the street
+== The street
+s 4 94 ; Look at the dead guy
+s 5 92 ; Pick up the pile of mail
+s 4 95 ; Look at the carnival tickets
+s 3 89 ; Get in the DeSoto: the end of the demo

@@ -24,6 +24,7 @@
 #include "common/system.h"
 
 #include "scumm/actor.h"
+#include "scumm/guide.h"
 #include "scumm/object.h"
 #include "scumm/resource.h"
 #include "scumm/util.h"
@@ -1110,6 +1111,9 @@ void ScummEngine::killAllScriptsExceptCurrent() {
 void ScummEngine::doSentence(int verb, int objectA, int objectB) {
 	SentenceTab *st;
 
+	if (_guide)
+		_guide->onSentence(verb, objectA, objectB);
+
 	if (_game.version >= 7) {
 
 		if (objectA == objectB)
@@ -1445,6 +1449,9 @@ void ScummEngine::runInputScript(int clickArea, int val, int mode) {
 	int verbScript;
 
 	verbScript = VAR(VAR_VERB_SCRIPT);
+
+	if (_guide && clickArea == kVerbClickArea)
+		_guide->onVerbClick(val);
 
 	memset(args, 0, sizeof(args));
 	args[0] = clickArea;

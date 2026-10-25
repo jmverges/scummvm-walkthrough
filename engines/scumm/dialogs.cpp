@@ -41,6 +41,7 @@
 #include "gui/ThemeEval.h"
 
 #include "scumm/dialogs.h"
+#include "scumm/guide.h"
 #include "scumm/sound.h"
 #include "scumm/scumm.h"
 #include "scumm/imuse/imuse.h"
@@ -253,6 +254,9 @@ ScummMenuDialog::ScummMenuDialog(ScummEngine *scumm)
 	: MainMenuDialog(scumm) {
 	_helpDialog = new HelpDialog(scumm->_game);
 	_helpButton->setEnabled(true);
+	_guide = scumm->_guide && scumm->_guide->stepCount() ? scumm->_guide : nullptr;
+	if (_guide)
+		_helpButton->setLabel(_("Walkthrough"));
 }
 
 ScummMenuDialog::~ScummMenuDialog() {
@@ -262,6 +266,17 @@ ScummMenuDialog::~ScummMenuDialog() {
 void ScummMenuDialog::handleCommand(GUI::CommandSender *sender, uint32 cmd, uint32 data) {
 	switch (cmd) {
 	case kHelpCmd:
+		if (_guide) {
+			GuideDialog dlg(_guide);
+			switch (dlg.runModal()) {
+			case GuideDialog::kNextStep: _guide->play(1); close(); break;
+			case GuideDialog::kPlayToEnd: _guide->play(-1); close(); break;
+			case GuideDialog::kNormal: _guide->stop(); close(); break;
+			case GuideDialog::kShowHelp: _helpDialog->runModal(); break;
+			default: break;
+			}
+			break;
+		}
 		_helpDialog->runModal();
 		break;
 	default:

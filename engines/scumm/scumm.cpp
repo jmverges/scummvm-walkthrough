@@ -40,6 +40,7 @@
 #include "graphics/macgui/macfontmanager.h"
 
 #include "scumm/akos.h"
+#include "scumm/guide.h"
 #include "scumm/charset.h"
 #include "scumm/costume.h"
 #include "scumm/debugger.h"
@@ -471,6 +472,8 @@ ScummEngine::ScummEngine(OSystem *syst, const DetectorResult &dr)
 
 	_isRTL = (_language == Common::HE_ISR && (_game.heversion == 0 || _game.heversion >= 72))
 			&& (_game.id == GID_MANIAC || (_game.version >= 4 && _game.version < 7)) && !(_game.features & GF_HE_NO_BIDI);
+	// Before the menu, which shows its Walkthrough button only if there is one.
+	_guide = new ScummGuide(this);
 #ifndef DISABLE_HELP
 	// Create custom GMM dialog providing a help subdialog
 	assert(!_mainMenuDialog);
@@ -486,6 +489,7 @@ ScummEngine::ScummEngine(OSystem *syst, const DetectorResult &dr)
 
 
 ScummEngine::~ScummEngine() {
+	delete _guide;
 	delete _musicEngine;
 
 	// Delete the sound object earlier than the actors
@@ -3145,6 +3149,9 @@ void ScummEngine_v0::scummLoop(int delta) {
 }
 
 void ScummEngine::scummLoop(int delta) {
+	if (_guide)
+		_guide->tick();
+
 	// Notify the script about how much time has passed, in jiffies
 	if (VAR_TIMER != 0xFF)
 		VAR(VAR_TIMER) = delta;
