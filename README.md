@@ -1,3 +1,5 @@
+> **This fork adds a walkthrough player to the SCUMM engine (easy mode, movie mode, recording): see [WALKTHROUGH.md](WALKTHROUGH.md).**
+
 # [ScummVM README](https://www.scummvm.org/) · [![Translation status](https://translations.scummvm.org/widgets/scummvm/-/scummvm/svg-badge.svg)](https://translations.scummvm.org/engage/scummvm/?utm_source=widget) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md#pull-requests)
 
 ## About ScummVM
