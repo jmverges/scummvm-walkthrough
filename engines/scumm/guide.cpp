@@ -23,6 +23,7 @@
 #include "common/events.h"
 #include "common/file.h"
 #include "common/fs.h"
+#include "common/archive.h"
 #include "common/system.h"
 #include "common/textconsole.h"
 #include "graphics/paletteman.h"
@@ -58,8 +59,8 @@ ScummGuide::ScummGuide(ScummEngine *vm)
 		_recordPath = ConfMan.get("guide_record");
 	if (ConfMan.hasKey("guide_file"))
 		load(ConfMan.get("guide_file"));
-	else
-		load((ConfMan.getPath("path").appendComponent("walkthrough.txt")).toString());
+	else if (!load((ConfMan.getPath("path").appendComponent("walkthrough.txt")).toString()))
+		loadBundled();
 	if (ConfMan.hasKey("guide_test"))
 		loadTestScript(ConfMan.get("guide_test"));
 	_shotDir = ConfMan.hasKey("guide_shots") ? ConfMan.get("guide_shots") : ".";
@@ -139,7 +140,12 @@ bool ScummGuide::load(const Common::String &path) {
 	Common::SeekableReadStream *in = openPath(path);
 	if (!in)
 		return false;
-	Common::SeekableReadStream &f = *in;
+	parse(*in, path);
+	delete in;
+	return true;
+}
+
+void ScummGuide::parse(Common::SeekableReadStream &f, const Common::String &path) {
 	_steps.clear();
 	Common::String section;
 	while (!f.eos()) {
@@ -172,10 +178,24 @@ bool ScummGuide::load(const Common::String &path) {
 		}
 		_steps.push_back(st);
 	}
-	delete in;
 	_current = 0;
 	logf("%d steps in %s", _steps.size(), path.c_str());
-	return true;
+}
+
+// The walkthroughs that come with ScummVM, in its data files:
+// walkthroughs/<gameid>[-demo].txt.
+void ScummGuide::loadBundled() {
+	// Not every demo carries GF_DEMO (it can come from the data's MD5 alone),
+	// but the detector always names it a demo in the description.
+	const bool demo = (_vm->_game.features & GF_DEMO) || ConfMan.get("description").contains("Demo");
+	Common::String name = Common::String::format("walkthroughs/%s%s.txt", _vm->_game.gameid, demo ? "-demo" : "");
+	Common::SeekableReadStream *in = SearchMan.createReadStreamForMember(Common::Path(name, '/'));
+	if (!in) {
+		logf("no walkthrough (looked for %s)", name.c_str());
+		return;
+	}
+	parse(*in, name);
+	delete in;
 }
 
 Common::String ScummGuide::section(int i) const {

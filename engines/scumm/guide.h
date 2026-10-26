@@ -26,6 +26,10 @@
 #include "common/str.h"
 #include "gui/dialog.h"
 
+namespace Common {
+class SeekableReadStream;
+}
+
 namespace GUI {
 class StaticTextWidget;
 }
@@ -87,6 +91,8 @@ private:
 
 	enum State { kWaitIdle, kRunning };
 
+	void parse(Common::SeekableReadStream &f, const Common::String &path);
+	void loadBundled();
 	bool isIdle() const;
 	bool available(const Step &st) const;
 	void execute(const Step &st);
