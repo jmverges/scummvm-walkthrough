@@ -1,0 +1,102 @@
+app-id: io.github.jmverges.ScummVMWalkthrough
+runtime: org.freedesktop.Platform
+runtime-version: '25.08'
+sdk: org.freedesktop.Sdk
+finish-args:
+  - --device=all
+  - --share=ipc
+  - --share=network
+  - --socket=fallback-x11
+  - --socket=wayland
+  - --socket=pulseaudio
+  - --filesystem=home
+command: scummvm_wrapper
+rename-icon: org.scummvm.scummvm
+rename-desktop-file: org.scummvm.scummvm.desktop
+rename-appdata-file: org.scummvm.scummvm.metainfo.xml
+cleanup:
+  - /include
+  - /lib/pkgconfig
+  - /share/aclocal
+  - /share/man
+  - '*.la'
+  - '*.a'
+modules:
+  - shared-modules/libmad/libmad.json
+  - shared-modules/glu/glu-9.json
+  - shared-modules/glew/glew.json
+  - shared-modules/linux-audio/fluidsynth2.json
+
+  - name: fluid_soundfont
+    buildsystem: simple
+    sources:
+      - type: archive
+        url: http://deb.debian.org/debian/pool/main/f/fluid-soundfont/fluid-soundfont_3.1.orig.tar.gz
+        sha256: 2621acaa1c78e4abdb24bdd163230cc577e61276936d6aa6e3180582142f0343
+        x-checker-data:
+          type: anitya
+          project-id: 117393
+          url-template: http://deb.debian.org/debian/pool/main/f/fluid-soundfont/fluid-soundfont_$version.orig.tar.gz
+    build-commands:
+      - install -Dm644 FluidR3_GM.sf2 /app/share/soundfonts/FluidR3_GM.sf2
+
+  - name: faad2
+    buildsystem: cmake-ninja
+    sources:
+      - type: archive
+        url: https://github.com/knik0/faad2/archive/2.11.4.tar.gz
+        sha256: ee479ccbae4a8387ab696e6f21a481bd83fe3881471cafa81b4ae59d7d3aed43
+        x-checker-data:
+          type: anitya
+          project-id: 13755
+          url-template: https://github.com/knik0/faad2/archive/$version.tar.gz
+
+  - name: libmpeg2
+    sources:
+      - type: archive
+        url: https://download.videolan.org/contrib/libmpeg2/libmpeg2-0.5.1.tar.gz
+        sha256: dee22e893cb5fc2b2b6ebd60b88478ab8556cb3b93f9a0d7ce8f3b61851871d4
+        x-checker-data:
+          type: anitya
+          project-id: 21490
+          url-template: https://download.videolan.org/contrib/libmpeg2/libmpeg2-$version.tar.gz
+      - type: shell
+        commands:
+          - cp /usr/share/automake-*/config.{guess,sub} .auto/
+
+  - name: liba52
+    sources:
+      - type: archive
+        url: https://git.adelielinux.org/community/a52dec/-/archive/v0.8.0/a52dec-v0.8.0.tar.gz
+        sha256: 470d084074d15416a0f0f300b85b61ddcc1ce105ad14a2aac670a1767ecba8de
+        x-checker-data:
+          type: anitya
+          project-id: 13972
+          url-template: https://git.adelielinux.org/community/a52dec/-/archive/v$version/a52dec-v$version.tar.gz
+
+  - name: scummvm_wrapper
+    buildsystem: simple
+    sources:
+      - type: file
+        path: scummvm_wrapper/scummvm_wrapper.py
+      - type: file
+        path: scummvm_wrapper/setup.py
+    build-commands:
+      - python3 -mpip install . --no-build-isolation --prefix=/app --no-index --find-links
+        .
+
+  - name: scummvm
+    sources:
+      # The walkthrough fork (https://github.com/jmverges/scummvm-walkthrough),
+      # from the local checkout's committed state.
+      - type: git
+        url: file:///w/scummvm
+        branch: walkthrough
+    config-opts:
+      - --enable-release
+      - --disable-debug
+      - --disable-system-dialogs
+    post-install:
+      - install -Dm644 -t /app/share/scummvm/walkthroughs dists/walkthroughs/*.txt
+      - desktop-file-edit --set-key='Exec' --set-value='scummvm_wrapper' --set-name='ScummVM Walkthrough' /app/share/applications/org.scummvm.scummvm.desktop
+      - sed -i 's/org.scummvm.scummvm/io.github.jmverges.ScummVMWalkthrough/g; s#<name>ScummVM</name>#<name>ScummVM Walkthrough</name>#' /app/share/metainfo/org.scummvm.scummvm.metainfo.xml

@@ -9,10 +9,29 @@ engine (the LucasArts adventures and others that run on it):
 
 It works wherever ScummVM does: tested on Linux, and it builds for the PS Vita.
 
+## Installing it on Linux
+
+Download `ScummVM-Walkthrough.flatpak` from the [releases](https://github.com/jmverges/scummvm-walkthrough/releases).
+It is the whole of ScummVM (every engine) plus the walkthrough player, and installs next to an official
+ScummVM without touching it.
+
+- **Bazzite, Fedora, SteamOS and other distributions with Flathub:** open the file, or
+  `flatpak install --user ScummVM-Walkthrough.flatpak`
+- **Ubuntu** (no Flatpak by default):
+  ```sh
+  sudo apt install flatpak
+  flatpak remote-add --user --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+  flatpak install --user ScummVM-Walkthrough.flatpak
+  ```
+
+It shows up as **ScummVM Walkthrough** in the applications menu, or run
+`flatpak run io.github.jmverges.ScummVMWalkthrough`. The walkthroughs in
+[dists/walkthroughs](dists/walkthroughs) come with it.
+
 ## Using it
 
-Put a `walkthrough.txt` in the game's folder (there is one for the Sam & Max demo in
-[dists/walkthroughs](dists/walkthroughs)). In the game, open ScummVM's menu (Ctrl+F5, or Start on a
+The walkthroughs in [dists/walkthroughs](dists/walkthroughs) come with ScummVM, named
+`<gameid>[-demo].txt`; a `walkthrough.txt` in the game's folder takes precedence. In the game, open ScummVM's menu (Ctrl+F5, or Start on a
 controller): its **Help** button becomes **Walkthrough** when the game has one.
 
 | Button | Does |
@@ -63,6 +82,9 @@ are), and for testing without a screen `guide_test` (a script of timed input, sc
 loads) and `guide_shots`. The code is in `engines/scumm/guide.cpp`.
 
 ## Building
+
+The Flatpak: [dists/flatpak-walkthrough](dists/flatpak-walkthrough) is the Flathub recipe for ScummVM
+with this fork as its source (it needs Flathub's `shared-modules` next to it).
 
 Linux, with SDL2 and the usual ScummVM dependencies:
 
