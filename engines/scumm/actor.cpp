@@ -23,6 +23,7 @@
 #include "common/scummsys.h"
 #include "scumm/scumm.h"
 #include "scumm/actor.h"
+#include "scumm/guide.h"
 #include "scumm/actor_he.h"
 #include "scumm/akos.h"
 #include "scumm/boxes.h"
@@ -3467,6 +3468,8 @@ void ScummEngine::actorTalk(const byte *msg) {
 	Actor *a;
 
 	convertMessageToString(msg, _charsetBuffer, sizeof(_charsetBuffer));
+	if (_guide)
+		_guide->onTalk(_actorToPrintStrFor, (const char *)_charsetBuffer);
 
 	// I have commented out this workaround, since it did cause another
 	// bug (#11480). It is not okay to skip the stopTalk() calls here.

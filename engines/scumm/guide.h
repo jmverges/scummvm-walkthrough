@@ -56,6 +56,28 @@ class ScummEngine;
  *   == Section title
  *   s <verb> <objectA> [<objectB>] [; comment]   a sentence
  *   v <verbid> [; comment]                       a click on a verb
+ *   x <script> <room> [a b c] [; comment]        a script the input script starts itself
+ *                                                (talking to someone, in Sam & Max)
+ *   t <actor> [; comment]                        talk to that actor (Sam & Max: the talk
+ *                                                cursor on them, through the input script)
+ *   w <seconds> [; comment]                      wait (something in the game that takes time)
+ *   u <actor> <xmin> <xmax> [; comment]          wait until that actor's x is in the range
+ *                                                (something moving past, a boat ride)
+ *   o <object> <state> [now] [; comment]         wait until the object turns to that state; with
+ *                                                "now" it starts right after the step before
+ *                                                instead of after the game settles
+ *                                                (Sam & Max: the sky car at its stop)
+ *   a <actor> [; comment]                        wait until the actor is here and standing still
+ *   g <object> [; comment]                       walk to the object without using it
+ *   q <object> <class> [; comment]               wait until ifClassOfIs(object, [class]) holds
+ *                                                (Sam & Max: the sky car is at the station)
+ *   m <name> [; comment]                         play a minigame until its room is left or it
+ *                                                is solved (Sam & Max: wakarat, gatorgolf,
+ *                                                frogrock, wires, vortex)
+ *   i <object> [; comment]                       a click on it in the inventory bar
+ *                                                (Sam & Max's dialogue icons are there)
+ *   c <room> <x> <y> [; comment]                 a left click on the screen, in that room
+ *                                                (the map in Sam & Max)
  *   # comment
  */
 class ScummGuide {
@@ -68,8 +90,14 @@ public:
 
 	/** The engine is about to queue a sentence (doSentence). */
 	void onSentence(int verb, int objectA, int objectB);
+	/** Any script is about to start (logged for the scripts in guide_trace_scripts). */
+	void onRunScript(int script, const int *args);
 	/** The input script is about to run for a click on a verb. */
-	void onVerbClick(int verbid);
+	void onVerbClick(int verbid, int x, int y);
+	/** Someone says something (logged with guide_log_talk, for writing walkthroughs). */
+	void onTalk(int actor, const char *text);
+	/** The input script is about to run for a click on something in the inventory bar. */
+	void onInventoryClick(int object);
 
 	// Playback control (the menu, the debugger, test scripts).
 	bool load(const Common::String &path);
@@ -84,9 +112,11 @@ public:
 
 private:
 	struct Step {
-		enum Kind { kSentence, kVerb } kind;
-		int verb, objectA, objectB;
+		enum Kind { kSentence, kVerb, kScript, kClick, kInventory, kTalk, kWait, kMinigame, kUntil, kUntilClass, kGoTo } kind;
+		int verb, objectA, objectB;   // kScript: verb = script, objectA = its room (0: any)
+		int args[3];
 		Common::String section, comment;
+		Common::String name;   // kMinigame
 	};
 
 	enum State { kWaitIdle, kRunning };
@@ -96,10 +126,25 @@ private:
 	bool isIdle() const;
 	bool available(const Step &st) const;
 	void execute(const Step &st);
+	void parseScript(const Common::String &line, Step &st);
+	void runStepScript(const Step &st);
+	void click(int x, int y);
+	void talkTo(int actor);
+	void goTo(int object);
+	bool playMinigame(const Step &st);   // true when it is over
+	int _minigameRoom;
+	int _minigameStage, _minigameX, _minigameY;
+	int _talkPending;
+	bool _untilSeenFalse;  // q steps wait for the condition to turn true      // talking to this actor once the player's actor stops
+	uint32 _minigameNext;
 	void logf(const char *fmt, ...);
 	Common::String objectName(int obj) const;
 
+	struct TestEvent;
 	void runTestScript();
+	void runCommand(const TestEvent &t);
+	void pollControl();
+	void runLive();
 	void loadTestScript(const Common::String &path);
 	void saveShot(const Common::String &name);
 
@@ -125,6 +170,13 @@ private:
 	uint _testNext;
 	uint32 _testStart;
 	Common::String _shotDir;
+
+	// Live control (guide_control).
+	Common::String _controlPath;
+	uint32 _controlOffset;
+	Common::Array<Step> _live;
+	uint32 _liveSince;
+	Common::String _traceScripts;   // " 50 51 " : scripts whose start is logged with its arguments
 };
 
 /**

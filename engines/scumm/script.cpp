@@ -39,6 +39,9 @@ namespace Scumm {
 void ScummEngine::runScript(int script, bool freezeResistant, bool recursive, int *lvarptr, int cycle) {
 	ScriptSlot *s;
 
+	if (_guide)
+		_guide->onRunScript(script, lvarptr);
+
 	uint32 scriptOffs;
 	byte scriptType;
 	int slot;
@@ -1451,7 +1454,9 @@ void ScummEngine::runInputScript(int clickArea, int val, int mode) {
 	verbScript = VAR(VAR_VERB_SCRIPT);
 
 	if (_guide && clickArea == kVerbClickArea)
-		_guide->onVerbClick(val);
+		_guide->onVerbClick(val, _mouse.x, _mouse.y);
+	if (_guide && clickArea == kInventoryClickArea)
+		_guide->onInventoryClick(val);
 
 	memset(args, 0, sizeof(args));
 	args[0] = clickArea;

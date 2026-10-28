@@ -1,0 +1,311 @@
+# Sam & Max Hit the Road (CD, Spanish). Walkthrough for the ScummVM walkthrough player.
+# Verbs: 3 use, 4 look at, 5 pick up, 7 walk to. "t" talks to an actor; dialogue icons
+# and map spots are clicks ("c room x y"). Random puzzles are minigames ("m").
+== La oficina // The office
+s 5 69 ; Coger el dinero de la ratonera // Take the cash from the rat hole
+s 3 68 ; Apagar la luz // Turn off the light
+s 5 63 ; Coger la luz negra del armario // Take the black light from the closet
+s 3 68 ; Encender la luz // Turn the light back on
+s 7 62 ; Salir de la oficina // Leave the office
+== El rellano // The landing
+w 10 ; Dejar que pase el vecino // Let the neighbor go by
+s 7 82 ; Bajar a la calle // Go down to the street
+== La calle // The street
+x 201 9 ; Hablar con el gato // Talk to the cat
+s 3 35 4 ; Usar a Max con el gato: las órdenes // Use Max on the cat: the orders
+s 3 89 0 ; Subir al DeSoto // Get in the DeSoto
+== Snuckey's
+c 10 230 75 ; En el mapa: Snuckey's // On the map: Snuckey's
+s 5 135 0 ; Coger el vaso de Snuckey's // Take the Snuckey's cup
+s 7 131 0 ; Entrar en la tienda // Go into the shop
+s 5 126 0 ; Coger la caja de caramelos // Take the box of candy
+w 45 ; Esperar a que Max necesite ir al baño // Wait until Max needs the bathroom
+t 4 ; Hablar con el dependiente // Talk to the clerk
+c 11 18 187 ; Preguntar // Ask
+c 11 58 187 ; Exclamar // Exclaim
+c 11 218 187 ; Pagar los caramelos // Pay for the candy
+c 11 178 187 ; Pedir la llave del baño para Max // Ask for the bathroom key for Max
+c 11 138 187 ; Despedirse // Say goodbye
+s 7 118 0 ; Salir rápido, antes de que vuelva Max // Go out quickly, before Max is back
+t 3 ; Hablar con Max, que vuelve con la llave // Talk to Max, back with the key
+c 12 18 187 ; Preguntar // Ask
+c 12 58 187 ; Exclamar // Exclaim
+c 12 218 187 ; Pedirle el llavero: la lima // Ask for the key ring: the rasp
+c 12 138 187 ; Despedirse // Say goodbye
+s 3 132 0 ; Subir al coche // Get in the car
+== El carnaval de los Kushman // The Kushman Bros. carnival
+c 10 292 62 ; En el mapa: el carnaval // On the map: the carnival
+s 7 140 0 ; Ir hacia la avenida: el tragafuegos nos para // Head for the midway: the fire eater stops us
+s 3 4 95 ; Enseñarle las órdenes // Show him the orders
+== El salón de las rarezas // The Hall of Oddities
+s 5 150 0 ; Coger el pelo de yeti // Take the Bigfoot fur
+s 5 152 0 ; Coger el tarro con la mano // Take the jar with the hand
+s 7 149 0 ; Salir a la avenida central // Out to the midway
+== La avenida central // The midway
+s 5 178 0 ; Coger la lente de aumento // Take the magnifying lens
+s 3 169 0 ; Jugar al Wak-a-Rat // Play Wak-a-Rat
+m wakarat ; Darle a las ratas // Whack the rats
+s 5 169 0 ; Recoger el premio: una linterna de juguete // Take the prize: a toy flashlight
+s 3 173 0 ; Intentar subir al Cono de la Tragedia // Try to ride the Cone of Tragedy
+s 6 174 0 ; Hablar con el encargado // Talk to the ride operator
+c 17 18 187 ; Preguntar // Ask
+c 17 58 187 ; Exclamar // Exclaim
+c 17 258 187 ; Pedirle subir al Cono: perdemos y ganamos cosas // Ask to ride the Cone
+c 17 138 187 ; Despedirse // Say goodbye
+c 17 20 185 ; Mirar la caja: ¡las cosas se han caído en el Cono! // Look in the box: our things fell out on the Cone!
+s 6 174 0 ; Hablar con el encargado // Talk to the ride operator
+c 17 18 187 ; Preguntar // Ask
+c 17 58 187 ; Exclamar // Exclaim
+c 17 298 187 ; Preguntar por nuestras cosas: el resguardo // Ask about our things: the claim ticket
+c 17 138 187 ; Despedirse // Say goodbye
+s 7 168 0 ; Volver a la entrada // Back to the entrance
+s 7 142 0 ; Objetos Perdidos: recuperarlo todo, con el imán // Lost and Found: get it all back, with the magnet
+== El túnel del amor // The Tunnel of Love
+s 7 140 0 ; Ir a la avenida central // Go to the midway
+s 7 170 0 ; Ir al túnel del amor // Go to the Tunnel of Love
+s 3 214 0 ; Subir al cisne // Get in the swan boat
+u 4 355 450 ; Esperar a que el cisne llegue a los fusibles // Wait for the swan to reach the fuse box
+s 3 35 220 ; Usar a Max con la caja de fusibles // Use Max on the fuse box
+s 3 223 0 ; Tirar de la barba de Enrique VIII // Pull Henry VIII's beard
+s 7 219 0 ; Cruzar la puerta secreta // Through the secret door
+== La guarida de Doug // Doug's den
+s 3 4 126 ; Darle los caramelos a Doug: la llave del remolque // Give Doug the candy: the trailer key
+s 3 231 0 ; Accionar el interruptor del túnel // Flip the tunnel's switch
+s 7 229 0 ; Salir de la guarida // Leave the den
+== El remolque de Trixie // Trixie's trailer
+s 7 213 0 ; Ir a la avenida central // Go to the midway
+s 3 230 172 ; Abrir el remolque de Trixie con la llave // Open Trixie's trailer with the key
+s 3 206 0 ; Abrir el armario // Open the wardrobe
+s 5 210 0 ; Coger el marcador del Drilo Golf // Take the Gator Golf score card
+s 5 209 0 ; Coger el disfraz de ave zancuda // Take the wading bird costume
+s 7 203 0 ; Salir del remolque // Leave the trailer
+s 7 168 0 ; Ir a la entrada del carnaval // Go to the carnival entrance
+s 7 139 0 ; Volver al coche // Back to the car
+== Snuckey's, otra vez // Snuckey's, again
+c 10 230 75 ; En el mapa: Snuckey's // On the map: Snuckey's
+s 7 131 0 ; Entrar en la tienda // Go into the shop
+s 3 4 152 ; Pedir al dependiente que abra el tarro de la mano // Ask the clerk to open the jar with the hand
+s 7 118 0 ; Salir // Go out
+s 3 132 0 ; Subir al coche // Get in the car
+== La mayor bola de cuerda del mundo // The World's Largest Ball of Twine
+c 10 180 67 ; En el mapa: la bola de cuerda // On the map: the Ball of Twine
+g 281 ; Ir al teleférico // Go to the sky car
+o 281 1 ; Esperar a que llegue // Wait for it to come
+w 1 ; Un momento // A moment
+s 3 281 0 ; Subir en el teleférico a la terraza // Ride the sky car up to the terrace
+s 7 314 0 ; Entrar en el restaurante giratorio // Into the revolving restaurant
+t 5 ; Hablar con el doblador de herramientas // Talk to the tool bender
+c 30 18 187 ; Preguntar // Ask
+c 30 58 187 ; Exclamar // Exclaim
+c 30 218 187 ; Preguntar por las herramientas: una de regalo // Ask about the tools: a free one
+c 30 138 187 ; Despedirse // Say goodbye
+s 5 299 0 ; Coger los cables pelados // Take the bare wires
+s 3 178 297 ; Poner la lente de aumento en los prismáticos // Put the magnifying lens on the viewer
+s 7 296 0 ; Ir hacia la puerta // Go to the door
+s 3 296 0 ; Salir a la terraza // Out to the terrace
+s 7 313 0 ; Bajar en el teleférico // Ride the sky car down
+s 3 277 0 ; Subir al coche // Get in the car
+== El Drilo Golf // Gator Golf
+c 10 248 164 ; En el mapa: el Drilo Golf // On the map: Gator Golf
+s 5 242 0 ; Coger el recogedor de bolas // Take the golf ball retriever
+s 4 176 0 ; Mirar el imán: el Mundo del Pez sale en el mapa // Look at the magnet: World of Fish shows up on the map
+s 3 238 0 ; Subir al coche // Get in the car
+== El Mundo del Pez // World of Fish
+c 10 160 116 ; En el mapa: el Mundo del Pez // On the map: World of Fish
+s 5 322 0 ; Coger el cubo de pescado // Take the bucket of fish
+s 3 298 325 ; Soltar el perno del pez con la herramienta doblada // Undo the fish's bolt with the bent tool
+s 3 324 0 ; Meterse en el pez // Get into the fish
+s 3 35 324 ; Usar a Max: el pescador nos pesca y un helicóptero nos lleva a la bola // Use Max: the fisherman hooks us and a helicopter drops us at the Ball
+== La mayor bola de cuerda del mundo, otra vez // The Ball of Twine, again
+s 3 35 315 ; Max coge el cabo suelto de la bola // Max gets the loose end of the twine
+s 3 277 0 ; Subir al coche // Get in the car
+== El Drilo Golf: rescatar a Max // Gator Golf: rescue Max
+c 10 248 164 ; En el mapa: el Drilo Golf // On the map: Gator Golf
+s 7 240 0 ; Entrar en el campo: Bumpus tira a Max al agua // Into the course: Bumpus throws Max in the water
+s 3 322 244 ; Poner el cubo de pescado en el tee // Put the bucket of fish on the tee
+s 3 260 0 ; Coger los palos // Take the clubs
+m gatorgolf ; Lanzar peces hasta que los caimanes hagan un puente // Hit fish until the gators make a bridge
+s 3 273 0 ; Abrir la puerta de la cabina // Open the booth's door
+s 3 270 0 ; Romper la tabla suelta // Break the loose board
+s 5 272 0 ; Coger el globo de nieve // Take the snow globe
+s 5 269 0 ; Coger el pelo de yeti // Take the Bigfoot fur
+s 3 152 242 ; La mano en el recogedor de bolas // The hand on the ball retriever
+s 3 176 242 ; El imán en el recogedor // The magnet on the retriever
+s 7 271 0 ; Salir de la cabina // Leave the booth
+s 3 238 0 ; Subir al coche // Get in the car
+== El museo de la bola de cuerda // The Ball of Twine museum
+c 10 180 67 ; En el mapa: la bola de cuerda // On the map: the Ball of Twine
+s 7 279 0 ; Entrar en el museo // Into the museum
+s 3 242 285 ; Usar el alcanzador en la bola: el anillo del humor // Use the reacher on the ball: the mood ring
+s 7 284 0 ; Salir del museo // Leave the museum
+s 3 277 0 ; Subir al coche // Get in the car
+== El Mystery Vortex // The Mystery Vortex
+c 10 64 72 ; En el mapa: el Mystery Vortex // On the map: the Mystery Vortex
+s 7 333 0 ; Entrar // Go in
+s 3 349 0 ; Usar el espejo: los imanes del subsuelo // Use the mirror: the magnets underground
+s 3 359 0 ; Encender el imán rojo // Switch on the red magnet
+s 3 360 0 ; Encender el imán verde // Switch on the green magnet
+s 7 355 0 ; Volver arriba // Back up
+s 7 344 0 ; Entrar en la sala del revés // Into the upside-down room
+s 5 377 0 ; Coger el pelo de yeti del techo // Take the Bigfoot fur from the ceiling
+s 7 376 0 ; Volver // Back
+s 3 349 0 ; Bajar otra vez a los imanes // Down to the magnets again
+m vortex ; Poner los imanes para llegar a la puerta de la guarida de Shuv-Oohl (cambia en cada partida) y abrirla // Set the magnets so the door to Shuv-Oohl's den can be reached (it changes every game) and open it
+c 39 18 187 ; Preguntas // Questions
+c 39 178 187 ; Bruno: perdió su anillo del humor // Bruno: he lost his mood ring
+c 39 218 187 ; Darle el anillo: la pista de Frog Rock y el polvo místico // Give him the ring: the Frog Rock clue and the mystic powder
+s 7 343 0 ; Salir del Vortex // Out of the Vortex
+s 3 332 0 ; Subir al coche // Get in the car
+== Frog Rock, por los prismáticos // Frog Rock, through the viewer
+c 10 180 67 ; En el mapa: la bola de cuerda // On the map: the Ball of Twine
+g 281 ; Ir al teleférico // Go to the sky car
+o 281 1 ; Esperar a que llegue // Wait for it to come
+w 1 ; Un momento // A moment
+s 3 281 0 ; Subir // Ride up
+s 7 314 0 ; Entrar en el restaurante // Into the restaurant
+s 3 297 299 ; Conectar los cables a los prismáticos // Wire the viewer to the restaurant's motor
+s 3 297 0 ; Mirar por los prismáticos // Look through the viewer
+m frogrock ; Girar el restaurante hasta ver Frog Rock // Turn the restaurant until Frog Rock shows up
+s 7 296 0 ; Ir hacia la puerta // Go to the door
+s 3 296 0 ; Salir a la terraza // Out to the terrace
+s 7 313 0 ; Bajar en el teleférico // Ride the sky car down
+s 3 277 0 ; Subir al coche // Get in the car
+== Frog Rock
+c 10 120 100 ; En el mapa: Frog Rock // On the map: Frog Rock
+s 3 150 383 ; Pelo de yeti en la roca // Bigfoot fur on the rock
+s 3 269 383 ; Más pelo // More fur
+s 3 377 383 ; Y el tercero // And the third
+s 3 366 383 ; El polvo místico del hombre topo // The mole man's mystic powder
+s 3 384 0 ; Subir al coche // Get in the car
+== Bumpusville
+c 10 204 116 ; En el mapa: Bumpusville // On the map: Bumpusville
+s 7 387 0 ; Entrar en la mansión // Into the mansion
+s 7 393 0 ; La sala del fondo a la izquierda // The room at the far left
+s 5 408 0 ; Coger el retrato de John Muir // Take the portrait of John Muir
+s 7 406 0 ; La casa de fieras: el espectáculo de Bumpus // The menagerie: Bumpus's show
+s 7 435 0 ; Volver a la sala de los trofeos // Back to the trophy room
+s 7 407 0 ; Al pasillo // To the hallway
+s 7 395 0 ; El dormitorio de Conroy // Conroy's bedroom
+g 430 ; Ir bajo la estantería // Walk under the bookshelf
+s 3 430 242 ; Bajar el libro azul con el alcanzador: el manual del robot // Get the blue book down with the reacher: the robot's manual
+a 7 ; Esperar a que el robot entre y se pare // Wait for the robot to come in and stop
+s 3 7 430 ; Abrir el robot con el manual // Open the robot with the manual
+m wires ; Enchufar los cables sueltos hasta que el mapa quede verde // Plug in the loose wires until the map is all green
+x 200 50 4 27 ; Cerrar el robot // Close the robot
+w 20 ; El robot salta la alarma y Lee-Harvey sale a buscarlo // The robot trips the alarm and Lee-Harvey goes after it
+s 3 432 0 ; Subir por la escalera mecánica // Ride the escalator up
+s 5 428 0 ; Coger la almohada empapada de tónico // Take the pillow soaked in hair tonic
+s 3 432 0 ; Bajar // Ride down
+c 45 120 170 ; Apartarse de la escalera // Step away from the escalator
+s 7 427 0 ; Al pasillo // To the hallway
+s 7 394 0 ; La sala de enfrente, ahora vacía // The room across, empty now
+s 3 457 0 ; Ponerse el casco de realidad virtual // Put on the virtual reality helmet
+s 5 458 0 ; Coger la espada // Take the sword
+s 5 459 0 ; Coger la llave // Take the key
+s 7 393 0 ; La sala de los trofeos // The trophy room
+s 7 406 0 ; La casa de fieras // The menagerie
+s 3 436 459 ; La llave en la cerradura: Bruno y Trixie libres // The key in the lock: Bruno and Trixie are free
+s 7 435 0 ; Volver a la sala de los trofeos // Back to the trophy room
+s 7 407 0 ; Al pasillo // To the hallway
+s 7 391 0 ; Salir de la mansión // Leave the mansion
+s 3 388 0 ; Subir al coche // Get in the car
+== Jungle Fever
+c 10 48 112 ; En el mapa: el Savage Jungle Inn // On the map: the Savage Jungle Inn
+s 7 476 0 ; Entrar en el vestíbulo // Into the lobby
+t 4 ; Hablar con Evelyn Morrison // Talk to Evelyn Morrison
+c 52 18 187 ; Preguntas // Questions
+c 52 178 187 ; Los yetis // Bigfoot
+c 52 98 187 ; Las bebidas // The drinks
+c 52 58 187 ; ¡Acción! // Action!
+c 52 178 187 ; Conroy Bumpus // Conroy Bumpus
+c 52 138 187 ; Adiós // Goodbye
+s 4 485 0 ; Leer los folletos: el parque de dinosaurios y el museo de vegetales // Read the brochures: the dinosaur park and the vegetable museum
+s 3 5 127 ; Darle la lima al portero // Give the doorman the rasp
+s 7 480 0 ; Salir // Leave
+s 3 477 0 ; Subir al coche // Get in the car
+== Vegetales famosos // Celebrity Vegetables
+c 10 120 144 ; En el mapa: el museo de vegetales // On the map: the vegetable museum
+s 5 542 0 ; Coger una berenjena con la cara de Bumpus // Take an eggplant with Bumpus's face
+s 3 4 408 ; Darle al jardinero el retrato de John Muir // Give the gardener the portrait of John Muir
+s 3 541 0 ; Subir al coche // Get in the car
+== Parque de dinosaurios de Mount Rushmore // Mount Rushmore Dinosaur Park
+c 10 128 62 ; En el mapa: Mount Rushmore // On the map: Mount Rushmore
+s 7 552 0 ; Entrar en el parque // Into the park
+s 3 35 566 ; Max muerde el mamut: pelo lanudo // Max bites the mammoth: woolly hair
+s 3 35 570 ; Max tira de la cuerda: el diente del Rex // Max pulls the string: the Rex's tooth
+s 7 553 0 ; Al pozo de alquitrán // To the tar pit
+s 7 574 0 ; Subir al puenting // Up to the bungee jump
+s 3 135 242 ; El vaso de Snuckey's en el alcanzador // The Snuckey's cup on the reacher
+s 3 583 0 ; Ponerse el arnés tras el biombo // Put on the harness behind the screen
+s 3 585 0 ; Saltar // Jump
+s 3 242 587 ; Coger alquitrán con el vaso // Scoop up tar with the cup
+s 3 583 0 ; Quitarse el arnés // Take off the harness
+s 7 583 0 ; Tras el biombo // Behind the screen
+s 7 581 0 ; Bajar // Go down
+s 7 575 0 ; Volver a la entrada // Back to the entrance
+s 3 551 0 ; Subir al coche // Get in the car
+== Vegetales famosos otra vez // Celebrity Vegetables again
+c 10 120 144 ; En el mapa: el museo de vegetales // On the map: the vegetable museum
+t 4 ; Hablar con la jardinera // Talk to the gardener
+c 57 178 187 ; La verdura de John Muir: una calabaza // The John Muir vegetable: a gourd
+c 57 138 187 ; Adiós // Goodbye
+s 3 541 0 ; Subir al coche // Get in the car
+== Bumpusville otra vez // Bumpusville again
+c 10 204 116 ; En el mapa: Bumpusville // On the map: Bumpusville
+s 7 387 0 ; Entrar en la mansión // Into the mansion
+s 7 395 0 ; El dormitorio // The bedroom
+g 429 ; Ir junto al pedestal del tupé // Go to the toupee stand
+s 3 429 547 ; Cambiar el tupé por la berenjena de Bumpus // Swap the toupee for the Bumpus eggplant
+s 3 209 587 ; Alquitrán en el disfraz de ave zancuda // Tar on the stilt-walker costume
+s 3 209 572 ; Pelo de mamut encima // Mammoth hair on top
+s 3 209 431 ; Y el tupé: un yeti de pega // And the toupee: a fake Bigfoot
+s 3 388 0 ; Subir al coche // Get in the car
+== La fiesta de los yetis // The Bigfoot party
+c 10 48 112 ; En el mapa: el Savage Jungle Inn // On the map: the Savage Jungle Inn
+s 7 476 0 ; Entrar en el vestíbulo // Into the lobby
+s 3 209 0 ; Ponerse el disfraz: el portero nos deja pasar // Put on the costume: the doorman lets us in
+s 7 482 0 ; Entrar en la convención // Into the convention
+s 5 496 0 ; Coger la botella de vino // Take the wine bottle
+s 7 491 0 ; La cocina // The kitchen
+s 5 530 0 ; Coger el punzón de hielo // Take the ice pick
+s 3 531 0 ; Abrir la puerta trasera: aparece Bumpus // Open the back door: Bumpus shows up
+s 3 209 0 ; Quitarse el disfraz: Bumpus y Lee-Harvey se meten en el congelador // Take off the costume: Bumpus and Lee-Harvey walk into the freezer
+s 3 529 35 ; Max cierra el congelador // Max shuts the freezer
+w 30 ; Los yetis nos nombran Jefes Yeti Honorarios y nos enseñan los tótems // The Bigfoot make us Honorary Bigfoot Chiefs and show us the totems
+s 7 526 0 ; Volver a la convención // Back to the convention
+s 7 493 0 ; Al vestíbulo // To the lobby
+s 7 480 0 ; Salir // Leave
+s 3 477 0 ; Subir al coche // Get in the car
+== La bola de cuerda, por última vez // The Ball of Twine, one last time
+c 10 180 67 ; En el mapa: la bola de cuerda // On the map: the Ball of Twine
+g 281 ; Ir al teleférico // Go to the sky car
+o 281 1 ; Esperar a que llegue // Wait for it to come
+w 1 ; Un momento // A moment
+s 3 281 0 ; Subir // Ride up
+s 7 314 0 ; Entrar en el restaurante // Into the restaurant
+s 3 5 530 ; El doblador de herramientas tuerce el punzón: un sacacorchos // The tool bender twists the ice pick: a corkscrew
+s 3 496 530 ; Descorchar la botella // Uncork the bottle
+s 7 296 0 ; Ir hacia la puerta // Go to the door
+s 3 296 0 ; Salir a la terraza // Out to the terrace
+s 7 313 0 ; Bajar en el teleférico // Ride the sky car down
+s 3 277 0 ; Subir al coche // Get in the car
+== El Mystery Vortex otra vez // The Mystery Vortex again
+c 10 64 72 ; En el mapa: el Mystery Vortex // On the map: the Mystery Vortex
+s 7 333 0 ; Entrar // Go in
+s 7 344 0 ; La sala del revés // The upside-down room
+s 3 378 0 ; Subir al minivórtice // Get into the Mini-Vortex
+s 3 378 272 ; La bola de nieve absorbe la energía del vórtice // The snow globe soaks up the vortex's energy
+s 3 272 496 ; Taparla con el corcho // Stopper it with the cork
+s 7 376 0 ; Volver // Back
+s 7 343 0 ; Salir del Vortex // Out of the Vortex
+s 3 332 0 ; Subir al coche // Get in the car
+== El jacuzzi de los yetis // The Bigfoot hot tub
+c 10 48 112 ; En el mapa: el Savage Jungle Inn // On the map: the Savage Jungle Inn
+s 7 476 0 ; Entrar en el vestíbulo // Into the lobby
+s 7 482 0 ; La convención // The convention
+s 7 492 0 ; La piscina de los tótems // The totem pool
+s 7 527 0 ; El jacuzzi // The hot tub
+s 3 515 272 ; La bola de nieve: el vórtice de mano // The snow globe: a hand-held vortex
+s 3 515 571 ; El diente de dinosaurio // The dinosaur tooth
+s 3 515 548 ; La calabaza de John Muir // The John Muir gourd
+s 3 515 428 ; Y la almohada con tónico para el pelo: fin // And the pillow with hair tonic: the end

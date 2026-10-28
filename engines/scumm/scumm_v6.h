@@ -27,6 +27,7 @@
 namespace Scumm {
 
 class ScummEngine_v6 : public ScummEngine {
+	friend class ScummGuide;
 protected:
 	enum ArrayType {
 		kBitArray = 1,
