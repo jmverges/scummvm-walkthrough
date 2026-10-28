@@ -8,7 +8,7 @@ s 5 63 ; Coger la luz negra del armario // Take the black light from the closet
 s 3 68 ; Encender la luz // Turn the light back on
 s 7 62 ; Salir de la oficina // Leave the office
 == El rellano // The landing
-w 10 ; Dejar que pase el vecino // Let the neighbor go by
+s 7 82 ; Ir hacia la escalera: la tele de Flint nos para // Head for the stairs: Flint's TV show stops us
 s 7 82 ; Bajar a la calle // Go down to the street
 == La calle // The street
 x 201 9 ; Hablar con el gato // Talk to the cat
@@ -19,7 +19,7 @@ c 10 230 75 ; En el mapa: Snuckey's // On the map: Snuckey's
 s 5 135 0 ; Coger el vaso de Snuckey's // Take the Snuckey's cup
 s 7 131 0 ; Entrar en la tienda // Go into the shop
 s 5 126 0 ; Coger la caja de caramelos // Take the box of candy
-w 45 ; Esperar a que Max necesite ir al baño // Wait until Max needs the bathroom
+b 37 1 ; Esperar a que Max diga que tiene que ir al baño (llega al azar) // Wait for Max to say he needs the bathroom (it comes at random)
 t 4 ; Hablar con el dependiente // Talk to the clerk
 c 11 18 187 ; Preguntar // Ask
 c 11 58 187 ; Exclamar // Exclaim
@@ -188,15 +188,14 @@ s 7 407 0 ; Al pasillo // To the hallway
 s 7 395 0 ; El dormitorio de Conroy // Conroy's bedroom
 g 430 ; Ir bajo la estantería // Walk under the bookshelf
 s 3 430 242 ; Bajar el libro azul con el alcanzador: el manual del robot // Get the blue book down with the reacher: the robot's manual
-a 7 ; Esperar a que el robot entre y se pare // Wait for the robot to come in and stop
-s 3 7 430 ; Abrir el robot con el manual // Open the robot with the manual
-m wires ; Enchufar los cables sueltos hasta que el mapa quede verde // Plug in the loose wires until the map is all green
-x 200 50 4 27 ; Cerrar el robot // Close the robot
-w 20 ; El robot salta la alarma y Lee-Harvey sale a buscarlo // The robot trips the alarm and Lee-Harvey goes after it
 s 3 432 0 ; Subir por la escalera mecánica // Ride the escalator up
 s 5 428 0 ; Coger la almohada empapada de tónico // Take the pillow soaked in hair tonic
 s 3 432 0 ; Bajar // Ride down
 c 45 120 170 ; Apartarse de la escalera // Step away from the escalator
+a 7 ; Esperar a que el robot entre y se pare // Wait for the robot to come in and stop
+s 3 7 430 ; Abrir el robot con el manual // Open the robot with the manual
+m wires ; Enchufar los cables sueltos hasta que el mapa quede verde // Plug in the loose wires until the map is all green
+x 200 50 4 27 ; Cerrar el robot // Close the robot
 s 7 427 0 ; Al pasillo // To the hallway
 s 7 394 0 ; La sala de enfrente, ahora vacía // The room across, empty now
 s 3 457 0 ; Ponerse el casco de realidad virtual // Put on the virtual reality helmet
@@ -271,7 +270,6 @@ s 5 530 0 ; Coger el punzón de hielo // Take the ice pick
 s 3 531 0 ; Abrir la puerta trasera: aparece Bumpus // Open the back door: Bumpus shows up
 s 3 209 0 ; Quitarse el disfraz: Bumpus y Lee-Harvey se meten en el congelador // Take off the costume: Bumpus and Lee-Harvey walk into the freezer
 s 3 529 35 ; Max cierra el congelador // Max shuts the freezer
-w 30 ; Los yetis nos nombran Jefes Yeti Honorarios y nos enseñan los tótems // The Bigfoot make us Honorary Bigfoot Chiefs and show us the totems
 s 7 526 0 ; Volver a la convención // Back to the convention
 s 7 493 0 ; Al vestíbulo // To the lobby
 s 7 480 0 ; Salir // Leave

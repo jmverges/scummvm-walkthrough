@@ -65,6 +65,9 @@ ScummGuide::ScummGuide(ScummEngine *vm)
 	if (ConfMan.hasKey("guide_test"))
 		loadTestScript(ConfMan.get("guide_test"));
 	_shotDir = ConfMan.hasKey("guide_shots") ? ConfMan.get("guide_shots") : ".";
+	_hideCursor = ConfMan.getBool("guide_hide_cursor");
+	if (ConfMan.hasKey("guide_save_sections"))
+		_saveSections = ConfMan.getInt("guide_save_sections");
 	// guide_control: a file to append commands to while the game runs (for
 	// writing walkthroughs): the test script's commands, without the time,
 	// plus "s <verb> <a> [<b>]" and "v <verbid>", done once the game is idle.
@@ -286,6 +289,10 @@ void ScummGuide::parse(Common::SeekableReadStream &f, const Common::String &path
 			st.kind = Step::kUntilClass;
 			sscanf(line.c_str() + 2, "%d", &st.verb);
 			st.objectB = 2;
+		} else if (line.hasPrefix("b ")) {
+			st.kind = Step::kUntilClass;
+			sscanf(line.c_str() + 2, "%d %d", &st.verb, &st.objectA);
+			st.objectB = 3;
 		} else if (line.hasPrefix("m ")) {
 			st.kind = Step::kMinigame;
 			char name[32] = "";
@@ -830,7 +837,11 @@ void ScummGuide::tick() {
 		// It must become true while waiting (the sky car must arrive, not be
 		// about to leave), so a condition already true is waited out first.
 		bool holds;
-		if (u.objectB == 2) {   // "a": the actor here and standing still
+		if (u.objectB == 3) {   // "b": a bit variable (scripts' bitvarN)
+			holds = _vm->readVar(0x8000 | u.verb) == u.objectA;
+			if (holds)
+				_untilSeenFalse = true;   // already set is fine
+		} else if (u.objectB == 2) {   // "a": the actor here and standing still
 			Actor *a = _vm->derefActorSafe(u.verb, "guide");
 			holds = a && a->isInCurrentRoom() && !a->_moving;
 			if (holds)
@@ -919,6 +930,19 @@ void ScummGuide::tick() {
 			_stateSince = 0;
 		}
 		return;
+	}
+	if (_saveSections && _sectionSaved != _current &&
+			(_current == 0 || st.section != _steps[_current - 1].section)) {
+		// A save as each section starts, to pick a recording up again
+		// there; the time marks where the section begins in it.
+		int n = 0;
+		for (int i = 1; i <= _current; i++)
+			if (_steps[i].section != _steps[i - 1].section)
+				n++;
+		_sectionSaved = _current;
+		Common::Error e = _vm->saveGameState(_saveSections + n, st.section);
+		logf("section %d at %u ms, step %d, slot %d (%s): %s", n + 1, now, _current + 1, _saveSections + n,
+			e.getDesc().c_str(), st.section.c_str());
 	}
 	if (_remaining > 0)    // easy mode: say what is being done
 		g_system->displayMessageOnOSD(Common::U32String(describe(_current)));

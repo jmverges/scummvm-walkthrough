@@ -68,6 +68,7 @@ class ScummEngine;
  *                                                instead of after the game settles
  *                                                (Sam & Max: the sky car at its stop)
  *   a <actor> [; comment]                        wait until the actor is here and standing still
+ *   b <bit variable> <value> [; comment]         wait until the bit variable has that value
  *   g <object> [; comment]                       walk to the object without using it
  *   q <object> <class> [; comment]               wait until ifClassOfIs(object, [class]) holds
  *                                                (Sam & Max: the sky car is at the station)
@@ -82,6 +83,7 @@ class ScummEngine;
  */
 class ScummGuide {
 public:
+	bool hidesCursor() const { return _hideCursor; }
 	explicit ScummGuide(ScummEngine *vm);
 	~ScummGuide();
 
@@ -135,6 +137,9 @@ private:
 	int _minigameRoom;
 	int _minigameStage, _minigameX, _minigameY;
 	int _talkPending;
+	bool _hideCursor = false;   // guide_hide_cursor: for recordings, the game's cursor is not drawn
+	int _saveSections = 0;   // guide_save_sections: the slot of the first section's save (0: none)
+	int _sectionSaved = -1;
 	bool _untilSeenFalse;  // q steps wait for the condition to turn true      // talking to this actor once the player's actor stops
 	uint32 _minigameNext;
 	void logf(const char *fmt, ...);

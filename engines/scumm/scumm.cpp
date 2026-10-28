@@ -3376,7 +3376,7 @@ load_game:
 		animateCursor();
 
 	/* show or hide mouse */
-	CursorMan.showMouse(_cursor.state > 0);
+	CursorMan.showMouse(_cursor.state > 0 && !(_guide && _guide->hidesCursor()));
 }
 
 #ifdef ENABLE_HE
