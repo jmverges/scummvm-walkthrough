@@ -293,6 +293,10 @@ void ScummGuide::parse(Common::SeekableReadStream &f, const Common::String &path
 			st.kind = Step::kUntilClass;
 			sscanf(line.c_str() + 2, "%d %d", &st.verb, &st.objectA);
 			st.objectB = 3;
+		} else if (line.hasPrefix("n ")) {
+			st.kind = Step::kUntilClass;
+			sscanf(line.c_str() + 2, "%d %d", &st.verb, &st.objectA);
+			st.objectB = 4;
 		} else if (line.hasPrefix("m ")) {
 			st.kind = Step::kMinigame;
 			char name[32] = "";
@@ -572,6 +576,29 @@ bool ScummGuide::playMinigame(const Step &st) {
 			logf("wakarat: rat %d up (hits %d, rats %d)", actor, _vm->_scummVars[153], _vm->_scummVars[152]);
 			break;
 		}
+	} else if (st.name == "teeth") {
+		// Day of the Tentacle, the party room (room 26): the chattering teeth
+		// (actor 6) run 40 pixels sideways and 15 up or down away from Bernard
+		// when he comes near (room script 208), and fall into the open grating
+		// (object 190) when they pass within 12 of it (bit variable 69 then).
+		// Stand on the far side of them from the grating each time they stop.
+		if (_vm->readVar(0x8000 | 69)) {
+			logf("teeth: in the grating");
+			return true;
+		}
+		Actor *t = _vm->derefActorSafe(6, "guide");
+		Actor *ego = _vm->derefActorSafe(_vm->VAR(_vm->VAR_EGO), "guide");
+		if (!t || !ego || t->_moving || ego->_moving || !isIdle())
+			return false;
+		int gx, gy, dir;
+		_vm->getObjectXYPos(190, gx, gy, dir);
+		Common::Point tp = t->getRealPos();
+		int bx = tp.x + (tp.x > gx ? 24 : -24);
+		int by = tp.y + (tp.y > gy ? 6 : -6);
+		logf("teeth: at %d,%d, grating %d,%d, Bernard to %d,%d", tp.x, tp.y, gx, gy, bx, by);
+		ego->startWalkActor(bx, by, -1);
+		_minigameNext = now + 1500;
+		return false;
 	} else if (st.name == "wires") {
 		// Sam & Max, the robot's brain (room 50): the jacks start plugged or
 		// loose at random. A loose one (466-470) shows in state 1 and its
@@ -837,7 +864,11 @@ void ScummGuide::tick() {
 		// It must become true while waiting (the sky car must arrive, not be
 		// about to leave), so a condition already true is waited out first.
 		bool holds;
-		if (u.objectB == 3) {   // "b": a bit variable (scripts' bitvarN)
+		if (u.objectB == 4) {   // "n": a variable (scripts' varN)
+			holds = _vm->_scummVars[u.verb] == u.objectA;
+			if (holds)
+				_untilSeenFalse = true;
+		} else if (u.objectB == 3) {   // "b": a bit variable (scripts' bitvarN)
 			holds = _vm->readVar(0x8000 | u.verb) == u.objectA;
 			if (holds)
 				_untilSeenFalse = true;   // already set is fine
@@ -1046,9 +1077,9 @@ void ScummGuide::runCommand(const TestEvent &t) {
 	} else if (t.cmd == "objects") {
 		if (_vm->_game.id == GID_SAMNMAX)
 			logf("talk script (var 194) %d, cursor (var 177) %d", _vm->_scummVars[194], _vm->_scummVars[177]);
-		logf("userput %d, cursor state %d, sentences %d, cutscene %d, sentence script running %d",
+		logf("userput %d, cursor state %d, sentences %d, cutscene %d, sentence script running %d, msg %d, talk delay %d",
 			_vm->_userPut, _vm->_cursor.state, _vm->_sentenceNum, _vm->vm.cutSceneStackPointer,
-			_vm->isScriptRunning(_vm->VAR(_vm->VAR_SENTENCE_SCRIPT)));
+			_vm->isScriptRunning(_vm->VAR(_vm->VAR_SENTENCE_SCRIPT)), _vm->_haveMsg, _vm->_talkDelay);
 		{
 			Common::String running;
 			for (int i = 0; i < NUM_SCRIPT_SLOT; i++)
@@ -1082,7 +1113,20 @@ void ScummGuide::runCommand(const TestEvent &t) {
 		}
 		for (int i = 1; i < _vm->_numVerbs; i++)
 			if (_vm->_verbs[i].verbid && _vm->_verbs[i].curmode)
-				logf("  verb slot %d id %d mode %d", i, _vm->_verbs[i].verbid, _vm->_verbs[i].curmode);
+				{
+					// the verb's text (dialogue choices are verbs): printable bytes only
+					Common::String text;
+					const byte *p = _vm->getResourceAddress(rtVerb, i);
+					for (; p && *p && text.size() < 80; p++) {
+						if (*p == 0xFF) {   // an escape code and its argument
+							p += 3;
+							continue;
+						}
+						if (*p >= 32)
+							text += (char)*p;
+					}
+					logf("  verb slot %d id %d mode %d '%s'", i, _vm->_verbs[i].verbid, _vm->_verbs[i].curmode, text.c_str());
+				}
 		for (int i = 0; i < _vm->_numInventory; i++)
 			if (_vm->_inventory[i])
 				logf("  carried %d '%s' owner %d", _vm->_inventory[i], objectName(_vm->_inventory[i]).c_str(),

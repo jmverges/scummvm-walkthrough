@@ -69,12 +69,14 @@ class ScummEngine;
  *                                                (Sam & Max: the sky car at its stop)
  *   a <actor> [; comment]                        wait until the actor is here and standing still
  *   b <bit variable> <value> [; comment]         wait until the bit variable has that value
+ *   n <variable> <value> [; comment]             wait until the variable has that value
  *   g <object> [; comment]                       walk to the object without using it
  *   q <object> <class> [; comment]               wait until ifClassOfIs(object, [class]) holds
  *                                                (Sam & Max: the sky car is at the station)
  *   m <name> [; comment]                         play a minigame until its room is left or it
  *                                                is solved (Sam & Max: wakarat, gatorgolf,
- *                                                frogrock, wires, vortex)
+ *                                                frogrock, wires, vortex; Day of the
+ *                                                Tentacle: teeth)
  *   i <object> [; comment]                       a click on it in the inventory bar
  *                                                (Sam & Max's dialogue icons are there)
  *   c <room> <x> <y> [; comment]                 a left click on the screen, in that room

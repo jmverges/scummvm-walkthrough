@@ -1,0 +1,522 @@
+# Day of the Tentacle (CD, Spanish). Walkthrough for the ScummVM walkthrough player.
+# Verbs: 2 open, 3 close, 4 give, 5 push, 6 pull, 7 use, 8 look at, 9 pick up, 10 talk to, 11 walk to,
+# 18 send through the Chron-O-John (to actor 1 Bernard, 2 Laverne, 3 Hoagie). Dialogue choices are
+# verbs 120-128 ("v <id>"); the portraits are verbs 103 (Bernard), 104 (Laverne), 105 (Hoagie).
+== Bernard: la mansión // Bernard: the mansion
+s 2 296 0 ; Abrir la puerta de la oficina // Open the office door
+s 11 296 0 ; Entrar en la oficina // Go into the office
+s 2 353 0 ; Abrir el retrato: la caja fuerte // Open the portrait: the safe
+s 9 352 0 ; Coger la libreta del banco suizo // Take the Swiss bankbook
+s 2 349 0 ; Abrir el cajón del escritorio // Open the desk drawer
+s 9 350 0 ; Coger el Tipex // Take the Booboo-B-Gone
+s 11 346 0 ; Salir // Leave
+s 9 301 0 ; Coger una octavilla // Take a flier
+s 9 300 0 ; Coger el cartel de oferta de empleo // Take the help-wanted sign
+s 9 304 0 ; Coger la moneda del teléfono // Take the dime from the payphone
+s 2 310 0 ; Abrir el reloj de péndulo: el pasadizo al laboratorio y el Tentáculo Púrpura escapa // Open the grandfather clock: the way down to the lab, and Purple Tentacle gets loose
+s 9 218 0 ; Coger el papel del tablón: Dr. Fred lo manda a Hoagie // Take the paper from the board: Dr. Fred flushes it to Hoagie
+s 9 218 0 ; Los planos de la súper batería // The super-battery plans
+== Hoagie: la posada colonial // Hoagie: the colonial inn
+s 11 62 0 ; Ir a la izquierda // Go left
+s 11 31 0 ; A la posada // To the inn
+s 2 22 0 ; Abrir la puerta // Open the door
+s 11 22 0 ; Entrar // Go in
+s 11 71 0 ; Subir la escalera // Up the stairs
+s 11 119 0 ; Subir otra vez // Up again
+s 11 143 0 ; Al desván // To the attic
+s 9 157 0 ; Coger la pintura roja // Take the red paint
+s 11 166 0 ; Bajar // Down
+s 11 144 0 ; Bajar // Down
+s 11 118 0 ; Bajar al vestíbulo // Down to the lobby
+s 11 72 0 ; Salir // Go out
+s 11 23 0 ; Ir a la derecha // Go right
+s 11 36 0 ; A las letrinas // To the outhouses
+s 7 52 157 ; Pintar de rojo el naranjo chino: ahora parece un cerezo // Paint the kumquat tree red: now it looks like a cherry tree
+s 11 62 0 ; Volver a la izquierda // Back left
+s 11 31 0 ; A la posada // To the inn
+s 11 22 0 ; Entrar // Go in
+s 2 69 0 ; Abrir la puerta del salón // Open the hall door
+s 11 69 0 ; Entrar en el salón // Into the hall
+s 10 86 0 ; Hablar con George Washington // Talk to George Washington
+v 125 ; "¡Pero si te pareces a George Washington!" // "You look like George Washington!"
+v 120 ; "¡Un momento!" // "Wait a minute!"
+v 120 ; "¿Es cierto lo del cerezo?" // "Is it true about the cherry tree?"
+v 121 ; "Apuesto a que ya no puedes": tala el árbol y Laverne cae // "I bet you can't anymore": he chops it and Laverne falls
+== Laverne: la perrera de los tentáculos // Laverne: the tentacles' kennel
+v 104 ; Cambiar a Laverne // Switch to Laverne
+s 10 520 0 ; Hablar con el guarda // Talk to the guard
+v 122 ; "No me siento muy bien": a la enfermería // "I don't feel so good": to the infirmary
+s 9 512 0 ; Coger el diagrama de tentáculo // Take the tentacle chart
+s 11 511 0 ; Salir: los tentáculos la devuelven a la perrera // Leave: the tentacles take her back to the kennel
+s 11 472 0 ; La puerta principal // The front door
+s 10 520 0 ; Hablar con el guarda // Talk to the guard
+v 121 ; "¡Tengo que usar el baño!" // "I have to use the bathroom!"
+s 11 503 0 ; A la Cron-O-Letrina // To the Chron-O-John
+s 7 591 512 ; Mandar el diagrama por la letrina // Flush the chart
+== Hoagie: la bandera // Hoagie: the flag
+v 105 ; Cambiar a Hoagie // Switch to Hoagie
+s 9 51 0 ; Recoger el diagrama de la letrina // Take the chart from the toilet
+s 11 62 0 ; A la izquierda // Left
+s 11 31 0 ; A la posada // To the inn
+s 11 22 0 ; Entrar // Go in
+s 11 71 0 ; Subir // Upstairs
+s 2 116 0 ; Abrir la puerta del medio // Open the middle door
+s 11 116 0 ; El cuarto de Betsy Ross // Betsy Ross's room
+v 120 ; "Tengo otro diseño más para la bandera" // "I have another design for the flag"
+v 120 ; "¿Una calavera con escorpiones?": que lo deje en la mesa // "A skull with scorpions?": leave it on the table
+s 7 135 512 ; El diagrama en la mesa: hará una bandera de tentáculo // The chart on the table: she'll sew a tentacle flag
+== Bernard: la manivela // Bernard: the crank
+v 103 ; Cambiar a Bernard // Switch to Bernard
+s 11 215 0 ; Subir del laboratorio // Up from the lab
+s 2 295 0 ; Abrir la puerta del salón // Open the hall door
+s 11 295 0 ; Entrar en el salón // Into the hall
+s 11 181 0 ; Subir por la chimenea al tejado // Up the chimney to the roof
+s 9 401 0 ; Coger la manivela del mástil // Take the crank from the flagpole
+s 18 401 2 ; Mandar la manivela a Laverne // Send the crank to Laverne
+s 18 300 3 ; Mandar a Hoagie el cartel de empleo // Send Hoagie the help-wanted sign
+s 18 301 3 ; Y la octavilla // And the flier
+== Laverne: la bandera // Laverne: the flag
+v 104 ; Cambiar a Laverne // Switch to Laverne
+s 11 590 0 ; Al patio delantero // To the front yard
+s 11 504 0 ; Volver a la perrera // Back into the kennel
+s 10 520 0 ; Hablar con el guarda // Talk to the guard
+v 122 ; "No me siento muy bien": a la enfermería // "I don't feel so good": to the infirmary
+s 11 511 0 ; Salir de la enfermería // Leave the infirmary
+s 11 474 0 ; Al salón // To the hall
+s 11 532 0 ; Subir por la chimenea al tejado // Up the chimney to the roof
+s 7 587 401 ; Poner la manivela // Fit the crank
+s 7 584 0 ; Girarla: baja la bandera // Turn it: the flag comes down
+s 9 586 0 ; Coger la bandera // Take the flag
+s 7 586 0 ; Ponérsela: un disfraz de tentáculo // Put it on: a tentacle disguise
+== Bernard: los dientes, el café y el hámster // Bernard: the teeth, the coffee and the hamster
+v 103 ; Cambiar a Bernard // Switch to Bernard
+s 11 395 0 ; Bajar por la chimenea al salón // Down the chimney to the hall
+s 2 190 0 ; Abrir la rejilla del suelo // Open the floor grating
+s 10 188 0 ; Hablar con el vendedor de puros // Talk to the cigar salesman
+v 123 ; "Tengo que irme" // "I have to go"
+m teeth ; Espantar los dientes hacia la rejilla // Chase the chattering teeth into the grating
+s 9 182 0 ; Coger los dientes // Take the teeth
+s 11 180 0 ; A la cocina // To the kitchen
+s 9 197 0 ; Coger el café // Take the coffee
+s 9 198 0 ; Y el descafeinado // And the decaf
+g 199 ; Ir junto a la mesa // Go to the table
+s 9 199 0 ; Coger el tenedor // Take the fork
+s 2 196 0 ; Abrir la puerta del lavadero // Open the laundry door
+s 11 196 0 ; Al lavadero // To the laundry room
+s 2 292 0 ; Abrir el armario // Open the cabinet
+s 9 290 0 ; Coger el embudo // Take the funnel
+s 11 287 0 ; Volver a la cocina // Back to the kitchen
+s 11 195 0 ; Al salón // To the hall
+s 11 179 0 ; Al vestíbulo // To the lobby
+s 11 310 0 ; Al laboratorio por el reloj // Down to the lab through the clock
+s 7 223 198 ; Descafeinado en el tazón del Dr. Fred // Decaf in Dr. Fred's mug
+s 11 215 0 ; Subir // Upstairs
+s 11 299 0 ; Al segundo piso // To the second floor
+s 2 262 0 ; Abrir la puerta del cuarto del Tentáculo Verde // Open Green Tentacle's door
+s 11 262 0 ; Entrar: el Tentáculo Verde nos saluda // Go in: Green Tentacle greets us
+v 124 ; "¿Cómo va tu nueva banda?" // "How's your new band?"
+v 123 ; "¿Qué característica es esa?" // "What feature is that?"
+v 123 ; "Excelente" // "Excellent"
+v 123 ; "Hasta luego" // "See you"
+s 9 419 0 ; Coger la cinta de vídeo // Take the video tape
+s 5 421 0 ; Empujar el altavoz // Push the speaker
+s 7 416 0 ; Encender el equipo // Switch on the stereo
+s 11 415 0 ; Salir // Leave
+s 2 263 0 ; Abrir la puerta de la habitación del televisor // Open the TV room door
+s 11 263 0 ; Entrar // Go in
+s 7 278 0 ; Encender la tele: el anuncio del diamante // Turn on the TV: the diamond ad
+s 7 278 0 ; Apagarla // Turn it off
+s 11 286 0 ; Salir // Leave
+s 2 264 0 ; Abrir la puerta de Dwayne // Open Dwayne's door
+s 11 264 0 ; Entrar // Go in
+s 9 251 0 ; Coger la tinta que desaparece // Take the disappearing ink
+s 11 256 0 ; Salir // Leave
+s 11 260 0 ; Bajar al vestíbulo // Down to the lobby
+s 9 305 0 ; Coger el vómito simulado // Take the fake barf
+s 11 299 0 ; Subir // Upstairs
+s 11 261 0 ; Al tercer piso // To the third floor
+s 2 437 0 ; Abrir la puerta de Weird Ed // Open Weird Ed's door
+s 11 437 0 ; Entrar: Ed nos habla // Go in: Ed talks to us
+v 123 ; "¿A qué te dedicas?" // "What are you up to?"
+v 128 ; "Adiós" // "Goodbye"
+s 9 429 0 ; Coger el hámster // Take the hamster
+s 11 427 0 ; Salir // Leave
+s 11 434 0 ; Bajar al segundo piso // Down to the second floor
+s 2 265 0 ; Abrir la máquina del hielo // Open the ice machine
+s 7 265 429 ; Meter el hámster // Put the hamster in
+s 3 265 0 ; Cerrarla // Close it
+s 18 710 3 ; Mandar el libro de texto a Hoagie // Send the textbook to Hoagie
+s 18 350 2 ; Mandar el Tipex a Laverne // Send the Booboo-B-Gone to Laverne
+s 18 199 2 ; El tenedor // The fork
+s 18 305 2 ; El vómito simulado // The fake barf
+s 18 182 2 ; Y los dientes // And the teeth
+== Hoagie: Red Edison y la posada // Hoagie: Red Edison and the inn
+v 105 ; Cambiar a Hoagie // Switch to Hoagie
+s 11 134 0 ; Salir del cuarto de Betsy // Leave Betsy's room
+s 11 118 0 ; Bajar al vestíbulo // Down to the lobby
+s 2 70 0 ; Abrir el reloj de péndulo // Open the grandfather clock
+s 11 70 0 ; Bajar al sótano de Red Edison // Down to Red Edison's basement
+s 4 218 113 ; Darle los planos de la súper batería // Give him the super-battery plans
+s 4 300 113 ; Y el cartel de empleo: nos contrata // And the help-wanted sign: he hires us
+s 9 112 0 ; Coger la bata de laboratorio // Take the lab coat
+s 9 110 0 ; Coger el martillo para zurdos // Take the left-handed hammer
+s 11 109 0 ; Subir // Upstairs
+s 11 69 0 ; Al salón // To the hall
+s 11 79 0 ; A la cocina // To the kitchen
+s 9 100 0 ; Coger el espagueti // Take the spaghetti
+s 9 98 0 ; Coger el aceite // Take the oil
+s 2 96 0 ; Abrir la puerta del lavadero // Open the laundry door
+s 11 96 0 ; Al lavadero // To the laundry room
+s 9 105 0 ; Coger el cubo // Take the bucket
+s 2 108 0 ; Abrir el armario // Open the cabinet
+s 9 106 0 ; Coger el cepillo // Take the brush
+s 11 104 0 ; Volver a la cocina // Back to the kitchen
+s 7 97 105 ; Llenar el cubo en la bomba de agua // Fill the bucket at the water pump
+s 11 95 0 ; Al salón // To the hall
+s 7 81 301 ; La octavilla en el buzón de sugerencias: una aspiradora en cada sótano // The flier in the suggestion box: a vacuum in every basement
+s 11 78 0 ; Al vestíbulo // To the lobby
+s 11 71 0 ; Subir // Upstairs
+s 2 117 0 ; Abrir la puerta de Ben Franklin // Open Ben Franklin's door
+s 11 117 0 ; Entrar // Go in
+s 9 128 0 ; Coger la botella de vino // Take the wine bottle
+s 11 127 0 ; Salir // Leave
+s 2 115 0 ; Abrir la puerta de George Washington // Open George Washington's door
+s 11 115 0 ; Entrar // Go in
+s 5 125 0 ; Empujar la cama // Push the bed
+s 6 126 0 ; Tirar del cordón: la criada viene a arreglarla // Pull the cord: the maid comes to fix it
+s 11 124 0 ; Salir // Leave
+s 9 121 0 ; Coger el jabón del carrito // Take the soap from the cart
+s 7 105 121 ; El jabón en el cubo: agua jabonosa // Soap in the bucket: soapy water
+s 11 118 0 ; Bajar // Down
+s 11 69 0 ; Al salón // To the hall
+s 10 85 0 ; Hablar con Thomas Jefferson // Talk to Thomas Jefferson
+v 120 ; "¿Qué hay en la lata?": una cápsula del tiempo // "What's in the can?": a time capsule
+v 126 ; "Hasta luego" // "See you"
+s 7 128 84 ; El vino en la cápsula del tiempo // The wine in the time capsule
+s 11 78 0 ; Al vestíbulo // To the lobby
+s 11 71 0 ; Subir // Upstairs
+s 11 119 0 ; Al segundo piso // To the second floor
+s 9 147 0 ; Coger la dentadura del caballo // Take the horse's dentures
+s 2 142 0 ; Abrir la puerta de los gemelos Edison // Open the Edison twins' door
+s 11 142 0 ; Entrar // Go in
+v 127 ; "Espero no haberos molestado" // "Sorry to bother you"
+s 7 110 149 ; Cambiar el martillo para zurdos por el de diestros: los gemelos se cambian // Swap the left-handed hammer for the right-handed one: the twins swap places
+s 11 148 0 ; Salir // Leave
+s 11 143 0 ; Al desván // To the attic
+s 7 159 160 ; El colchón chirriante de Ned a la cama de Jed // Ned's squeaky mattress onto Jed's bed
+s 7 161 0 ; Hacerlo chirriar: el gato acude // Make it squeak: the cat comes
+s 9 163 0 ; Coger el ratón de juguete // Take the squeaky mouse toy
+s 18 711 2 ; Mandar el abrelatas a Laverne // Send the can opener to Laverne
+s 18 163 2 ; El ratón de juguete // The mouse toy
+s 18 100 2 ; El espagueti // The spaghetti
+s 18 147 2 ; La dentadura // The dentures
+s 18 157 2 ; La pintura roja // The red paint
+s 18 106 1 ; Mandar el cepillo a Bernard // Send the brush to Bernard
+== Laverne: el hámster, el gato y el vinagre // Laverne: the hamster, the cat and the vinegar
+v 104 ; Cambiar a Laverne // Switch to Laverne
+s 11 582 0 ; Bajar por la chimenea al salón // Down the chimney to the hall
+s 11 529 0 ; Al vestíbulo // To the lobby
+s 11 476 0 ; Subir // Upstairs
+s 2 467 0 ; Abrir la máquina de hacer hielo // Open the ice machine
+s 9 468 0 ; Coger el hámster congelado // Take the frozen hamster
+s 11 462 0 ; Bajar // Down
+s 11 472 0 ; Salir por la puerta principal // Out the front door
+s 7 350 506 ; Tipex en la cerca // Booboo-B-Gone on the fence
+s 7 163 505 ; El ratón de juguete al gato de la cerca // The mouse toy to the cat on the fence
+s 7 163 507 ; Y al de arriba: el gato pasa por la pintura y queda como una mofeta // And to the one up there: the cat runs through the paint and looks like a skunk
+s 11 509 0 ; Volver a la casa // Back into the house
+s 11 474 0 ; Al salón // To the hall
+s 11 531 0 ; A la cocina // To the kitchen
+s 7 429 494 ; Descongelar el hámster en el microondas // Thaw the hamster in the microwave
+s 11 493 0 ; Al salón // To the hall
+s 11 529 0 ; Al vestíbulo // To the lobby
+s 11 476 0 ; Subir // Upstairs
+s 2 464 0 ; Abrir la puerta de la izquierda // Open the left door
+s 11 464 0 ; Entrar // Go in
+s 7 711 441 ; Abrir la cápsula del tiempo con el abrelatas // Open the time capsule with the can opener
+s 9 442 0 ; Coger el vinagre // Take the vinegar
+s 18 442 3 ; Mandar el vinagre a Hoagie // Send the vinegar to Hoagie
+s 18 709 1 ; Mandar a Bernard el bisturí // Send Bernard the scalpel
+s 18 157 1 ; La pintura roja // The red paint
+s 18 350 1 ; Y el Tipex // And the Booboo-B-Gone
+== Hoagie: la carta // Hoagie: the letter
+v 105 ; Cambiar a Hoagie // Switch to Hoagie
+s 11 166 0 ; Bajar del desván // Down from the attic
+s 11 144 0 ; Bajar // Down
+s 11 118 0 ; Al vestíbulo // To the lobby
+s 11 72 0 ; Salir a la calle // Out to the street
+s 9 26 0 ; Coger la carta del buzón // Take the letter from the mailbox
+s 8 26 0 ; Leerla: le piden ir a Baltimore // Read it: they want him in Baltimore
+s 18 26 1 ; Mandar la carta a Bernard // Send the letter to Bernard
+== Bernard: Dwayne, Oozo y el vendedor de puros // Bernard: Dwayne, Oozo and the cigar salesman
+v 103 ; Cambiar a Bernard // Switch to Bernard
+s 11 264 0 ; Al cuarto de Dwayne // To Dwayne's room
+s 4 26 253 ; Darle la carta a Dwayne // Give Dwayne the letter
+s 9 252 0 ; Coger la pistola de bandera // Take the flag gun
+s 11 256 0 ; Salir // Leave
+s 11 260 0 ; Bajar al vestíbulo // Down to the lobby
+s 11 295 0 ; Al salón // To the hall
+s 7 709 186 ; Pinchar al payaso Oozo con el bisturí // Pop Oozo the clown with the scalpel
+s 9 185 0 ; Coger la caja de risas // Take the box o' laughs
+s 7 252 187 ; Cambiar la pistola de bandera por el mechero // Swap the flag gun for the lighter
+s 10 188 0 ; Hablar con el vendedor de puros // Talk to the cigar salesman
+v 121 ; "Buenos puros" // "Nice cigars"
+v 120 ; "Dame uno de esos habanos": un puro explosivo // "Give me one of those": an exploding cigar
+s 18 184 3 ; Mandar el puro a Hoagie // Send the cigar to Hoagie
+s 18 187 3 ; Y el mechero // And the lighter
+s 18 185 2 ; Mandar la caja de risas a Laverne // Send the box o' laughs to Laverne
+== Laverne: la momia del concurso // Laverne: the contest mummy
+v 104 ; Cambiar a Laverne // Switch to Laverne
+s 11 440 0 ; Salir de la habitación // Leave the room
+s 11 462 0 ; Bajar al vestíbulo // Down to the lobby
+s 11 474 0 ; Al salón // To the hall
+s 10 534 0 ; Hablar con el tentáculo: nos da su etiqueta con el nombre // Talk to the tentacle: he gives us his name tag
+s 11 529 0 ; Al vestíbulo // To the lobby
+s 11 476 0 ; Subir // Upstairs
+s 11 465 0 ; La habitación de la momia // The mummy's room
+s 9 451 0 ; Coger los patines // Take the roller skates
+s 9 456 0 ; Coger el prolongador eléctrico // Take the extension cord
+s 7 451 452 ; Ponerle los patines a la momia // Put the roller skates on the mummy
+s 5 457 0 ; Empujarla: sale rodando hasta el vestíbulo // Push it: it rolls down to the lobby
+s 11 450 0 ; Salir // Leave
+s 11 462 0 ; Bajar al vestíbulo // Down to the lobby
+s 7 533 478 ; La etiqueta en la momia: ya está apuntada al concurso // The name tag on the mummy: it's entered in the contest
+s 18 182 3 ; Mandar los dientes que castañetean a Hoagie // Send the chattering teeth to Hoagie
+== Hoagie: los dientes de Washington y la batería // Hoagie: Washington's teeth and the battery
+v 105 ; Cambiar a Hoagie // Switch to Hoagie
+s 11 22 0 ; Entrar en la posada // Into the inn
+s 11 69 0 ; Al salón // To the hall
+s 4 184 86 ; Darle el puro explosivo a Washington: pierde los dientes // Give Washington the exploding cigar: he loses his teeth
+s 4 182 86 ; Darle los dientes que castañetean: tiene frío y encienden el fuego // Give him the chattering teeth: he's cold and they light the fire
+s 9 88 0 ; Coger la manta // Take the blanket
+s 11 78 0 ; Al vestíbulo // To the lobby
+s 11 71 0 ; Subir // Upstairs
+s 11 119 0 ; Al segundo piso // To the second floor
+s 11 143 0 ; Al desván // To the attic
+s 11 156 0 ; Salir al tejado por la ventana // Out the window to the roof
+s 7 88 168 ; Tapar la chimenea con la manta: ¡fuego! // Cover the chimney with the blanket: fire!
+s 11 167 0 ; Volver adentro // Back inside
+s 11 166 0 ; Bajar // Down
+s 11 144 0 ; Bajar // Down
+s 11 118 0 ; Al vestíbulo // To the lobby
+s 11 72 0 ; Salir // Out
+s 11 23 0 ; A la derecha // Right
+s 11 36 0 ; A las letrinas // To the outhouses
+s 10 47 0 ; Hablar con Washington por la ventana // Talk to Washington through the window
+s 11 62 0 ; Volver // Back
+s 11 31 0 ; A la posada // To the inn
+s 11 22 0 ; Entrar // Go in
+s 11 69 0 ; Al salón, ahora vacío // To the hall, empty now
+s 9 82 0 ; Coger la pluma chapada en oro // Take the gold-plated quill
+s 11 78 0 ; Al vestíbulo // To the lobby
+s 11 70 0 ; Al sótano por el reloj // Down to the basement through the clock
+s 4 82 113 ; Darle a Red la pluma de oro // Give Red the gold quill
+s 4 98 113 ; El aceite // The oil
+s 4 442 113 ; Y el vinagre: construye la súper batería // And the vinegar: he builds the super-battery
+s 9 114 0 ; Coger la batería // Take the battery
+== Bernard: la caja fuerte // Bernard: the safe
+v 103 ; Cambiar a Bernard // Switch to Bernard
+s 11 179 0 ; Al vestíbulo // To the lobby
+s 11 299 0 ; Subir // Upstairs
+s 11 261 0 ; Al tercer piso // To the third floor
+s 2 436 0 ; Abrir la puerta de la enfermera Edna // Open Nurse Edna's door
+s 11 436 0 ; Entrar // Go in
+s 5 204 0 ; Empujar a la enfermera Edna // Push Nurse Edna
+s 7 419 205 ; La cinta en el vídeo // The tape in the VCR
+s 7 205 0 ; Usar el vídeo // Use the VCR
+s 7 318 0 ; Grabar: Hacienda se lleva al Dr. Fred, que abre la caja fuerte // Record: the IRS take Dr. Fred, who opens the safe
+s 7 319 0 ; Rebobinar // Rewind
+s 7 323 0 ; Velocidad lenta (EP) // Slow speed (EP)
+s 7 321 0 ; Reproducir: la combinación de la caja fuerte // Play: the safe's combination
+s 7 317 0 ; Expulsar // Eject
+s 11 202 0 ; Salir // Leave
+s 11 434 0 ; Bajar // Down
+s 11 260 0 ; Al vestíbulo // To the lobby
+s 11 296 0 ; A la oficina // To the office
+s 2 356 0 ; Abrir la caja fuerte // Open the safe
+s 9 347 0 ; Coger el contrato // Take the contract
+== Bernard: el aparcamiento // Bernard: the parking lot
+s 11 346 0 ; Salir de la oficina // Leave the office
+s 2 297 0 ; Abrir la puerta principal // Open the front door
+s 11 297 0 ; Salir // Go out
+s 10 333 0 ; Hablar con el primo Ted // Talk to Cousin Ted
+v 123 ; "¿Adónde llevaron al Dr. Fred?" // "Where did they take Dr. Fred?"
+v 124 ; "Debo irme a salvar al mundo" // "I must go save the world"
+s 11 332 0 ; Al aparcamiento // To the parking lot
+s 18 106 3 ; Mandar el cepillo a Hoagie // Send the brush to Hoagie
+== Hoagie: la cometa // Hoagie: the kite
+v 105 ; Cambiar a Hoagie // Switch to Hoagie
+s 11 109 0 ; Subir del sótano // Up from the basement
+s 11 72 0 ; Salir // Go out
+s 7 105 25 ; Lavar el carruaje con el agua jabonosa: se pone a llover // Wash the carriage with the soapy water: it starts to rain
+s 11 22 0 ; Entrar // Go in
+s 11 71 0 ; Subir // Upstairs
+s 11 117 0 ; Al cuarto de Ben Franklin // To Ben Franklin's room
+s 4 112 130 ; Darle la bata de laboratorio: salimos a volar la cometa // Give him the lab coat: we go out to fly the kite
+s 7 114 34 ; La batería en el bolsillo de la cometa // The battery in the kite's pocket
+n 157 1 ; Esperar a que Ben diga "¡YA!" // Wait for Ben to say "Now!"
+s 5 33 0 ; Lanzar la cometa: el rayo carga la batería // Launch the kite: the lightning charges the battery
+== Bernard: rescatar al Dr. Fred // Bernard: rescue Dr. Fred
+v 103 ; Cambiar a Bernard // Switch to Bernard
+s 11 362 0 ; Volver delante de la casa // Back to the front of the house
+s 11 331 0 ; Entrar // Go in
+s 11 295 0 ; Al salón // To the hall
+s 11 181 0 ; Subir por la chimenea al tejado // Up the chimney to the roof
+s 11 396 0 ; Entrar por la ventana: Hacienda tiene al Dr. Fred // In through the window: the IRS have Dr. Fred
+s 9 394 0 ; Coger la cuerda // Take the rope
+s 11 376 0 ; Salir al tejado // Out to the roof
+s 7 394 397 ; La cuerda en la polea // The rope on the pulley
+s 11 395 0 ; Bajar por la chimenea // Down the chimney
+s 11 179 0 ; Al vestíbulo // To the lobby
+s 11 297 0 ; Salir // Go out
+s 7 157 333 ; Pintar de rojo al primo Ted // Paint Cousin Ted red
+s 7 335 333 ; Atarle la soga que cuelga // Tie the dangling rope to him
+s 11 331 0 ; Entrar // Go in
+s 11 295 0 ; Al salón // To the hall
+s 11 181 0 ; Al tejado // To the roof
+s 6 402 0 ; Tirar de la cuerda: Ted sube hasta la ventana // Pull the rope: Ted goes up to the window
+s 11 331 0 ; Volver a entrar // Go back in
+s 11 295 0 ; Al salón // To the hall
+s 11 181 0 ; Al tejado // To the roof
+s 11 396 0 ; Entrar por la ventana // In through the window
+s 7 381 377 ; Poner a Ted en lugar del Dr. Fred // Put Ted in Dr. Fred's place
+s 7 379 378 ; Atar la cuerda al Dr. Fred // Tie the rope to Dr. Fred
+s 11 376 0 ; Salir al tejado // Out to the roof
+s 6 402 0 ; Tirar: bajamos al Dr. Fred al laboratorio // Pull: we bring Dr. Fred down to the lab
+s 7 290 233 ; El embudo en la boca del Dr. Fred // The funnel in Dr. Fred's mouth
+s 7 197 239 ; Café de verdad por el embudo: despierta // Real coffee down the funnel: he wakes up
+== Bernard: el contrato y el diamante // Bernard: the contract and the diamond
+s 11 215 0 ; Subir del laboratorio // Up from the lab
+s 11 299 0 ; Subir // Upstairs
+s 11 261 0 ; Al tercer piso // To the third floor
+s 11 437 0 ; Al cuarto de Weird Ed // To Weird Ed's room
+s 7 251 428 ; Tinta que desaparece en el álbum de sellos: Ed nos echa // Disappearing ink on the stamp album: Ed throws us out
+s 9 439 0 ; Coger el sello // Take the stamp
+s 9 438 0 ; Coger el álbum // Take the album
+s 11 437 0 ; Volver a entrar // Go back in
+s 4 438 430 ; Devolverle el álbum a Ed // Give Ed his album back
+s 11 427 0 ; Salir // Leave
+s 11 434 0 ; Bajar // Down
+s 11 260 0 ; Al vestíbulo // To the lobby
+s 11 310 0 ; Al laboratorio // To the lab
+s 10 222 0 ; Hablar con el Dr. Fred del contrato // Talk to Dr. Fred about the contract
+v 123 ; "Me encargaré yo del Tentáculo Púrpura" // "I'll deal with Purple Tentacle myself"
+v 120 ; "Haré que lo declaren loco": firma como doctor // "I'll have him declared insane": he signs as a doctor
+s 7 439 347 ; Sellar el contrato firmado // Stamp the signed contract
+s 18 347 3 ; Mandárselo a Hoagie // Send it to Hoagie
+== Hoagie: el buzón // Hoagie: the mailbox
+v 105 ; Cambiar a Hoagie // Switch to Hoagie
+s 11 31 0 ; A la posada // To the inn
+s 2 24 0 ; Abrir el buzón // Open the mailbox
+s 7 347 24 ; Echar el contrato: el dinero llega a la cuenta suiza // Post the contract: the money reaches the Swiss account
+== Bernard: el diamante // Bernard: the diamond
+v 103 ; Cambiar a Bernard // Switch to Bernard
+s 11 215 0 ; Subir // Upstairs
+s 11 296 0 ; A la oficina // To the office
+s 7 357 0 ; Llamar al canal de compras y pagar el diamante con la cuenta suiza // Call the shopping channel and pay for the diamond with the Swiss account
+== Laverne: el concurso de humanos // Laverne: the human show
+v 104 ; Cambiar a Laverne // Switch to Laverne
+s 11 476 0 ; Subir // Upstairs
+s 11 463 0 ; Al concurso // To the contest
+s 7 305 562 ; Vómito simulado en Harold // Fake barf on Harold
+s 7 100 561 ; Los fideos como pelo para la momia // The noodles as hair for the mummy
+s 7 199 563 ; El tenedor en la cabeza: el pelo de punta // The fork in its head: the hair stands up
+s 7 147 561 ; La dentadura: una sonrisa // The dentures: a smile
+s 7 185 561 ; La caja de risas: una risa // The box o' laughs: a laugh
+s 11 565 0 ; A la zona de los jueces // To the judges' area
+s 10 579 0 ; Hablar con los jueces // Talk to the judges
+v 120 ; "¿Cuándo juzgáis el mejor cabello?" // "When do you judge best hair?"
+s 10 579 0 ; Otra vez // Again
+v 121 ; "¿Y la mejor sonrisa?" // "And best smile?"
+s 10 579 0 ; Otra vez // Again
+v 122 ; "¿Y la mejor risa?": gana la momia, el trofeo y el certificado para cenar // "And best laugh?": the mummy wins, the trophy and the dinner certificate
+w 15 ; La entrega de premios // The prize-giving
+== Bernard: el jersey en la secadora // Bernard: the sweater in the dryer
+v 103 ; Cambiar a Bernard // Switch to Bernard
+s 11 215 0 ; Subir del laboratorio // Up from the lab
+s 11 299 0 ; Subir // Upstairs
+s 11 263 0 ; Al cuarto del televisor // To the TV room
+s 3 273 0 ; Cerrar la puerta: detrás están las llaves // Close the door: the keys are behind it
+s 9 279 0 ; Coger las llaves // Take the keys
+s 2 273 0 ; Abrir la puerta // Open the door
+s 11 286 0 ; Salir // Leave
+s 11 260 0 ; Bajar al vestíbulo // Down to the lobby
+s 11 297 0 ; Salir de la casa // Leave the house
+s 11 332 0 ; Al aparcamiento // To the parking lot
+s 4 279 365 ; Darle las llaves al hombre enmascarado: nos da la palanqueta // Give the keys to the masked man: he gives us the crowbar
+s 11 362 0 ; Volver // Back
+s 11 331 0 ; Entrar // Go in
+s 7 364 307 ; Despegar del suelo el chicle con la moneda // Pry the gum with the dime off the floor
+s 7 307 0 ; Sacar la moneda del chicle // Get the dime out of the gum
+s 11 299 0 ; Subir // Upstairs
+s 11 263 0 ; Al cuarto del televisor // To the TV room
+s 7 304 276 ; Una moneda en la ranura // A dime in the slot
+s 7 309 276 ; Y la otra // And the other
+s 9 275 0 ; Coger el jersey empapado // Take the soaked sweater
+s 11 286 0 ; Salir // Leave
+s 7 364 266 ; Forzar la máquina de caramelos con la palanqueta // Pry the candy machine open with the crowbar
+s 9 267 0 ; Coger las monedas // Take the quarters
+s 11 260 0 ; Bajar // Down
+s 11 295 0 ; Al salón // To the hall
+s 11 180 0 ; A la cocina // To the kitchen
+s 11 196 0 ; Al lavadero // To the laundry room
+s 7 275 289 ; El jersey en la secadora // The sweater in the dryer
+s 7 267 289 ; Las monedas: se seca durante siglos // The quarters: it dries for centuries
+== El regreso // The way back
+v 104 ; Cambiar a Laverne // Switch to Laverne
+s 11 450 0 ; Salir de la habitación // Leave the room
+s 11 462 0 ; Bajar al vestíbulo // Down to the lobby
+s 11 472 0 ; Salir // Go out
+s 11 503 0 ; A la Cron-O-Letrina // To the Chron-O-John
+s 7 456 600 ; El prolongador en el enchufe de la letrina // The extension cord in the Chron-O-John's plug
+s 2 597 0 ; Abrir la ventana // Open the window
+s 7 595 597 ; Pasar el cable por la ventana // Run the cord through the window
+s 7 596 600 ; Conectarlo // Plug it in
+s 11 590 0 ; Al patio // To the yard
+s 11 509 0 ; Entrar en la casa // Into the house
+s 11 474 0 ; Al salón // To the hall
+s 11 531 0 ; A la cocina // To the kitchen
+s 11 492 0 ; Al lavadero // To the laundry room
+s 2 610 0 ; Abrir la secadora // Open the dryer
+s 9 613 0 ; Coger el jersey, seco tras siglos // Take the sweater, dry after centuries
+s 7 613 429 ; Ponérselo al hámster // Put it on the hamster
+s 11 608 0 ; Volver a la cocina // Back to the kitchen
+s 11 493 0 ; Al salón // To the hall
+s 11 530 0 ; A la perrera: el guarda nos tira los tejos // To the kennel: the guard flirts with us
+v 123 ; "Es puro accidente que esté aquí. Adiós." // "I'm only here by accident. Bye."
+s 4 577 522 ; Darle al guarda el certificado de la cena: se va // Give the guard the dinner certificate: he leaves
+s 5 521 0 ; Abrir las jaulas // Open the cages
+s 7 508 0 ; Soltar a la mofeta falsa: los Edison huyen // Let the fake skunk loose: the Edisons run away
+s 11 519 0 ; Salir // Leave
+s 11 529 0 ; Al vestíbulo // To the lobby
+s 2 490 0 ; Abrir el reloj de péndulo // Open the grandfather clock
+s 11 490 0 ; Al sótano // Down to the basement
+s 7 543 554 ; El prolongador en la toma de corriente // The extension cord in the outlet
+s 7 429 541 ; El hámster al generador: se escapa a la ratonera // The hamster on the generator: it runs into the mouse hole
+s 7 540 539 ; Aspirarlo con la aspiradora empotrada // Vacuum it up with the built-in vacuum
+s 2 547 0 ; Abrir la puertecilla // Open the hatch
+s 9 549 0 ; Coger al hámster lleno de polvo // Take the dusty hamster
+s 7 429 541 ; Otra vez al generador: ahora corre // Back on the generator: now it runs
+v 105 ; Cambiar a Hoagie // Switch to Hoagie
+s 11 23 0 ; A donde cayó la cometa // Where the kite fell
+s 9 35 0 ; Coger la batería cargada // Take the charged battery
+s 11 36 0 ; A las letrinas // To the outhouses
+s 7 114 64 ; Enchufar la batería: los tres vuelven al presente // Plug in the battery: the three come back to the present
+== El final // The finale
+w 20 ; Los tres vuelven fusionados y el Tentáculo Púrpura les persigue // The three come back fused and Purple Tentacle chases them
+s 11 286 0 ; Salir al pasillo // Out to the hallway
+s 2 264 0 ; Ir a abrir la puerta de Dwayne: el rayo del Tentáculo Púrpura nos encoge 15 segundos // Go to open Dwayne's door: Purple Tentacle's ray shrinks us for 15 seconds
+s 11 264 0 ; Entrar deprisa // Hurry in
+s 11 258 0 ; Por la ratonera al cuarto del Tentáculo Verde // Through the mouse hole to Green Tentacle's room
+w 10 ; Recuperar el tamaño // Back to normal size
+s 9 423 0 ; Coger la bola de bolos // Take the bowling ball
+s 2 415 0 ; Abrir la puerta // Open the door
+s 11 415 0 ; Salir // Leave
+s 11 260 0 ; Bajar al vestíbulo // Down to the lobby
+s 11 310 0 ; Al laboratorio // To the lab
+s 7 423 240 ; La bola de bolos contra los Tentáculos Púrpura // The bowling ball at the Purple Tentacles
+s 10 241 0 ; Hablar con el Tentáculo Púrpura del futuro // Talk to the future Purple Tentacle
+v 121 ; "¿Qué no te gusta de los humanos?" // "What don't you like about humans?"
+v 122 ; "Todo es culpa del Dr. Fred" // "It's all Dr. Fred's fault"
+v 120 ; "Eres muy bueno con esa pistola de rayos" // "You're very good with that ray gun"
+v 122 ; "¿Por qué no disparáis al Dr. Fred?": el final // "Why don't you shoot Dr. Fred?": the end
