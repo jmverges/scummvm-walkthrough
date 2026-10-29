@@ -1,4 +1,4 @@
-> **This fork adds a walkthrough player to the SCUMM engine (easy mode, movie mode, recording): see [WALKTHROUGH.md](WALKTHROUGH.md).**
+> **This fork adds a walkthrough player to the SCUMM engine (easy mode, movie mode, recording): see [WALKTHROUGH.md](WALKTHROUGH.md). Watch it play the whole of Sam & Max Hit the Road on [AI Walkthroughs](https://www.youtube.com/@aiwalkthroughs) ([playlist](https://www.youtube.com/playlist?list=PLXl-xJGHwb8E)).**
 
 # [ScummVM README](https://www.scummvm.org/) · [![Translation status](https://translations.scummvm.org/widgets/scummvm/-/scummvm/svg-badge.svg)](https://translations.scummvm.org/engage/scummvm/?utm_source=widget) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md#pull-requests)
 

@@ -9,6 +9,10 @@ engine (the LucasArts adventures and others that run on it):
 
 It works wherever ScummVM does: tested on Linux, and it builds for the PS Vita.
 
+**Watch it play:** the whole of Sam & Max Hit the Road (Spanish CD), played by this fork from the start to the end
+credits, is on the [AI Walkthroughs](https://www.youtube.com/@aiwalkthroughs) YouTube channel:
+[the playlist](https://www.youtube.com/playlist?list=PLXl-xJGHwb8E), 9 episodes, no commentary.
+
 ## Installing it on Linux
 
 Download `ScummVM-Walkthrough.flatpak` from the [releases](https://github.com/jmverges/scummvm-walkthrough/releases).
@@ -77,9 +81,31 @@ s <verb> <objectA> [<objectB>] ; what the player sees in the menu
 v <verbid> ; a click on a verb (a dialogue choice)
 ```
 
+Games whose interface is not a verb bar (Sam & Max) need a few more kinds of step:
+
+```
+t <actor>                 talk to someone
+c <room> <x> <y>          a click on the screen in that room: dialogue icons, the map
+i <object>                a click on an inventory or dialogue icon
+x <script> <room> [args]  start a room script, as the game's input does
+g <object>                walk to an object without using it
+w <seconds>               wait
+u <actor> <xmin> <xmax>   wait until the actor is in that stretch
+o <object> <state> [now]  wait until the object is in that state (a sky car at its stop)
+q <object> <class>        wait until the object has that class
+a <actor>                 wait until the actor is in the room and standing still
+b <bitvar> <value>        wait for a script flag (something the game does at random)
+m <name>                  a minigame or a puzzle that changes every game
+```
+
+The minigames are Sam & Max's: `wakarat`, `gatorgolf`, `frogrock`, `wires` and `vortex`. The full Sam & Max
+walkthrough, [dists/walkthroughs/samnmax.txt](dists/walkthroughs/samnmax.txt), uses all of them.
+
 Other keys: `guide_file` (a walkthrough somewhere other than the game folder), `guide_step` (where you
 are), and for testing without a screen `guide_test` (a script of timed input, screenshots, saves and
-loads) and `guide_shots`. The code is in `engines/scumm/guide.cpp`.
+loads) and `guide_shots`. For recording videos: `guide_hide_cursor` (the game's cursor is not drawn while
+the guide plays) and `guide_save_sections=<slot>` (a save and a log line as each section starts, so a
+recording can be picked up again and cut there). The code is in `engines/scumm/guide.cpp`.
 
 ## Building
 
@@ -107,5 +133,10 @@ On the Vita it needs `ur0:data/libshacccg.suprx`, as every vitaGL app does.
 
 ## Status
 
-Early. The Sam & Max DOS CD demo is played from the office to the car by its walkthrough. Walkthroughs
-for full games are next.
+- **Sam & Max Hit the Road** (CD, Spanish): the whole game, from a new game to the end credits, in one run
+  (about 1 h 40 min). [Videos](https://www.youtube.com/playlist?list=PLXl-xJGHwb8E).
+- The Sam & Max DOS CD demo: from the office to the car.
+
+Other SCUMM games are next. The sister project, the [Hollywood Monsters port](https://github.com/jmverges/hollywood-monsters-port),
+has its own walkthrough player; its videos are on the same channel
+([playlist](https://www.youtube.com/playlist?list=PLI5UB10ipMHw)).
