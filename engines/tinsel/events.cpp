@@ -28,6 +28,7 @@
 #include "tinsel/cursor.h"
 #include "tinsel/dw.h"
 #include "tinsel/events.h"
+#include "tinsel/guide.h"
 #include "tinsel/handle.h"	// For LockMem()
 #include "tinsel/dialogs.h"
 #include "tinsel/move.h"	// For walking lead actor
@@ -312,6 +313,14 @@ static void ProcessUserEvent(TINSEL_EVENT uEvent, const Common::Point &coOrds, P
 	// Prevent activation of 2 events on the same tick
 	if (++g_eCount != 1)
 		return;
+
+	if (_vm->_guide && TinselVersion <= 1) {
+		int aniX0, aniY0, hp = GetTaggedPoly();
+		_vm->_cursor->GetCursorXY(&aniX0, &aniY0, true);
+		if (hp == NOPOLY && (hp = InPolygon(aniX0, aniY0, TAG)) == NOPOLY)
+			hp = InPolygon(aniX0, aniY0, EXIT);
+		_vm->_guide->onUserEvent(GetTaggedActor(), hp, uEvent);
+	}
 
 	if ((actor = GetTaggedActor()) != 0) {
 		// Event for a tagged actor

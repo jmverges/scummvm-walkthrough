@@ -311,6 +311,12 @@ public:
 	bool convIsHidden();
 
 	void convAction(int index);
+
+	// The walkthrough player (guide.cpp)
+	int guideInvCount(int invno) const { return _invD[invno].NoofItems; }
+	int guideInvItem(int invno, int i) const { return _invD[invno].contents[i]; }
+	void guideInvEvent(int item, int event);
+	bool guideConverse(int icon);
 	void setConvDetails(CONV_PARAM fn, HPOLYGON hPoly, int ano);
 	void inventoryIconCursor(bool bNewItem);
 

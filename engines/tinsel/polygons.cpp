@@ -1332,6 +1332,10 @@ HPOLYGON GetPolyHandle(int i) {
 	return (Polys[i] != NULL) ? i : NOPOLY;
 }
 
+int PolyCount() {
+	return noofPolys;
+}
+
 // **************************************************************************
 //
 // Code called to initialize or wrap up a scene:

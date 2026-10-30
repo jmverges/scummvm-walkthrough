@@ -65,6 +65,7 @@ class Actor;
 class Handle;
 class Scroll;
 class Dialogs;
+class TinselGuide;
 class Notebook;
 class SystemReel;
 class Spriter;
@@ -209,6 +210,9 @@ public:
 	Config *_config;
 	Scroll *_scroll;
 	Dialogs *_dialogs;
+	TinselGuide *_guide = nullptr;
+	Common::Error loadGameStateFromGuide(int slot) { return loadGameState(slot); }
+	void saveGameFromGuide(int slot, const Common::String &desc);
 	Notebook *_notebook = nullptr;
 	SystemReel *_systemReel = nullptr;
 	Spriter *_spriter = nullptr;

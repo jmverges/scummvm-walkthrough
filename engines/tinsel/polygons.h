@@ -112,6 +112,7 @@ void DisableExit(int exitno);
 void EnableExit(int exitno);
 HPOLYGON FirstPathPoly();
 HPOLYGON GetPolyHandle(int i);
+int PolyCount();	///< The current scene's polygons (entries past it can be stale)
 void InitPolygons(SCNHANDLE ph, int numPoly, bool bRestart);
 void DropPolygons();
 

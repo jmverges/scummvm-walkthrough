@@ -20,6 +20,7 @@ MODULE_OBJS := \
 	film.o \
 	font.o \
 	graphics.o \
+	guide.o \
 	handle.o \
 	heapmem.o \
 	inv_objects.o \

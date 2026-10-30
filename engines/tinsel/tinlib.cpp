@@ -36,6 +36,7 @@
 #include "tinsel/drives.h"
 #include "tinsel/dw.h"
 #include "tinsel/events.h"
+#include "tinsel/guide.h"
 #include "tinsel/faders.h"
 #include "tinsel/film.h"
 #include "tinsel/font.h"
@@ -3432,6 +3433,8 @@ static void TalkOrSay(CORO_PARAM, SPEECH_TYPE speechType, SCNHANDLE hText, int x
 				LoadSubString(hText, _ctx->sub, _vm->_font->TextBufferAddr(), TBUFSZ);
 			} else {
 				LoadStringRes(hText, _vm->_font->TextBufferAddr(), TBUFSZ);
+				if (_vm->_guide)
+					_vm->_guide->onTalk(_ctx->actor, _vm->_font->TextBufferAddr());
 
 				_ctx->y -= _ctx->Toffset;
 			}

@@ -485,6 +485,11 @@ public:
 	void killProcess(PROCESS *pKillProc);
 
 	/**
+	 * Appends the active processes with the given process id to the list.
+	 */
+	void listProcesses(uint32 pid, Common::List<PROCESS *> &out) const;
+
+	/**
 	 * Return a pointer to the currently running process.
 	 */
 	PROCESS *getCurrentProcess();

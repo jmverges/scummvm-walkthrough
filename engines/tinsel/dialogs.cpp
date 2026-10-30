@@ -27,6 +27,7 @@
 
 #include "common/serializer.h"
 #include "tinsel/dialogs.h"
+#include "tinsel/guide.h"
 #include "tinsel/actors.h"
 #include "tinsel/anim.h"
 #include "tinsel/background.h"
@@ -3303,6 +3304,8 @@ void Dialogs::convAction(int index) {
 		_thisIcon = _invD[_activeInv].contents[index];
 		break;
 	}
+	if (_vm->_guide)
+		_vm->_guide->onConverse(index == INV_CLOSEICON || index == INV_OPENICON ? index : _thisIcon);
 
 	if (TinselVersion <= 1)
 		RunPolyTinselCode(_thisConvPoly, CONVERSE, PLR_NOEVENT, true);
@@ -5874,6 +5877,9 @@ static void ObjectProcess(CORO_PARAM, const void *param) {
 static void InvTinselEvent(const InventoryObject *pinvo, TINSEL_EVENT event, PLR_EVENT be, int index) {
 	OP_INIT to = {pinvo, event, be, 0};
 
+	if (_vm->_guide && (event == WALKTO || event == ACTION || event == LOOK))
+		_vm->_guide->onInventoryEvent(pinvo->getId(), event);
+
 	if (_vm->_dialogs->inventoryIsHidden() || ((TinselVersion >= 2) && !pinvo->getScript()))
 		return;
 
@@ -5909,6 +5915,45 @@ extern void ObjectEvent(CORO_PARAM, int objId, TINSEL_EVENT event, bool bWait, i
 		*result = false;
 
 	CORO_END_CODE;
+}
+
+/**
+ * The walkthrough player: an event on an item in the inventory, as a click
+ * on it in the open inventory window would send it.
+ */
+void Dialogs::guideInvEvent(int item, int event) {
+	for (int invno = INV_1; invno <= INV_2; invno++) {
+		for (int i = 0; i < _invD[invno].NoofItems; i++) {
+			if (_invD[invno].contents[i] != item)
+				continue;
+			const InventoryObject *invObj = getInvObject(item);
+			if (!invObj->getScript())
+				return;
+			_thisIcon = item;
+			PLR_EVENT be = event == LOOK ? INV_LOOK : event == ACTION ? INV_ACTION : INV_PICKUP;
+			InvTinselEvent(invObj, (TINSEL_EVENT)event, be, i);
+			return;
+		}
+	}
+}
+
+/**
+ * The walkthrough player: pick that topic in the open conversation window.
+ */
+bool Dialogs::guideConverse(int icon) {
+	if (_activeInv != INV_CONV)
+		return false;
+	if (icon == INV_CLOSEICON || icon == INV_OPENICON) {
+		convAction(icon);
+		return true;
+	}
+	for (int i = 0; i < _invD[INV_CONV].NoofItems; i++) {
+		if (_invD[INV_CONV].contents[i] == icon) {
+			convAction(i);
+			return true;
+		}
+	}
+	return false;
 }
 
 } // End of namespace Tinsel

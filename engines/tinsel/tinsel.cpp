@@ -46,6 +46,7 @@
 #include "tinsel/drives.h"
 #include "tinsel/dw.h"
 #include "tinsel/events.h"
+#include "tinsel/guide.h"
 #include "tinsel/faders.h"
 #include "tinsel/film.h"
 #include "tinsel/font.h"
@@ -1134,6 +1135,8 @@ Common::Error TinselEngine::run() {
 			g_loadingFromGMM = true;
 	}
 
+	_guide = new TinselGuide(this);
+
 	// Foreground loop
 	uint32 timerVal = 0;
 	while (!shouldQuit()) {
@@ -1142,6 +1145,8 @@ Common::Error TinselEngine::run() {
 			timerVal = g_system->getMillis();
 			_system->getAudioCDManager()->update();
 			NextGameCycle();
+			if (_guide)
+				_guide->tick();
 		}
 
 		if (g_bRestart) {
@@ -1179,6 +1184,9 @@ Common::Error TinselEngine::run() {
 	_vm->_config->writeToDisk();
 
 	EndScene();
+
+	delete _guide;
+	_guide = nullptr;
 
 	return Common::kNoError;
 }

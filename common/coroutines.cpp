@@ -665,6 +665,12 @@ PROCESS *CoroutineScheduler::getProcess(uint32 pid) {
 	return pProc;
 }
 
+void CoroutineScheduler::listProcesses(uint32 pid, Common::List<PROCESS *> &out) const {
+	for (PROCESS *pProc = active->pNext; pProc != nullptr; pProc = pProc->pNext)
+		if (pProc->pid == pid)
+			out.push_back(pProc);
+}
+
 EVENT *CoroutineScheduler::getEvent(uint32 pid) {
 	for (auto &event : _events) {
 		if (event->pid == pid)

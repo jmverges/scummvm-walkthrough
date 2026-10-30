@@ -431,6 +431,19 @@ Common::Error TinselEngine::saveGameState(int slot, const Common::String &desc, 
 }
 #endif
 
+/**
+ * The walkthrough player's saves (one as each section starts): Tinsel's own
+ * save, the way its menu makes one, under a file name that loadGameState()
+ * finds by that slot.
+ */
+void TinselEngine::saveGameFromGuide(int slot, const Common::String &desc) {
+	Common::String saveName = getSavegameFilename((int16)slot);
+	char saveDesc[SG_DESC_LEN];
+	Common::strlcpy(saveDesc, desc.c_str(), SG_DESC_LEN);
+	SaveGame((char *)saveName.c_str(), saveDesc);
+	ProcessSRQueue();
+}
+
 bool TinselEngine::canLoadGameStateCurrently(Common::U32String *msg) { return !_bmv->MoviePlaying(); }
 
 #if 0
