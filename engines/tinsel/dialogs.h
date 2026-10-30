@@ -317,6 +317,8 @@ public:
 	int guideInvItem(int invno, int i) const { return _invD[invno].contents[i]; }
 	void guideInvEvent(int item, int event);
 	bool guideConverse(int icon);
+	void guidePutDown(int invno);
+	SCNHANDLE guideInvScript(int item);
 	void setConvDetails(CONV_PARAM fn, HPOLYGON hPoly, int ano);
 	void inventoryIconCursor(bool bNewItem);
 

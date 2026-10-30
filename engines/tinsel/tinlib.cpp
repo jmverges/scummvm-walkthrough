@@ -1985,6 +1985,8 @@ static void Print(CORO_PARAM, int x, int y, SCNHANDLE text, int time, bool bSust
 
 	// Get the string
 	LoadStringRes(text, _vm->_font->TextBufferAddr(), TBUFSZ);
+	if (_vm->_guide)
+		_vm->_guide->onTalk(0, _vm->_font->TextBufferAddr());
 
 	// Calculate display time
 	bJapDoPrintText = false;
@@ -2183,6 +2185,8 @@ static void PrintObj(CORO_PARAM, const SCNHANDLE hText, const InventoryObject *p
 				LoadSubString(hText, _ctx->sub, _vm->_font->TextBufferAddr(), TBUFSZ);
 			else
 				LoadStringRes(hText, _vm->_font->TextBufferAddr(), TBUFSZ);
+			if (_vm->_guide)
+				_vm->_guide->onTalk(0, _vm->_font->TextBufferAddr());
 
 			_ctx->pText = ObjectTextOut(_vm->_bg->GetPlayfieldList(FIELD_STATUS), _vm->_font->TextBufferAddr(),
 						0, _ctx->textx, _ctx->texty, _vm->_font->GetTagFontHandle(), TXT_CENTER);

@@ -39,8 +39,12 @@
 #include "tinsel/events.h"
 #include "tinsel/movers.h"
 #include "tinsel/pid.h"
+#include "tinsel/pcode.h"
 #include "tinsel/polygons.h"
+#include "tinsel/scroll.h"
+#include "tinsel/sound.h"
 #include "tinsel/strres.h"
+#include "tinsel/timers.h"
 #include "tinsel/tinsel.h"
 
 namespace Tinsel {
@@ -50,7 +54,9 @@ void WalkTo(int x, int y);	// events.cpp
 extern SCNHANDLE GetSceneHandle();
 
 static const uint32 kIdleSettle = 600;      // ms the game must stay idle before the next step
-static const uint32 kStepTimeout = 30000;   // ms a step's target may be missing before giving up
+static const uint32 kStepTimeout = 90000;
+static const uint32 kQuietDone = 10000;    // ms with control on and nobody talking that end a step whose code goes on
+static const uint32 kQuietLong = 15000;    // the same while a sample plays (a long line, or a looping effect)   // ms a step's target may be missing before giving up
 
 static const char *eventName(int event) {
 	switch (event) {
@@ -121,6 +127,12 @@ bool TinselGuide::parseLine(const Common::String &text, Step &st) {
 		line = line.substr(0, semi);
 	}
 	line.trim();
+	st.optional = st.quick = false;
+	while (line.hasPrefix("?") || line.hasPrefix("!")) {
+		(line[0] == '?' ? st.optional : st.quick) = true;
+		line = line.substr(1);
+		line.trim();
+	}
 	if (line.size() < 2)
 		return false;
 	char kind = line[0];
@@ -156,6 +168,21 @@ bool TinselGuide::parseLine(const Common::String &text, Step &st) {
 		st.kind = Step::kHold;
 		st.item = atoi(rest.c_str());
 		return true;
+	case 'a':
+		st.kind = Step::kSceneWait;
+		st.target = atoi(rest.c_str());
+		return st.target > 0;
+	case 'n':
+		if (sscanf(rest.c_str(), "%d %d", &n1, &n2) != 2)
+			return false;
+		st.kind = Step::kVarWait;
+		st.target = n1;
+		st.x = n2;
+		return true;
+	case 'p':
+		st.kind = Step::kPutDown;
+		st.target = atoi(rest.c_str());
+		return st.target == INV_1 || st.target == INV_2;
 	case 'c':
 	case 'r':
 		if (sscanf(rest.c_str(), "%d %d", &n1, &n2) != 2)
@@ -226,13 +253,16 @@ void TinselGuide::stop() {
 // ------------------------------------------------------------ state
 
 bool TinselGuide::isIdle() const {
-	if (!ControlIsOn())
+	if (!ControlIsOn() || _pendingInvNo)
 		return false;
 	MOVER *lead = GetMover(_vm->_actor->GetLeadId());
 	if (lead && MoverMoving(lead))
 		return false;
 	// Scenes keep some Tinsel code processes running for good (background
 	// animations), so wait only for the ones the last step started.
+	// A new scene ended them all (and their slots may hold the new scene's processes).
+	if (sceneNumber() != _stepScene)
+		_stepProcs.clear();
 	if (_stepProcs.empty())
 		return true;
 	Common::List<Common::PROCESS *> now;
@@ -243,7 +273,16 @@ bool TinselGuide::isIdle() const {
 		else
 			++it;
 	}
-	return _stepProcs.empty();
+	if (_stepProcs.empty())
+		return true;
+	// Some code keeps running after it has given the player control back (a worm wriggling in a tomato, an imp
+	// on the loose): once nobody has said anything for a while with control on, the step is done. The sample
+	// channel also carries looping sound effects, so it only stretches that to the longest line.
+	uint32 now32 = g_system->getMillis();
+	if (_vm->_scroll->IsScrolling())
+		_quietSince = now32;
+	uint32 since = MIN(now32 - _quietSince, now32 - _lastTalk);
+	return since >= (_vm->_sound->sampleIsPlaying() ? kQuietLong : kQuietDone);
 }
 
 bool TinselGuide::available(const Step &st) const {
@@ -256,8 +295,14 @@ bool TinselGuide::available(const Step &st) const {
 			(PolyType(st.target) == TAG || PolyType(st.target) == EXIT);
 	case Step::kInventory:
 		return _vm->_dialogs->isInInventory(st.target, INV_1) || _vm->_dialogs->isInInventory(st.target, INV_2);
+	case Step::kSceneWait:
+		return sceneNumber() == st.target;
+	case Step::kVarWait:
+		return st.target >= 0 && st.target < GetGlobalCount() && GetGlobal(st.target) == st.x;
 	case Step::kConverse:
-		return _vm->_dialogs->whichInventoryOpen() == INV_CONV;
+		// As a click would: only while the topics are on screen (the window hides while people talk).
+		return _vm->_dialogs->whichInventoryOpen() == INV_CONV && _vm->_dialogs->inventoryActive() &&
+			!_vm->_dialogs->convIsHidden();
 	default:
 		return true;
 	}
@@ -300,6 +345,12 @@ Common::String TinselGuide::describe(const Step &st) const {
 		return Common::String::format("topic %d %s", st.target, st.comment.c_str());
 	case Step::kHold:
 		return Common::String::format("hold %d %s", st.item, st.comment.c_str());
+	case Step::kPutDown:
+		return Common::String::format("put it into inventory %d %s", st.target, st.comment.c_str());
+	case Step::kSceneWait:
+		return Common::String::format("wait for scene %d %s", st.target, st.comment.c_str());
+	case Step::kVarWait:
+		return Common::String::format("wait for global %d = %d %s", st.target, st.x, st.comment.c_str());
 	case Step::kClick:
 	case Step::kRightClick:
 		return Common::String::format("%s %d,%d %s", st.kind == Step::kClick ? "click" : "right click", st.x, st.y, st.comment.c_str());
@@ -356,6 +407,10 @@ void TinselGuide::execute(const Step &st) {
 	CoroScheduler.listProcesses(PID_TCODE, before);
 	switch (st.kind) {
 	case Step::kEvent:
+		// Close the inventory first, as a player clicking the scene would.
+		if (_vm->_dialogs->inventoryActive() && (_vm->_dialogs->whichInventoryOpen() == INV_1 ||
+				_vm->_dialogs->whichInventoryOpen() == INV_2))
+			_vm->_dialogs->killInventory();
 		if (st.item)
 			_vm->_dialogs->holdItem(st.item);
 		// Code often walks to where the click was (exits always do): the
@@ -374,16 +429,25 @@ void TinselGuide::execute(const Step &st) {
 		else
 			RunPolyTinselCode(st.target, (TINSEL_EVENT)st.event, buttonFor(st.event), false);
 		break;
-	case Step::kInventory:
-		if (st.item)
-			_vm->_dialogs->holdItem(st.item);
-		_vm->_dialogs->guideInvEvent(st.target, st.event);
+	case Step::kInventory: {
+		// Items act on each other only in an open inventory window, as for a player: open it first and
+		// send the event once it is up (tick()).
+		int invno = _vm->_dialogs->isInInventory(st.target, INV_1) ? INV_1 : INV_2;
+		_pendingInv = st;
+		_pendingInvNo = invno;
 		break;
+	}
 	case Step::kConverse:
 		_vm->_dialogs->guideConverse(st.target);
 		break;
 	case Step::kHold:
 		_vm->_dialogs->holdItem(st.item ? st.item : INV_NOICON);
+		break;
+	case Step::kPutDown:
+		_vm->_dialogs->guidePutDown(st.target);
+		break;
+	case Step::kVarWait:
+	case Step::kSceneWait:
 		break;
 	case Step::kClick:
 	case Step::kRightClick:
@@ -401,6 +465,8 @@ void TinselGuide::execute(const Step &st) {
 	Common::List<Common::PROCESS *> after;
 	CoroScheduler.listProcesses(PID_TCODE, after);
 	_stepProcs.clear();
+	_stepScene = sceneNumber();
+	_quietSince = g_system->getMillis();
 	for (auto *p : after)
 		if (Common::find(before.begin(), before.end(), p) == before.end())
 			_stepProcs.push_back(p);
@@ -409,6 +475,27 @@ void TinselGuide::execute(const Step &st) {
 void TinselGuide::tick() {
 	pollControl();
 	uint32 now = g_system->getMillis();
+	if (_pendingInvNo && !(_vm->_dialogs->inventoryActive() && _vm->_dialogs->whichInventoryOpen() == _pendingInvNo)) {
+		// Close whatever window is up (a conversation left open), then open this one.
+		if (_vm->_dialogs->inventoryActive())
+			_vm->_dialogs->killInventory();
+		else
+			_vm->_dialogs->popUpInventory(_pendingInvNo);
+	} else if (_pendingInvNo) {
+		_pendingInvNo = 0;
+		_executing = true;
+		Common::List<Common::PROCESS *> before;
+		CoroScheduler.listProcesses(PID_TCODE, before);
+		if (_pendingInv.item)
+			_vm->_dialogs->holdItem(_pendingInv.item);
+		_vm->_dialogs->guideInvEvent(_pendingInv.target, _pendingInv.event);
+		_executing = false;
+		Common::List<Common::PROCESS *> after;
+		CoroScheduler.listProcesses(PID_TCODE, after);
+		for (auto *p : after)
+			if (Common::find(before.begin(), before.end(), p) == before.end())
+				_stepProcs.push_back(p);
+	}
 	bool idle = isIdle();
 
 	// Live steps from the control file: one at a time, when idle.
@@ -419,9 +506,15 @@ void TinselGuide::tick() {
 			_liveSince = now;
 		} else if (now - _liveSince >= kIdleSettle) {
 			Step st = _live.front();
+			if ((st.kind == Step::kVarWait || st.kind == Step::kSceneWait) && !available(st) && now - _liveSince < kStepTimeout)
+				return;	// keep waiting for it
 			_live.remove_at(0);
-			logf("live: %s (scene %d)", describe(st).c_str(), sceneNumber());
-			execute(st);
+			if (!available(st)) {
+				logf("live: %s: not here (scene %d), skipped", describe(st).c_str(), sceneNumber());
+			} else {
+				logf("live: %s (scene %d)", describe(st).c_str(), sceneNumber());
+				execute(st);
+			}
 			_liveSince = 0;
 		}
 	}
@@ -443,7 +536,12 @@ void TinselGuide::tick() {
 		bool done;
 		if (st.kind == Step::kWait)
 			done = now - _stateSince >= (uint32)st.target * 1000;
-		else
+		else if (st.quick && !_pendingInvNo && ControlIsOn() && now - _stateSince >= kIdleSettle &&
+				!(GetMover(_vm->_actor->GetLeadId()) && MoverMoving(GetMover(_vm->_actor->GetLeadId())))) {
+			// "!": done as soon as the player has control again, while its code still runs
+			done = true;
+			_stepProcs.clear();
+		} else
 			done = idle && now - _idleSince >= kIdleSettle && now - _stateSince >= kIdleSettle;
 		if (done) {
 			logf("step %d done (scene %d)", _current + 1, sceneNumber());
@@ -461,10 +559,18 @@ void TinselGuide::tick() {
 
 	if (!idle || now - _idleSince < kIdleSettle)
 		return;
+	if (!available(st) && st.optional) {
+		logf("step %d: %s: not needed (scene %d)", _current + 1, describe(st).c_str(), sceneNumber());
+		_current++;
+		ConfMan.setInt("guide_step", _current);
+		if (_remaining > 0)
+			_remaining--;
+		return;
+	}
 	if (!available(st)) {
 		if (!_stateSince)
 			_stateSince = now;
-		if (now - _stateSince > kStepTimeout) {
+		if (now - _stateSince > (st.kind == Step::kSceneWait ? kStepTimeout * 20 : kStepTimeout)) {
 			logf("step %d: its target is not here (scene %d); stopping", _current + 1, sceneNumber());
 			_remaining = 0;
 			_stateSince = 0;
@@ -540,6 +646,7 @@ void TinselGuide::onConverse(int icon) {
 }
 
 void TinselGuide::onTalk(int actor, const char *text) {
+	_lastTalk = g_system->getMillis();
 	if (_logTalk)
 		logf("talk %d: %s", actor, text);
 }
@@ -550,13 +657,26 @@ void TinselGuide::listObjects() {
 	int x = 0, y = 0;
 	int lead = _vm->_actor->GetLeadId();
 	_vm->_actor->GetActorPos(lead, &x, &y);
-	logf("scene %d, lead %d at %d,%d, control %d, step processes %d, idle %d, held %d, inventory open %d",
-		sceneNumber(), lead, x, y, ControlIsOn(), (int)_stepProcs.size(), isIdle(),
+	logf("scene %d, lead %d at %d,%d, control %d, step processes %d (scrolling %d, sample %d), idle %d, held %d, inventory open %d",
+		sceneNumber(), lead, x, y, ControlIsOn(), (int)_stepProcs.size(), _vm->_scroll->IsScrolling(),
+		_vm->_sound->sampleIsPlaying(), isIdle(),
 		_vm->_dialogs->whichItemHeld(), _vm->_dialogs->whichInventoryOpen());
+	{
+		Common::List<Common::PROCESS *> movers, tcode;
+		CoroScheduler.listProcesses(PID_MOVER, movers);
+		CoroScheduler.listProcesses(PID_TCODE, tcode);
+		logf("  lead in path P%d, mover processes %d, code processes %d", InPolygon(x, y, PATH), (int)movers.size(),
+			(int)tcode.size());
+	}
 	for (int i = 0; i < PolyCount(); i++) {
 		if (GetPolyHandle(i) == NOPOLY)
 			continue;
 		PTYPE t = PolyType(i);
+		if (t == PATH || t == BLOCK) {
+			logf("  P%d %s at %d,%d %d,%d %d,%d %d,%d", i, t == PATH ? "path" : "block", PolyCornerX(i, 0), PolyCornerY(i, 0),
+				PolyCornerX(i, 1), PolyCornerY(i, 1), PolyCornerX(i, 2), PolyCornerY(i, 2), PolyCornerX(i, 3), PolyCornerY(i, 3));
+			continue;
+		}
 		if (t == EFFECT) {
 			logf("  P%d effect at %d,%d %d,%d %d,%d %d,%d", i, PolyCornerX(i, 0), PolyCornerY(i, 0), PolyCornerX(i, 1),
 				PolyCornerY(i, 1), PolyCornerX(i, 2), PolyCornerY(i, 2), PolyCornerX(i, 3), PolyCornerY(i, 3));
@@ -564,20 +684,41 @@ void TinselGuide::listObjects() {
 		}
 		if (t != TAG && t != EX_TAG && t != EXIT && t != EX_EXIT)
 			continue;
-		logf("  P%d %s%s '%s' at %d,%d", i, t == TAG ? "tag" : t == EXIT ? "exit" : t == EX_TAG ? "dead tag" : "dead exit",
-			GetPolyScript(i) ? "" : " (no code)", polyName(i).c_str(), PolyCornerX(i, 0), PolyCornerY(i, 0));
+		logf("  P%d %s%s '%s' at %d,%d (code %x)", i, t == TAG ? "tag" : t == EXIT ? "exit" : t == EX_TAG ? "dead tag" : "dead exit",
+			GetPolyScript(i) ? "" : " (no code)", polyName(i).c_str(), PolyCornerX(i, 0), PolyCornerY(i, 0), GetPolyScript(i));
 	}
-	for (int a = 1; a < 100; a++) {
+	for (int a = 1; a <= _vm->_actor->GetCount(); a++) {
 		if (!_vm->_actor->actorAlive(a) || !_vm->_actor->GetActorCode(a))
 			continue;
 		int ax = 0, ay = 0;
 		_vm->_actor->GetActorPos(a, &ax, &ay);
-		logf("  A%d '%s' at %d,%d%s", a, actorName(a).c_str(), ax, ay, _vm->_actor->ActorHidden(a) ? " hidden" : "");
+		logf("  A%d '%s' at %d,%d%s (code %x)", a, actorName(a).c_str(), ax, ay, _vm->_actor->ActorHidden(a) ? " hidden" : "",
+			_vm->_actor->GetActorCode(a));
+		if (MOVER *m = GetMover(a)) {
+			if (m->bSpecReel)
+				logf("    special reel");
+			if (MoverMoving(m))
+				logf("    moving to %d,%d (I %d,%d U %d,%d) path P%d diff %d obj %d,%d scale %d active %d walkreel %d",
+					m->targetX, m->targetY, m->ItargetX, m->ItargetY, m->UtargetX, m->UtargetY, m->hCpath,
+					(int)m->InDifficulty, m->objX, m->objY, m->scale, m->bActive, m->bWalkReel * 10 + m->bSpecReel);
+				int dx = m->targetX > m->objX ? 1 : m->targetX < m->objX ? -1 : 0;
+				int dy = m->targetY > m->objY ? 1 : m->targetY < m->objY ? -1 : 0;
+				MOVER *mb = m->actorObj ? InMoverBlock(m, m->objX + dx, m->objY + dy) : nullptr;
+				logf("    next step %d,%d: path P%d block P%d mover block %d", m->objX + dx, m->objY + dy,
+					InPolygon(m->objX + dx, m->objY + dy, PATH), InPolygon(m->objX + dx, m->objY + dy, BLOCK),
+					mb ? mb->actorID : 0);
+		}
 	}
 	Common::String inv;
 	for (int n = 0; n < _vm->_dialogs->guideInvCount(INV_1); n++)
 		inv += Common::String::format(" %d", _vm->_dialogs->guideInvItem(INV_1, n));
 	logf("  inventory:%s", inv.c_str());
+	if (_vm->_dialogs->guideInvCount(INV_2)) {
+		Common::String inv2;
+		for (int n = 0; n < _vm->_dialogs->guideInvCount(INV_2); n++)
+			inv2 += Common::String::format(" %d", _vm->_dialogs->guideInvItem(INV_2, n));
+		logf("  inventory 2:%s", inv2.c_str());
+	}
 	if (_vm->_dialogs->whichInventoryOpen() == INV_CONV) {
 		Common::String topics;
 		for (int n = 0; n < _vm->_dialogs->guideInvCount(INV_CONV); n++)
@@ -653,6 +794,16 @@ void TinselGuide::runCommand(const Common::String &text) {
 	} else if (cmd == "load") {
 		Common::Error e = _vm->loadGameStateFromGuide(atoi(arg.c_str()));
 		logf("load slot %d: %s", atoi(arg.c_str()), e.getDesc().c_str());
+	} else if (cmd == "global") {
+		int g = atoi(arg.c_str());
+		if (g >= 0 && g < GetGlobalCount())
+			logf("global %d = %d", g, GetGlobal(g));
+	} else if (cmd == "name") {
+		// The item's label, as when the pointer is over it in the inventory (logged as talk 0)
+		_vm->_dialogs->guideInvEvent(atoi(arg.c_str()), POINTED);
+		logf("item %d code %x", atoi(arg.c_str()), _vm->_dialogs->guideInvScript(atoi(arg.c_str())));
+	} else if (cmd == "timer") {
+		logf("timer %d = %d", atoi(arg.c_str()), Timer(atoi(arg.c_str())));
 	} else if (cmd == "play") {
 		play(arg.empty() ? -1 : atoi(arg.c_str()));
 	} else if (cmd == "stop") {

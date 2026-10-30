@@ -1207,6 +1207,10 @@ static void NewCoOrdinates(int fromx, int fromy, int *targetX, int *targetY,
 		 Must stay out of blocking polygons.
 		 --------------------------------------*/
 		hPoly = InPolygon(*newx, *newy, BLOCK);
+		// An actor put down inside a blocking polygon (DW1: Rincewind back up from the
+		// palace dungeon in act 3 stands in the smoke machine's) may walk out of it.
+		if (hPoly != NOPOLY && hPoly == InPolygon(fromx, fromy, BLOCK))
+			hPoly = NOPOLY;
 		if (hPoly != NOPOLY) {
 			*s2 = ENTERING_BLOCK;	// Trying to enter a blocking poly
 			*hS2p = hPoly;

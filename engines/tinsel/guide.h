@@ -54,11 +54,20 @@ class TinselEngine;
  *                                                        inventory (walk picks it up)
  *   k <icon> [; comment]                                 a topic in the conversation window
  *   h <item> [; comment]                                 take the item in hand (0: drop it)
+ *   p <1|2> [; comment]                                  put the held item into the Luggage (1) or
+ *                                                        Rincewind's own pockets (2)
  *   g <x> <y> [; comment]                                walk there (a click on the floor; exits
  *                                                        are crossed by walking into them)
+ *   a <scene> [; comment]                                wait until the game is in that scene
+ *   n <global> <value> [; comment]                       wait until the game's global variable has that
+ *                                                        value (something that comes and goes)
  *   c <x> <y> [; comment]                                a left click on the screen
  *   r <x> <y> [; comment]                                a right click
  *   w <seconds> [; comment]                              wait
+ *   ?<step>                                              only if its target is here (a walk that an
+ *                                                        event may have cut short)
+ *   !<step>                                              done as soon as the player has control back,
+ *                                                        while its code still runs (a short chance)
  *   # comment
  */
 class TinselGuide {
@@ -82,9 +91,11 @@ public:
 
 private:
 	struct Step {
-		enum Kind { kEvent, kInventory, kConverse, kHold, kClick, kRightClick, kWait, kWalk } kind;
+		enum Kind { kEvent, kInventory, kConverse, kHold, kPutDown, kVarWait, kSceneWait, kClick, kRightClick, kWait, kWalk } kind;
 		int event;            // TINSEL_EVENT
 		bool actor;           // kEvent: an actor, not a polygon
+		bool optional;        // "?": skip it if its target is not here
+		bool quick;           // "!": done when the player has control back
 		int target, item;     // polygon/actor/inventory item; the item in hand
 		int x, y;             // kClick
 		Common::String section, comment;
@@ -118,6 +129,11 @@ private:
 	Common::String _recordPath, _controlPath, _shotDir, _section;
 	uint32 _controlOffset;
 	mutable Common::List<Common::PROCESS *> _stepProcs;	// code processes the last step started
+	int _stepScene = -1;	// and the scene it ran in
+	Step _pendingInv;	// an inventory step waiting for its window to open
+	int _pendingInvNo = 0;
+	mutable uint32 _quietSince = 0;	// when the step started (or the screen last scrolled)
+	uint32 _lastTalk = 0;	// when the last line was said
 };
 
 } // End of namespace Tinsel

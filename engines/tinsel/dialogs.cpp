@@ -5938,6 +5938,27 @@ void Dialogs::guideInvEvent(int item, int event) {
 }
 
 /**
+ * The walkthrough player: put the held item into that inventory (the Luggage
+ * or Rincewind's pockets), as a click on its window would.
+ */
+SCNHANDLE Dialogs::guideInvScript(int item) {
+	const InventoryObject *invObj = getInvObject(item);
+	return invObj ? invObj->getScript() : 0;
+}
+
+void Dialogs::guidePutDown(int invno) {
+	if (_heldItem == INV_NOICON)
+		return;
+	if (!inventoryActive() || _activeInv != invno)
+		popUpInventory(invno);
+	auto invObj = getInvObject(_heldItem);
+	if ((invObj->hasAttribute(InvObjAttr::IO_ONLYINV1) && invno != INV_1) ||
+			(invObj->hasAttribute(InvObjAttr::IO_ONLYINV2) && invno != INV_2))
+		return;
+	invPutDown(_invD[invno].NoofItems);
+}
+
+/**
  * The walkthrough player: pick that topic in the open conversation window.
  */
 bool Dialogs::guideConverse(int icon) {
