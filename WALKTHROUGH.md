@@ -1,7 +1,7 @@
 # ScummVM with a walkthrough player
 
 This is a fork of [ScummVM](https://github.com/scummvm/scummvm) that adds a walkthrough player to the SCUMM
-engine (the LucasArts adventures and others that run on it):
+engine (the LucasArts adventures and others that run on it) and to the Tinsel engine (Discworld):
 
 - **Easy mode**: the game does the next action of the walkthrough for you, then you carry on.
 - **Movie mode**: the game plays itself, from where you are to the end.
@@ -9,9 +9,12 @@ engine (the LucasArts adventures and others that run on it):
 
 It works wherever ScummVM does: tested on Linux, and it builds for the PS Vita.
 
-**Watch it play:** the whole of Sam & Max Hit the Road (Spanish CD), played by this fork from the start to the end
-credits, is on the [AI Walkthroughs](https://www.youtube.com/@aiwalkthroughs) YouTube channel:
-[the playlist](https://www.youtube.com/playlist?list=PLXl-xJGHwb8E), 9 episodes, no commentary.
+**Watch it play:** whole games played by this fork from the start to the end credits, no commentary, on the
+[AI Walkthroughs](https://www.youtube.com/@aiwalkthroughs) YouTube channel:
+
+- [Sam & Max Hit the Road](https://www.youtube.com/playlist?list=PLXl-xJGHwb8E) (Spanish CD), 9 episodes.
+- [Day of the Tentacle](https://www.youtube.com/playlist?list=PLO2HvQFzSNW8) (Spanish CD), 11 episodes, going up
+  from 11 November 2026.
 
 ## Installing it on Linux
 
@@ -98,14 +101,52 @@ b <bitvar> <value>        wait for a script flag (something the game does at ran
 m <name>                  a minigame or a puzzle that changes every game
 ```
 
-The minigames are Sam & Max's: `wakarat`, `gatorgolf`, `frogrock`, `wires` and `vortex`. The full Sam & Max
-walkthrough, [dists/walkthroughs/samnmax.txt](dists/walkthroughs/samnmax.txt), uses all of them.
+Day of the Tentacle needs one more:
+
+```
+n <var> <value>           wait for a game variable (a kite that has to be in the air)
+```
+
+The minigames are Sam & Max's `wakarat`, `gatorgolf`, `frogrock`, `wires` and `vortex`, and Day of the Tentacle's
+`teeth` (the chattering teeth into the grating). The full walkthroughs,
+[dists/walkthroughs/samnmax.txt](dists/walkthroughs/samnmax.txt) and
+[dists/walkthroughs/tentacle.txt](dists/walkthroughs/tentacle.txt), use all of them.
 
 Other keys: `guide_file` (a walkthrough somewhere other than the game folder), `guide_step` (where you
 are), and for testing without a screen `guide_test` (a script of timed input, screenshots, saves and
 loads) and `guide_shots`. For recording videos: `guide_hide_cursor` (the game's cursor is not drawn while
 the guide plays) and `guide_save_sections=<slot>` (a save and a log line as each section starts, so a
 recording can be picked up again and cut there). The code is in `engines/scumm/guide.cpp`.
+
+## Discworld (Tinsel)
+
+The same idea for the Tinsel engine (`engines/tinsel/guide.cpp`), so far for Discworld (the first game). A Tinsel
+game has no verbs: what a player does is a click (walk), a double click (act) or a right click (look) on a
+hotspot polygon or an actor, with or without an item in hand, plus inventory and conversation icons. The guide
+gives the engine those same events, one at a time when the game is waiting for the player; a step is done when
+the game code it started has finished. Polygons (`P12`) and actors (`A3`) are numbered per scene; recording
+(`guide_record`) writes the steps with the hotspot names, as for SCUMM.
+
+```
+e <walk|act|look> <P<n>|A<n>> [<item>]   an event on a hotspot or actor, with that item in hand
+i <walk|act|look> <item> [<held item>]   an event on an item in the inventory
+k <icon>                                 a topic in the conversation window
+h <item>                                 take an item in hand (0: put it away)
+p <1|2>                                  put the held item into the Luggage (1) or Rincewind's pockets (2)
+g <x> <y>                                walk there (a click on the floor)
+c <x> <y> / r <x> <y>                    a left or right click on the screen
+a <scene>                                wait until the game is in that scene
+n <global> <value>                       wait for a game variable (someone who comes and goes)
+w <seconds>                              wait
+?<step>                                  only if its target is here (a walk an event may cut short)
+!<step>                                  done as soon as the player has control back (a short chance)
+```
+
+The whole game, from a new game to the end credits, is in [dists/walkthroughs/dw.txt](dists/walkthroughs/dw.txt).
+There is no menu button for Tinsel yet: the walkthrough is set with `guide_file` and played with the commands in
+the file named by `guide_control` (`play`, `stop`, `goto`, `save`, `load`, `objects`...). The fork also fixes two
+places where Discworld got stuck in ScummVM: Rincewind back up from the palace dungeon in act 3 stood inside a
+blocking polygon and could not move, and Mambo's walk in Lady Ramkin's cage found no path at the cage's edge.
 
 ## Building
 
@@ -115,7 +156,7 @@ with this fork as its source (it needs Flathub's `shared-modules` next to it).
 Linux, with SDL2 and the usual ScummVM dependencies:
 
 ```sh
-./configure --disable-all-engines --enable-engine=scumm
+./configure --disable-all-engines --enable-engine=scumm,tinsel
 make
 ```
 
@@ -136,7 +177,11 @@ On the Vita it needs `ur0:data/libshacccg.suprx`, as every vitaGL app does.
 - **Sam & Max Hit the Road** (CD, Spanish): the whole game, from a new game to the end credits, in one run
   (about 1 h 40 min). [Videos](https://www.youtube.com/playlist?list=PLXl-xJGHwb8E).
 - The Sam & Max DOS CD demo: from the office to the car.
+- **Day of the Tentacle** (CD, Spanish): the whole game in one run (about 2 h).
+  [Videos](https://www.youtube.com/playlist?list=PLO2HvQFzSNW8), from 11 November 2026.
+- **Discworld** (CD, Spanish text, English voices): the whole game, tested section by section to the end
+  credits; the one-run recording for the channel is under way.
 
-Other SCUMM games are next. The sister project, the [Hollywood Monsters port](https://github.com/jmverges/hollywood-monsters-port),
+Other games are next. The sister project, the [Hollywood Monsters port](https://github.com/jmverges/hollywood-monsters-port),
 has its own walkthrough player; its videos are on the same channel
 ([playlist](https://www.youtube.com/playlist?list=PLI5UB10ipMHw)).

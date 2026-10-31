@@ -1,0 +1,1022 @@
+# Discworld (CD, Spanish text, English voices). Walkthrough for the ScummVM walkthrough player.
+# Polygons (P<n>) and actors (A<n>) are numbered per scene; items: 284 pouch, 200 broom, 190 banana, 198 book,
+# 303 staff, 234 frog. Doors are opened with a double click (act) before walking through them.
+
+== Acto 1: el cuarto de Rincewind // Act 1: Rincewind's room
+a 17 ; the intro plays until Rincewind wakes up in his room
+e act P8 ; scene 17: open the wardrobe
+e act P7 ; take the pouch
+h 0
+e act P6 ; open the door
+e walk P6 ; to the stairwell (scene 59)
+
+== La escoba del armario // The broom in the closet
+e walk P49 ; closet (85)
+e act P7 ; take the broom
+h 0
+e walk P6 ; stairwell
+e walk P48 ; back to the room (17)
+e act P12 200 ; wake the Luggage with the broom
+e walk P6 ; stairwell
+
+== El Archicanciller // The Arch Chancellor
+e act P50 ; his study (58): the dragon speech
+e walk P6 ; stairwell
+
+== El bibliotecario // The Librarian
+e walk P53 ; library (35)
+e act P38 190 ; the banana for the Librarian: the dragon book
+h 0
+e walk P35 ; stairwell
+e act P50 ; study
+e act P8 198 ; show him the book: the five things for the dragon detector
+h 0
+e walk P6 ; stairwell
+
+== El cayado de Windle Poons // Windle Poons' staff
+e walk P51 ; dining hall (87)
+e act P11 200 ; swap the broom for the staff
+h 0
+e walk P9 ; stairwell
+
+== El aprendiz y la rana // The apprentice and the frog
+e walk P54 ; grounds (36)
+e act P29 ; talk to the apprentice about the gate
+k 328 ; the new hinges spell
+e act P26 ; take the frog
+h 0
+e act P21 ; open the main gate
+e walk P21 ; the city map (6)
+
+== La plaza: el rapaz y los tomates // The square: the urchin and the tomatoes
+e walk P86 ; the square (46)
+e act P9 ; the urchin teaches pickpocketing (skill 274) and Rincewind ends up with the pink bloomers (195)
+h 0
+e act P27 ; a tomato
+e act P8 314 ; at the tax collector
+e act P27 ; another one: a worm
+e act P29 ; take the worm (323)
+h 0
+
+== El psiquiatriquero // The psychiatrickerist
+e walk P6 ; waiting room (135)
+e act P15 ; talk to the troll
+k 330
+k 331
+e walk P13 ; out
+e walk P6 ; in again: the troll has moved
+e act P20 ; the butterfly net (208)
+h 0
+e walk P13 ; square
+e walk P5 ; map
+
+== La juguetería y el monje // The toy shop and the monk
+e walk P83 ; street (44)
+e walk P25 ; toy shop (143)
+e act P14 ; the toymaker
+e act P15 ; the string (305)
+h 0
+e walk P10 ; street
+e walk P26 ; corner (129)
+e act P11 ; the monk of Offler
+e walk P9 ; street
+
+== El rulo del barbero // The barber's hair curler
+e walk P29 ; barber's (68)
+e look P11 ; the curler in the woman's hair
+e act P14 ; talk to her: the barber pockets it
+e act P13 ; talk to the barber: he daydreams of the milkmaid
+e act P12 274 ; pick his pocket: the curler (240)
+h 0
+e walk P10 ; street
+e walk P24 ; map
+
+== El maíz de la cuadra // Corn from the livery stable
+e walk P78 ; livery stable (40)
+e act P9 ; open the sack
+e act P9 ; a handful of corn (214)
+h 0
+e walk P8 ; map
+
+== El palacio y el espejo // The palace and the mirror
+e walk P74 ; palace gate (37)
+e act P8 ; the right-hand guard
+k 328 ; tell him what his mate says about him: he knocks him out
+e walk P10 ; throne room (98)
+e walk P23 ; the dressing room (112)
+e act P16 ; the mirror (263)
+h 0
+e walk P8 ; throne room
+e walk P10 ; palace gate
+e walk P5 ; map
+
+== El duende del alquimista // The alchemist's imp
+e walk P79 ; alley (24)
+g 150 190 ; along the bottom, away from the tile in the middle
+g 300 195
+g 420 180
+e walk P16 ; the alchemist's (26)
+e act P13 214 ; corn in his flask: popcorn
+e look P14 ; the box (30)
+e act P2 ; the cable release: the box opens
+e walk P1 ; back
+e act P12 ; grab the imp: it runs away
+i act 323 305 ; tie the string to the worm (325)
+h 0
+e walk P8 ; alley
+e act P18 325 ; the worm at the mouse hole: the imp (244)
+h 0
+
+== El aliento de dragón // Dragon's breath
+h 263 ; the mirror, from the Luggage
+p 2 ; into Rincewind's pockets (the Luggage stays below)
+g 204 161 ; the tile: up to the rooftops (27)
+e walk P8 ; the flagpole (137)
+e act P1 263 ; the mirror on its tip (Death drops by)
+e act P2 ; the mirror: dragon's breath (224)
+e walk P0 ; rooftops
+e act P11 ; kick the ladder down to the Luggage (254)
+e act P7 ; back down into the alley (on the roofs a double click sends Rincewind on his way)
+a 24 ; wait until he is down
+e walk P15 ; map
+e walk P73 ; university grounds (36)
+e walk P23 ; behind the university (121)
+
+== La tortita // The pancake
+e act P6 ; a bag of fertiliser (230)
+h 0
+h 208 ; the butterfly net, from the Luggage
+p 2 ; into Rincewind's pockets
+e act P5 254 ; the ladder at the kitchen window: up to look in (120)
+e act A271 208 ; the net for the next pancake: the cook storms off
+h 0
+e act P8 ; down the ladder (121)
+h 0
+e walk P3 ; grounds
+e walk P22 ; stairwell (59)
+e walk P52 ; kitchen (120)
+e act P12 ; the frying pan (235)
+h 0
+e act P10 ; a banana (190)
+h 0
+e walk P6 ; stairwell
+
+== El detector de dragones // The dragon detector
+e act P50 ; the Arch Chancellor's study (58)
+e act P8 303 ; the staff
+e act P8 240 ; the curler
+e act P8 244 ; the imp
+e act P8 235 ; the frying pan
+e act P8 224 ; dragon's breath: the detector, and its map (60)
+g 47 156 ; to the barn in the south-west: the dragon
+
+== Acto 2: el granero // Act 2: the barn
+e walk P77 ; the barn (39)
+e act P9 ; the screwdriver (292)
+h 0
+e walk P3 ; map
+
+== La posada // The inn
+e walk P81 ; (42)
+e walk P14 ; a room at the inn (103)
+e act P15 ; the sheet (293)
+h 0
+e walk P11 ; the bathroom (102)
+e act P9 ; bubble bath (206)
+h 0
+e walk P8 ; the room
+e act P10 ; open the door
+e walk P10 ; out (42)
+e walk P13 ; map
+
+== El Tambor Remendado // The Mended Drum
+e walk P75 ; (38)
+e walk P15 ; the Mended Drum (63)
+e act P47 ; the scared guy: a ghost took his pass
+e look P31 ; the counterwise wine
+e act P40 ; the barman: a glass of it
+e act P36 ; the empty glass (238)
+h 0
+e act P39 ; matches (262)
+h 0
+e walk P23 ; out (38)
+e walk P14 ; map
+
+== El plátano de oro // The golden banana
+e walk P73 ; university grounds (36)
+e walk P22 ; stairwell (59)
+e walk P52 ; kitchen (120)
+e act P15 ; corn flour (215)
+h 0
+e walk P6 ; stairwell
+e walk P53 ; library (35)
+e act P43 ; the shady guy
+k 330 ; about L-space
+e act P43 316 ; four piles of treasure for his golden banana
+e act P43 317
+e act P43 318
+e act P43 319 ; the golden banana (239)
+h 0
+e act P38 239 ; for the Librarian: the oath, and the way into L-space
+
+== El espacio-L // L-space
+e walk P36 ; the library in the past (49): the thief takes the dragon book
+e act P37 ; the book that opens the secret passage
+e walk P35 ; the map of the past (48)
+
+== El escondite de la hermandad // The brotherhood's hideout
+e act P80 ; the thief's trail ends at the hideout (56)
+e act P13 ; the knocker: not dressed for it
+e walk P8 ; map
+
+== La posada en el pasado // The inn in the past
+e walk P76 ; (53)
+e walk P14 ; the scared guy's room (105)
+e act A7 293 ; the sheet over Rincewind: a ghost
+e act P18 ; the jewellery box: the letter opener trick
+e act P10 ; the door
+e walk P10 ; out (53)
+e walk P13 ; map
+
+== La mariposa del parque // The butterfly in the park
+e walk P75 ; the park (52)
+e act P6 234 ; the frog for the drunk
+e act A257 208 ; catch the butterfly (207)
+h 0
+e walk P4 ; map
+
+== La farola y el retrete // The lamp and the privy
+e walk P77 ; the street (54)
+e walk P20 ; the corner (127)
+e act P11 207 ; the butterfly at the lamp: rain over the monk's spot
+e act P12 ; the pot (280)
+h 0
+e walk P9 ; street
+e walk P21 ; the alley (110)
+e act P9 ; open the privy door
+e look P8 ; the graffiti
+e walk P6 ; street
+e walk P19 ; map
+
+== El palillo del tambor // The drumstick
+e walk P73 ; outside the Drum (50)
+e walk P15 ; the Drum in the past (66)
+e look P40 ; the little guy
+!e look P24 ; the picture behind him: he turns to admire it for a few seconds
+n 178 1 ; while he is looking at it
+e act P41 ; knock over his drink: a brawl
+e act P18 254 ; the ladder up to the sign: the drumstick (225)
+h 0
+
+== De vuelta al presente // Back to the present
+e walk P14 ; out of the Drum (50)
+e walk P72 ; through the hole into the university: the library in the past (49)
+e walk P36 ; L-space: the library today (35)
+e walk P35 ; stairwell
+e walk P51 ; dining hall (87)
+e act P10 225 ; the drumstick on the gong: the apprentice comes running
+h 0
+e walk P9 ; stairwell
+e walk P54 ; grounds (36)
+e act P30 ; the prunes on the bench (286)
+h 0
+e walk P23 ; behind the university (121)
+e act P7 ; a dustbin (236)
+h 0
+e walk P3 ; grounds
+e walk P21 ; map
+
+== La túnica del monje // The monk's robe
+e walk P75 ; outside the Drum (38)
+e walk P15 ; the Drum (63)
+e act P46 ; the little guy: not in the mood
+e act P47 ; the scared guy: the ghost and the hammer
+e walk P23 ; out
+e walk P14 ; map
+e walk P83 ; street (44)
+e walk P27 ; the alley (107)
+e act P17 ; the monk's robe, left on the line in the rain (288)
+h 0
+e walk P6 ; street
+e walk P23 ; map
+
+== La contraseña // The password
+e walk P73 ; grounds
+e walk P22 ; stairwell
+e walk P53 ; library
+e walk P36 ; L-space: the past (49)
+e walk P35 ; the secret passage: map of the past (48)
+e act P80 ; the hideout (56)
+e act P14 ; turn the left drainpipe towards the door
+n 169 1 ; a brother at the door
+e act P9 238 ; the glass on the right drainpipe: the password
+h 0
+e act A7 288 ; the robe on: in to the summoning
+h 0
+e walk P8 ; map
+
+== El pase de la ciudad // The city gate pass
+e walk P76 ; (53)
+e walk P14 ; the room at the inn (105)
+e act A7 293 ; the ghost again
+e act P18 ; the jewellery box: the city gate pass (273)
+h 0
+e act P10 ; the door
+e walk P10 ; out (53)
+e walk P13 ; map of the past
+e walk P72 ; the library in the past
+e walk P36 ; L-space: today
+e walk P35 ; stairwell
+e walk P54 ; grounds
+e walk P21 ; map
+
+== Demuestra que eres un hombre // Prove you're a man
+e walk P86 ; the square (46)
+e act P20 ; Dibbler and his doughnuts
+k 327 ; buy some (222)
+h 0
+e act P9 ; the urchin: the secret handshake is only for a man
+e act P22 ; the Amazon
+e walk P7 ; the dunny alley (99)
+e act P11 222 ; the doughnut for the dunnyman when he comes by: off to the barber
+e walk P7 ; square
+
+== Las manchas de tinta // The inkblots
+e walk P6 ; the psychiatrickerist's waiting room (135)
+e act P19 ; the girl
+e act P15 ; the troll
+k 330
+k 331 ; called in: two inkblots (249, 248)
+e walk P6 ; in again
+e act P17 ; the crying girl: a note (267)
+h 0
+e walk P13 ; square
+e walk P5 ; map
+
+== Fuera de la ciudad // Out of the city
+e walk P76 ; the city gate (22)
+e act P26 ; search the crates
+e act P26 ; fireworks (231) and a keg of gunpowder (251)
+h 0
+e act P22 273 ; the pass for the guard
+e walk P28 ; out through the gate: the map of the lands around (65)
+e walk P35 ; the mountain pass (93)
+e walk P11 ; up the pass: the chicken-lizard
+e act P13 ; its egg (227)
+h 0
+e act P14 ; its feather (229)
+h 0
+
+== La casa de Tata Ogg // Nanny Ogg's cottage
+e walk P11 ; map
+e walk P35 ; the dark wood (89)
+e walk P17 ; through the wood
+e act P17 ; Nanny Ogg's (130)
+e act P11 280 ; the pot in the cauldron: custard (281)
+h 0
+e walk P8 ; the wood
+e walk P16 ; map
+
+== El Borde del Mundo // The Edge of the World
+e walk P36 ; the Edge (90)
+e act P8 ; shake the coconut palm: a coconut falls in the water
+e act P9 208 ; fish it out with the net (212)
+h 0
+e walk P3 ; map
+e walk P33 ; the city gate
+e walk P27 ; map
+
+== El diente de oro // The gold tooth
+e walk P83 ; street (44)
+e walk P29 ; the barber's (68)
+e act P13 ; the barber, pining for the milkmaid
+e act P13 267 ; her note: off he goes, leaving the shop to Rincewind
+e act P19 ; the barber's apparatus on the dunnyman: the gold tooth (315)
+h 0
+e walk P10 ; street
+
+== El cinturón de oro // The gold belt
+e walk P28 ; the fishmonger (106)
+e act P12 ; the fishmonger
+e look P11 ; his belt with the gold buckle
+e act P10 286 ; a prune in his caviar: off to the privy
+e act P15 305 ; the string on the octopus (268)
+h 0
+e walk P9 ; the alley (107)
+e act P7 ; try the belt on the privy door
+e walk P6 ; back
+e walk P8 ; street
+w 30 ; give him time to come back
+e walk P28 ; the fishmonger again
+e walk P9 ; the alley
+e act P12 ; open the privy
+e act P10 281 ; custard in the can
+e act P10 268 ; and the octopus
+e walk P6 ; the fishmonger
+e act P10 286 ; another prune in the caviar
+e walk P9 ; the alley
+e act P8 ; the gold belt (191)
+h 0
+e walk P6 ; the fishmonger
+e walk P7 ; street
+
+== El muñeco del Padre Puerco // The Hogfather doll
+e walk P25 ; toy shop (143)
+e act P13 ; a Hogfather doll from the toys (220)
+h 0
+e walk P10 ; street
+e walk P24 ; map
+
+== El gorro de oro // The gold cap
+e walk P74 ; palace gate (37)
+e act P8 249 ; the first inkblot for the guard: his wife, he says
+e walk P10 ; the throne room (98)
+e act P13 ; the peasant: the thief went to the Shades
+e act P18 236 ; the dustbin over the fool: Chucky wants a bath
+e walk P23 ; the bathroom (112)
+e act P18 ; reach for the cap: Chucky raises the alarm
+e act P25 206 ; bubble bath in the tub
+e act P18 ; the gold cap (210)
+h 0
+e walk P8 ; throne room
+e walk P10 ; palace gate
+e walk P5 ; map
+
+== Las Sombras: Sally la Grande // The Shades: Big Sally
+e walk P73 ; grounds
+e walk P22 ; stairwell
+e walk P53 ; library
+e walk P36 ; L-space: the past (49)
+e walk P35 ; map of the past (48)
+e walk P79 ; the Shades in the past (55)
+e walk P34 ; the house of negotiable affection (81)
+e act P12 ; each of the ladies
+e act P13
+e act P14 ; Big Sally wants milk, an egg and flour
+i act 212 292 ; open the coconut with the screwdriver: coconut milk (269)
+h 0
+e act P14 269 ; milk
+e act P14 227 ; the egg
+e act P14 215 ; the corn flour: yellow bloomers (194)
+h 0
+e walk P8 ; the Shades
+e walk P32 ; map of the past
+e walk P72 ; the library in the past
+e walk P36 ; L-space: today
+e walk P35 ; stairwell
+e walk P54 ; grounds
+e walk P21 ; map
+
+== La paleta de oro // The gold trowel
+e walk P86 ; the square
+e act P9 194 ; the bloomers prove it: the secret handshake (241) and a bra (199)
+h 0
+e walk P5 ; map
+e walk P85 ; the Shades (45)
+e act P38 ; the mason
+e act P38 241 ; the secret handshake: the gold trowel (320)
+h 0
+
+== La llave de oro // The gold key
+i act 254 199 ; pad the ladder with the bra (265)
+h 0
+e act P33 265 ; against the hovel window, quietly
+e walk P33 ; in (139)
+e act P8 ; the key: the thief rolls over onto it
+e act P9 229 ; tickle him with the feather
+e act P8 ; the gold key (294)
+h 0
+e walk P7 ; out
+e act P36 ; the ladder back (265)
+h 0
+
+== El cepillo de oro // The gold brush
+h 220 ; the Hogfather doll
+p 2 ; into Rincewind's pockets
+e walk P32 ; map
+e walk P79 ; the alley (24)
+g 204 161 ; the tile: the rooftops (27)
+e look P14 ; the chimney sweep's brush: gold
+e act P16 220 ; the doll down the chimney: the alchemist is smoked out
+e act P7 ; back down
+a 24
+g 150 190 ; round the tile
+g 300 195
+g 420 180
+e walk P16 ; the alchemist's (26)
+e act P17 251 ; the keg in the fireplace (Death offers a light)
+e act P16 305 ; the string as a fuse
+e walk P8 ; the alley
+e act P21 262 ; light the fuse: the sweep's gold brush comes down (202)
+h 0
+g 420 180 ; back round the tile
+g 300 195
+g 150 190
+e walk P15 ; map
+
+== Los seis objetos de oro // The six gold things
+e walk P77 ; the barn (39)
+e act P6 315 ; the tooth
+e act P6 191 ; the belt
+e act P6 210 ; the cap
+e act P6 320 ; the trowel
+e act P6 294 ; the key
+e act P6 202 ; the brush: the dragon is free, and out for revenge
+
+== El libro de natillas // The custard book
+e walk P86 ; the square
+e act P23 ; Nanny Ogg
+k 328 ; the magic carpet (211)
+h 0
+e act P23 ; Nanny Ogg again
+k 330 ; the joker: while she looks away...
+e act P24 ; ...the Custard Book (217)
+h 0
+e walk P5 ; map
+
+== El cambiazo // The swap
+e walk P73 ; grounds
+e walk P22 ; stairwell
+e walk P53 ; library
+e walk P36 ; L-space: the past, before the thief comes (49)
+e act P46 ; the dragon summoning book (223)
+h 0
+i act 223 217 ; swap its cover with the Custard Book's
+e act P46 223 ; back on the shelf: the brotherhood will summon custard
+
+== Acto 3: el almidón, la espátula y el sombrero // Act 3: starch, spatula and hat
+e walk P27 ; map
+e walk P73 ; grounds
+e walk P22 ; stairwell
+e walk P49 ; the closet (85)
+e act P9 262 ; the matches: light the lamp
+h 0
+e act P10 ; a packet of starch (304)
+h 0
+e walk P6 ; stairwell
+e walk P52 ; kitchen
+e act P11 ; the spatula (301)
+h 0
+e walk P6 ; stairwell
+e act P50 ; the Arch Chancellor's study
+e act P10 ; his hat (242)
+h 0
+e walk P6 ; stairwell
+e walk P54 ; grounds
+e walk P21 ; map
+
+== La tarta, el camuflaje y el cuchillo // The tart, the camel-flage and the knife
+e walk P88 ; the hideout today (47)
+e act P10 ; the knocker and the password: a custard tart (218)
+h 0
+e walk P8 ; map
+e walk P85 ; the Shades (45)
+e look P40 ; the mural: not paint, ashes
+e act P40 301 ; scrape it off with the spatula: camel-flage (299)
+h 0
+e act P33 265 ; the padded ladder at the hovel window
+e walk P33 ; in (139)
+e act P11 ; open the bag
+e act P10 ; the knife (253)
+h 0
+e walk P7 ; out
+e act P36 ; the ladder (265)
+h 0
+e walk P32 ; map
+
+== El gusano borracho y la serpiente // The drunk worm and the snake
+e walk P75 ; outside the Drum (38)
+e walk P15 ; the Drum (63)
+e act P40 ; the barman
+e look P38 ; the bottles: one with a worm in it
+e act P40 ; again: a drink, worm and all
+e act P37 ; the glass with the drunk worm (324)
+h 0
+e walk P23 ; out (the troll in the doorway may stop Rincewind to apologise)
+?e walk P14 ; map
+?e walk P14
+e walk P86 ; the square
+e act P19 ; the old-timers: a one in a million chance
+e act P20 ; Dibbler: a bag of leeches (271)
+h 0
+i act 271 ; empty it: a paper bag (270)
+h 0
+e act P28 ; reach for the egg on the stall: a snake (295)
+e act P30
+h 0
+e walk P5 ; map
+
+== El cubo del pozo // The well bucket
+e walk P76 ; the city gate
+e walk P28 ; out of the city (65)
+e walk P34 ; the wood with the wishing well (88)
+e act P9 ; the crank: up comes the bucket
+e act P10 280 ; fill the pot with water (283)
+e act P9 292 ; unscrew the crank (216)
+h 0
+e walk P8 ; map
+e walk P33 ; the city gate
+e walk P27 ; map
+
+== La mazmorra // The dungeon
+e walk P74 ; palace gate
+e act P8 270 ; the empty paper bag for the guard: in
+e walk P10 ; throne room
+e walk P23 ; bathroom
+e act P17 ; the bath brush (204)
+h 0
+e walk P8 ; throne room
+e walk P24 ; down to the dungeon (97)
+i act 305 324 ; the drunk worm on the string (325)
+h 0
+e act P11 325 ; at the mouse hole: a rat (287)
+h 0
+e act P15 216 ; the crank on the rack: a sword
+h 0
+e act P9 ; the sword (306): out of tune, says the torturer
+h 0
+e act P14 ; a bone from the skeleton (196)
+h 0
+e walk P8 ; up to the throne room
+e walk P10 ; palace gate
+e walk P5 ; map
+
+== Cola, dibujo, tijeras y agenda // Glue, picture, scissors and appointment book
+e walk P83 ; street
+e walk P25 ; toy shop
+e act P11 196 ; the bone in the glue pot (197)
+h 0
+e walk P10 ; street
+e walk P28 ; the fishmonger
+e act P18 ; the octopus picture (275)
+h 0
+e walk P7 ; street
+e walk P29 ; the barber's
+e act P17 ; the scissors (291)
+h 0
+e act P16 ; the appointment book (188)
+h 0
+e walk P10 ; street
+e walk P24 ; map
+
+== La espada que hace "ting" (1) // The sword that goes "ting" (1)
+e walk P76 ; the city gate
+e act P22 ; the main guard
+k 340 ; about the sword: the dwarves tune them
+e walk P28 ; out of the city
+e walk P38 ; the dwarf mine (92)
+e walk P13 ; in (125)
+e act P23 306 ; show the dwarf the sword: he wants elderberry wine
+h 0
+e walk P22 ; out of the mine
+e walk P12 ; map
+e walk P33 ; the city gate
+e walk P27 ; map
+
+== El vino de bayas // Elderberry wine
+e walk P75 ; outside the Drum
+e walk P15 ; the Drum
+e act P40 ; wine? the cellar is full of foxes, says the barman
+e walk P24 ; the cellar, in the dark
+e walk P9 ; back up
+e walk P23 ; out
+?e walk P14 ; map
+?e walk P14
+
+== El marinero y el perro // The sailor and the dog
+e walk P81 ; outside the inn (42)
+e act P18 ; the man with the dog
+e act P19 197 ; the glued bone for the dog
+e act P21 ; the sailor: he'll have a milk
+e act P16 ; the innkeeper: a glass of milk for him
+e look P20 ; the sailor's tattoos
+e act P21 ; the sailor again: a whistle (322, into Rincewind's pockets)
+e walk P14 ; the room at the inn (103)
+e walk P11 ; the bathroom (102)
+e act P14 283 ; soap in the pot of water (282)
+h 0
+e walk P8 ; the room
+e look P13 ; the bogeyman behind the door
+e act P13 ; talk to him
+k 331 ; goodbye
+e act P13 292 ; unscrew the door he hides behind
+h 0
+e act P13 ; talk to him again
+k 329 ; there's a nice dark cellar at the Drum, full of foxes: off he goes
+e act P10 ; the door
+e walk P10 ; out (42)
+e walk P13 ; map
+
+== La impstamática // The Impstamatic
+e walk P79 ; the alley
+g 150 190 ; round the tile
+g 300 195
+g 420 180
+e walk P16 ; the alchemist's
+e act P9 ; the alchemist
+k 330 ; he goes off for a moment
+e act P14 ; the Impstamatic camera (246)
+h 0
+i act 287 ; the rat becomes an imp (244)
+h 0
+i act 246 244 ; the imp into the camera (247)
+h 0
+e walk P8 ; the alley
+g 420 180 ; round the tile
+g 300 195
+g 150 190
+e walk P15 ; map
+
+== El parachoques // The bumper
+e walk P78 ; the livery stable (40)
+i act 204 282 ; the brush in the soapy water (205)
+h 0
+e act P12 205 ; scrub the cart's bumper
+h 0
+e look P12 ; the bumper (34)
+e look P2 ; the sticker: Lady Ramkin's Sunshine Sanctuary for Dragons
+e look P3 ; the plate: "Sore Ass"
+e walk P1 ; back
+e walk P8 ; map
+
+== La escarapela azul // The blue rosette
+e walk P82 ; Lady Ramkin's Sunshine Sanctuary (43)
+e act P47 ; the gate
+e act P42 ; the knocker: Lady Ramkin
+e act P41 ; talk to her: she is feeding her little ones
+?k 331
+e walk P39 ; round the back (96)
+e act P27 ; a leash (256)
+h 0
+e act P28 ; a nail (266)
+h 0
+e look P26 ; the blue rosette
+e act P20 ; Lady Ramkin
+e walk P10 ; round the front
+e act P42 ; knock, and back before she answers...
+e walk P39
+e act P26 ; ...the rosette (289)
+h 0
+e walk P10 ; front
+e walk P38 ; map
+
+== El palo de escoba // The broom handle
+e walk P73 ; grounds
+e walk P22 ; stairwell
+e walk P51 ; dining hall
+i act 295 304 ; starch on the snake (298)
+h 0
+i act 298 230 ; and fertiliser: stiff as a stick (296)
+h 0
+e act P11 296 ; swap it for Windle Poons' broom handle (201)
+h 0
+e walk P9 ; stairwell
+e walk P54 ; grounds
+e walk P21 ; map
+
+== La oveja premiada // The prize sheep
+e walk P76 ; the city gate
+e walk P28 ; out of the city
+e walk P35 ; the dark wood
+e walk P17 ; through the wood
+e act P17 ; Nanny Ogg's
+e act P17 ; follow the pink wool out to the back (142)
+e act P10 289 ; the rosette on the sheep
+h 0
+e act P10 247 ; and a photo of it with the Impstamatic (278)
+h 0
+e act P8 ; a mallet from the woodpile (261)
+h 0
+e walk P7 ; back in through the hatch: Nanny Ogg catches him
+
+== La poción de la verdad // The truth potion
+e look P12 ; Nanny Ogg's potions
+e look P13
+e look P14
+e act P10 ; Nanny Ogg
+k 341 ; the potion: a kiss for a drop
+e act A7 218 ; the custard tart: a kiss she won't forget
+h 0
+e act P12 ; the truth potion (321)
+h 0
+e walk P8 ; the wood
+e walk P16 ; map
+
+== El loro Polly // Polly the parrot
+e walk P36 ; to the Edge of the World (the gods at their game on the way)
+?e walk P36
+e act A7 322 ; blow the whistle: a parrot
+i walk 231 ; a firecracker (232)
+i act 262 ; light it with the matches (233)
+e act P11 ; ...and throw it: Polly comes down
+i act 208 201 ; the net on the broom handle (209)
+h 0
+e act P12 209 ; catch Polly (272); she has the whistle
+h 0
+e act P4 ; the lantern on the fork (255)
+h 0
+i look 242 ; the hat: sequins that glint (243)
+e walk P5 243 ; the hat on the fork
+e act P6 ; down the chain of handkerchiefs: the turtle's shell (61)
+e act P5 ; the glint: the whistle (322)
+h 0
+e act P3 ; back up
+e walk P3 ; map
+
+== El tatuaje // The tattoo
+e walk P33 ; the city gate
+e walk P27 ; map
+e walk P81 ; outside the inn
+e walk P21 ; over to the sailor
+w 6 ; let the Luggage catch up (it carries the parrot over)
+e act P21 272 ; Polly for the sailor
+e act P21 322 ; and his whistle: get a tattoo at the barber's, he says
+
+== La agenda firmada // The signed appointment book
+e walk P13 ; map
+e walk P86 ; the square
+e walk P6 ; the psychiatrickerist's
+e act P15 ; the troll
+e walk P13 ; out
+e walk P6 ; in again
+e act P18 ; the girl: she will sign anything
+e act P18 188 ; the appointment book: signed (189), and Rincewind is called in for a hero audition
+h 0
+e walk P5 ; map
+e walk P76 ; the city gate
+e walk P28 ; out of the city
+e walk P34 ; the wood with the wishing well
+e act P12 189 ; the signed book for the barber: an appointment with the milkmaid, back to his shop he goes
+
+== La banda elástica // The rubber band
+e walk P8 ; map
+e walk P33 ; the city gate
+e walk P27 ; map
+e walk P83 ; street
+e walk P29 ; the barber's
+e act P13 ; about a tattoo: try my son, the street urchin
+e walk P10 ; street
+e walk P24 ; map
+e walk P86 ; the square
+e act P9 ; the urchin won't give a free one
+e walk P7 ; the dunny alley (99)
+e act P15 253 ; cut the rubber band with the knife (290)
+
+== La marca de nacimiento // The birthmark
+h 253 ; the knife
+p 2 ; into Rincewind's pockets
+e walk P7 ; the square
+e walk P5 ; map
+e walk P79 ; the alley
+g 204 161 ; the tile: the rooftops
+e act P11 253 ; cut the assassin's rope ladder
+h 0
+e act P7 ; down
+a 24
+e act P23 ; the assassin, flat on the ground: give him a name, "Sore Ass"
+h 253 ; the knife back to the Luggage
+p 1
+g 204 161 ; the rooftops again
+e walk P8 ; the flagpole
+e act P1 290 ; the rubber band on its tip: catapult the urchin's transfer, a birthmark (192)
+h 0
+e walk P0 ; the rooftops
+e act P7 ; down
+a 24
+e walk P15 ; map
+
+== El bigote // The moustache
+e walk P86 ; the square: the donkey is here now
+e act P33 291 ; the scissors on its tail: a moustache (264)
+h 0
+e walk P5 ; map
+
+== La poción de la verdad, en la copa // Truth in a glass
+e walk P75 ; outside the Drum
+e walk P15 ; the Drum
+e act P40 ; the barman
+e act P35 ; a tankard (308)
+h 0
+e walk P24 ; down to the cellar, lit now, with the bogeyman (64)
+e act P17 ; the bogeyman
+?k 331
+e act P21 308 ; fill the tankard with elderberry wine (311)
+h 0
+e walk P9 ; up
+e act P41 ; the braggart: a drink for him (312)
+h 0
+i act 312 321 ; the truth potion in it (313)
+h 0
+e act P41 ; another drink (312)
+h 0
+e act P41 313 ; give him both... but the pictures on the walls distract Rincewind, and he ends up with the spiked one
+e act P41 312
+e act P30 266 ; the nail in the beam
+h 0
+i act 275 278 ; the sheep photo in the octopus picture's frame (279)
+h 0
+e act P30 279 ; hang it: four pictures round the table now
+e act P41 ; the braggart again: a drink (312)
+h 0
+i act 312 321 ; spike it
+h 0
+e act P41 313 ; this time he drinks it: the Temple of Offler, by a gorge in the jungle
+e walk P23 ; out
+?e walk P14 ; map
+?e walk P14
+
+== La espada que hace "ting" (2) // The sword that goes "ting" (2)
+h 311 ; the tankard of wine
+p 2 ; into Rincewind's pockets (the Luggage won't go down the mine)
+h 306 ; and the sword
+p 2
+e walk P76 ; the city gate
+e walk P28 ; out of the city
+e walk P38 ; the mine
+e walk P13 ; in
+e act P23 311 ; the elderberry wine for the dwarf
+e act P23 306 ; and the sword: now it goes "ting" (307)
+h 0
+e walk P22 ; out
+e walk P12 ; map
+
+== El Ojo de Offler // The Eye of Offler
+e walk P37 ; the gorge (91)
+e act P16 ; the monk on the bridge: into the water with Rincewind
+e act P16 211 ; the magic carpet: down he goes instead
+h 0
+e walk P14 ; across, into the Temple of Offler (33)
+e act P10 ; the bandana on the hatstand (193)
+h 0
+e act A8 256 ; the leash on the Luggage
+e act A7 193 ; blindfolded, led by the Luggage past the traps to the altar (31)
+h 0
+e act P9 284 ; fill the pouch with sand (285)
+e act P10 285 ; and swap it for the Eye of Offler (228)
+h 0
+e walk P13 ; map
+e walk P33 ; the city gate
+e walk P27 ; map
+
+== El hechizo // The spell
+e walk P73 ; grounds
+e walk P22 ; stairwell
+e walk P53 ; library
+e act P48 ; the magic book on the shelf: it reads Rincewind (302)
+h 0
+e walk P35 ; out of the library: the dragon is crowned king, and wants Rincewind for dinner
+
+== Acto 4: el dragón // Act 4: the dragon
+e walk P86 ; the square, where the dragon will be crowned (3)
+e act P9 ; the key on top of Lady Ramkin's stocking (252)
+h 0
+e walk P3 ; map
+
+== Mambo // Mambo
+e walk P82 ; Lady Ramkin's
+e walk P39 ; round the back (96)
+e act P30 252 ; unlock the cage
+h 0
+e act P30 ; open it
+e walk P30 ; in
+g 400 182 ; inside, past the puddle
+g 520 180 ; and on to the far side
+e act P22 ; Mambo, the little swamp dragon (260)
+p 2 ; into Rincewind's pockets
+e walk P10 ; the front
+e walk P38 ; map
+
+== Mambo se calienta // Warming Mambo up
+e walk P76 ; the city gate
+e walk P28 ; out of the city
+e walk P38 ; the mine
+e walk P13 ; in
+e act P26 260 ; Mambo on the hot coals of the forge
+h 0
+e walk P22 ; out
+e walk P12 ; map
+e walk P35 ; the dark wood
+e walk P17 ; through it
+e act P17 ; Nanny Ogg's
+e act P11 260 ; Mambo in the cauldron
+h 0
+e walk P8 ; the wood
+e walk P16 ; map
+e walk P33 ; the city gate
+e walk P27 ; map
+e walk P74 ; the palace
+e walk P10 ; the throne room
+e walk P24 ; the dungeon
+e act P21 260 ; Mambo on the torturer's hot coals
+h 0
+e walk P8 ; up
+e walk P10 ; palace gate
+e walk P5 ; map
+
+== El final // The end
+e walk P86 ; the square
+i walk 231 ; a firecracker (232)
+i act 262 ; light it (233)
+i act 260 233 ; feed it to Mambo: he's red hot now (258)
+e walk P3 ; the dragon lands: "Do you feel lucky?"
+e act P5 218 ; the custard tart: right in the dragon's face
