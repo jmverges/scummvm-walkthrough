@@ -259,6 +259,15 @@ static int ClickedOnNothing(int clickX, int clickY, int *ptgtX, int *ptgtY) {
 
 	switch (g_DefaultRefer) {
 	case REF_DEFAULT:
+		// DW1 scripts walk to (x, 0) meaning "to x, wherever the path is there"; an x on a path's
+		// right edge (Mambo's cage: 596) finds nothing, so look one pixel to the side too.
+		if (TinselVersion <= 1 && clickY == 0) {
+			for (int dx = 0; dx <= 1; dx++) {
+				for (i = 1; i < _vm->_bg->BgHeight(); i++)
+					if (InPolygon(clickX - dx, i, PATH) != NOPOLY)
+						return ClickedOnPath(clickX - dx, i, ptgtX, ptgtY);
+			}
+		}
 		// Try searching down and up (onscreen).
 		for (i = clickY+1; i < SCREEN_HEIGHT+Toffset; i++)
 			if (InPolygon(clickX, i, PATH) != NOPOLY) {

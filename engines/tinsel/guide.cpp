@@ -34,6 +34,7 @@
 #include "image/png.h"
 
 #include "tinsel/actors.h"
+#include "tinsel/background.h"
 #include "tinsel/cursor.h"
 #include "tinsel/dialogs.h"
 #include "tinsel/events.h"
@@ -454,7 +455,13 @@ void TinselGuide::execute(const Step &st) {
 		click(st.x, st.y, st.kind == Step::kRightClick);
 		break;
 	case Step::kWalk:
-		// As a click on the floor there (scene coordinates): exits are crossed by walking.
+		// As a click on the floor there (scene coordinates): exits are crossed by walking. The
+		// cursor goes there too, as some code walks on to wherever it is (Mambo's cage door).
+		{
+			int lx = 0, ty = 0;
+			_vm->_bg->PlayfieldGetPos(FIELD_WORLD, &lx, &ty);
+			_vm->_cursor->SetCursorXY(st.x - lx, st.y - ty);
+		}
 		WalkTo(st.x, st.y);
 		break;
 	case Step::kWait:
@@ -672,6 +679,14 @@ void TinselGuide::listObjects() {
 		if (GetPolyHandle(i) == NOPOLY)
 			continue;
 		PTYPE t = PolyType(i);
+		if (t == REFER) {
+			int nx = 0, ny = 0;
+			GetPolyNode(i, &nx, &ny);
+			logf("  P%d refer type %d at %d,%d %d,%d %d,%d %d,%d node %d,%d", i, PolySubtype(i), PolyCornerX(i, 0),
+				PolyCornerY(i, 0), PolyCornerX(i, 1), PolyCornerY(i, 1), PolyCornerX(i, 2), PolyCornerY(i, 2),
+				PolyCornerX(i, 3), PolyCornerY(i, 3), nx, ny);
+			continue;
+		}
 		if (t == PATH || t == BLOCK) {
 			logf("  P%d %s at %d,%d %d,%d %d,%d %d,%d", i, t == PATH ? "path" : "block", PolyCornerX(i, 0), PolyCornerY(i, 0),
 				PolyCornerX(i, 1), PolyCornerY(i, 1), PolyCornerX(i, 2), PolyCornerY(i, 2), PolyCornerX(i, 3), PolyCornerY(i, 3));
