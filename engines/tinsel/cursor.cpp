@@ -21,6 +21,7 @@
  */
 
 #include "tinsel/cursor.h"
+#include "tinsel/guide.h"
 
 #include "tinsel/anim.h"
 #include "tinsel/background.h"
@@ -610,6 +611,10 @@ void CursorProcess(CORO_PARAM, const void *) {
 		CORO_INVOKE_0(CursorStoppedCheck);
 
 		_vm->_cursor->AnimateProcess();
+
+		// The walkthrough player can keep the cursor off a recording.
+		if (_vm->_guide && _vm->_guide->hidesCursor() && !_vm->_cursor->ShouldBeHidden())
+			_vm->_cursor->HideCursorProcess();
 
 		// If the cursor should be hidden...
 		if (_vm->_cursor->ShouldBeHidden()) {
