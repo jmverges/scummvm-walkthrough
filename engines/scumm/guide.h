@@ -116,7 +116,7 @@ public:
 
 private:
 	struct Step {
-		enum Kind { kSentence, kVerb, kScript, kClick, kInventory, kTalk, kWait, kMinigame, kUntil, kUntilClass, kGoTo } kind;
+		enum Kind { kSentence, kVerb, kScript, kClick, kInventory, kTalk, kWait, kMinigame, kUntil, kUntilClass, kGoTo, kSetVar } kind;
 		int verb, objectA, objectB;   // kScript: verb = script, objectA = its room (0: any)
 		int args[3];
 		Common::String section, comment;
@@ -132,7 +132,8 @@ private:
 	void execute(const Step &st);
 	void parseScript(const Common::String &line, Step &st);
 	void runStepScript(const Step &st);
-	void click(int x, int y);
+	void pointAt(int obj);
+	void click(int x, int y, int button = 0);   // 1 right, 2 held
 	void talkTo(int actor);
 	void goTo(int object);
 	bool playMinigame(const Step &st);   // true when it is over
@@ -161,6 +162,10 @@ private:
 	int _remaining;              // steps still to play; -1 to the end
 	State _state;
 	uint32 _stateSince, _idleSince;
+	uint32 _missingSince = 0;   // when the current step found its object missing
+	int _missingStep = -1;
+	uint32 _holdPress = 0, _holdRelease = 0;   // a held click: when to press and when to release
+	int _holdX = 0, _holdY = 0;
 	bool _executing;
 	Common::String _section;     // the last section seen while recording
 

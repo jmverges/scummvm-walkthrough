@@ -3409,6 +3409,8 @@ void ScummEngine_v7::actorTalk(const byte *msg) {
 	}
 
 	convertMessageToString(msg, _charsetBuffer, sizeof(_charsetBuffer));
+	if (_guide)
+		_guide->onTalk(_actorToPrintStrFor, (const char *)_charsetBuffer);
 
 	// Play associated speech, if any
 	playSpeech((byte *)_lastStringTag);

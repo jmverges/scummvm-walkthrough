@@ -260,7 +260,9 @@ void ScummGuide::parse(Common::SeekableReadStream &f, const Common::String &path
 			parseScript(line, st);
 		} else if (line.hasPrefix("c ")) {
 			st.kind = Step::kClick;
-			sscanf(line.c_str() + 2, "%d %d %d", &st.verb, &st.objectA, &st.objectB);
+			char button[2] = "";
+			sscanf(line.c_str() + 2, "%d %d %d %1s", &st.verb, &st.objectA, &st.objectB, button);
+			st.args[0] = button[0] == 'r' ? 1 : button[0] == 'h' ? 2 : 0;   // "c room x y r": a right click, "h": held 3 s
 		} else if (line.hasPrefix("i ")) {
 			st.kind = Step::kInventory;
 			sscanf(line.c_str() + 2, "%d", &st.verb);
@@ -297,10 +299,14 @@ void ScummGuide::parse(Common::SeekableReadStream &f, const Common::String &path
 			st.kind = Step::kUntilClass;
 			sscanf(line.c_str() + 2, "%d %d", &st.verb, &st.objectA);
 			st.objectB = 4;
+		} else if (line.hasPrefix("V ")) {
+			// "V <var> <value>": set a game variable (The Dig: the item in hand, var 243)
+			st.kind = Step::kSetVar;
+			sscanf(line.c_str() + 2, "%d %d", &st.verb, &st.objectA);
 		} else if (line.hasPrefix("m ")) {
 			st.kind = Step::kMinigame;
 			char name[32] = "";
-			sscanf(line.c_str() + 2, "%31s", name);
+			sscanf(line.c_str() + 2, "%31s %d %d %d", name, &st.objectA, &st.objectB, &st.verb);
 			st.name = name;
 		} else {
 			continue;
@@ -393,7 +399,8 @@ bool ScummGuide::isIdle() const {
 
 // The objects a sentence names must be here: in the room or carried.
 bool ScummGuide::available(const Step &st) const {
-	if (st.kind == Step::kWait || st.kind == Step::kUntil || st.kind == Step::kUntilClass || st.kind == Step::kMinigame)
+	if (st.kind == Step::kWait || st.kind == Step::kUntil || st.kind == Step::kUntilClass || st.kind == Step::kMinigame ||
+			st.kind == Step::kSetVar)
 		return true;
 	if (st.kind == Step::kScript)
 		return st.objectA == 0 || st.objectA == _vm->_currentRoom;
@@ -424,13 +431,14 @@ void ScummGuide::execute(const Step &st) {
 	_executing = true;
 	if (st.kind == Step::kSentence) {
 		logf("step %d: sentence %d %d %d %s", _current + 1, st.verb, st.objectA, st.objectB, st.comment.c_str());
+		pointAt(st.objectA);
 		_vm->doSentence(st.verb, st.objectA, st.objectB);
 	} else if (st.kind == Step::kScript) {
 		logf("step %d: script %d %d %d %d %s", _current + 1, st.verb, st.args[0], st.args[1], st.args[2], st.comment.c_str());
 		runStepScript(st);
 	} else if (st.kind == Step::kClick) {
 		logf("step %d: click %d,%d in room %d %s", _current + 1, st.objectA, st.objectB, st.verb, st.comment.c_str());
-		click(st.objectA, st.objectB);
+		click(st.objectA, st.objectB, st.args[0]);
 	} else if (st.kind == Step::kInventory) {
 		logf("step %d: inventory %d %s", _current + 1, st.verb, st.comment.c_str());
 		_vm->runInputScript(kInventoryClickArea, st.verb, 0);
@@ -447,6 +455,9 @@ void ScummGuide::execute(const Step &st) {
 	} else if (st.kind == Step::kUntilClass) {
 		logf("step %d: until %d has class %d %s", _current + 1, st.verb, st.objectA, st.comment.c_str());
 		_untilSeenFalse = false;
+	} else if (st.kind == Step::kSetVar) {
+		logf("step %d: var %d = %d %s", _current + 1, st.verb, st.objectA, st.comment.c_str());
+		_vm->writeVar(st.verb, st.objectA);
 	} else if (st.kind == Step::kMinigame) {
 		logf("step %d: minigame %s %s", _current + 1, st.name.c_str(), st.comment.c_str());
 		_minigameRoom = _vm->_currentRoom;
@@ -459,16 +470,59 @@ void ScummGuide::execute(const Step &st) {
 	_executing = false;
 }
 
-void ScummGuide::click(int x, int y) {
+// The Dig: the object scripts read var 249, the object under the pointer, which the game sets as the mouse
+// hovers. A sentence or a click straight away would act on the last object hovered.
+void ScummGuide::pointAt(int obj) {
+	if (_vm->_game.id == GID_DIG && obj > 0)
+		_vm->writeVar(249, obj);
+}
+
+void ScummGuide::click(int x, int y, int button) {
+	const bool right = button == 1;
+	if (button == 2) {
+		// Press and hold (The Dig's light bridge switches): real events, released by tick() 3 s later.
+		Common::EventManager *em = g_system->getEventManager();
+		Common::Event ev;
+		ev.mouse = Common::Point(x, y);
+		ev.type = Common::EVENT_MOUSEMOVE;
+		em->pushEvent(ev);
+		g_system->warpMouse(x, y);
+		// the press comes half a second later, once the game has seen the pointer over the switch
+		_holdX = x;
+		_holdY = y;
+		_holdPress = g_system->getMillis() + 500;
+		return;
+	}
+	if (_vm->_game.version >= 7) {
+		// The Dig: pushed events are lost when the room's input script is busy (dragging a bone), so do what
+		// a click does: point the mouse there and run the input script with the button (1 left, 2 right).
+		g_system->warpMouse(x, y);
+		_vm->_mouse.x = x;
+		_vm->_mouse.y = y;
+		VirtScreen *vs = &_vm->_virtscr[kMainVirtScreen];
+		_vm->_virtualMouse.x = x + vs->xstart;
+		_vm->_virtualMouse.y = y - vs->topline + _vm->_screenTop;
+		_vm->VAR(_vm->VAR_VIRT_MOUSE_X) = _vm->_virtualMouse.x;
+		_vm->VAR(_vm->VAR_VIRT_MOUSE_Y) = _vm->_virtualMouse.y;
+		_vm->VAR(_vm->VAR_MOUSE_X) = x;
+		_vm->VAR(_vm->VAR_MOUSE_Y) = y;
+		if (_vm->_game.id == GID_DIG) {
+			const int obj = _vm->findObject(_vm->_virtualMouse.x, _vm->_virtualMouse.y);
+			if (obj)
+				pointAt(obj);
+		}
+		_vm->runInputScript(kSceneClickArea, 0, right ? 2 : 1);
+		return;
+	}
 	Common::EventManager *em = g_system->getEventManager();
 	Common::Event ev;
 	ev.mouse = Common::Point(x, y);
 	ev.type = Common::EVENT_MOUSEMOVE;
 	em->pushEvent(ev);
 	g_system->warpMouse(x, y);
-	ev.type = Common::EVENT_LBUTTONDOWN;
+	ev.type = right ? Common::EVENT_RBUTTONDOWN : Common::EVENT_LBUTTONDOWN;
 	em->pushEvent(ev);
-	ev.type = Common::EVENT_LBUTTONUP;
+	ev.type = right ? Common::EVENT_RBUTTONUP : Common::EVENT_LBUTTONUP;
 	em->pushEvent(ev);
 }
 
@@ -576,6 +630,79 @@ bool ScummGuide::playMinigame(const Step &st) {
 			logf("wakarat: rat %d up (hits %d, rats %d)", actor, _vm->_scummVars[153], _vm->_scummVars[152]);
 			break;
 		}
+	} else if (st.name == "rodlock") {
+		// The Dig, a door lock in the Nexus: four buttons (objects A..A+3) cycle through 15 shapes; the
+		// combination the rod shows is chosen at random when the rod is first examined (vars C..C+3) and
+		// the buttons' shapes are in vars B..B+3. Press each button until its shape matches.
+		// "m rodlock <first button> <first shape var> <first combination var>"
+		if (!isIdle() || now < _minigameNext)
+			return false;
+		for (int i = 0; i < 4; i++) {
+			if (_vm->readVar(st.objectB + i) != _vm->readVar(st.verb + i)) {
+				if (_vm->readVar(st.verb + i) <= 0) {
+					logf("rodlock: combination var %d not set (examine the rod first)", st.verb + i);
+					return true;
+				}
+				_vm->doSentence(3, st.objectA + i, 0);
+				_minigameNext = now + 400;
+				return false;
+			}
+		}
+		logf("rodlock: combination set");
+		return true;
+	} else if (st.name == "clickto") {
+		// "m clickto <object> <var> <value>": use the object until the variable (0: the object's own state)
+		// has that value, or the value of variable -<value> (The Dig: the prisms, a light bridge's lens).
+		if (!isIdle() || now < _minigameNext)
+			return false;
+		const int cur = st.objectB ? _vm->readVar(st.objectB) : _vm->getState(st.objectA);
+		const int want = st.verb < 0 ? _vm->readVar(-st.verb) : st.verb;   // negative: the value of that variable
+		if (cur == want) {
+			logf("clickto: %d at %d", st.objectA, cur);
+			return true;
+		}
+		if (++_minigameStage > 16) {
+			logf("clickto: %d never reached %d (at %d)", st.objectA, want, cur);
+			return true;
+		}
+		_vm->doSentence(3, st.objectA, 0);
+		_minigameNext = now + 400;
+		return false;
+	} else if (st.name == "sliders") {
+		// The Dig, the command center's crystals (room 100): three sliding crystals (actors 6-8, x 229/262/296,
+		// bottom y 157/147/152) set var392-394 = bottom - y through room script 2002, which lights the chosen
+		// crystal (var417) when they are within 7% of arrays 395-397 at that crystal. Slide each one there,
+		// a few pixels a frame, the way dragging it does.
+		static const int kBottom[3] = {157, 147, 152};
+		if (!isIdle() || now < _minigameNext)
+			return false;
+		const int crystal = _vm->readVar(417);
+		if (crystal <= 0 || _minigameStage >= 3) {
+			logf("sliders: done (crystal %d)", crystal);
+			return true;
+		}
+		ScummEngine_v6 *v6 = (ScummEngine_v6 *)_vm;
+		const int i = _minigameStage, actor = 6 + i;
+		const int targetY = kBottom[i] - v6->readArray(395 + i, 0, crystal);
+		Actor *a = _vm->derefActorSafe(actor, "guide");
+		if (!a)
+			return true;
+		int y = a->getRealPos().y;
+		y += CLIP(targetY - y, -3, 3);
+		a->putActor(a->getRealPos().x, y, _vm->_currentRoom);
+		int args[NUM_SCRIPT_LOCAL];
+		memset(args, 0, sizeof(args));
+		args[0] = actor;
+		args[1] = y;
+		_vm->runScript(2002, false, false, args);
+		if (y == targetY) {
+			logf("sliders: crystal %d slider %d at %d", crystal, i + 1, y);
+			_minigameStage++;
+			_minigameNext = now + 500;
+		} else {
+			_minigameNext = now + 40;
+		}
+		return false;
 	} else if (st.name == "teeth") {
 		// Day of the Tentacle, the party room (room 26): the chattering teeth
 		// (actor 6) run 40 pixels sideways and 15 up or down away from Bernard
@@ -803,6 +930,21 @@ void ScummGuide::runStepScript(const Step &st) {
 }
 
 void ScummGuide::tick() {
+	if (_holdPress && g_system->getMillis() >= _holdPress) {
+		Common::Event ev;
+		ev.mouse = Common::Point(_holdX, _holdY);
+		ev.type = Common::EVENT_LBUTTONDOWN;
+		g_system->getEventManager()->pushEvent(ev);
+		_holdPress = 0;
+		_holdRelease = g_system->getMillis() + 3000;
+	}
+	if (_holdRelease && g_system->getMillis() >= _holdRelease) {
+		Common::Event ev;
+		ev.mouse = Common::Point(_holdX, _holdY);
+		ev.type = Common::EVENT_LBUTTONUP;
+		g_system->getEventManager()->pushEvent(ev);
+		_holdRelease = 0;
+	}
 	runTestScript();
 	pollControl();
 	if (_talkPending) {
@@ -953,15 +1095,19 @@ void ScummGuide::tick() {
 		return;
 	const Step &st = _steps[_current];
 	if (!available(st)) {
-		if (!_stateSince || _state != kWaitIdle)
-			_stateSince = now;
-		if (now - _stateSince > kStepTimeout) {
+		// Wait for it from the moment this step first finds it missing (a room still loading after a movie).
+		if (_missingStep != _current) {
+			_missingStep = _current;
+			_missingSince = now;
+		}
+		if (now - _missingSince > kStepTimeout) {
 			logf("step %d: its object or verb is not here (room %d); stopping", _current + 1, _vm->_currentRoom);
 			_remaining = 0;
-			_stateSince = 0;
+			_missingStep = -1;
 		}
 		return;
 	}
+	_missingStep = -1;
 	if (_saveSections && _sectionSaved != _current &&
 			(_current == 0 || st.section != _steps[_current - 1].section)) {
 		// A save as each section starts, to pick a recording up again
@@ -1131,6 +1277,17 @@ void ScummGuide::runCommand(const TestEvent &t) {
 			if (_vm->_inventory[i])
 				logf("  carried %d '%s' owner %d", _vm->_inventory[i], objectName(_vm->_inventory[i]).c_str(),
 					_vm->getOwner(_vm->_inventory[i]));
+	} else if (t.cmd == "var" || t.cmd == "bit") {
+		// a game variable or a bit variable (bitvarN is 0x8000 + N)
+		const int n = t.cmd == "bit" ? 0x8000 + t.x : t.x;
+		logf("%s %d = %d", t.cmd.c_str(), t.x, _vm->readVar(n));
+	} else if (t.cmd == "class") {
+		// an object's or actor's class bits (class N is bit N-1)
+		logf("class %d = %x", t.x, _vm->_classData[t.x]);
+	} else if (t.cmd == "objpos") {
+		// what the scripts' getObjectX/Y/NewDir see for an object or an actor
+		for (int n = t.x; n <= MAX(t.x, t.y); n++)
+			logf("objpos %d: %d,%d dir %d", n, _vm->getObjX(n), _vm->getObjY(n), _vm->getObjNewDir(n));
 	} else if (t.cmd == "save") {
 		Common::Error e = _vm->saveGameState(t.x, t.arg.empty() ? "guide" : t.arg);
 		logf("save slot %d: %s", t.x, e.getDesc().c_str());
@@ -1203,7 +1360,9 @@ void ScummGuide::pollControl() {
 		}
 		if (line.hasPrefix("c ")) {
 			st.kind = Step::kClick;
-			sscanf(line.c_str() + 2, "%d %d %d", &st.verb, &st.objectA, &st.objectB);
+			char button[2] = "";
+			sscanf(line.c_str() + 2, "%d %d %d %1s", &st.verb, &st.objectA, &st.objectB, button);
+			st.args[0] = button[0] == 'r' ? 1 : button[0] == 'h' ? 2 : 0;   // "c room x y r": a right click, "h": held 3 s
 			_live.push_back(st);
 			continue;
 		}
@@ -1296,17 +1455,23 @@ void ScummGuide::runLive() {
 		return;
 	Step st = _live.front();
 	_live.remove_at(0);
+	if (st.kind == Step::kSentence && !available(st)) {
+		// A sentence on an object that is not in this room asserts in getObjectXYPos (The Dig).
+		logf("live: sentence %d %d %d skipped: not in room %d", st.verb, st.objectA, st.objectB, _vm->_currentRoom);
+		return;
+	}
 	_executing = true;
 	if (st.kind == Step::kSentence) {
 		logf("live: sentence %d %d %d (room %d, %s / %s)", st.verb, st.objectA, st.objectB, _vm->_currentRoom,
 			objectName(st.objectA).c_str(), objectName(st.objectB).c_str());
+		pointAt(st.objectA);
 		_vm->doSentence(st.verb, st.objectA, st.objectB);
 	} else if (st.kind == Step::kScript) {
 		logf("live: script %d %d %d %d (room %d)", st.verb, st.args[0], st.args[1], st.args[2], _vm->_currentRoom);
 		runStepScript(st);
 	} else if (st.kind == Step::kClick) {
 		logf("live: click %d,%d (room %d)", st.objectA, st.objectB, _vm->_currentRoom);
-		click(st.objectA, st.objectB);
+		click(st.objectA, st.objectB, st.args[0]);
 	} else if (st.kind == Step::kGoTo) {
 		logf("live: walk to %d (room %d)", st.verb, _vm->_currentRoom);
 		goTo(st.verb);
