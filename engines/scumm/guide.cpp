@@ -376,6 +376,8 @@ void ScummGuide::stop() {
 // Waiting for the player: input on, no cutscene, nobody talking, no
 // sentence queued or running, and the player's actor standing still.
 bool ScummGuide::isIdle() const {
+	if (_holdPress || _holdRelease)
+		return false;   // a press and hold still under way
 	if (_vm->_userPut <= 0)
 		return false;
 	if (_vm->vm.cutSceneStackPointer != 0)
@@ -465,7 +467,7 @@ void ScummGuide::execute(const Step &st) {
 		_minigameStage = 0;
 	} else {
 		logf("step %d: verb %d %s", _current + 1, st.verb, st.comment.c_str());
-		_vm->runInputScript(kVerbClickArea, st.verb, 1);
+		clickVerb(st.verb);
 	}
 	_executing = false;
 }
@@ -475,6 +477,31 @@ void ScummGuide::execute(const Step &st) {
 void ScummGuide::pointAt(int obj) {
 	if (_vm->_game.id == GID_DIG && obj > 0)
 		_vm->writeVar(249, obj);
+}
+
+// A click on a verb. The Curse of Monkey Island's input script picks the dialogue line under the mouse, not the
+// one it is given, so for SCUMM v7 and later the mouse is put on the verb first.
+void ScummGuide::clickVerb(int verbid) {
+	if (_vm->_game.version >= 7) {
+		for (int i = 1; i < _vm->_numVerbs; i++) {
+			const VerbSlot &vs = _vm->_verbs[i];
+			if (vs.verbid != verbid || vs.curmode != 1)
+				continue;
+			const int x = (vs.curRect.left + vs.curRect.right) / 2, y = (vs.curRect.top + vs.curRect.bottom) / 2;
+			g_system->warpMouse(x, y);
+			_vm->_mouse.x = x;
+			_vm->_mouse.y = y;
+			_vm->VAR(_vm->VAR_MOUSE_X) = x;
+			_vm->VAR(_vm->VAR_MOUSE_Y) = y;
+			VirtScreen *main = &_vm->_virtscr[kMainVirtScreen];
+			_vm->_virtualMouse.x = x + main->xstart;
+			_vm->_virtualMouse.y = y - main->topline + _vm->_screenTop;
+			_vm->VAR(_vm->VAR_VIRT_MOUSE_X) = _vm->_virtualMouse.x;
+			_vm->VAR(_vm->VAR_VIRT_MOUSE_Y) = _vm->_virtualMouse.y;
+			break;
+		}
+	}
+	_vm->runInputScript(kVerbClickArea, verbid, 1);
 }
 
 void ScummGuide::click(int x, int y, int button) {
@@ -605,7 +632,8 @@ bool ScummGuide::playMinigame(const Step &st) {
 		}
 		return false;
 	}
-	if (_vm->_currentRoom != _minigameRoom)
+	// most minigames are over when the room changes; these two go through several rooms
+	if (_vm->_currentRoom != _minigameRoom && st.name != "piracy" && st.name != "insults")
 		return isIdle();
 	if (now < _minigameNext)
 		return false;
@@ -650,11 +678,316 @@ bool ScummGuide::playMinigame(const Step &st) {
 		}
 		logf("rodlock: combination set");
 		return true;
+	} else if (st.name == "cannon") {
+		// The Curse of Monkey Island, the cannon in part I (room 10): room script 2007 walks the cannon (actor 3)
+		// to var234 and sets its elevation var235 to the mouse's y / 30; a left click fires (script 2008), and
+		// the ball lands at y = 320 - 18 * elevation. Aim at each boat still afloat (actors 6, 9, 13, 19) and fire.
+		static const int kBoats[4] = {6, 9, 13, 19};
+		if (_vm->_currentRoom != _minigameRoom)
+			return true;
+		if (now < _minigameNext)
+			return false;
+		if (_vm->isScriptRunning(2008)) {
+			_minigameNext = now + 300;
+			return false;
+		}
+		Actor *boat = nullptr;
+		for (int i = 0; i < 4 && !boat; i++) {
+			Actor *a = _vm->derefActorSafe(kBoats[i], "guide");
+			if (a && a->isInCurrentRoom() && a->_visible)
+				boat = a;
+		}
+		if (!boat) {
+			_minigameNext = now + 1000;
+			return false;
+		}
+		const Common::Point p = boat->getRealPos();
+		const int elevation = CLIP((320 - p.y + 9) / 18, 0, 12);
+		_vm->writeVar(234, CLIP<int>(p.x, 140, 520));
+		g_system->warpMouse(320, elevation * 30 + 15);
+		_vm->_mouse.x = 320;
+		_vm->_mouse.y = elevation * 30 + 15;
+		Actor *cannon = _vm->derefActorSafe(3, "guide");
+		if (!cannon || ABS(cannon->getRealPos().x - CLIP<int>(p.x, 140, 520)) > 12 || _vm->readVar(235) != elevation) {
+			_minigameNext = now + 200;
+			return false;
+		}
+		logf("cannon: firing at boat actor %d (%d,%d), elevation %d", boat->_number, p.x, p.y, elevation);
+		// what a click does there: the input script, with the left button down
+		_vm->VAR(_vm->VAR_LEFTBTN_DOWN) = 1;
+		_vm->runInputScript(kSceneClickArea, 0, 1);
+		_vm->VAR(_vm->VAR_LEFTBTN_DOWN) = 0;
+		_minigameNext = now + 1500;
+		return false;
+	} else if (st.name == "banjo") {
+		// The Curse of Monkey Island, the banjo duel (room 25): Van Helgen's strings are in array 429, the player's
+		// go into array 432 at index var686, and keys 1-5 pluck the strings (room input script 2007). Play his
+		// strings back; done when the duel leaves the room.
+		if (_vm->_currentRoom != _minigameRoom)
+			return true;
+		if (now < _minigameNext || !_vm->isScriptRunning(216))
+			return false;
+		// global script 216 runs the duel: Van Helgen plays a round (script 217), then it is the player's turn
+		// (var689 = 1) until var686 passes var428, the round's last index
+		ScummEngine_v6 *v6 = (ScummEngine_v6 *)_vm;
+		const int i = _vm->readVar(686), note = v6->readArray(429, 0, i);
+		if (_vm->isScriptRunning(217) || _vm->readVar(689) != 1 || i > _vm->readVar(428) || note < 1 || note > 5) {
+			_minigameNext = now + 200;
+			return false;
+		}
+		logf("banjo: string %d of the round: %d", i + 1, note);
+		_vm->runInputScript(kKeyClickArea, '0' + note, 1);
+		_minigameNext = now + 700;
+		return false;
+	} else if (st.name == "piracy") {
+		// The Curse of Monkey Island, part III: sail, fight and board pirate ships, learning insults and
+		// comebacks, until every comeback is known (array444[1-16]); then Rottingham (actor 9). From the deck
+		// (room 52) look at the chart (854); on the chart (room 39) sail as "sail" does; in a sea battle (the
+		// input script is 284) the game's own cheat, as "seabattle 1"; when boarding, the second line (501)
+		// asks for a fight; the fights as "insults". Done when the game leaves these rooms.
+		ScummEngine_v6 *v6 = (ScummEngine_v6 *)_vm;
+		const int room = _vm->_currentRoom;
+		if (now < _minigameNext)
+			return false;
+		if (room != 39 && room != 52 && (room < 40 || room > 51)) {
+			if (isIdle())
+				return true;
+			_minigameNext = now + 500;
+			return false;
+		}
+		_minigameNext = now + 300;
+		if (_vm->isScriptRunning(310)) {
+			Step fight;
+			fight.name = "insults";
+			_minigameStage = 1;
+			playMinigame(fight);
+			return false;
+		}
+		if (_vm->VAR(_vm->VAR_VERB_SCRIPT) == 284) {
+			if (_minigameY != room) {
+				_minigameY = room;
+				_minigameNext = now + 3000;   // a few seconds of the battle first
+				return false;
+			}
+			if (v6->readArray(395, _vm->readVar(391), 1) != 99) {
+				logf("piracy: the game's ship combat cheat for ship %d", _vm->readVar(391));
+				v6->writeArray(395, _vm->readVar(391), 1, 99);
+				int args[NUM_SCRIPT_LOCAL];
+				memset(args, 0, sizeof(args));
+				args[0] = 1;
+				_vm->runScript(258, false, false, args);
+				_minigameNext = now + 2000;
+			}
+			return false;
+		}
+		_minigameY = 0;
+		if (!isIdle())
+			return false;
+		for (int i = 1; i < _vm->_numVerbs; i++)
+			if (_vm->_verbs[i].verbid == 501 && _vm->_verbs[i].curmode == 1) {
+				logf("piracy: boarding, asking for a fight");
+				clickVerb(501);
+				_minigameNext = now + 2000;
+				return false;
+			}
+		if (room == 52) {
+			_vm->doSentence(6, 854, 0);
+			_minigameNext = now + 2000;
+			return false;
+		}
+		if (room == 39) {
+			bool all = true;
+			for (int n = 1; n <= 16; n++)
+				all = all && v6->readArray(444, 0, n) == 1;
+			Step voyage;
+			voyage.name = "sail";
+			voyage.objectA = all ? 9 : 0;
+			const int saved = _minigameRoom;
+			_minigameRoom = 39;
+			playMinigame(voyage);
+			_minigameRoom = saved;
+		}
+		return false;
+	} else if (st.name == "sail") {
+		// The Curse of Monkey Island, the sea chart (room 39): Guybrush's ship is actor 2 and the other ships
+		// actors 3-10 (9 is Rottingham's); room script 2007 starts a battle when actor 2 stops within 50 pixels
+		// of one. Sail to the nearest ship, or to actor <A> with "m sail <A>"; done when the room changes.
+		if (_vm->_currentRoom != _minigameRoom)
+			return true;
+		if (now < _minigameNext)
+			return false;
+		Actor *ego = _vm->derefActorSafe(2, "guide");
+		if (!ego)
+			return true;
+		const Common::Point e = ego->getRealPos();
+		Actor *target = nullptr;
+		int best = 0;
+		for (int i = 3; i <= 10; i++) {
+			if (st.objectA ? i != st.objectA : i == 9)
+				continue;
+			Actor *a = _vm->derefActorSafe(i, "guide");
+			if (!a || !a->isInCurrentRoom())
+				continue;
+			const Common::Point p = a->getRealPos();
+			const int d = ABS(p.x - e.x) + ABS(p.y - e.y);
+			if (!target || d < best) {
+				target = a;
+				best = d;
+			}
+		}
+		if (target) {
+			const Common::Point p = target->getRealPos();
+			// stop a little short, then the game sees a ship within reach of a stopped one
+			ego->startWalkActor(p.x + (e.x < p.x ? -30 : 30), p.y, -1);
+		}
+		_minigameNext = now + 1500;
+		return false;
+	} else if (st.name == "seabattle") {
+		// The Curse of Monkey Island, a sea battle (room 40): Guybrush's ship is actor 2 and the enemy actor 3.
+		// The room's input script (284) runs the sentence script (283) with 20 x y for a left click (sail
+		// there) and 19 for a right click (fire the cannons on the side nearer the enemy, aimed by the game).
+		// Sail at the enemy and fire as it comes into range; done when the battle leaves the room.
+		if (_vm->_currentRoom != _minigameRoom)
+			return true;
+		if (now < _minigameNext)
+			return false;
+		if (st.objectA == 1 && _minigameStage == 0) {
+			// "m seabattle 1": what the game's own cheat key does (V, then Y; input script 284), without its
+			// prompt: mark this ship (var391) beaten and end the battle as won (script 258)
+			ScummEngine_v6 *v6 = (ScummEngine_v6 *)_vm;
+			logf("seabattle: the game's ship combat cheat for ship %d", _vm->readVar(391));
+			v6->writeArray(395, _vm->readVar(391), 1, 99);
+			int args[NUM_SCRIPT_LOCAL];
+			memset(args, 0, sizeof(args));
+			args[0] = 1;
+			_vm->runScript(258, false, false, args);
+			_minigameStage = 1;
+			_minigameNext = now + 1000;
+			return false;
+		}
+		Actor *ego = _vm->derefActorSafe(2, "guide"), *enemy = _vm->derefActorSafe(3, "guide");
+		if (!ego || !enemy || !enemy->isInCurrentRoom()) {
+			_minigameNext = now + 1000;
+			return false;
+		}
+		// var384 is the distance between the ships (script 265), array 401 the range of each ship's cannons
+		const Common::Point t = enemy->getRealPos();
+		ScummEngine_v6 *v6 = (ScummEngine_v6 *)_vm;
+		const int dist = _vm->readVar(384), range = v6->readArray(401, 0, 1);
+		int args[NUM_SCRIPT_LOCAL];
+		memset(args, 0, sizeof(args));
+		if (dist > range * 3 / 4 || _minigameStage++ % 3 == 2) {
+			args[0] = 20;
+			args[1] = t.x;
+			args[2] = t.y;
+		} else {
+			args[0] = 19;
+		}
+		logf("seabattle: distance %d range %d enemy range %d damage %d/%d -> %s", dist, range, v6->readArray(401, 0, 2),
+			v6->readArray(342, 0, 1), v6->readArray(342, 0, 2), args[0] == 19 ? "fire" : "sail");
+		_vm->runScript(283, false, false, args);
+		_minigameNext = now + 700;
+		return false;
+	} else if (st.name == "insults") {
+		// The Curse of Monkey Island, insult sword fighting (global script 310; var420 = 2 against Rottingham).
+		// Answering (script 306): var445 is the insult (1-16), comeback n is verb 499 + n and is known when
+		// array444[n] is set; the list shows six lines, scrolled by var604, and the choice lands in var255.
+		// Insulting is script 307, below.
+		// Done when the fight is over (script 310 no longer runs).
+		if (now < _minigameNext)
+			return false;
+		if (!_vm->isScriptRunning(310)) {
+			if (_minigameStage > 0)
+				return true;
+			_minigameNext = now + 500;
+			return false;
+		}
+		_minigameStage = 1;
+		ScummEngine_v6 *v6 = (ScummEngine_v6 *)_vm;
+		auto verbOn = [&](int id) {
+			for (int i = 1; i < _vm->_numVerbs; i++)
+				if (_vm->_verbs[i].verbid == id && _vm->_verbs[i].curmode == 1)
+					return true;
+			return false;
+		};
+		if (_vm->isScriptRunning(306) && _vm->readVar(255) == 0 && verbOn(533)) {
+			const int insult = _vm->readVar(445);
+			int verb = 533;   // "Oh, yeah?": the comeback for an insult we cannot answer yet
+			if (insult >= 1 && insult <= 16 && v6->readArray(444, 0, insult) == 1) {
+				verb = 499 + insult;
+				if (!verbOn(verb)) {
+					// further down the list: scroll a line and look again
+					_vm->writeVar(604, _vm->readVar(604) + 1);
+					_minigameNext = now + 150;
+					return false;
+				}
+			}
+			if (_minigameX != verb) {
+				// a moment to read the choices first
+				_minigameX = verb;
+				_minigameNext = now + 1500;
+				return false;
+			}
+			logf("insults: insult %d, comeback verb %d", insult, verb);
+			clickVerb(verb);
+			_minigameX = 0;
+			_minigameNext = now + 1000;
+			return false;
+		}
+		if (_vm->isScriptRunning(307) && _vm->readVar(255) == 0) {
+			// Insulting (script 307): insult n (1-32, 17-32 are Rottingham's) is verb 499 + n, known when
+			// array443[n] is set and not used yet in this fight while array450[n] is clear. Its comeback is
+			// n (or n - 16). Pick one whose comeback we do not know: if the pirate knows it, we learn it
+			// (only the pirates' own insults, 1-16, teach: they do not answer Rottingham's)
+			int pick = 0;
+			for (int pass = 0; pass < 2 && !pick; pass++)
+				for (int n = 1; n <= 32 && !pick; n++) {
+					if (v6->readArray(443, 0, n) != 1 || v6->readArray(450, 0, n))
+						continue;
+					if (pass == 1 || (n <= 16 && v6->readArray(444, 0, n) != 1))
+						pick = n;
+				}
+			if (!pick) {
+				_minigameNext = now + 200;
+				return false;
+			}
+			const int verb = 499 + pick;
+			if (!verbOn(verb)) {
+				bool any = false;
+				for (int id = 500; id <= 539 && !any; id++)
+					any = verbOn(id);
+				if (any)
+					_vm->writeVar(604, _vm->readVar(604) + 1);
+				_minigameNext = now + 150;
+				return false;
+			}
+			if (_minigameX != verb) {
+				_minigameX = verb;
+				_minigameNext = now + 1500;
+				return false;
+			}
+			logf("insults: our insult %d (verb %d)", pick, verb);
+			clickVerb(verb);
+			_minigameX = 0;
+			_minigameNext = now + 1000;
+			return false;
+		}
+		_minigameNext = now + 200;
+		return false;
 	} else if (st.name == "clickto") {
 		// "m clickto <object> <var> <value>": use the object until the variable (0: the object's own state)
 		// has that value, or the value of variable -<value> (The Dig: the prisms, a light bridge's lens).
 		if (!isIdle() || now < _minigameNext)
 			return false;
+		if (_vm->whereIsObject(st.objectA) == WIO_NOT_FOUND) {
+			// not in this room (yet): wait a little, but never use it from here
+			if (++_minigameStage > 16) {
+				logf("clickto: %d is not here", st.objectA);
+				return true;
+			}
+			_minigameNext = now + 1000;
+			return false;
+		}
 		const int cur = st.objectB ? _vm->readVar(st.objectB) : _vm->getState(st.objectA);
 		const int want = st.verb < 0 ? _vm->readVar(-st.verb) : st.verb;   // negative: the value of that variable
 		if (cur == want) {
@@ -1281,6 +1614,16 @@ void ScummGuide::runCommand(const TestEvent &t) {
 		// a game variable or a bit variable (bitvarN is 0x8000 + N)
 		const int n = t.cmd == "bit" ? 0x8000 + t.x : t.x;
 		logf("%s %d = %d", t.cmd.c_str(), t.x, _vm->readVar(n));
+	} else if (t.cmd == "array") {
+		// "array A N": a one-dimensional array's elements 0..N
+		ScummEngine_v6 *v6 = (ScummEngine_v6 *)_vm;
+		Common::String vals;
+		for (int i = 0; i <= t.y; i++)
+			vals += Common::String::format(" %d", v6->readArray(t.x, 0, i));
+		logf("array %d:%s", t.x, vals.c_str());
+	} else if (t.cmd == "setvar") {
+		_vm->writeVar(t.x, t.y);
+		logf("var %d = %d", t.x, _vm->readVar(t.x));
 	} else if (t.cmd == "class") {
 		// an object's or actor's class bits (class N is bit N-1)
 		logf("class %d = %x", t.x, _vm->_classData[t.x]);
@@ -1410,9 +1753,10 @@ void ScummGuide::pollControl() {
 			ms.kind = line.hasPrefix("m ") ? Step::kMinigame : Step::kWait;
 			ms.verb = ms.objectA = ms.objectB = 0;
 			char name[32] = "";
-			sscanf(line.c_str() + 2, "%31s", name);
+			sscanf(line.c_str() + 2, "%31s %d %d %d", name, &ms.objectA, &ms.objectB, &ms.verb);
 			ms.name = name;
-			ms.verb = atoi(name);
+			if (ms.kind == Step::kWait)
+				ms.verb = atoi(name);
 			_steps.insert_at(_current, ms);
 			play(1);
 			continue;
@@ -1483,7 +1827,7 @@ void ScummGuide::runLive() {
 		talkTo(st.verb);
 	} else {
 		logf("live: verb %d (room %d)", st.verb, _vm->_currentRoom);
-		_vm->runInputScript(kVerbClickArea, st.verb, 1);
+		clickVerb(st.verb);
 	}
 	_executing = false;
 	_liveSince = 0;

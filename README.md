@@ -107,10 +107,23 @@ Day of the Tentacle needs one more:
 n <var> <value>           wait for a game variable (a kite that has to be in the air)
 ```
 
+The Dig (SCUMM v7) has no verb bar either: a click on something does the default action, a right click looks,
+and an item in hand is used on what you click. Its steps are the same `s` sentences plus:
+
+```
+c <room> <x> <y> [r|h]    a click (r: right click; h: press and hold, for the light bridge switches)
+V <var> <value>           set a game variable (the item in hand, before a click that must not use it)
+```
+
+and the minigames `rodlock <firstButton> <shapeVar> <targetVar>` (the rod doors and the map room panel, whose
+combinations are random each game), `clickto <object> <var> <value>` (click until something is in that state:
+the prisms, the light bridge lenses) and `sliders` (the crystal machine in the lab).
+
 The minigames are Sam & Max's `wakarat`, `gatorgolf`, `frogrock`, `wires` and `vortex`, and Day of the Tentacle's
 `teeth` (the chattering teeth into the grating). The full walkthroughs,
-[dists/walkthroughs/samnmax.txt](dists/walkthroughs/samnmax.txt) and
-[dists/walkthroughs/tentacle.txt](dists/walkthroughs/tentacle.txt), use all of them.
+[dists/walkthroughs/samnmax.txt](dists/walkthroughs/samnmax.txt),
+[dists/walkthroughs/tentacle.txt](dists/walkthroughs/tentacle.txt) and
+[dists/walkthroughs/dig.txt](dists/walkthroughs/dig.txt), use all of them.
 
 Other keys: `guide_file` (a walkthrough somewhere other than the game folder), `guide_step` (where you
 are), and for testing without a screen `guide_test` (a script of timed input, screenshots, saves and
@@ -179,8 +192,10 @@ On the Vita it needs `ur0:data/libshacccg.suprx`, as every vitaGL app does.
 - The Sam & Max DOS CD demo: from the office to the car.
 - **Day of the Tentacle** (CD, Spanish): the whole game in one run (about 2 h).
   [Videos](https://www.youtube.com/playlist?list=PLO2HvQFzSNW8), from 11 November 2026.
-- **Discworld** (CD, Spanish text, English voices): the whole game, tested section by section to the end
-  credits; the one-run recording for the channel is under way.
+- **Discworld** (CD, Spanish text, English voices): the whole game to the end credits.
+  [Videos](https://www.youtube.com/playlist?list=PLNyWh5U81jok), from 22 November 2026.
+- **The Dig** (CD, Spanish voices and text): the whole game to the good ending; the one-run recording for the
+  channel is under way.
 
 Other games are next. The sister project, the [Hollywood Monsters port](https://github.com/jmverges/hollywood-monsters-port),
 has its own walkthrough player; its videos are on the same channel

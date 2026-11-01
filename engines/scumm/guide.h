@@ -133,6 +133,7 @@ private:
 	void parseScript(const Common::String &line, Step &st);
 	void runStepScript(const Step &st);
 	void pointAt(int obj);
+	void clickVerb(int verbid);
 	void click(int x, int y, int button = 0);   // 1 right, 2 held
 	void talkTo(int actor);
 	void goTo(int object);

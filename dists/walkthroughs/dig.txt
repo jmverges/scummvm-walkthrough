@@ -1,0 +1,588 @@
+# The Dig (Spanish CD) walkthrough. Comments: "Spanish // English".
+== Parte 1: el asteroide Attila // Part 1: the asteroid Attila
+s 3 40 ; el Pen Ultimate // the Pen Ultimate
+s 3 543 ; llamar a Miles // call Miles
+c 79 127 172 ; el Cerdo: que lo suelte // the Pig: release it
+s 3 44 ; volar en el Cerdo hasta el asteroide // fly the Pig to the asteroid
+s 3 58 ; acercarse al Cerdo // go to the Pig
+s 3 58 ; abrirlo // open it
+s 3 137 ; la pala // the shovel
+s 3 140 ; el excavador de gravedad cero // the zero-G digger
+s 3 142 ; la unidad explosiva Alfa // explosive unit Alpha
+s 3 143 ; la unidad explosiva Beta // explosive unit Beta
+s 3 138 ; salir // leave
+s 3 56 ; al espacio // out into space
+s 3 47 ; cuadrante 2 // quadrant 2
+s 3 140 63 ; alisar la superficie // smooth the target surface
+s 3 142 63 ; colocar la Alfa // place Alpha
+s 3 63 43 ; armarla // arm it
+s 3 61 ; al espacio // out into space
+s 3 48 ; cuadrante 3 // quadrant 3
+s 3 69 137 ; apartar la roca con la pala // lever the boulder away with the shovel
+s 3 68 143 ; colocar la Beta // place Beta
+s 3 68 43 ; armarla // arm it
+s 3 66 ; al espacio // out into space
+s 3 51 ; volver al transbordador // back to the shuttle
+s 3 40 ; el Pen Ultimate // the Pen Ultimate
+s 3 544 ; llamar a Borden // call Borden
+c 79 127 172 ; los explosivos // the explosives
+== El interior de Atila // Inside Attila
+s 3 85 ; la placa metálica // the metallic plate
+s 3 84 140 ; desenterrar el saliente // dig out the odd projection
+s 3 93 140 ; otro saliente // another projection
+s 3 91 140 ; el tercero // the third one
+s 3 84 ; empujar las placas // push the plates in
+s 3 86 ; la segunda // the second one
+s 3 89 ; la última // the last one
+s 3 83 ; el túnel oscuro // the dark tunnel
+== El centro del asteroide // The asteroid's core
+s 3 79 ; el pedestal // the pedestal
+s 3 106 ; las cuatro placas // the four plates
+s 3 107 ; .
+s 3 108 ; .
+s 3 109 ; .
+s 3 105 ; las hendiduras cuadradas // the square indentations
+s 3 902 108 ; arriba // top
+s 3 900 106 ; abajo // bottom
+s 3 901 109 ; izquierda // left
+s 3 903 107 ; derecha: el asteroide despega // right: the asteroid takes off
+== El planeta // The planet
+s 3 119 ; al claro // to the clearing
+== La nave estrellada // The wreck
+s 3 134 ; la nave, a la izquierda // the wreck, on the left
+s 3 148 ; entrar // go in
+s 3 154 ; abrir el cofre // open the chest
+s 3 155 ; el aparato // the device
+s 3 152 ; tirar del cable colgante // pull the hanging wire
+s 3 153 ; el cable // the wire
+s 3 156 ; la varilla grabada // the engraved rod
+== La tumba // The grave
+s 3 151 ; salir de la nave // leave the wreck
+s 3 147 ; al claro // to the clearing
+s 3 135 ; la tumba, arriba // the grave, at the top
+s 3 159 ; el colmillo // the tusk
+s 3 163 137 ; cavar en la tumba // dig in the grave
+s 3 164 ; la mandíbula // the jaw bone
+s 3 157 ; al claro // to the clearing
+== La rampa de tierra // The dirt ramp
+s 3 136 ; la rampa, a la derecha // the ramp, on the right
+s 3 155 ; el aparato señala el montículo // the device points at the mound
+s 3 169 137 ; cavar el montículo // dig the small mound
+s 3 169 ; la pulsera // the bracelet
+== El estrado // The dais
+s 3 167 ; al claro // to the clearing
+s 3 133 ; el estrado // the dais
+s 3 121 137 ; agrandar el agujero: Brink cae // widen the small hole: Brink falls
+== El Nexo // The Nexus
+s 3 192 ; la placa // the plate
+s 3 182 ; la varilla morada // the purple engraved rod
+== La sala de energía // The power room
+s 3 185 ; la rampa // the ramp
+s 4 238 ; la lente suelta, al fondo // the loose lens, down below
+s 3 232 ; el panel de control // the control panel
+s 3 803 ; borrar // clear
+s 3 799 ; 4 morado, 2 amarillo, 1 rojo: el robot recoge la lente // 4 purple, 2 yellow, 1 red: the robot picks up the lens
+s 3 799 ; .
+s 3 799 ; .
+s 3 799 ; .
+s 3 798 ; .
+s 3 798 ; .
+s 3 873 ; .
+s 3 805 ; salir // leave
+s 3 233 ; el botón triangular // the triangular button
+s 3 232 ; el panel otra vez // the panel again
+s 3 803 ; borrar // clear
+s 3 799 ; 5 morado, 4 azul, 1 rojo: el robot coloca la lente // 5 purple, 4 blue, 1 red: the robot puts the lens in
+s 3 799 ; .
+s 3 799 ; .
+s 3 799 ; .
+s 3 799 ; .
+s 3 871 ; .
+s 3 871 ; .
+s 3 871 ; .
+s 3 871 ; .
+s 3 873 ; .
+s 3 805 ; salir // leave
+s 3 233 ; el botón triangular: vuelve la energía // the triangular button: power is back
+s 3 236 ; la placa suelta // the loose plate
+s 3 236 ; el cristal azul que había detrás // the blue crystal behind it
+== La puerta morada // The purple door
+s 3 229 ; volver al Nexo // back to the Nexus
+s 4 182 ; mirar el grabado de la varilla morada // look at the purple rod's engraving
+c 50 160 186 ; salir // leave
+s 3 178 ; el panel junto a la puerta // the panel by the door
+m rodlock 706 449 337 ; poner las formas de la varilla // set the rod's shapes
+== La aguja del museo // The museum spire
+s 3 175 ; la puerta abierta // the open door
+s 3 854 ; llamar al tranvía // call the tram
+s 3 700 ; subir // get on
+s 3 243 ; salir al exterior // go outside
+s 3 247 ; subir // go up
+s 3 251 ; la puerta: otro fantasma // the door: another ghost
+s 3 251 ; entrar en el museo // into the museum
+s 3 265 ; los cristales luminosos // the glowing crystals
+s 3 263 ; la tablilla // the tablet
+s 3 264 ; la varilla roja // the red engraved rod
+== Brink resucita // Brink comes back to life
+s 3 262 ; salir // go outside
+s 3 249 ; bajar // go down
+s 3 246 ; al tranvía // to the tram
+s 3 242 ; volver al Nexo // back to the Nexus
+s 3 699 ; entrar en el Nexo // into the Nexus
+s 3 186 661 ; los cristales sobre Brink // the crystals on Brink's body
+== La puerta roja // The red door
+s 4 264 ; mirar el grabado de la varilla roja // look at the red rod's engraving
+c 50 160 186 ; salir // leave
+s 3 181 ; el panel a la izquierda de la columna // the panel left of the column
+m rodlock 754 445 360 ; poner las formas de la varilla // set the rod's shapes
+== El panel de las chispas // The sparking panel
+s 3 179 159 ; abrir la tapa con el colmillo // pry the cover off with the tusk
+s 3 153 179 ; conectar el cable // connect the wire
+s 3 211 ; coger el extremo suelto // take the loose end
+x 2017 23 ; llevarlo a las chispas // take it to the sparks
+== La puerta debilitada // The weakened door
+s 3 175 ; la puerta morada // the purple door
+s 3 854 ; llamar al tranvía // call the tram
+s 3 700 ; al museo // to the museum
+s 3 244 ; la puerta debilitada, con Brink // the weakened door, with Brink
+s 3 559 ; la cápsula // the canister
+s 3 560 ; cristales de vida // life crystals
+== La tortuga bomba // The turtle bomb
+s 3 558 ; salir de la sala // leave the vault
+s 3 243 ; al exterior // go outside
+s 4 879 ; el fósil // the fossil
+s 3 248 ; el agua: el monstruo; Brink se va // the water: the monster; Brink runs off
+s 3 256 ; los huesos sueltos // the loose bones
+c 36 168 21 ; hueso 18 // bone 18
+c 36 36 44 ; a su sitio // into place
+c 36 153 46 ; hueso 17 // bone 17
+c 36 116 24 r ; girarlo // turn it
+c 36 116 24 r ; girarlo // turn it
+c 36 116 24 r ; girarlo // turn it
+c 36 116 24 ; a su sitio // into place
+c 36 249 24 ; hueso 14 // bone 14
+c 36 108 68 r ; girarlo // turn it
+c 36 108 68 r ; girarlo // turn it
+c 36 108 68 r ; girarlo // turn it
+c 36 108 68 ; a su sitio // into place
+c 36 249 59 ; hueso 15 // bone 15
+c 36 68 68 r ; girarlo // turn it
+c 36 68 68 r ; girarlo // turn it
+c 36 68 68 r ; girarlo // turn it
+c 36 68 68 ; a su sitio // into place
+c 36 64 27 ; hueso 6 // bone 6
+c 36 276 176 r ; girarlo // turn it
+c 36 276 176 ; a su sitio // into place
+c 36 36 83 ; hueso 7 // bone 7
+c 36 80 104 r ; girarlo // turn it
+c 36 80 104 r ; girarlo // turn it
+c 36 80 104 r ; girarlo // turn it
+c 36 80 104 ; a su sitio // into place
+c 36 297 156 ; hueso 11 // bone 11
+c 36 92 132 r ; girarlo // turn it
+c 36 92 132 r ; girarlo // turn it
+c 36 92 132 ; a su sitio // into place
+c 36 275 121 ; hueso 12 // bone 12
+c 36 140 72 r ; girarlo // turn it
+c 36 140 72 r ; girarlo // turn it
+c 36 140 72 ; a su sitio // into place
+c 36 199 50 ; hueso 16 // bone 16
+c 36 136 104 r ; girarlo // turn it
+c 36 136 104 ; a su sitio // into place
+c 36 83 156 ; hueso 8 // bone 8
+c 36 168 120 r ; girarlo // turn it
+c 36 168 120 r ; girarlo // turn it
+c 36 168 120 r ; girarlo // turn it
+c 36 168 120 ; a su sitio // into place
+c 36 139 170 ; hueso 10 // bone 10
+c 36 128 140 r ; girarlo // turn it
+c 36 128 140 ; a su sitio // into place
+c 36 269 80 ; hueso 13 // bone 13
+c 36 208 144 ; a su sitio // into place
+c 36 193 180 ; hueso 9 // bone 9
+c 36 248 164 ; a su sitio // into place
+c 36 8 100 ; salir // leave
+s 3 257 559 ; la cápsula dentro // the canister inside
+s 3 257 661 ; los cristales: la tortuga bomba // the crystals: the turtle bomb
+s 3 255 ; al agua // into the water
+s 3 260 ; la cámara // the chamber
+s 3 212 ; la placa // the plate
+s 3 213 ; la varilla naranja // the orange engraved rod
+== La puerta naranja // The orange door
+s 3 214 ; salir de la cámara // leave the chamber
+s 3 258 ; nadar de vuelta // swim back
+s 3 254 ; el sendero // the path
+s 3 246 ; al tranvía // to the tram
+s 3 242 ; al Nexo // to the Nexus
+s 3 699 ; el Nexo // the Nexus
+s 4 213 ; mirar el grabado de la varilla naranja // look at the orange rod's engraving
+c 50 160 186 ; salir // leave
+s 3 184 ; el panel a la derecha del túnel oscuro // the panel right of the dark tunnel
+m rodlock 738 453 349 ; poner las formas de la varilla // set the rod's shapes
+== La aguja del planetario // The planetarium spire
+s 3 183 ; la puerta naranja // the orange door
+s 3 861 ; llamar al tranvía // call the tram
+s 3 697 ; subir // get on
+s 3 421 ; salir // go outside
+s 3 784 ; subir // go up
+b 88 0 ; esperar a que pase la ola // wait for the wave to go by
+b 88 1 ; y a que vuelva // and to come back
+s 3 433 ; saltar al otro lado // jump to the far side
+s 3 434 137 ; empujar la roca: un puente // push the boulder: a bridge
+s 3 430 ; subir // go up
+s 3 422 ; la grieta // the crevice
+s 3 855 ; la varilla azul // the blue rod
+s 3 444 ; salir // go outside
+== La trampa // The trap
+s 3 424 ; la meseta // the plateau
+s 3 470 ; la tapa // the cover
+s 3 465 ; el costillar // the rib cage
+s 3 474 ; la clavija // the dowel
+s 3 473 ; la varilla // the rod
+s 3 466 ; la pértiga: Low la deja en su sitio // the pole: Low puts it in its place
+s 3 475 474 ; la clavija en el agujero // the dowel in the hole
+s 3 481 ; coger la pértiga // take the pole
+s 3 481 ; . 
+x 2003 68 ; levantar la rueda con la pértiga // lever the wheel up with the pole
+s 3 477 465 ; el costillar en el gancho // the rib cage on the hook
+s 3 477 473 ; la varilla: la trampa está lista // the rod: the trap is set
+g 475 ; esperar junto al pasador // wait by the pin
+x 2006 68 ; la criatura sale y cae en la trampa // the critter comes out and runs into the trap
+s 3 168 472 ; la pulsera a la criatura // the bracelet on the critter
+s 3 477 ; soltarla // let it go
+s 3 476 ; .
+s 3 477 ; recoger el costillar y la varilla // take the rib cage and the rod back
+== La pieza de la puerta // The door's missing part
+s 3 468 137 ; agrandar la cueva // widen the cave
+s 3 468 ; entrar // go in
+s 3 155 ; el aparato señala la pulsera // the device points at the bracelet
+s 3 438 137 ; cavar // dig
+s 3 438 ; la pieza // the machine part
+== La cúpula // The dome
+s 3 437 ; salir de la cueva // leave the cave
+s 3 469 439 ; la pieza en el panel // the machine part in the panel
+s 3 469 470 ; la tapa // the cover
+s 3 469 ; pulsar el panel // press the panel
+s 3 467 ; entrar // go in
+s 3 447 ; la varilla verde // the green engraved rod
+s 3 452 ; la placa // the plate
+s 3 449 ; los cetros // the twin scepters
+== El eclipse // The eclipse
+s 3 448 449 ; el cetro de oro en la luz tenue: el mapa de las lunas // the gold scepter on the faint light: the moon map
+c 67 212 75 ; la luna grande, a las dos // the large moon, at two o'clock
+V 243 455 ; el cetro de plata // the silver scepter
+c 67 208 74 ; la luna pequeña, entre el planeta y la grande // the small moon, between the planet and the large one
+V 243 0 ; soltar el cetro // put the scepter away
+s 3 450 ; el botón // the button
+== El centro de mando // The command center
+s 3 446 ; salir // go outside
+s 3 464 ; al claro // to the clearing
+s 3 423 ; bajar // go down
+s 3 429 ; bajar otra vez // down again
+s 3 785 ; al tranvía // to the tram
+s 3 420 ; al Nexo // to the Nexus
+s 3 696 ; entrar en el Nexo // into the Nexus
+s 3 188 ; el túnel oscuro // the dark tunnel
+s 3 218 ; el botón de fuera: abre la puerta interior // the outer button: opens the inner door
+s 3 219 ; dentro, el otro botón: la cierra // inside, the other button: closes it
+s 3 219 ; otra vez: abre la esclusa // again: opens the airlock
+s 3 217 ; entrar en la esclusa: el centro de mando // through the airlock: the command center
+s 3 222 ; el panel luminoso // the glowing panel
+s 3 773 ; el cristal sin vida // the lifeless crystal
+s 3 781 855 ; la varilla azul en el agujero // the blue rod into the hole
+s 3 773 ; elegir el cristal sin vida // pick the lifeless crystal
+m sliders ; deslizar los tres cristales hasta que brille // slide the three crystals until it glows
+== La aguja de la tumba // The tomb spire
+s 3 766 ; salir del panel // leave the panel
+s 3 221 ; la esclusa // the airlock
+s 3 216 ; al Nexo // to the Nexus
+s 3 177 ; la puerta roja // the red door
+s 3 863 ; el tranvía ya funciona // the tram works now
+s 3 562 ; subir // get on
+s 3 381 ; a la aguja // to the spire
+s 3 383 ; a la meseta // to the plateau
+s 3 387 137 ; apartar la losa con la pala // lever the stone plate up with the shovel
+s 3 387 ; bajar a la tumba // down into the tomb
+s 3 403 231 ; el cristal azul en el agujero // the blue crystal in the hole
+g 400 ; pisar la piedra suelta: se abre la claraboya // step on the loose stone: the skylight opens
+s 3 400 473 ; calzarla con la varilla // wedge it with the rod
+s 3 399 ; salir // go outside
+s 3 388 ; apartar la tierra: una lente // clear the dirt: a lens
+s 3 408 ; la estatua se desvanece // the statue vanishes
+s 3 399 ; salir // go outside
+s 3 385 ; bajar // go down
+s 3 384 ; al tranvía // to the tram
+s 3 382 ; al Nexo // to the Nexus
+s 3 561 ; el Nexo // the Nexus
+== La aguja del mapa // The map spire
+s 4 447 ; mirar el grabado de la varilla verde // look at the green rod's engraving
+c 50 160 186 ; salir // leave
+s 3 179 ; el panel del cable // the wired panel
+m rodlock 722 457 344 ; poner las formas de la varilla // set the rod's shapes
+s 3 173 ; la puerta verde // the green door
+s 3 859 ; llamar al tranvía // call the tram
+s 3 553 ; subir // get on
+s 3 316 ; la cornisa // the ledge
+s 3 320 ; la abertura // the opening
+s 3 96 ; el campo extraño // the strange field
+s 3 95 ; salir // leave
+s 3 319 ; la caverna // the cavern
+s 3 323 ; el pozo // the pit
+s 3 345 ; la abertura // the opening
+s 3 364 ; el panel del mapa // the map panel
+m rodlock 325 461 360 ; la combinación de la varilla roja: la cripta // the red rod's combination: the crypt
+== El puente de luz // The light bridge
+s 3 363 ; la abertura // the opening
+V 281 3 ; (este cuenta como el cuarto aparato de puente de luz) // (this counts as the fourth light bridge device)
+s 3 369 ; el aparato del puente de luz: aún no funciona // the light bridge device: it won't work yet
+s 3 946 ; salir del aparato // leave the device
+s 3 925 ; abrir la tapa del panel // open the panel cover
+s 3 925 ; el panel // the panel
+m clickto 570 0 4 ; la fuente, hacia el prisma de abajo // the source, at the bottom prism
+m clickto 577 376 3 ; el de abajo reparte la luz a los otros tres // the bottom one splits the light to the other three
+m clickto 574 375 4 ; el de arriba a la izquierda, al verde // top left, to green
+m clickto 576 377 0 ; el de la derecha, al rojo // the right one, to red
+m clickto 575 378 1 ; el de arriba a la derecha, al azul // top right, to blue
+s 3 369 ; el aparato del puente de luz // the light bridge device
+s 3 371 ; el interruptor: el puente de luz // the switch: the light bridge
+s 3 372 ; salir // leave
+s 3 367 ; subir al puente de luz // onto the light bridge
+== La cripta // The crypt
+s 3 523 ; a la aguja de la tumba // to the tomb spire
+s 3 391 ; el borde // the edge
+s 3 387 ; bajar a la tumba // down into the tomb
+s 3 402 ; la cripta se abre // the crypt opens
+s 3 579 ; la puerta: aparece un perro guardián // the door: a guard dog appears
+s 3 585 661 ; cristales de vida en los huesos rotos // life crystals on the broken bones
+s 3 588 156 ; la varilla de la nave en la ranura // the wreck's rod in the slot
+== El alienígena // The alien
+s 3 579 ; entrar // go in
+s 3 590 ; la pirámide // the pyramid
+s 3 891 ; el grabado del Creador // the Creator's engraving
+s 3 888 156 ; la varilla de la nave en el panel: se abre // the wreck's rod on the panel: it opens
+s 3 889 661 ; cristales de vida en el alienígena // life crystals on the alien
+c 46 32 172 ; preguntarle algo // ask a question
+c 46 95 172 ; despedirse: Maggie ha desaparecido // goodbye: Maggie is gone
+== Los cristales de Brink // Brink's crystals
+s 3 887 ; salir de la pirámide // leave the pyramid
+s 3 589 ; salir // leave
+s 3 580 ; subir // go up
+s 3 399 ; fuera de la tumba // out of the tomb
+s 3 386 ; el camino // the path
+s 3 393 ; el interior de la cueva // the cave interior
+s 3 397 ; la plataforma: Brink no quiere ayudar // the platform: Brink won't help
+s 3 788 ; la caverna // the cavern
+s 3 398 139 ; la linterna a los murciélagos: Brink huye // the flashlight on the bats: Brink runs off
+s 3 397 ; la plataforma, rápido // the platform, quickly
+s 3 789 ; su alijo de cristales // his crystal stash
+== El nido // The nest
+s 3 788 ; la caverna // the cavern
+s 3 396 ; salir // go out
+s 3 394 ; el puente de luz // the light bridge
+s 3 526 ; a la aguja del mapa // to the map spire
+s 3 366 ; la sala del mapa // the map room
+s 3 362 ; el pozo // the pit
+s 3 344 ; la puerta de la izquierda // the left door
+s 3 322 ; el nido: Maggie atrapada // the nest: Maggie trapped
+V 243 0 ; soltar lo que llevo en la mano // put away what I am holding
+c 44 112 55 ; hablar con Brink // talk to Brink
+c 44 160 172 ; el monstruo: Brink lo distrae // the monster: Brink distracts it
+s 3 340 ; el nacimiento de la cascada // the falls source
+s 3 349 ; empujar la roca: el agua baja al nido // push the rock: the water goes to the nest
+s 3 346 ; bajar // go down
+s 3 341 ; volver al nido // back to the nest
+c 44 30 50 ; hablar con Brink // talk to Brink
+c 44 160 172 ; la rejilla: rescatan a Maggie // the grate: they rescue Maggie
+== Maggie y el alienígena // Maggie and the alien
+s 3 351 ; salir del nido // leave the nest
+s 3 323 ; el pozo // the pit
+s 3 345 ; la abertura // the opening
+s 3 363 ; el puente de luz // the light bridge
+s 3 367 ; subir al puente // onto the bridge
+s 3 523 ; a la tumba // to the tomb
+s 3 391 ; el borde // the edge
+s 3 387 ; bajar // go down
+s 3 402 ; la cripta // the crypt
+s 3 579 ; la puerta // the door
+s 3 590 ; la pirámide // the pyramid
+s 3 888 156 ; abrirla // open it
+s 3 889 661 ; reanimar al alienígena: Maggie le entiende // revive the alien: Maggie understands it
+c 46 32 172 ; preguntas // questions
+c 46 32 172 ; .
+c 46 32 172 ; .
+c 46 32 172 ; .
+c 46 65 172 ; queremos volver a casa // we want to go home
+c 46 65 172 ; .
+c 46 65 172 ; .
+c 46 95 172 ; adiós // goodbye
+== La isla // The island
+s 3 887 ; salir de la pirámide // leave the pyramid
+s 3 589 ; salir // leave
+s 3 580 ; subir // go up
+s 3 399 ; fuera // outside
+s 3 386 ; el camino // the path
+s 3 394 ; el puente de luz // the light bridge
+s 3 526 ; a la aguja del mapa // to the map spire
+s 3 366 ; la sala del mapa // the map room
+s 3 362 ; el pozo // the pit
+s 3 344 ; la puerta de la izquierda // the left door
+s 3 321 ; la cornisa // the ledge
+s 3 320 ; la abertura: el campo extraño // the opening: the strange field
+s 4 96 ; mirarlo // look at it
+s 3 263 4 ; la tablilla a Maggie: aparece una isla // the tablet to Maggie: an island appears
+s 3 98 ; entrar // go in
+s 3 52 ; la placa // the plate
+== Brink atrapado // Brink trapped
+s 3 53 ; salir de la isla // leave the island
+s 3 95 ; salir // leave
+s 3 319 ; la caverna: Brink pide ayuda por radio // the cavern: Brink calls for help
+s 3 323 ; el pozo // the pit
+s 3 345 ; la abertura // the opening
+s 3 363 ; el puente de luz // the light bridge
+s 3 367 ; subir // onto it
+s 3 528 ; a la aguja del planetario // to the planetarium spire
+s 3 422 ; la grieta // the crevice
+s 3 445 164 ; la mandíbula: liberar a Brink // the jaw bone: free Brink
+== La catedral // The cathedral
+s 3 593 212 ; las cuatro placas en el triángulo // the four plates in the triangle
+s 3 594 452 ; .
+s 3 595 52 ; .
+s 3 597 192 ; .
+s 3 176 ; la puerta de la catedral // the cathedral door
+s 3 857 ; llamar al tranvía // call the tram
+s 3 556 ; subir // get on
+s 3 493 ; el laboratorio // the lab
+s 3 911 ; la consola // the console
+s 4 908 ; falta una pieza // a piece is missing
+s 3 905 ; salir // leave
+s 4 508 ; los mandos // the controls
+s 4 500 ; el aparato alienígena // the alien device
+== El Ojo // The Eye
+s 3 496 ; salir arriba // go outside, up
+s 3 512 ; quitar el nido // remove the nest
+s 3 510 ; el aparato del puente de luz // the light bridge device
+s 3 514 ; el interruptor // the switch
+s 3 515 ; salir // leave
+s 3 511 ; el puente de luz // the light bridge
+s 3 523 ; a la tumba // to the tomb
+s 3 391 ; el borde // the edge
+s 3 387 ; bajar // go down
+s 3 402 ; la cripta // the crypt
+s 3 579 ; la puerta // the door
+s 3 590 ; la pirámide // the pyramid
+s 3 888 156 ; abrirla // open it
+s 3 889 661 ; reanimar al alienígena // revive the alien
+c 46 127 172 ; la máquina del laboratorio: el Ojo // the lab's machine: the Eye
+c 46 127 172 ; insistir hasta que diga dónde está la pieza // keep asking until it tells where the part is
+c 46 127 172 ; .
+c 46 127 172 ; .
+c 46 127 172 ; .
+c 46 127 172 ; .
+c 46 95 172 ; adiós // goodbye
+s 3 887 ; salir de la pirámide // leave the pyramid
+s 3 589 ; salir // leave
+s 3 580 ; subir // go up
+s 3 399 ; fuera // outside
+s 3 386 ; el camino // the path
+s 3 394 ; el puente de luz // the light bridge
+s 3 526 ; a la aguja del mapa // to the map spire
+s 3 366 ; la sala del mapa // the map room
+s 3 364 ; el panel del mapa // the map panel
+s 4 891 ; mirar el grabado del Creador // look at the Creator's engraving
+c 50 160 186 ; salir // leave
+m rodlock 325 461 364 ; su combinación: dónde está la pieza // its combination: where the part is
+== La pieza del Ojo // The Eye part
+s 3 362 ; el pozo // the pit
+s 3 344 ; la puerta de la izquierda // the left door
+s 3 322 ; el nido // the nest
+s 3 352 ; la puerta de la derecha // the right door
+s 3 342 ; la playa // the beach
+s 3 171 ; acercarse a la pieza // go to the part
+s 3 171 ; la pieza del Ojo // the Eye part
+== El final // The ending
+s 3 170 ; la cascada // the falls
+s 3 341 ; el nido // the nest
+s 3 351 ; salir // leave
+s 3 323 ; el pozo // the pit
+s 3 345 ; la abertura // the opening
+s 3 363 ; el puente de luz // the light bridge
+s 3 367 ; subir // onto it
+s 3 524 ; a la catedral // to the cathedral
+s 3 509 ; el laboratorio: Brink se lleva los cristales // the lab: Brink takes the crystals
+s 3 496 ; salir arriba // go outside, up
+s 3 511 ; el puente de luz // the light bridge
+s 3 523 ; a la tumba // to the tomb
+s 3 393 ; el interior de la cueva // the cave interior
+s 3 397 ; la plataforma de Brink // Brink's platform
+s 3 171 5 ; enseñarle la pieza del Ojo // show him the Eye part
+s 3 791 171 ; la pieza en la ranura de su máquina // the part in his machine's slot
+s 3 791 ; recuperarla: Brink muere // take it back: Brink dies
+s 3 791 171 ; volver a ponerla // put it back
+s 3 792 ; los cristales nuevos // the new crystals
+s 3 791 ; y la pieza // and the part
+s 3 788 ; la caverna // the cavern
+s 3 396 ; salir // go out
+s 3 394 ; el puente de luz // the light bridge
+s 3 524 ; a la catedral // to the cathedral
+s 3 509 ; el laboratorio // the lab
+s 3 911 ; la consola // the console
+s 3 909 661 ; los cristales en los huecos // the crystals in the slots
+s 3 910 661 ; .
+s 3 908 171 ; la pieza del Ojo en el hueco // the Eye part in the gap
+s 3 905 ; salir // leave
+== Los cinco puentes de luz // The five light bridges
+s 3 496 ; salir arriba // go outside, up
+s 3 510 ; el aparato del puente de luz // the light bridge device
+c 76 88 92 h ; mantener pulsado el interruptor // hold the switch down
+s 3 515 ; salir // leave
+s 3 511 ; el puente de luz // the light bridge
+s 3 523 ; a la tumba // to the tomb
+V 222 0 ; .
+s 3 392 ; el aparato del puente de luz // the light bridge device
+s 3 411 ; salir // leave
+m clickto 395 0 -356 ; la lente en su sitio // the lens into place
+s 3 392 ; el aparato otra vez // the device again
+c 59 88 92 h ; mantener pulsado el interruptor // hold the switch down
+s 3 411 ; salir // leave
+s 3 394 ; el puente de luz // the light bridge
+s 3 527 ; al museo // to the museum
+V 222 0 ; .
+s 3 250 ; el aparato del puente de luz // the light bridge device
+s 3 276 ; salir // leave
+m clickto 253 0 -336 ; la lente en su sitio // the lens into place
+s 3 250 ; el aparato otra vez // the device again
+c 35 88 92 h ; mantener pulsado el interruptor // hold the switch down
+s 3 276 ; salir // leave
+s 3 252 ; el puente de luz // the light bridge
+s 3 528 ; al planetario // to the planetarium
+V 222 0 ; .
+s 3 425 ; el aparato del puente de luz // the light bridge device
+s 3 484 ; salir // leave
+m clickto 426 0 -348 ; la lente en su sitio // the lens into place
+s 3 425 ; el aparato otra vez // the device again
+c 69 88 92 h ; mantener pulsado el interruptor // hold the switch down
+s 3 484 ; salir // leave
+s 3 427 ; el puente de luz // the light bridge
+s 3 526 ; a la aguja del mapa // to the map spire
+m clickto 368 0 -343 ; la lente en su sitio // the lens into place
+s 3 369 ; el aparato // the device
+c 51 88 92 h ; mantener pulsado el interruptor // hold the switch down
+s 3 372 ; salir // leave
+s 3 367 ; el puente de luz // the light bridge
+s 3 524 ; a la catedral // to the cathedral
+== El generador // The generator
+s 3 509 ; el laboratorio // the lab
+V 243 0 ; .
+c 73 220 85 ; hablar con Maggie // talk to Maggie
+c 73 222 172 ; el aparato: Maggie enciende el generador // the device: Maggie starts the generator
+== El Ojo // The Eye
+s 3 496 ; salir arriba // go outside, up
+s 3 511 ; el puente: aparece el guardián // the bridge: the guardian appears
+s 3 510 ; el aparato // the device
+c 76 88 92 ; apagar el puente: el guardián cae // switch the bridge off: the guardian falls
+s 3 510 ; el aparato otra vez // the device again
+c 76 88 92 h ; volver a encenderlo // switch it back on
+s 3 515 ; salir // leave
+s 3 511 ; cruzar hasta el Ojo // cross to the Eye
+s 3 611 ; el Ojo // the Eye
+s 3 535 ; el portal: el final // the portal: the ending
