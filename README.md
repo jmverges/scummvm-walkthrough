@@ -119,6 +119,11 @@ and the minigames `rodlock <firstButton> <shapeVar> <targetVar>` (the rod doors 
 combinations are random each game), `clickto <object> <var> <value>` (click until something is in that state:
 the prisms, the light bridge lenses) and `sliders` (the crystal machine in the lab).
 
+The Curse of Monkey Island (SCUMM v8) uses the same steps (verbs: 6 look, 7 hand, 8 talk, 5 use with; dialogue
+lines are verbs 500 and up) and its own minigames: `cannon`, `banjo`, `piracy` (part III: sailing, sea battles
+and insult sword fighting until Rottingham is beaten), `waitobj <object>` (the roller coaster scenes) and
+`lechuck` (the end).
+
 The minigames are Sam & Max's `wakarat`, `gatorgolf`, `frogrock`, `wires` and `vortex`, and Day of the Tentacle's
 `teeth` (the chattering teeth into the grating). The full walkthroughs,
 [dists/walkthroughs/samnmax.txt](dists/walkthroughs/samnmax.txt),
@@ -194,8 +199,10 @@ On the Vita it needs `ur0:data/libshacccg.suprx`, as every vitaGL app does.
   [Videos](https://www.youtube.com/playlist?list=PLO2HvQFzSNW8), from 11 November 2026.
 - **Discworld** (CD, Spanish text, English voices): the whole game to the end credits.
   [Videos](https://www.youtube.com/playlist?list=PLNyWh5U81jok), from 22 November 2026.
-- **The Dig** (CD, Spanish voices and text): the whole game to the good ending; the one-run recording for the
-  channel is under way.
+- **The Dig** (CD, Spanish voices and text): the whole game to the good ending in one run (2 h 33 min).
+  [Videos](https://www.youtube.com/playlist?list=PLdaVV4BLBwS8), from 3 December 2026.
+- **The Curse of Monkey Island** (CD, Spanish voices and text, Mega Monkey): the whole game to the end credits
+  ([dists/walkthroughs/comi.txt](dists/walkthroughs/comi.txt)); the one-run recording is under way.
 
 Other games are next. The sister project, the [Hollywood Monsters port](https://github.com/jmverges/hollywood-monsters-port),
 has its own walkthrough player; its videos are on the same channel

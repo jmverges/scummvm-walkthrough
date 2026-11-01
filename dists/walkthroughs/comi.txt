@@ -1,0 +1,477 @@
+# The Curse of Monkey Island (Spanish CD, Mega Monkey): the whole game.
+# Verbs: 6 look (skull), 7 hand (pick up, use, open), 8 talk (parrot). Dialogue lines are verbs 500 and up.
+
+== Parte I: El fin del pirata zombi LeChuck
+s 7 279 ; coger el escobillón // take the ramrod
+s 8 277 ; hablar con el pirata pequeño // talk to the small pirate
+v 500 ; "Soy Guybrush Threepwood, ¿tú quién eres?"
+v 501 ; "¿Llevas una barba falsa?" (es Wally)
+v 505 ; "No estoy de humor para propaganda." (la bibliografía pirata)
+v 504 ; "Como pirata eres un fracaso."
+v 500 ; "Ruidito."
+v 500 ; "Palabra." (Wally se echa a llorar y suelta el garfio)
+s 7 280 ; coger el garfio de plástico // take the plastic hook
+s 7 289 ; usar el cañón // use the cannon
+m cannon ; hundir los cuatro botes // sink the four boats
+s 5 280 279 ; garfio con escobillón: el bichero // hook with ramrod: the gaff
+s 9 278 ; asomarse por la tronera del cañón // lean out of the gunport
+s 8 337 ; hablar con la calavera // talk to the skull
+v 502 ; "¡Soy Guybrush Threepwood, un gran pirata!"
+v 503 ; "¡Me encanta hablar contigo!"
+s 5 281 334 ; bichero con los restos: el sable y el brazo de Murray // gaff on the debris
+s 9 333 ; volver dentro // back inside
+s 5 335 282 ; cortar la cuerda del cañón con el sable // cut the cannon restraint rope
+s 7 289 ; disparar el cañón contra la puerta // fire the cannon at the door
+s 7 343 ; la bolsa de monedas // the bag of nickels
+s 7 344 ; el anillo // the ring
+s 5 344 342 ; anillo con el ojo de buey: hundir el barco // ring on the porthole: sink the ship
+
+== Parte II: La maldición empeora
+s 7 385 ; la brasa // the glowing ember
+s 9 375 ; al mapa // to the map
+s 9 368 ; el pantano // the swamp
+s 9 702 ; seguir el camino (Murray asusta a Guybrush) // along the path
+v 503 ; "Me quedaría a hablar, pero tengo que irme."
+s 9 702 ; el barco naufragado // the wrecked ship
+s 7 711 ; tirar de la lengua del caimán // pull the alligator tongue
+v 503 ; "Bonito lugar. Me encanta la decoración."
+v 503 ; "Quizá más tarde."
+v 503 ; "Oh, vamos." (se han llevado a Elaine)
+v 500 ; "¿Dónde hay un enorme anillo de diamantes sin maleficio?"
+v 500 ; "¿Y no hay ningún otro anillo...?"
+v 500 ; "¿Cómo llegar a la Isla Blood?"
+v 503 ; "¡Isla Blood, allá voy!"
+v 505 ; "Gracias por tu ayuda. ¡Tengo que irme!"
+s 7 707 ; el alfiler del muñeco // the pin
+s 5 343 716 ; monedas en la máquina de chicles // nickels in the gumball machine
+s 7 709 ; la pasta (Mega Monkey) // the paste
+s 9 706 ; salir // out
+s 9 701 ; al mapa // to the map
+s 9 372 ; Puerto Pollo
+s 9 402 ; la puerta del escenario: el almacén del teatro // the stage door: the prop room
+s 7 475 ; la varita mágica // the magic wand
+s 7 477 ; el libro de ventriloquía // the ventriloquism book
+s 6 471 ; mirar el abrigo pirata (Mega Monkey: la caspa) // look at the pirate coat
+s 7 472 ; la caspa: piojos // the dandruff: lice
+s 7 473 ; el bolsillo // the pocket
+s 7 474 ; el guante // the glove
+s 9 469 ; salir del teatro // leave the theater
+s 9 401 ; la barbería (La Costa de los Barberos) // the barbershop
+s 5 474 556 ; retar con el guante al pirata elegante // challenge the dapper pirate with the glove
+s 7 648 ; cerrar la caja de pistolas // close the pistol box
+s 7 651 ; abrir el estuche del banjo: duelo de banjo // open the banjo case: banjo duel
+m banjo ; repetir las cuerdas de Van Helgen, tres rondas // play his strings back, three rounds
+s 6 588 ; mirar la pila de pistolas // look at the gun pile
+s 7 646 ; coger una pistola // take a pistol
+s 5 649 590 ; disparar al banjo de Van Helgen // shoot his banjo
+g 547 ; acercarse al peine // walk to the comb
+o 547 1 ; esperar a que el barbero lo deje en la mesa // wait until the barber puts it down
+s 5 472 547 ; piojos en el peine: echan a Rottingham // lice on the comb: Rottingham is thrown out
+s 7 545 ; sentarse en el sillón // sit in the barber chair
+s 8 551 ; hablar con el barbero // talk to the barber
+v 505 ; "No importa."
+s 7 546 ; la palanca: el sillón sube // the handle: the chair goes up
+s 7 550 ; el pisapapeles (el barbero sale a buscar otro) // the paperweight
+s 7 557 ; la palanca otra vez // the handle again
+s 7 558 ; y otra // and again
+s 7 559 ; y otra // and again
+s 7 548 ; las tijeras de la viga // the scissors on the beam
+s 7 553 ; dar un golpe a Bill el Degollador // hit Cutthroat Bill
+s 7 553 ; otro: escupe el caramelo // again: he spits out the jawbreaker
+s 7 555 ; el caramelo // the jawbreaker
+s 9 544 ; salir de la barbería // leave the barbershop
+s 5 548 408 ; tijeras con las flores misteriosas: la flor de ipecacuana // scissors on the mysterious flowers
+s 5 548 407 ; tijeras con la maleza: la serpiente // scissors on the undergrowth: the snake
+s 7 748 ; coger cosas del estómago de la serpiente // take stuff from the snake's stomach
+s 7 748 ; coger cosas del estómago de la serpiente // take stuff from the snake's stomach
+s 7 748 ; coger cosas del estómago de la serpiente // take stuff from the snake's stomach
+s 7 748 ; coger cosas del estómago de la serpiente // take stuff from the snake's stomach
+s 7 748 ; coger cosas del estómago de la serpiente // take stuff from the snake's stomach
+s 7 748 ; coger cosas del estómago de la serpiente // take stuff from the snake's stomach
+s 7 748 ; coger cosas del estómago de la serpiente // take stuff from the snake's stomach
+s 7 748 ; coger cosas del estómago de la serpiente // take stuff from the snake's stomach
+s 7 748 ; coger cosas del estómago de la serpiente // take stuff from the snake's stomach
+s 7 748 ; coger cosas del estómago de la serpiente // take stuff from the snake's stomach
+s 7 748 ; coger cosas del estómago de la serpiente // take stuff from the snake's stomach
+s 7 748 ; coger cosas del estómago de la serpiente // take stuff from the snake's stomach
+s 5 731 408 ; sirope con la flor: jarabe de ipecacuana // syrup with the flower: syrup of ipecac
+s 5 735 744 ; jarabe a la cabeza de la serpiente // the syrup to the snake head
+s 7 750 ; un junco hueco // a hollow reed
+s 7 751 ; una espina // a thorn
+s 5 754 755 ; espina con junco: la cerbatana // thorn with reed: the pea shooter
+s 5 100 550 ; globo con el pisapapeles // balloon with the paperweight
+s 8 757 ; soplar el globo hacia la gallina // blow the balloon toward the chicken
+s 5 756 758 ; cerbatana al globo: la liana cae // pea shooter at the balloon: the vine drops
+s 9 767 ; al mapa // to the map
+s 9 371 ; Puerto Pollo, la parte izquierda // Puerto Pollo, the left side
+s 9 397 ; el restaurante de Barbarrubia // Blondebeard's restaurant
+v 500 ; "¡Por supuesto que he hecho una reserva!" (la hoja de la serpiente)
+s 7 444 ; una galleta del barril // a biscuit from the barrel
+s 8 444 ; comerla: gusanos // eat it: maggots
+s 5 445 441 ; gusanos al pollo asqueroso // maggots on the gross chicken
+s 7 442 ; la tarjeta del club // the club card
+s 7 453 ; tocar al cliente callado // touch the quiet patron
+s 7 454 ; el cuchillo de sierra de su espalda // the serrated breadknife
+s 7 451 ; el cortapastas // the biscuit cutter
+s 7 452 ; el molde de tarta // the pie pan
+s 5 555 446 ; el caramelo a Barbarrubia: se le afloja el diente // the jawbreaker to Blondebeard
+s 5 717 446 ; el chicle // the gum
+w 10 ; esperar a que haga una pompa // wait for a bubble
+s 5 707 447 ; pincharla con el alfiler: el diente sale volando // pop it with the pin
+s 7 448 ; el diente de oro // the gold tooth
+s 8 717 ; mascar chicle // chew some gum
+s 5 448 554 ; el diente en el chicle // the tooth into the gum
+s 8 100 ; aspirar helio del globo // inhale helium from the balloon
+s 8 450 ; mascar el chicle con el diente: sale por la ventana // chew it: out of the window
+s 9 440 ; salir // out
+s 5 452 399 ; el molde en el charco: el diente // the pie pan in the mudpuddle: the tooth
+s 9 415 ; el arco junto a la torre del reloj // the archway by the clock tower
+s 5 451 609 ; cortapastas en el otro árbol del caucho: un tapón de goma // biscuit cutter on the other rubber tree: a rubber plug
+s 9 583 ; subir a la colina // up the grassy knoll
+s 5 454 629 ; cuchillo al caballete: el barril vierte un reguero de ron // knife on the sawhorse: a trail of rum
+s 5 385 631 ; la brasa en el reguero: el árbol del caucho cae sobre los troncos // the ember on the trail
+s 9 401 ; la barbería // the barbershop
+s 5 398 553 ; enseñar el diente de oro a Bill // show the gold tooth to Bill
+s 8 551 ; hablar con Haggis // talk to Haggis
+v 502 ; "¿Te gustaría unirte a mi tripulación?"
+v 500 ; "¿Echar un pulso?"
+v 502 ; "¡Me parece estupendo! ¡Vamos allá!" (el lanzamiento de tronco)
+s 9 544 ; salir de la barbería // leave the barbershop
+s 9 417 ; al mapa // to the map
+s 9 367 ; la Cueva Periglo // Danjer Cove
+s 5 709 771 ; pegamento en el tapón (Mega Monkey) // paste on the rubber plug
+s 5 772 770 ; tapar el agujero del bote // plug the hole in the boat
+s 7 769 ; subir al bote // get in the boat
+s 9 778 ; remar hasta el barco pirata // row to the pirate ship
+s 5 454 820 ; serrar la plancha // saw the plank
+s 9 819 ; subir al barco // climb aboard
+v 501 ; "Soy Guybrush Threepwood, ¡y quiero a mi novia!"
+v 502 ; "Emplumado suena bien. ¿Qué tal solo emplumado?"
+s 9 767 ; al mapa // to the map
+s 9 371 ; Puerto Pollo
+s 9 397 ; el restaurante (¡es El Pollo Diablo!) // the restaurant
+v 502 ; "¡Sí! He liberado a tus prisioneros y ahora vengo a por ti!"
+s 5 477 793 ; el libro de ventriloquía con LeChimp: el mapa del tesoro // the ventriloquism book on LeChimp
+s 7 792 ; abrir el ojo de buey // open the porthole
+s 9 792 ; salir por él // out through it
+s 9 767 ; al mapa // to the map
+s 9 371 ; Puerto Pollo
+s 9 402 ; el almacén del teatro // the prop room
+s 9 470 ; subir a las luces // up to the lights
+s 7 526 ; la palanca del panel // the panel handle
+s 7 531 ; el botón de abajo a la derecha // bottom right button
+s 7 527 ; arriba a la izquierda // top left
+s 7 534 ; izquierda // left
+s 7 532 ; abajo // bottom
+s 7 530 ; derecha // right
+s 7 529 ; arriba a la derecha // top right
+s 7 529 ; arriba a la derecha otra vez // top right again
+s 7 530 ; derecha // right
+s 7 533 ; abajo a la izquierda: la luz señala la tumba de Elaine // bottom left: the light shows Elaine's grave
+s 5 796 478 ; grasa de pollo en las balas de cañón // chicken grease on the cannonballs
+s 9 479 ; al escenario // to the stage
+s 7 495 ; la pala: desenterrar a Elaine // the shovel: dig Elaine up
+s 9 782 ; bajar del barco // leave the ship
+s 7 821 ; el bote de remos // the rowboat
+s 9 777 ; a la playa // to the beach
+s 9 767 ; al mapa // to the map
+s 9 366 ; la Playa Azufre // Brimstone Beach
+s 9 689 ; a la cabaña // to the cabana
+s 5 442 670 ; enseñar la tarjeta del club al chico de la cabaña // show the club card to the cabana boy
+v 502 ; "Acabo de pasar semanas en una balsa sin cepillo de dientes."
+s 7 675 ; una toalla // a towel
+s 5 666 668 ; mojarla en la cubitera // wet it in the ice bucket
+s 5 667 670 ; la toalla mojada al chico: sale corriendo // the wet towel on the cabana boy
+s 7 669 ; el aceite de cocina // the cooking oil
+s 7 675 ; otra toalla // another towel
+s 5 666 668 ; mojarla // wet it
+s 7 675 ; y otra // and another
+s 5 666 668 ; mojarla // wet it
+s 9 665 ; a la playa del club // to the club beach
+s 5 667 680 ; toalla mojada sobre la arena ardiente // wet towel on the hot sand
+s 5 667 681 ; otra // another
+s 5 667 682 ; y la última: al otro lado // and the last: across
+s 7 688 ; la jarra // the mug
+s 7 699 ; abrir la verja // open the gate
+s 9 687 ; salir al mapa // out to the map
+s 9 371 ; Puerto Pollo
+s 5 688 412 ; cambiar la jarra en el puesto de limonada // swap the mug at the lemonade stand
+s 8 413 ; hablar con Kenny // talk to Kenny
+v 501 ; "Quiero comprar limonada." (la jarra sin fondo)
+s 7 410 ; la jarra de agua // the pitcher
+s 5 410 409 ; llenarla en la cuba de tinte rojo // fill it at the red dye vat
+s 9 417 ; al mapa // to the map
+s 9 366 ; la Playa Azufre
+s 5 412 692 ; la jarra sin fondo a Pálido // the bottomless mug to Palido
+s 5 411 685 ; tinte en la jarra: Pálido cree que se quema y se da la vuelta // dye into the mug: Palido turns over
+s 5 669 686 ; aceite en el mapa tatuado // oil on the tattooed map
+s 7 686 ; despegar el mapa // peel off the map
+
+== Parte III: Rottingham y las batallas navales
+s 9 687 ; salir de la playa: zarpar (Rottingham roba el mapa) // leave the beach: set sail
+v 501 ; "Creo que mejor que me ayudéis, chicos." (combates fáciles) // easy ship combat
+m piracy ; abordar barcos, aprender insultos y réplicas, y vencer a Rottingham // board ships, learn insults, beat Rottingham
+
+== Parte IV: El camarero, los ladrones, su tía y su amante
+s 8 892 ; hablar con Haggis // talk to Haggis
+v 502 ; "Vaya botella de loción tienes ahí."
+v 502 ; "¿No hay forma de que me des ni una gota de loción?"
+v 503 ; "Te dejaré volver al trabajo."
+s 7 888 ; la botella de la arena // the bottle in the sand
+s 8 888 ; morderla: el corcho // bite it: the cork
+s 9 887 ; al mapa // to the map
+s 9 876 ; el hotel // the hotel
+s 9 938 ; entrar // go in
+s 7 977 ; el libro de recetas // the recipe book
+s 7 974 ; el cojín del taburete // the cushion
+s 9 972 ; salir // out
+s 9 937 ; al mapa // to the map
+s 9 881 ; el cementerio // the cemetery
+s 9 1077 ; el camino de la izquierda // the path on the left
+s 7 1086 ; el cincel // the chisel
+s 7 1081 ; el mazo // the mallet
+s 5 444 1082 ; la galleta con gusanos al perro: muerde // the maggoty biscuit to the old dog: he bites
+s 7 1085 ; pelo del perro // dog hair
+s 9 1080 ; volver // back
+s 9 1079 ; al hotel // to the hotel
+s 9 937 ; al mapa // to the map
+s 9 885 ; la playa // the beach
+s 5 974 1229 ; el cojín en las rocas // the cushion on the rocks
+s 5 1081 1223 ; mazo al árbol del caucho: el huevo cae en el cojín // mallet on the rubber tree: the egg
+s 9 1226 ; al mapa // to the map
+s 9 874 ; el molino // the windmill
+s 7 931 ; un pimiento // a pepper
+s 9 930 ; al mapa // to the map
+s 9 876 ; el hotel // the hotel
+s 9 938 ; entrar // go in
+s 6 977 ; leer el libro de recetas // read the recipe book
+s 9 1009 ; pasar página // next page
+s 9 1009 ; pasar página // next page
+s 9 1009 ; pasar página // next page
+s 9 1009 ; pasar página // next page
+s 9 1009 ; pasar página // next page
+s 9 1009 ; pasar página // next page
+s 9 1009 ; el apéndice: la cura de la resaca // the appendix: the hangover cure
+s 9 1010 ; cerrar el libro // close the book
+s 5 1085 1007 ; el pelo al camarero // the hair to the bartender
+s 5 1224 1007 ; el huevo // the egg
+s 5 931 1007 ; el pimiento: se cura y da el Head-B-Clear // the pepper: cured
+v 500 ; "Me gustaría beber algo."
+v 503 ; "Dame una bebida con frutas y con una sombrilla." (Mega Monkey: la sombrilla)
+s 5 1086 975 ; abrir el Head-B-Clear con el cincel // open the Head-B-Clear with the chisel
+s 7 982 ; el tarro de las propinas // the tip jar
+s 5 975 978 ; el Head-B-Clear en la bebida // the Head-B-Clear into the drink
+s 7 978 ; beber: Guybrush despierta en la cripta // drink: Guybrush wakes in the crypt
+s 5 1086 1116 ; cincel a su ataúd // chisel on his coffin
+w 15 ; Guybrush oye golpes en los ataúdes // Guybrush hears knocking
+s 7 1121 ; los clavos del ataúd // the coffin nails
+s 5 1086 1112 ; cincel al ataúd del medio: Stan // chisel on the middle coffin: Stan
+s 7 1104 ; abrir la salida de la cripta // open the crypt exit
+s 9 1104 ; salir // out
+s 9 1079 ; al hotel // to the hotel
+s 9 938 ; entrar // go in
+s 8 979 ; hablar con Madame Xima // talk to Madame Xima
+v 500 ; "Hola, soy Guybrush. ¿Y tú eres...?"
+v 501 ; "¿Qué me dicen las cartas?"
+s 7 985 ; la carta de la muerte // the death card
+s 8 979 ; otra lectura (Mega Monkey: cinco cartas) // another reading (Mega Monkey: five cards)
+v 501
+s 7 985 ; otra carta // another card
+s 8 979
+v 501
+s 7 985
+s 8 979
+v 501
+s 7 985
+s 8 979
+v 501
+s 7 985 ; la quinta // the fifth
+s 7 989 ; un folleto // a brochure
+s 7 973 ; la puerta del almacén // the storeroom door
+s 5 1086 1016 ; cincel a la rueda de queso // chisel on the wheel of cheese
+s 7 1013 ; el imán de la nevera // the refrigerator magnet
+s 9 1012 ; salir // out
+s 9 971 ; subir // upstairs
+s 7 1025 ; la puerta de la izquierda: el cuarto de los retratos // the left door: the portrait room
+s 5 1081 1059 ; mazo al clavo de la pared: el retrato de fuera cae // mallet on the nail: the portrait outside falls
+s 7 1058 ; salir // out
+s 7 1023 ; el clavo // the nail
+s 7 1024 ; el retrato (Mega Monkey) // the portrait
+s 5 1026 1025 ; el retrato en la puerta // the portrait on the door
+s 5 548 1027 ; tijeras al retrato: la cara // scissors on the portrait: the face
+s 7 1025 ; entrar // in
+s 6 1060 ; mirar por la mirilla: el camarero ve la cara de Guybrush en el retrato // look through the porthole
+s 7 1058 ; salir // out
+s 9 1036 ; el dormitorio // the bedroom
+s 5 1105 1039 ; clavos de ataúd en la cama // coffin nails on the bed
+s 5 1023 1039 ; y el otro clavo // and the other nail
+s 7 1038 ; bajar la cama // pull the bed down
+s 7 1040 ; el libro del esqueleto // the book on the skeleton
+s 9 1037 ; salir // out
+s 9 1021 ; bajar al bar // down to the bar
+s 8 976 ; hablar con el camarero // talk to the bartender
+v 502 ; "¿Qué sabes del anillo perdido de la Isla Blood?"
+v 501 ; "Creo que no nos conocemos. ¿Quién eres?"
+v 506 ; "Creía que si moría me enterrarían con tu tía."
+v 501 ; "¡Tío Griswold! ¡Soy yo! ¿No me reconoces?"
+v 500 ; "Robusto Bistec Patatas."
+v 501 ; "¡Mírame! ¿No parezco un Sopabuena?"
+v 501 ; "Podría hablar de la historia de los Sopabuena todo el día."
+s 8 976 ; hablar otra vez // talk again
+v 500 ; "Me gustaría beber algo."
+s 5 975 978 ; el Head-B-Clear en el grog // the Head-B-Clear into the grog
+s 7 978 ; beber: la cripta de los Sopabuena // drink: the Goodsoup crypt
+s 9 1169 ; hacia la izquierda (Guybrush se asusta de la fantasma) // to the left (the ghost startles him)
+s 9 1169 ; a la izquierda de la cripta // to the left of the crypt
+s 7 1179 ; la palanca del ataúd // the crowbar
+s 7 1192 ; Murray cae (hablan) // Murray drops in
+s 7 1192 ; coger a Murray // pick up Murray
+s 6 1180 ; mirar por la grieta: Mort // look through the crack: Mort
+s 5 709 336 ; pegamento en el brazo de esqueleto (Mega Monkey) // paste on the skeleton arm
+s 5 336 1194 ; pescar la linterna con el brazo // fish the lantern with the arm
+s 5 1194 1181 ; la linterna en la tapa del ataúd // the lantern on the coffin lid
+s 5 1192 1182 ; Murray con la linterna: asusta a Mort, que abre la cripta // Murray with the lantern: Mort opens up
+s 9 1178 ; volver // back
+s 9 1168 ; salir de la cripta // out of the crypt
+s 9 1079 ; al hotel // to the hotel
+s 9 938 ; entrar // go in
+s 7 981 ; el espejo de la pared (Mega Monkey) // the mirror on the wall
+s 5 1061 981 ; la cara del retrato en el marco // the portrait's face in the frame
+s 9 973 ; el almacén // the storeroom
+s 7 1014 ; el archivador // the file cabinet
+s 7 1015 ; el certificado de defunción // the death certificate
+s 9 1012 ; salir del almacén // out of the storeroom
+s 9 972 ; salir del hotel // out of the hotel
+s 9 969 ; al cementerio // to the cemetery
+s 9 1066 ; la oficina de Stan // Stan's office
+s 5 398 1110 ; el diente de oro a Stan: una póliza de seguros // the gold tooth to Stan: an insurance policy
+s 5 1015 1110 ; el certificado de defunción: el dinero // the death certificate: the money
+s 9 1104 ; salir de la oficina // out of the office
+s 9 1064 ; al mapa // to the map
+s 9 873 ; las luces extrañas: el poblado // the strange lights: the village
+s 7 900 ; el bloque de tofu // the block of tofu
+s 7 901 ; la barrena // the auger
+s 7 898 ; la taza medidora // the measuring cup
+s 9 897 ; el camino del volcán // the path up the volcano
+s 5 901 900 ; barrena con el tofu: la máscara de tofu // auger with tofu: the tofu mask
+s 5 902 ; ponerse la máscara: la ceremonia // wear the mask: the ceremony
+s 5 1019 920 ; el queso al volcán: erupción // the cheese into the volcano: eruption
+s 9 896 ; al mapa // to the map
+s 9 876 ; el hotel // the hotel
+s 9 938 ; entrar // go in
+s 9 973 ; el almacén // the storeroom
+s 5 1086 1016 ; otro trozo de queso // another hunk of cheese
+s 9 1012 ; salir // out
+s 9 972 ; salir del hotel // out of the hotel
+s 5 1019 940 ; el queso en la olla de la lava // the cheese in the lava-heated pot
+s 7 940 ; llevar la olla a Haggis: alquitrán para el barco // take the pot to Haggis: tar for the ship
+s 7 891 ; la loción // the lotion
+s 9 887 ; al mapa // to the map
+s 9 874 ; el molino // the windmill
+s 5 987 935 ; la sombrilla en las aspas: subir arriba (Mega Monkey) // the umbrella on the blades: up top
+s 5 982 936 ; el tarro en el barril: agua azucarada // the jar in the barrel: sugar water
+s 9 930 ; al mapa // to the map
+s 9 879 ; el claro de Elaine // Elaine's clearing
+s 5 982 922 ; el tarro en el tocón: entran las luciérnagas // the jar on the stump: the fireflies go in
+s 5 1086 983 ; agujeros en la tapa con el cincel // air holes in the lid
+s 5 983 924 ; tapar el tarro: un farol de luciérnagas // close the jar: a firefly lantern
+s 9 925 ; al mapa // to the map
+s 9 877 ; el faro // the lighthouse
+s 5 982 1215 ; el farol en el poste // the lantern on the post
+s 5 984 1214 ; el espejo del hotel en el del faro (Mega Monkey) // the hotel mirror on the lighthouse mirror
+s 9 1218 ; al mapa // to the map
+s 9 885 ; la playa: ha llegado una figura misteriosa // the beach: a mysterious figure
+s 5 898 1227 ; la taza medidora en el agua de mar // the measuring cup in the seawater
+s 5 889 707 ; corcho con alfiler // cork with pin
+s 5 889 1013 ; con el imán // with the magnet
+s 5 889 898 ; en la taza: la brújula // in the cup: the compass
+s 5 890 1232 ; la brújula al barquero // the compass to the boatman
+s 8 1232 ; hablar con él // talk to him
+v 500 ; "Me gustaría ir a la Isla Calavera, por favor."
+s 8 1258 ; hablar con el del montacargas // talk to the winch operator
+v 500 ; "¿Me bajas a la cueva de los contrabandistas?"
+s 5 987 ; la cuerda se rompe: abrir la sombrilla // the rope breaks: open the umbrella
+v 502 ; "¿Dónde está ese diamante enorme que se supone que tenéis?" (lo echan; vuelve a intentarlo)
+v 504 ; "Tengo TANTO dinero que hasta casi me da vergüenza."
+v 500 ; "Threepwood. Guybrush Threepwood."
+v 503 ; "Te estás saliendo del tema del diamante."
+v 504 ; "Quizá podríamos hacer un trato."
+v 500 ; "¡Suena divertido! ¡Repárteme, calvo!"
+v 500 ; "Tanto como puedo lanzarte..."
+s 5 980 1265 ; enseñar las cartas de la muerte al Rey André: el diamante // show the death cards to King Andre: the diamond
+s 9 1226 ; al mapa // to the map
+s 9 876 ; el hotel // the hotel
+s 9 938 ; entrar // go in
+s 9 971 ; subir // upstairs
+s 9 1036 ; el dormitorio // the bedroom
+s 5 1179 1042 ; palanca en el agujero tapiado // crowbar on the boarded hole
+s 5 1179 1039 ; palanca en la cama: sale disparada a la cripta de los Sopabuena // crowbar on the bed: it shoots into the crypt
+s 7 1170 ; el anillo de compromiso de la novia // the bride's engagement band
+s 9 1168 ; salir de la cripta // out of the crypt
+s 9 1064 ; al mapa // to the map
+s 9 879 ; el claro de Elaine // Elaine's clearing
+s 5 891 926 ; la loción en el anillo maldito // the lotion on the cursed ring
+s 7 926 ; quitárselo: estalla // pull it off: it explodes
+s 5 1268 1170 ; diamante con el anillo de compromiso // the diamond with the engagement band
+s 5 1270 923 ; el anillo a Elaine: LeChuck aparece // the ring to Elaine: LeChuck appears
+
+== Parte V: El beso del mono araña
+# hablar con LeChuck eligiendo siempre la última frase, hasta que convierte a Guybrush en niño // always the last line, until LeChuck turns Guybrush into a child
+v 505
+v 505
+v 505
+v 505
+v 504
+v 503
+v 504
+v 502
+v 504
+v 501
+v 504
+v 500
+v 500
+v 507
+v 503
+s 7 1293 ; abrir la puerta: el parque de atracciones // open the door: the amusement park
+s 8 1344 ; hablar con Chucho Dinghy // talk to Dinghy Dog
+v 501 ; "¿Cómo puedo ganar uno de estos fabulosos premios?"
+v 502 ; "A que no adivinas cuántos años tengo."
+v 504 ; "¡Dame ese ancla!"
+s 7 1338 ; el ancla // the anchor
+s 5 888 452 ; la botella de espuma en el molde: una tarta falsa (Mega Monkey) // the shaving foam on the pie pan: a fake pie
+s 5 1338 452 ; el ancla en la tarta falsa // the anchor in the fake pie
+s 5 452 1346 ; la tarta pesada en la pila: el cañón dispara al mimo // the heavy pie on the stack
+s 7 1342 ; abrir la verja // open the gate
+s 6 1349 ; mirar por el agujero: una tarta de merengue // look through the hole: a meringue pie
+s 7 1344 ; empujar a Chucho Dinghy // push Dinghy Dog
+s 7 1344
+s 7 1344
+s 7 1344
+s 7 1344
+s 7 1344 ; la sexta vez suelta pelo (Mega Monkey) // the sixth time he sheds hair
+s 7 1335 ; el molinillo de pimienta // the pepper mill
+s 8 1350 ; hablar con el heladero // talk to the soda jerk
+v 500 ; "Me gustaría un granizado normal."
+s 5 1337 1336 ; pelo en el granizado // hair on the snowcone
+s 5 1340 1336 ; merengue // meringue
+s 5 1335 1336 ; pimienta // pepper
+s 8 1336 ; comérselo: Guybrush vuelve a ser adulto // eat it: Guybrush is grown up again
+
+== Parte VI: Guybrush pega fuerte una vez más
+m waitobj 1314 ; esperar la escena del mono de tres cabezas // wait for the three-headed monkey scene
+s 9 1314 ; saltar del carro // jump out
+s 7 1315 ; la cuerda caída (LeChuck devuelve a Guybrush al carro) // the fallen rope
+m waitobj 1305 ; esperar la escena del barco // wait for the ship scene
+s 9 1305 ; saltar del carro // jump out
+s 7 1306 ; el barril de ron // the keg o' rum
+m waitobj 1327 ; esperar la escena de LeChuck // wait for the LeChuck scene
+s 9 1327 ; saltar del carro // jump out
+s 8 1326 ; soplar el polvo del frasco (Mega Monkey) // blow on the flask
+s 7 1326 ; el frasco de aceite // the flask o' oil
+s 5 1315 1326 ; la cuerda en el aceite // the rope in the oil
+m waitobj 1296 ; esperar la escena de la nieve // wait for the snow scene
+s 9 1296 ; saltar del carro // jump out
+s 5 1306 1298 ; el barril en el mono de nieve gigante // the keg on the giant snow monkey
+s 5 1315 1299 ; la cuerda en el barril: una mecha // the rope on the keg: a fuse
+g 1296 ; bajar al pie del camino // walk down to the foot of the path
+m lechuck ; LeChuck llega: pimienta en la cara y estornudo, el final // LeChuck arrives: pepper, a sneeze, the end
