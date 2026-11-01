@@ -180,6 +180,7 @@ void ScummGuide::onVerbClick(int verbid, int x, int y) {
 }
 
 void ScummGuide::onTalk(int actor, const char *text) {
+	_lastTalker = actor;
 	if (!ConfMan.getBool("guide_log_talk"))
 		return;
 	// The message holds escape codes (0xFF code [args]); the sound one (10)
@@ -633,7 +634,7 @@ bool ScummGuide::playMinigame(const Step &st) {
 		return false;
 	}
 	// most minigames are over when the room changes; these two go through several rooms
-	if (_vm->_currentRoom != _minigameRoom && st.name != "piracy" && st.name != "insults")
+	if (_vm->_currentRoom != _minigameRoom && st.name != "piracy" && st.name != "insults" && st.name != "waitobj")
 		return isIdle();
 	if (now < _minigameNext)
 		return false;
@@ -755,7 +756,6 @@ bool ScummGuide::playMinigame(const Step &st) {
 			_minigameNext = now + 500;
 			return false;
 		}
-		_minigameNext = now + 300;
 		if (_vm->isScriptRunning(310)) {
 			Step fight;
 			fight.name = "insults";
@@ -763,6 +763,7 @@ bool ScummGuide::playMinigame(const Step &st) {
 			playMinigame(fight);
 			return false;
 		}
+		_minigameNext = now + 300;
 		if (_vm->VAR(_vm->VAR_VERB_SCRIPT) == 284) {
 			if (_minigameY != room) {
 				_minigameY = room;
@@ -910,17 +911,21 @@ bool ScummGuide::playMinigame(const Step &st) {
 					return true;
 			return false;
 		};
-		if (_vm->isScriptRunning(306) && _vm->readVar(255) == 0 && verbOn(533)) {
+		bool listed = false;
+		for (int id = 500; id <= 539 && !listed; id++)
+			listed = verbOn(id);
+		if (_vm->isScriptRunning(306) && _vm->readVar(255) == 0 && listed) {
 			const int insult = _vm->readVar(445);
-			int verb = 533;   // "Oh, yeah?": the comeback for an insult we cannot answer yet
-			if (insult >= 1 && insult <= 16 && v6->readArray(444, 0, insult) == 1) {
+			// for an insult we cannot answer yet, one of the filler lines (33 and 34, verbs 532 and 533;
+			// 35 gives up the fight and 36 asks again); they are at the end of the list
+			int verb = verbOn(532) ? 532 : 533;
+			if (insult >= 1 && insult <= 16 && v6->readArray(444, 0, insult) == 1)
 				verb = 499 + insult;
-				if (!verbOn(verb)) {
-					// further down the list: scroll a line and look again
-					_vm->writeVar(604, _vm->readVar(604) + 1);
-					_minigameNext = now + 150;
-					return false;
-				}
+			if (!verbOn(verb)) {
+				// further down the list: scroll a line and look again
+				_vm->writeVar(604, _vm->readVar(604) + 1);
+				_minigameNext = now + 150;
+				return false;
 			}
 			if (_minigameX != verb) {
 				// a moment to read the choices first
@@ -938,13 +943,15 @@ bool ScummGuide::playMinigame(const Step &st) {
 			// Insulting (script 307): insult n (1-32, 17-32 are Rottingham's) is verb 499 + n, known when
 			// array443[n] is set and not used yet in this fight while array450[n] is clear. Its comeback is
 			// n (or n - 16). Pick one whose comeback we do not know: if the pirate knows it, we learn it
-			// (only the pirates' own insults, 1-16, teach: they do not answer Rottingham's)
+			// (only the pirates' own insults, 1-16, teach: they do not answer Rottingham's). Best of all one the
+			// pirate knows (array454, chosen for this fight by script 303), as he will answer it.
 			int pick = 0;
-			for (int pass = 0; pass < 2 && !pick; pass++)
+			for (int pass = 0; pass < 3 && !pick; pass++)
 				for (int n = 1; n <= 32 && !pick; n++) {
 					if (v6->readArray(443, 0, n) != 1 || v6->readArray(450, 0, n))
 						continue;
-					if (pass == 1 || (n <= 16 && v6->readArray(444, 0, n) != 1))
+					const bool teaches = n <= 16 && v6->readArray(444, 0, n) != 1;
+					if (pass == 2 || (teaches && (pass == 1 || v6->readArray(454, 0, n) == 1)))
 						pick = n;
 				}
 			if (!pick) {
@@ -974,6 +981,30 @@ bool ScummGuide::playMinigame(const Step &st) {
 		}
 		_minigameNext = now + 200;
 		return false;
+	} else if (st.name == "lechuck") {
+		// The Curse of Monkey Island, the end (room 82): LeChuck (actor 5) catches up with Guybrush at the foot
+		// of the snow monkey and throws him back into the cart unless the pepper mill (1335) is used on him
+		// (1300) as he raises his arms, once his first line is over.
+		if (_minigameStage == 0) {
+			_lastTalker = 0;
+			_minigameStage = 1;
+			return false;
+		}
+		if (_minigameStage == 1) {
+			if (_lastTalker == 5)
+				_minigameStage = 2;
+			return false;
+		}
+		// when his line is over he raises his arms to throw fire: that is the moment
+		if (_vm->_haveMsg)
+			return false;
+		logf("lechuck: the pepper mill");
+		_vm->doSentence(5, 1335, 1300);
+		return true;
+	} else if (st.name == "waitobj") {
+		// "m waitobj <object>": wait, as long as it takes, until that object is in the room and the player has
+		// control (The Curse of Monkey Island's roller coaster passes its scenes in a loop)
+		return _vm->whereIsObject(st.objectA) == WIO_ROOM && isIdle();
 	} else if (st.name == "clickto") {
 		// "m clickto <object> <var> <value>": use the object until the variable (0: the object's own state)
 		// has that value, or the value of variable -<value> (The Dig: the prisms, a light bridge's lens).
@@ -1344,7 +1375,7 @@ void ScummGuide::tick() {
 			if (holds)
 				_untilSeenFalse = true;
 		} else if (u.objectB == 3) {   // "b": a bit variable (scripts' bitvarN)
-			holds = _vm->readVar(0x8000 | u.verb) == u.objectA;
+			holds = _vm->readVar(_vm->_game.version >= 8 ? 0x80000000 | u.verb : 0x8000 | u.verb) == u.objectA;
 			if (holds)
 				_untilSeenFalse = true;   // already set is fine
 		} else if (u.objectB == 2) {   // "a": the actor here and standing still
@@ -1611,8 +1642,8 @@ void ScummGuide::runCommand(const TestEvent &t) {
 				logf("  carried %d '%s' owner %d", _vm->_inventory[i], objectName(_vm->_inventory[i]).c_str(),
 					_vm->getOwner(_vm->_inventory[i]));
 	} else if (t.cmd == "var" || t.cmd == "bit") {
-		// a game variable or a bit variable (bitvarN is 0x8000 + N)
-		const int n = t.cmd == "bit" ? 0x8000 + t.x : t.x;
+		// a game variable or a bit variable (bitvarN is 0x8000 + N, or 0x80000000 + N in SCUMM v8)
+		const int n = t.cmd != "bit" ? t.x : _vm->_game.version >= 8 ? (int)(0x80000000 | t.x) : 0x8000 + t.x;
 		logf("%s %d = %d", t.cmd.c_str(), t.x, _vm->readVar(n));
 	} else if (t.cmd == "array") {
 		// "array A N": a one-dimensional array's elements 0..N

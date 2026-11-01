@@ -141,6 +141,7 @@ private:
 	int _minigameRoom;
 	int _minigameStage, _minigameX, _minigameY;
 	int _talkPending;
+	int _lastTalker = 0;   // the actor of the last line spoken (onTalk)
 	bool _hideCursor = false;   // guide_hide_cursor: for recordings, the game's cursor is not drawn
 	int _saveSections = 0;   // guide_save_sections: the slot of the first section's save (0: none)
 	int _sectionSaved = -1;

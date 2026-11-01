@@ -1,5 +1,5 @@
 # The Dig (Spanish CD) walkthrough. Comments: "Spanish // English".
-== Parte 1: el asteroide Attila // Part 1: the asteroid Attila
+== Parte 1: el asteroide Atila // Part 1: the asteroid Attila
 s 3 40 ; el Pen Ultimate // the Pen Ultimate
 s 3 543 ; llamar a Miles // call Miles
 c 79 127 172 ; el Cerdo: que lo suelte // the Pig: release it
@@ -499,7 +499,7 @@ s 3 352 ; la puerta de la derecha // the right door
 s 3 342 ; la playa // the beach
 s 3 171 ; acercarse a la pieza // go to the part
 s 3 171 ; la pieza del Ojo // the Eye part
-== El final // The ending
+== La máquina de los cristales // The crystal machine
 s 3 170 ; la cascada // the falls
 s 3 341 ; el nido // the nest
 s 3 351 ; salir // leave
@@ -575,7 +575,7 @@ s 3 509 ; el laboratorio // the lab
 V 243 0 ; .
 c 73 220 85 ; hablar con Maggie // talk to Maggie
 c 73 222 172 ; el aparato: Maggie enciende el generador // the device: Maggie starts the generator
-== El Ojo // The Eye
+== El Ojo y el final // The Eye and the ending
 s 3 496 ; salir arriba // go outside, up
 s 3 511 ; el puente: aparece el guardián // the bridge: the guardian appears
 s 3 510 ; el aparato // the device
