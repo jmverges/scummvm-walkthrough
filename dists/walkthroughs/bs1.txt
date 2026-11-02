@@ -1,0 +1,793 @@
+# Broken Sword: The Shadow of the Templars (Spanish CD): the whole game.
+
+== Acto 1: París
+e 65547 ; el periódico de la farola // the newspaper on the lamppost
+e 8388610 ; hacia el café // toward the café
+e 65539 ; las obras: llega la policía y el inspector Rosso // the roadworks: the police and Inspector Rosso
+k 65795 ; "Sí, lo vi."
+k 65807 ; contestar a Rosso // answer Rosso
+w 3 ; Nico llega // Nico arrives
+e 8454144 ; hablar con Nico // talk to Nico
+k 852239 ; el payaso // the clown
+k 655637
+k 262418
+k 917775 ; el payaso otra vez: su teléfono // the clown again: her phone number
+k 721173 ; despedirse // goodbye
+e 65539 ; las obras // the roadworks
+u 1 262147 ; el periódico al obrero // the newspaper to the workman
+e 262148 ; la tienda de la obra // the workmen's tent
+e 262150 ; la caja de herramientas: una herramienta en forma de T // the toolbox: a T-shaped tool
+e 262145 ; volver a la plaza // back to the square
+e 8388611 ; a la derecha // to the right
+e 65538 ; el callejón // the alley
+u 18 131080 ; levantar la tapa de la alcantarilla // lift the manhole cover
+e 131074 ; bajar a la alcantarilla // down into the sewer
+e 393219 ; la nariz roja del payaso // the clown's red nose
+e 393218 ; la segunda alcantarilla // the second sewer
+e 458757 ; el pañuelo // the tissue
+e 458756 ; el trozo de tela de la reja // the scrap of material on the grate
+e 458753 ; subir por la escalera: el patio de la portera // up the ladder: the concierge's courtyard
+k 196894 ; un teléfono // a telephone
+k 131348 ; la camarera // the waitress
+k 196885 ; Plantard
+k 524559 ; el hombre que cogió // the man she caught
+k 590091 ; me tengo que ir: la portera saca a George a la calle // I have to go: she shows George out
+e 262146 ; llamar al portón // knock on the gate
+s 27 ; enseñarle la tarjeta de Rosso // show her Rosso's card
+s 21 ; enseñarle la tela de la alcantarilla // show her the scrap of material
+k 262422 ; la chaqueta // the jacket
+k 327958 ; dónde la llevó // where she took it
+k 393494 ; los bolsillos // the pockets
+k 459030 ; la etiqueta: el teléfono del sastre // the label: the tailor's phone number
+k 590091 ; despedirse // goodbye
+e 262149 ; el teléfono de la obra // the workmen's telephone
+e 5963777 ; llamar a Nico: Rue Jarry 361 // call Nico: her address
+e 262151 ; al mapa // to the map
+e 5242882 ; la Rue Jarry
+e 589831 ; hablar con la florista // talk to the flower seller
+k 262418 ;
+k 327954 ;
+k 393490 ;
+k 524604 ;
+k 590140 ;
+k 655676 ;
+k 721163 ; despedirse // goodbye
+e 589826 ; la puerta: el piso de Nico // the door: Nico's flat
+s 21 ; enseñarle la tela a Nico: la foto del sospechoso // show Nico the material: the suspect's photo
+s 7 ; enseñarle la nariz // show her the nose
+k 327954 ; hablar de ella // about her
+k 721173 ; el caso // the case
+k 393490 ; su padre // her father
+k 459026 ; la universidad // university
+k 524562 ; si tiene novio // a boyfriend
+k 983311 ; la primera víctima del payaso // the clown's first victim
+k 1048847 ; la segunda // the second
+k 1114383 ; los disfraces // the costumes
+k 2031883 ; irse a la tienda de disfraces // off to the costume shop
+e 589825 ; al mapa // to the map
+e 5242883 ; La risée du monde, la tienda de disfraces // the costume shop
+u 10 720903 ; la foto al dueño: el zumbador de regalo // the photo to the owner: a joy buzzer
+u 32 720903 ; el pañuelo: maquillaje de teatro // the tissue: theatrical greasepaint
+u 10 720903 ; otra vez la foto: se llama Khan // the photo again: his name is Khan
+e 720897 ; salir de la tienda // leave the shop
+e 5242881 ; la plaza del café // the café square
+e 262149 ; el teléfono de la obra // the workmen's telephone
+e 5963778 ; llamar a Todryk, el sastre // call Todryk the tailor
+k 393563 ; Khan: el Hôtel Ubu, segunda puerta a la derecha // Khan: Hotel Ubu, second door on the right
+e 262151 ; al mapa // to the map
+e 5242884 ; el Hôtel Ubu
+== El Hôtel Ubu
+e 786433 ; entrar en el hotel // into the hotel
+e 851978 ; hablar con Lady Piermont // talk to Lady Piermont
+s 10 ; la foto: es Moerlin, otro huésped // the photo: it's Moerlin, another guest
+k 786798 ; Moerlin es Khan // Moerlin is Khan
+k 852334 ; cuándo lo vio: dejó papeles en la caja fuerte // when she saw him: papers in the safe
+k 917870 ; los papeles // the papers
+k 983406 ; si ha vuelto // whether he's back
+k 65860 ; sus vacaciones // her holiday
+k 131396 ; su marido // her husband
+k 196932 ; la noche pasada // last night
+k 524607 ; el gángster de la puerta // the gangster outside
+k 1114379 ; despedirse // goodbye
+e 851976 ; hablar con el recepcionista // talk to the clerk
+k 196879 ; el payaso // the clown
+k 524565 ; Plantard
+k 721224 ; la caja fuerte: pide identificación // the safe: he wants ID
+k 917771 ; despedirse // goodbye
+e 851972 ; la llave del gancho: el empleado lo pilla // the key on the hook: the clerk catches George
+e 851978 ; Lady Piermont
+k 327995 ; que distraiga al empleado // to distract the clerk
+e 851972 ; la llave, en cuanto se va el empleado // the key, as soon as the clerk is gone
+e 851970 ; arriba // upstairs
+u 4 917506 ; la llave en la primera puerta de la derecha // the key on the first door on the right
+e 983042 ; abrir la ventana // open the window
+e 983042 ; salir a la cornisa // out onto the ledge
+e 1048577 ; la ventana de al lado: la habitación de Moerlin // the next window: Moerlin's room
+e 1114113 ; intentar salir: llega el asesino y George se esconde // try to leave: the killer comes, George hides
+e 1114118 ; los pantalones: el pase de Moerlin y las cerillas // the trousers: Moerlin's pass and matches
+e 1114113 ; salir de la habitación // leave the room
+e 917505 ; abajo // downstairs
+e 851976 ; el recepcionista // the clerk
+s 17 ; el pase de Moerlin: no cuela // Moerlin's pass: no luck
+k 917771 ; despedirse // goodbye
+e 851978 ; Lady Piermont
+s 17 ; el pase: ella obliga al empleado a darnos el manuscrito // the pass: she makes the clerk hand over the manuscript
+e 851970 ; arriba // upstairs
+u 4 917506 ; la primera habitación // the first room
+e 983042 ; a la cornisa // onto the ledge
+u 19 1048576 ; tirar el manuscrito al callejón // drop the manuscript into the alley
+e 1048578 ; volver dentro // back inside
+e 983041 ; al pasillo // to the corridor
+e 917505 ; abajo // downstairs
+e 851969 ; salir: Flap y Guido registran a George // out: Flap and Guido search George
+e 786434 ; el callejón: el manuscrito, a casa de Nico // the alley: the manuscript, off to Nico's
+== El manuscrito
+k 1179966 ; mirar el manuscrito // look at the manuscript
+k 1638671 ; alguien que entienda: Lobineau, en el museo Crune // an expert: Lobineau, at the Crune museum
+k 65818 ; el toro // the bull
+k 196929 ; el telar // the loom
+k 328002 ; el caballero de la bola de cristal // the knight with the crystal ball
+k 459075 ; la mujer del espejo // the woman with the mirror
+k 852235 ; al museo // off to the museum
+k 1638671 ; qué hará Nico // what Nico will do
+k 1245502 ; el manuscrito otra vez // the manuscript again
+k 852235 ; al museo // off to the museum
+e 589825 ; al mapa // to the map
+e 5242886 ; el museo Crune // the Crune museum
+e 1769474 ; entrar // go in
+l 1835016 ; el trípode: lo encontraron en Irlanda // the tripod: found in Ireland
+e 8519680 ; el guarda // the attendant
+k 393534 ; manuscritos medievales // medieval manuscripts
+k 459017 ; los Templarios // the Templars
+k 524553 ; el cartel del trípode // the tripod's sign
+k 590159 ; el trípode: John Dee
+k 655695 ; quién era John Dee // who John Dee was
+k 721231 ; sus experimentos // his experiments
+k 786767 ; verlo de cerca // a closer look
+k 917841 ; la alarma // the alarm
+k 983377 ; tan sofisticada // so sophisticated
+k 1048843 ; despedirse // goodbye
+e 1835009 ; salir del museo // leave the museum
+e 1769473 ; al mapa // to the map
+e 5242882 ; la Rue Jarry
+e 589826 ; Nico: Lochmarne y el profesor Peagram, George irá a Irlanda // Nico: Lochmarne and Professor Peagram, George will go to Ireland
+k 2031883 ; irse // leave
+e 589825 ; al mapa // to the map
+e 5242889 ; el aeropuerto // the airport
+== Irlanda
+e 5636099 ; Lochmarne
+e 1245190 ; hablar con Maguire // talk to Maguire
+k 65804 ; quién es George // who George is
+k 327951 ; el payaso // the clown
+k 393474 ; el castillo // the castle
+k 459010 ; lo que no cuenta // what he isn't telling
+k 524546 ; una última oportunidad // one last chance
+k 65806 ; los fantasmas // ghosts
+k 131342 ; los ruidos // the noises
+k 196878 ; el fantasma // the ghost
+k 262414 ; una explicación racional // a rational explanation
+k 590085 ; Peagram
+k 655621 ; dónde está // where he is
+k 721157 ; qué buscaba // what he was looking for
+k 852230 ; la excavación // the dig
+k 917766 ; quién trabajó en ella: Sean Fitzgerald // who worked on it: Sean Fitzgerald
+k 1310987 ; despedirse // goodbye
+e 1245185 ; entrar en el pub // into the pub
+e 1310732 ; Ron, el cazador furtivo // Ron the poacher
+k 65793 ; una cerveza // a beer
+k 131330 ; el castillo // the castle
+k 196866 ; los fantasmas // ghosts
+k 262405 ; Peagram
+k 393479 ;
+k 327941 ; dónde está // where he is
+k 590086 ; la excavación // the dig
+k 655630 ; el fantasma // the ghost
+k 721166 ; cómo era // what it looked like
+k 1048843 ; despedirse // goodbye
+y 1310732 167903419 ; Ron deja el alambre en la mesa y va a estornudar // Ron puts the wire on the table and is about to sneeze
+e 1310733 ; el alambre, mientras mira a otro lado // the wire, while he looks away
+e 1310736 ; Sean Fitzgerald
+k 65794 ; el castillo // the castle
+k 131330 ; si lo ha explorado // whether he explored it
+k 327941 ; Peagram
+k 524550 ; un arqueólogo // an archaeologist
+k 393477 ; dónde está // where he is
+k 786689 ; una copa: toma pastillas // a drink: he takes pills
+k 524550 ; si trabajó en la excavación: lo niega // whether he worked at the dig: he denies it
+k 721160 ; la gema // the gem
+k 1048843 ; despedirse // goodbye
+e 1310730 ; Pat Doyle, en la barra // Pat Doyle, at the bar
+k 131330 ; el castillo // the castle
+k 65795 ; el profesor Stobbart // Professor Stobbart
+k 131332 ; los arqueólogos se fueron // the archaeologists left
+k 327942 ; la excavación // the dig
+k 393478 ; quién trabajó en ella // who worked on it
+k 655624 ; la gema // the gem
+k 459015 ; Fitzgerald en la excavación: necesita engrase // Fitzgerald at the dig: he needs lubrication
+k 65793 ; invitarle a una pinta // buy him a pint
+k 983307 ; despedirse // goodbye
+y 1310730 167903266 ; Pat va a beber // Pat is about to drink
+e 1310726 ; la toalla, cuando levanta el brazo para beber // the towel, when he lifts his arm to drink
+e 1310730 ; Pat otra vez // Pat again
+k 524551 ; ya se acuerda: Fitzgerald estaba allí // now he remembers: Fitzgerald was there
+k 983307 ; despedirse // goodbye
+e 1310736 ; Fitzgerald
+k 655622 ; Doyle le vio // Doyle saw him
+k 1048843 ; despedirse // goodbye
+l 1310729 ; salir a la calle // out to the street
+e 1245190 ; Maguire
+k 983302 ; Fitzgerald: Peagram le dio una caja // Fitzgerald: Peagram gave him a box
+k 1048839 ; dónde está // where he is
+k 1114375 ; de qué tiene miedo // what he's scared of
+k 1310987 ; despedirse // goodbye
+e 1245185 ; al pub // into the pub
+e 1310736 ; Fitzgerald
+k 590086 ; Maguire le vio: confiesa // Maguire saw him: he owns up
+k 196866 ; qué encontró Peagram: una capilla escondida // what Peagram found: a hidden chapel
+k 262402 ; la gema // the gem
+k 459013 ; adónde fue Peagram: un paquete para Marquet // where Peagram went: a package for Marquet
+k 852264 ; el paquete // the package
+k 917800 ; la última oportunidad: Jacques Marquet // the last chance: Jacques Marquet
+k 983367 ; yo me ocuparé de Marquet: entra Maguire // I'll deal with Marquet: Maguire bursts in
+l 1310729 ; salir // go out
+k 1179911 ; si se le cayó algo // whether he dropped anything
+k 1245450 ; la cicatriz // the scar
+k 1310987 ; despedirse // goodbye
+e 1245187 ; el interruptor roto: cortar la cerveza // the broken switch: cut off the beer
+e 1245185 ; al pub // into the pub
+e 1310723 ; Mick Leary, el camarero // Mick Leary, the bartender
+k 65796 ; una habitación // a room
+k 65793 ; una cerveza: el tirador está roto // a beer: the pump is broken
+k 131330 ; arreglarlo // fixing it
+k 262415 ; el payaso // the clown
+k 327941 ; Peagram
+k 65795 ; amigo suyo: le debe dinero // his friend: he owes money
+k 393477 ; si se alojó aquí // whether he stayed here
+k 459013 ; su habitación // his room
+k 524551 ; Fitzgerald
+s 17 ; el pase: soy electricista // the pass: I'm an electrician
+k 721163 ; despedirse // goodbye
+u 12 1310728 ; el alambre en el enchufe del lavavasos // the wire in the glass-washer's plug
+e 1310721 ; al sótano, a oscuras // down to the dark cellar
+e 1703939 ; la palanca del cerrojo de la trampilla // the trapdoor bolt lever
+e 1703937 ; arriba // upstairs
+l 1310729 ; salir // go out
+e 1245188 ; la trampilla: viene un hombre preguntando por el paquete // the trapdoor: a man asks about the package
+e 1245188 ; abrir la trampilla // open the trapdoor
+e 1245185 ; al pub // into the pub
+e 1310721 ; al sótano: la gema de Peagram // to the cellar: Peagram's gem
+e 1376259 ; abrir el grifo // turn on the tap
+e 1376257 ; arriba // upstairs
+l 1310729 ; salir // go out
+== El castillo de Lochmarne
+e 1245186 ; el camino del castillo // the path to the castle
+e 1441794 ; el granjero // the farmer
+k 65826 ; su libro // his book
+k 131362 ; la carpintería // woodwork
+k 196898 ; una metáfora // a metaphor
+k 262402 ; el castillo // the castle
+k 327938 ; quién lo construyó // who built it
+k 393474 ; subir por el heno // climbing the hay
+k 459024 ; el coche rojo // the red car
+k 524560 ; el atropello // the accident
+k 655623 ; Fitzgerald es su sobrino // Fitzgerald is his nephew
+k 721159 ; buscarle // looking for him
+k 786695 ; en qué lío anda // the trouble he's in
+k 852231 ; yo vigilo el heno: se va al pub // I'll watch the hay: he goes to the pub
+e 1441795 ; el montón de heno // the haystack
+u 18 1507331 ; la herramienta en la grieta: un escalón // the tool in the crack: a foothold
+e 1507330 ; por encima del muro // over the wall
+e 1572866 ; hacia la escalera: la cabra embiste // to the ladder: the goat charges
+e 1572867 ; el arado: la cuerda de la cabra se enreda // the plowshare: the goat's rope gets caught
+e 1572866 ; bajar a la excavación // down into the dig
+e 1638405 ; el saco de yeso // the bag of plaster
+e 1638404 ; la estatua cae en la arena // the statue falls on the sand
+e 1638404 ; levantarla: cinco agujeros // stand it up: five holes
+u 23 1638407 ; el yeso en los agujeros // the plaster in the holes
+e 1638401 ; subir // climb out
+e 1572865 ; el muro // the wall
+e 1507329 ; bajar del heno // down from the hay
+e 1441793 ; al pueblo // to the village
+e 1245185 ; al pub // into the pub
+e 1310721 ; al sótano // to the cellar
+u 3 1376259 ; mojar la toalla // wet the towel
+e 1376257 ; arriba // upstairs
+l 1310729 ; salir // go out
+e 1245186 ; al castillo, sin pararse: la toalla se seca // to the castle without stopping: the towel dries
+e 1441795 ; el heno // the hay
+e 1507330 ; el muro // the wall
+e 1572866 ; la excavación // the dig
+u 3 1638407 ; la toalla mojada sobre el yeso // the wet towel on the plaster
+e 1638407 ; la copia de la estatua // the statue's copy
+u 23 1638403 ; la copia en los agujeros de la pared // the copy in the holes in the wall
+e 1638402 ; la sala secreta // the secret room
+== De vuelta en París
+s 13 ; la gema a Nico // the gem to Nico
+k 1245502 ; el manuscrito otra vez // the manuscript again
+k 590088 ; la gema del dibujo // the gem in the drawing
+k 852235 ; irse: buscar a Lobineau y a Rosso // leave: look for Lobineau and Rosso
+k 2031883 ; irse // leave
+e 589825 ; al mapa // to the map
+e 5242885 ; la comisaría // the police station
+e 9502720 ; el sargento Moue // Sergeant Moue
+k 262415 ; el payaso // the clown
+k 459021 ; Rosso
+k 65795 ; hablar con él // talk to him
+k 131332 ; ...
+k 65895 ; Rosso: la detección psíquica // Rosso: psychic detection
+k 131431 ; el interrogatorio psíquico // psychic interrogation
+k 196885 ; la víctima // the victim
+k 262421 ; Plantard
+k 327955 ; Flap y Guido // Flap and Guido
+k 393582 ; el asesino // the killer
+k 459013 ; Peagram
+k 524549 ; Molly Peagram
+k 786759 ; Marquet
+k 852235 ; despedirse // goodbye
+e 9502720 ; Moue otra vez // Moue again
+k 655726 ; Khan
+k 786707 ; denunciar a Flap y Guido // report Flap and Guido
+k 852243 ; qué hará // what he'll do
+k 917831 ; Marquet: está en el hospital // Marquet: he's in hospital
+k 983367 ; qué hospital: la clínica Hagenmeyer // which hospital: the Hagenmeyer clinic
+k 1048903 ; el topo de Montmartre // the Mole of Montmartre
+k 1114379 ; despedirse // goodbye
+e 1179649 ; salir // leave
+== La clínica Hagenmeyer
+e 5242887 ; la clínica Hagenmeyer // the Hagenmeyer clinic
+e 2031618 ; entrar // go in
+e 8585216 ; Benoir, el médico en prácticas // Benoir, the intern
+k 262471 ; Marquet
+k 393483 ; despedirse // goodbye
+g 228 262 ; la recepcionista, por encima de Benoir // the receptionist, above Benoir
+k 65863 ; ver a Marquet // to see Marquet
+k 65796 ; una investigación privada // a private investigation
+k 131399 ; antes del funeral // before the funeral
+k 196883 ; Flap y Guido // Flap and Guido
+k 262415 ; el payaso // the clown
+s 17 ; el pase de Moerlin: Marquet preguntaba por él // Moerlin's pass: Marquet was asking for him
+k 328021 ; la enfermera Grendel // Nurse Grendel
+k 393557 ; por qué la toleran // why they put up with her
+k 459093 ; dónde está su ala // where her ward is
+k 524555 ; despedirse // goodbye
+e 2097154 ; el pasillo de la izquierda: Sam y su pulidora // the left corridor: Sam and his floor polisher
+e 2162689 ; Sam
+k 65863 ; Marquet
+k 131347 ; personajes sospechosos // suspicious characters
+k 196954 ; el Sr. Brillante // Mr. Shiny
+k 262490 ; el cariño a la pulidora // his love for the machine
+k 393557 ; la enfermera Grendel // Nurse Grendel
+k 590091 ; despedirse // goodbye
+e 2162690 ; desenchufar la pulidora // unplug the polisher
+e 2162693 ; el armario, mientras Sam la arregla: la bata de médico // the cupboard while Sam fixes it: a doctor's coat
+e 2162696 ; al ala J-Dos: la enfermera y el paciente de la cama dos // to ward J-Two: the nurse and the patient in bed two
+k 65863 ; dónde está Marquet: en aislamiento // where Marquet is: in isolation
+k 131399 ; sus visitas // his visitors
+k 196875 ; despedirse // goodbye
+e 2228229 ; cruzar el ala: Eric quiere que le tomen la tensión // cross the ward: Eric wants his blood pressure taken
+e 2228225 ; al pasillo // to the corridor
+e 2162698 ; a recepción // to reception
+e 2097157 ; el doctor Hagenmeyer: George tendrá que cuidar de Benoir // Dr. Hagenmeyer: George must look after Benoir
+k 327947 ; despedirse // goodbye
+e 2097154 ; al ala, con Benoir // to the ward, with Benoir
+k 65877 ; la enfermera Grendel // Nurse Grendel
+k 131413 ; un monstruo // a monster
+k 196935 ; Marquet
+k 262471 ; qué le pasa // what's wrong with him
+k 327947 ; despedirse // goodbye
+u 24 8585216 ; el tensiómetro a Benoir // the blood pressure gauge to Benoir
+e 8585216 ; Benoir
+k 65891 ; el medidor // the gauge
+k 131421 ; que se lo tome a Eric // to take Eric's
+e 2228234 ; la habitación de Marquet // Marquet's room
+k 1638671 ; qué hará Nico // what Nico will do
+k 1704302 ; los asesinatos: las víctimas estuvieron en París en julio // the murders: the victims were in Paris in July
+k 1769838 ; quién mató a Marquet // who killed Marquet
+k 1835375 ; los Hashshashin // the Hashshashin
+k 2031883 ; irse // leave
+e 589825 ; al mapa // to the map
+e 5242886 ; el museo Crune: va a cerrar // the Crune museum: closing time soon
+e 1769474 ; entrar: el guarda habla del fantasma // go in: the attendant talks about the ghost
+k 1048843 ; despedirse // goodbye
+e 1835024 ; André Lobineau
+k 65871 ; van a robar el trípode // the tripod will be stolen
+k 131407 ; que me lo preste // lend it to me
+k 196926 ; el manuscrito // the manuscript
+k 590098 ; lo tiene una amiga // a friend has it
+k 655634 ; la dirección de Nico // Nico's address
+k 917769 ; los Templarios // the Templars
+k 983305 ; su nombre // their name
+k 1048841 ; su riqueza // their wealth
+k 1114377 ; el tesoro // the treasure
+k 1573229 ; Montfaucon
+k 1638765 ; dónde estaba // where it was
+k 1704197 ; Peagram
+k 1769839 ; los Hashshashin // the Hashshashin
+k 1835375 ; su nombre // their name
+k 1900911 ; cómo trabajaban // how they worked
+s 13 ; la gema // the gem
+s 20 ; las cerillas: Alamut // the matches: Alamut
+k 1966347 ; despedirse // goodbye
+g 150 330 ; junto a la vara de la ventana // by the window rod
+z 8519680 8 ; el guarda, al otro lado y de espaldas // the attendant at the far side, looking away
+e 1835023 ; la vara: abrir la ventana // the rod: open the window
+e 1835020 ; meterse en el sarcófago mientras la cierra // into the sarcophagus while he closes it
+E 1900547 ; de noche: el tótem sobre Flap y Guido // at night: the totem pole onto Flap and Guido
+== El trípode
+k 65801 ; los Templarios: Felipe el Hermoso // the Templars: Philip the Fair
+k 1900911 ; los Hashshashin // the Hashshashin
+k 2031883 ; irse // leave
+e 589825 ; al mapa // to the map
+== Montfaucon
+e 5242888 ; Montfaucon
+e 2359301 ; el malabarista // the juggler
+k 65887 ; dónde aprendió // where he learned
+k 131423 ; no parece difícil // it doesn't look hard
+k 262447 ; intentarlo // giving it a go
+k 327947 ; despedirse // goodbye
+e 2359302 ; el gendarme // the gendarme
+k 65886 ; el tráfico // the traffic
+k 262447 ; los Templarios // the Templars
+k 393567 ; el malabarista // the juggler
+k 459103 ; la licencia // the license
+s 7 ; la nariz roja: un payaso no hace el ridículo // the red nose: a clown isn't a fool
+k 524555 ; despedirse // goodbye
+e 2359301 ; el malabarista // the juggler
+k 262447 ; los Templarios // the Templars
+k 196959 ; otra vez, con la nariz: se van los dos // again, with the nose: they both leave
+u 18 2359309 ; la herramienta en la alcantarilla // the tool on the manhole
+e 2359298 ; bajar // go down
+e 2424839 ; el arco de la derecha // the rightmost arch
+u 18 2424839 ; romper el yeso: una palanca // break the plaster: a lever
+e 2424845 ; mirar de cerca // a closer look
+e 2424845 ; tirar de la palanca // pull the lever
+e 2424845 ; el mecanismo atascado // the jammed mechanism
+e 2424835 ; subir a la barca // into the boat
+e 2424843 ; el gancho // the hook
+e 2424840 ; bajar la cadena // lower the chain
+e 2424843 ; coger el gancho // take the hook
+e 2424845 ; engancharlo al engranaje // hook it to the cog
+e 2424835 ; a la barca // into the boat
+e 2424840 ; el torno: arranca la pieza // the winch: it pulls the part out
+e 2424839 ; la sala siguiente // the next room
+e 2490371 ; la grieta: la reunión de los neotemplarios // the crack: the Neo-Templars' meeting
+e 2490371 ; otra vez: el final de la reunión // again: the end of the meeting
+e 2490370 ; bajar la escalera // down the stairs
+u 36 2555906 ; el trípode en el pedestal // the tripod on the pedestal
+u 13 2555906 ; la gema en el trípode: MARIB // the gem on the tripod: MARIB
+k 2031883 ; irse: ¿ir a Marib? // leave: go to Marib?
+e 589825 ; al mapa // to the map
+e 5242889 ; el aeropuerto // the airport
+== Siria
+e 5636098 ; Marib
+e 2949121 ; las escaleras del fondo // the steps at the far end
+e 3080198 ; el vendedor de alfombras // the carpet seller
+s 20 ; las cerillas: ¡Alamut! // the matches: Alamut!
+e 3080197 ; a la sombra // into the shade
+e 3080194 ; el Club Alamut // the Club Alamut
+e 3211266 ; el aseo: cerrado // the washroom: locked
+l 3211268 ; el letrero // the sign
+e 3211272 ; Ultar
+k 131378 ; el club // the club
+k 262409 ; los Templarios // the Templars
+k 459059 ; el letrero: falta la escobilla // the sign: the toilet brush is missing
+k 655627 ; despedirse // goodbye
+e 3211265 ; salir // leave
+e 3080193 ; a la calle // to the street
+l 2949131 ; Arto engrasa los pinchos con la escobilla del váter // Arto greases the kebabs with the toilet brush
+e 2949131 ; Arto, el de los pinchos: engrasa con la escobilla // Arto the kebab man: he greases with the brush
+k 131339 ; despedirse // goodbye
+e 2949132 ; Nejo, el chaval del puesto // Nejo, the boy at the stall
+k 65838 ; su puesto // his stall
+k 131374 ; los libros // the books
+k 196906 ; su inglés // his English
+k 524553 ; los Templarios // the Templars
+k 590127 ; Roger Moore
+k 655663 ; la orden de caballeros // the order of knights
+k 721218 ; los cruzados // the crusaders
+k 786736 ; Arto
+k 852272 ; la escobilla de Arto // Arto's toilet brush
+k 983325 ; qué quiere a cambio // what he wants for it
+k 917808 ; ¿me ayudas? // will you help me?
+s 5 ; la bola roja del malabarista // the juggler's red ball
+k 65795 ; sí, en serio // yes, I mean it
+k 1179987 ; qué significa la frase // what the phrase means
+k 1245451 ; despedirse // goodbye
+e 2949131 ; Arto
+k 65875 ; la frase: Arto persigue a George // the phrase: Arto chases George
+e 3080193 ; a la calle // to the street
+e 2949132 ; Nejo: la escobilla // Nejo: the toilet brush
+k 1245451 ; despedirse // goodbye
+e 2949121 ; las escaleras // the steps
+e 3080194 ; el club // the club
+u 33 3211271 ; la escobilla al encargado: la llave del aseo // the brush to the manager: the washroom key
+u 28 3211266 ; abrir el aseo // unlock the washroom
+u 28 3276805 ; abrir el toallero con la llave // unlock the towel dispenser with the key
+e 3276806 ; la toalla // the towel
+e 3276801 ; salir del aseo // leave the washroom
+e 3211265 ; salir del club // leave the club
+e 3080193 ; a la calle // to the street
+e 2949136 ; acariciar al gato // stroke the cat
+e 2949134 ; el timbre: el gato tira la estatuilla // the bell: the cat knocks the statuette over
+e 2949137 ; la estatuilla rota // the broken statuette
+t 32 6 ; el pañuelo con maquillaje: parece mármol antiguo // the greasepaint tissue: it looks like old marble
+e 8781824 ; Duane Henderson, el turista // Duane Henderson, the tourist
+k 65846 ; lejos de casa // far from home
+k 262426 ; los toros // bulls
+k 131382 ; su trabajo // his job
+k 196919 ; su mujer // his wife
+k 393539 ; la pintura del espejo // the mirror painting
+k 459055 ; los Templarios // the Templars
+k 328002 ; el caballero de la bola // the knight with the crystal ball
+k 524627 ; la frase en árabe // the Arabic phrase
+k 590128 ; Arto
+k 655658 ; Nejo
+k 721181 ; Ultar
+s 14 ; la estatuilla: cincuenta dólares // the statuette: fifty dollars
+k 852235 ; despedirse // goodbye
+e 2949121 ; las escaleras // the steps
+e 3080194 ; el club // the club
+e 3211272 ; Ultar
+s 10 ; la foto: el asesino preguntaba por Stobbart y Klausner // the photo: the killer asked about Stobbart and Klausner
+k 65875 ; la frase en árabe // the Arabic phrase
+k 196906 ; Nejo
+k 393521 ; los americanos // the Americans
+k 524597 ; la colina Bull's Head // Bull's Head hill
+k 65795 ; vámonos: cincuenta dólares // let's go: fifty dollars
+k 65795 ; pagar // pay
+k 459060 ; su taxi: la correa rota // his taxi: the broken fan belt
+s 35 ; la toalla como correa // the towel as a fan belt
+== Bull's Head
+e 3538949 ; el arbolito: un palo // the young tree: a stick
+t 39 15 ; atar la toalla al palo // tie the towel to the stick
+u 22 3538946 ; el palo en la grieta del borde // the stick in the crack at the edge
+e 3538946 ; bajar por la toalla // climb down the towel
+e 3538950 ; el nicho: una argolla // the niche: a metal ring
+e 3538950 ; tirar de la argolla: se abre la roca // pull the ring: the rock opens
+e 3538948 ; entrar en la cueva // into the cave
+l 3604486 ; el cadáver de Klausner // Klausner's body
+e 3604486 ; registrarlo: una lente // search it: a lens
+l 3604481 ; el Baphomet, la cabeza de tres caras // Baphomet, the three-faced head
+l 3604482 ; la inscripción en latín: llega Khan // the Latin inscription: Khan arrives
+k 65848 ; la verdad: Klausner está muerto // the truth: Klausner is dead
+k 65848 ; la verdad: llevaba una lente // the truth: he had a lens
+k 65848 ; la verdad: la inscripción // the truth: the inscription
+k 65804 ; morir como un hombre // die like a man
+U 26 3538952 ; darle la mano con el zumbador // shake his hand with the joy buzzer
+E 3538953 ; saltar al vacío, al camión de Ultar // jump off, onto Ultar's truck
+== De Siria a España
+k 2031883 ; irse // leave
+e 589825 ; al mapa // to the map
+e 5242886 ; el museo Crune // the Crune museum
+e 1769474 ; entrar // go in
+e 1835024 ; Lobineau: han robado el trípode // Lobineau: the tripod was stolen
+k 262462 ; el manuscrito // the manuscript
+k 327998 ; qué historia cuenta // what story it tells
+k 393534 ; las imágenes: el caballero es español // the pictures: the knight is Spanish
+k 459070 ; el escudo: los Vasconcellos // the coat of arms: the Vasconcellos family
+k 524606 ; un mapa del tesoro // a treasure map
+k 1179996 ; Felipe el Hermoso // Philip the Fair
+k 1245532 ; cómo acabó con ellos // how he destroyed them
+k 1311068 ; su plan // his plan
+k 1376604 ; los arrestos // the arrests
+k 1442140 ; las pruebas: Baphomet // the evidence: Baphomet
+k 1966347 ; despedirse // goodbye
+e 1835009 ; salir // leave
+e 1769473 ; al mapa // to the map
+e 5242889 ; el aeropuerto // the airport
+== España
+e 5636101 ; España // Spain
+e 3735558 ; López, el jardinero // Lopez the gardener
+k 65862 ; la condesa // the countess
+k 65795 ; la lotería // the lottery
+k 131337 ; los Templarios // the Templars
+k 196875 ; despedirse // goodbye
+l 3735561 ; la manguera // the hose
+u 24 3735561 ; el tensiómetro en la manguera: se para // the gauge on the hose: it stops
+e 3735557 ; entrar en la casa mientras López mira la manguera // into the house while Lopez checks the hose
+e 3932168 ; el pasillo del fondo: los perros ladran // the back passage: the dogs bark
+E 3932162 ; esconderse detrás de la armadura // hide behind the suit of armor
+e 3932169 ; arriba, con la condesa // upstairs, to the countess
+k 65801 ; los Templarios y su familia // the Templars and her family
+k 131337 ; algo del siglo XIV: el ajedrez // something from the 14th century: the chess set
+k 196938 ; ver el ajedrez: al mausoleo // see the chess set: to the mausoleum
+e 3866629 ; la Biblia del atril: un tablero debajo // the Bible on the lectern: a board underneath
+e 3866629 ; el tablero de cristal // the glass chessboard
+e 3866626 ; la condesa // the countess
+k 65801 ; los Templarios // the Templars
+k 196939 ; sus antepasados // her ancestors
+k 262476 ; el cirio // the big candle
+k 328013 ; la Virgen // the Virgin
+k 393550 ; el tablero de cristal // the glass chessboard
+k 459086 ; las juntas hechas a propósito // the deliberate joints
+k 131402 ; esto es lo que señala el manuscrito // this is what the manuscript points to
+k 524553 ; la maldición, mientras López trae el ajedrez // the curse, while Lopez fetches the chess set
+e 4063233 ; el ajedrez: mover las blancas // the chess puzzle: move the white pieces
+e 4063236 ;
+e 4063237 ;
+e 4063233 ;
+e 4063236 ;
+e 4063233 ;
+e 4063237 ;
+e 4063237 ;
+g 318 130 ;
+g 318 320 ; el rey a la tercera casilla // the king to the third square
+g 318 230 ;
+g 318 140 ; el caballo... // the knight...
+g 318 255 ; ...a la segunda // ...to the second
+g 318 400 ; el alfil... // the bishop...
+g 318 165 ; ...arriba: jaque mate, el cáliz // ...to the top: checkmate, the chalice
+k 2031883 ; irse // leave
+== La iglesia de Montfaucon
+e 589825 ; al mapa // to the map
+e 5242888 ; Montfaucon
+e 2359299 ; la iglesia // the church
+e 3145743 ; el ayudante del párroco // the priest's helper
+k 65888 ; cuánto lleva aquí // how long he's been here
+k 131424 ; la historia de la iglesia // the church's history
+k 196960 ; el candelabro // the candlestick
+k 262447 ; los Templarios // the Templars
+s 31 ; el cáliz: se ofrece a limpiarlo // the chalice: he offers to clean it
+k 65795 ; sí, gracias // yes, thanks
+l 3145731 ; la estatua: un bastón y un pergamino // the statue: a staff and a scroll
+l 3145733 ; el pergamino // the scroll
+u 37 3145733 ; la lente en el pergamino: un templario en la hoguera, 1314 // the lens on the scroll: a Templar at the stake, 1314
+e 3145743 ; el cáliz limpio: un caballo alado // the clean chalice: a winged horse
+k 328033 ; la vidriera del hombre quemado // the burning man window
+k 459019 ; despedirse // goodbye
+e 3145739 ; la tumba del Pegaso: Don Carlos // the Pegasus tomb: Don Carlos
+e 3145729 ; salir // leave
+e 2359297 ; al mapa // to the map
+e 5242886 ; el museo Crune // the Crune museum
+e 1769474 ; entrar // go in
+e 1835024 ; Lobineau
+k 786770 ; la estatua de Siria: Baphomet // the statue in Syria: Baphomet
+k 852306 ; más sobre Baphomet: la excavación // more about Baphomet: the dig
+k 1507676 ; el tesoro de los Templarios // the Templars' treasure
+k 1966347 ; despedirse // goodbye
+== El Institut Nerval
+e 1835009 ; salir // leave
+e 1769473 ; al mapa // to the map
+e 5242890 ; el Institut Nerval // the Institut Nerval
+e 2621450 ; el pintor // the painter
+k 65896 ; su trabajo // his work
+k 262447 ; los Templarios // the Templars
+k 131432 ; qué hace aquí // what he's doing here
+k 655627 ; despedirse // goodbye
+e 2621442 ; la verja: al sótano // the gate: down to the basement
+e 2686979 ; el aseo: cerrado // the washroom: locked
+e 2686981 ; el guarda // the guard
+k 65898 ; qué hace // what he does
+k 131434 ; qué vigila // what he guards
+k 262508 ; el aseo: las llaves // the washroom: the keys
+k 393519 ; los Templarios // the Templars
+k 459017 ; más // more
+k 524555 ; despedirse // goodbye
+u 44 2686979 ; abrir el aseo // unlock the washroom
+e 2818057 ; el lavabo: el jabón y el grifo // the sink: the soap and the tap
+e 2818059 ; el jabón // the soap
+t 44 29 ; la llave grande en el jabón // the big key in the soap
+t 23 45 ; el yeso en el molde // the plaster in the mold
+u 46 2818060 ; el grifo que gotea: una llave de yeso // the dripping tap: a plaster key
+e 2818049 ; salir del aseo // leave the washroom
+u 44 2686981 ; devolver las llaves // give the keys back
+e 2686977 ; arriba // upstairs
+u 42 2621444 ; la llave en la pintura: el pintor no deja // the key in the paint: the painter won't allow it
+e 2621442 ; al sótano // down to the basement
+e 2686980 ; el teléfono: Nico distraerá al pintor // the phone: Nico will distract the painter
+e 2686977 ; arriba // upstairs
+e 2621450 ; el pintor // the painter
+k 459038 ; tiene una llamada // there's a call for him
+u 42 2621444 ; pintar la llave de yeso // paint the plaster key
+e 2621442 ; al sótano // down to the basement
+l 2686983 ; el termostato, al máximo // the thermostat, turned all the way up
+e 2686981 ; el guarda // the guard
+k 196971 ; el calor: los guantes // the heat: his gloves
+k 328044 ; el aseo otra vez: las llaves // the washroom again: the keys
+k 524555 ; despedirse // goodbye
+e 2686983 ; apagar la calefacción // turn the heating off
+u 44 2686979 ; al aseo // into the washroom
+t 43 44 ; cambiar la llave falsa por la buena // swap the fake key for the real one
+e 2818049 ; salir // leave
+u 44 2686981 ; devolver las llaves, con guantes no nota nada // give the keys back, with gloves on he notices nothing
+e 2686980 ; llamar a Nico: que llame al guarda // call Nico: she'll call the guard
+u 16 2686978 ; la puerta de la excavación // the dig door
+u 8 2752516 ; el cáliz sobre el mosaico: una iglesia // the chalice over the mosaic: a church
+k 2031883 ; irse // leave
+== España otra vez
+e 589825 ; al mapa // to the map
+e 5242889 ; el aeropuerto // the airport
+e 5636101 ; España // Spain
+e 3735557 ; a la casa // into the house
+e 3932173 ; el espejo de la despensa de López // the mirror from Lopez's pantry
+e 3932169 ; arriba: la condesa // upstairs: the countess
+k 65876 ; la tumba de Don Carlos // Don Carlos's tomb
+k 131398 ; las citas bíblicas de la tumba // the Bible references on the tomb
+k 262411 ; despedirse // goodbye
+e 3670019 ; abajo // downstairs
+e 3932167 ; salir // go out
+e 3735568 ; al mausoleo // to the mausoleum
+e 3801090 ; entrar // go in
+l 3866628 ; el cirio // the big candle
+e 3866630 ; la vara del gancho // the hook pole
+e 3866636 ; cerrar la ventana // close the window
+u 32 3866630 ; el pañuelo en el gancho // the tissue on the hook
+g 122 283 ; prenderlo en la vela del atril // light it at the lectern candle
+e 3866628 ; encender el cirio: una llave de piedra // light the big candle: a stone key
+e 3866629 ; la Biblia // the Bible
+e 3866625 ; salir // leave
+e 3801089 ; al jardín // to the garden
+e 3735557 ; a la casa // into the house
+e 3932169 ; arriba // upstairs
+u 40 3670017 ; la Biblia a la condesa: las citas // the Bible to the countess: the references
+k 262411 ; despedirse // goodbye
+e 3670019 ; abajo // downstairs
+e 3932167 ; salir // go out
+e 3735558 ; López
+k 65878 ; un pozo // a well
+k 131415 ; dónde // where
+k 196951 ; cómo encontrarlo: buscar agua // how to find it: dowsing
+k 393542 ; la condesa // the countess
+k 459097 ; el cáliz // the chalice
+k 524555 ; despedirse // goodbye
+l 3735564 ; un avellano // a hazel tree
+e 3735564 ; una vara de avellano // a hazel twig
+u 2 3735558 ; la vara a López: el pozo // the twig to Lopez: the well
+e 3997699 ; la cabeza de león: un colmillo suelto // the lion's head: a loose fang
+e 3997699 ; tirar del colmillo // pull the fang
+G 100 300 ; apartarse enseguida // get out of the way at once
+e 3997701 ; la pared descubierta // the exposed wall
+u 38 3997700 ; el espejo en el rayo de sol: un agujero // the mirror in the sunbeam: a hole
+e 3997701 ; la cerradura // the keyhole
+u 30 3997701 ; la llave de piedra // the stone key
+e 3997701 ; entrar // go in
+== El tren
+e 5636097 ; Escocia // Scotland
+k 196882 ; a Nico: lo que quería decirle // to Nico: what he wanted to tell her
+k 262418 ; que duerma: la anciana ofrece algo // she should sleep: the old lady offers something
+k 327947 ; gracias // thanks
+e 4259843 ; salir: llega un pasajero // go out: a passenger comes in
+e 4259843 ; al pasillo // to the corridor
+g 45 300 ; a la izquierda // to the left
+g 45 300 ;
+g 45 300 ;
+g 45 300 ;
+g 45 300 ; Guido fumando // Guido smoking
+g 45 300 ; el revisor es Eklund // the conductor is Eklund
+g 600 300 ; de vuelta por el pasillo // back along the corridor
+g 600 300 ;
+e 4128770 ; volver al compartimento: Nico no está // back to the compartment: Nico is gone
+e 4259843 ; al pasillo // to the corridor
+e 4128772 ; el compartimento de al lado // the next compartment
+e 4325377 ; Geordie
+k 65793 ; su bebida // his drink
+k 131391 ; necesito ayuda // I need help
+k 196882 ; Nico // Nico
+k 262411 ; despedirse // goodbye
+e 4325380 ; abrir la ventana // open the window
+e 4325380 ; subir al techo // climb onto the roof
+e 4128781 ; por el techo a la derecha // along the roof to the right
+e 4128781 ; hasta el furgón // to the baggage car
+e 4128787 ; bajar al furgón // down into the baggage car
+E 4521989 ; el freno de emergencia, enseguida // the emergency brake, right away
+k 65845 ; a Khan: cómo escapó // to Khan: how he escaped
+k 131339 ; despedirse: muere // goodbye: he dies
+e 4521990 ; intentar salir: desatar a Nico // try to leave: untie Nico
+e 4521988 ; Nico
+k 65810 ; cómo está // how she is
+k 131346 ; el besito // the little kiss
+k 196875 ; despedirse // goodbye
+e 4521990 ; salir del furgón // leave the baggage car
+== Escocia
+e 4653057 ; la torre // the tower
+g 385 380 ; la manivela: se rompe // the handle: it breaks off
+g 372 360 ; el engranaje y el eje // the cog and spindle
+e 4718593 ; los escombros: una pipa // the rubble: a pipe
+e 4718593 ; una moneda // a coin
+e 4718593 ; otro engranaje // another cog
+u 47 4718596 ; un engranaje en un ojo del demonio // a cog in the demon's eye
+u 48 4718596 ; el otro ojo // the other eye
+u 49 4718596 ; la manivela en la boca: se abre la cripta // the handle in the mouth: the crypt opens
+e 4718594 ; la cripta // the crypt
+e 4784133 ; la salida del fondo: los neotemplarios // the far exit: the Neo-Templars
+E 4784130 ; la antorcha, enseguida // the torch, right away

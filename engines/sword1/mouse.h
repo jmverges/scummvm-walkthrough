@@ -68,6 +68,7 @@ class ResMan;
 class ObjectMan;
 
 class Mouse {
+	friend class SwordGuide;
 public:
 	Mouse(OSystem *system, ResMan *pResMan, ObjectMan *pObjMan);
 	~Mouse();

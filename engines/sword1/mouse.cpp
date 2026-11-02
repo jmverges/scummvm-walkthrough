@@ -24,6 +24,7 @@
 #include "graphics/cursorman.h"
 
 #include "sword1/mouse.h"
+#include "sword1/guide.h"
 #include "sword1/menu.h"
 #include "sword1/screen.h"
 #include "sword1/logic.h"
@@ -302,7 +303,8 @@ void Mouse::setPointer(uint32 resId, uint32 rate) {
 
 	createPointer(resId, _currentLuggageId);
 
-	if ((resId == 0) || (!(Logic::_scriptVars[MOUSE_STATUS] & 1) && (!_mouseOverride))) {
+	if ((resId == 0) || (!(Logic::_scriptVars[MOUSE_STATUS] & 1) && (!_mouseOverride)) ||
+		(SwordEngine::_guide && SwordEngine::_guide->hidesCursor())) {
 		CursorMan.showMouse(false);
 	} else {
 		animate();

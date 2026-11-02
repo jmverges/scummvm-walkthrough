@@ -25,6 +25,7 @@
 #include "common/translation.h"
 
 #include "sword1/logic.h"
+#include "sword1/guide.h"
 #include "sword1/text.h"
 #include "sword1/sound.h"
 #include "sword1/eventman.h"
@@ -1227,6 +1228,8 @@ int Logic::fnISpeak(Object *cpt, int32 id, int32 cdt, int32 textNo, int32 spr, i
 		_resMan->resClose(cpt->o_resource);
 	}
 
+	if (SwordEngine::_guide)
+		SwordEngine::_guide->onSpeak(id, textNo);
 	SwordEngine::_systemVars.speechRunning = 0;
 	if (SwordEngine::_systemVars.playSpeech)
 		_sound->startSpeech(textNo >> 16, textNo & 0xFFFF); // This will set speechRunning

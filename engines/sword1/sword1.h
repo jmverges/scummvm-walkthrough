@@ -67,6 +67,7 @@ class ResMan;
 class ObjectMan;
 class Menu;
 class Control;
+class SwordGuide;
 
 struct SystemVars {
 	bool             runningFromCd;
@@ -103,6 +104,7 @@ struct SystemVars {
 
 class SwordEngine : public Engine {
 	friend class SwordConsole;
+	friend class SwordGuide;
 	friend class Screen;
 	friend class Control;
 
@@ -110,6 +112,7 @@ public:
 	SwordEngine(OSystem *syst, const ADGameDescription *gameDesc);
 	~SwordEngine() override;
 	static SystemVars _systemVars;
+	static SwordGuide *_guide;	// the walkthrough player
 	void reinitialize();
 
 	uint32 _features;

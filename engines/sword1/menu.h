@@ -63,6 +63,7 @@ private:
 };
 
 class Menu {
+	friend class SwordGuide;
 public:
 	Menu(Screen *pScreen, Mouse *pMouse);
 	~Menu();

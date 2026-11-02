@@ -166,6 +166,34 @@ the file named by `guide_control` (`play`, `stop`, `goto`, `save`, `load`, `obje
 places where Discworld got stuck in ScummVM: Rincewind back up from the palace dungeon in act 3 stood inside a
 blocking polygon and could not move, and Mambo's walk in Lady Ramkin's cage found no path at the cage's edge.
 
+## Broken Sword (sword1)
+
+Broken Sword: The Shadow of the Templars has its own player too (`engines/sword1/guide.cpp`). The game has no verbs
+either: a left click on something walks there and uses it or talks, a right click looks, an item from the bar at
+the top is used on what you click, and conversations are icons in the bar at the bottom. The guide moves the mouse
+and clicks the way a player would, one step at a time when George is waiting; a click on something that is off a
+scrolling screen first walks George toward it, and a click on someone behind someone else finds a point where only
+that person is under the mouse.
+
+```
+e <object> / l <object>       a left click (walk, use, talk) / a right click (look)
+i <item>                      take an item from the bar at the top
+u <item> <object>             use an item on something
+t <item> <item>               use an item on another item
+k <subject>                   a subject in a conversation (skipped if the conversation went another way)
+s <item>                      in a conversation, show an item
+g <x> <y>                     a click on the screen (walk there, or a spot inside something)
+a <screen> / n <var> <value>  wait until the game is on that screen / a script variable has that value
+y <object> <anim>             wait until someone plays that animation (Ron sneezing in the pub)
+z <object> <dirs>             wait until someone stands facing one of those directions (the museum attendant)
+w <seconds>                   wait
+E, U, S, G, I                 the same as e, u, s, g, i, as soon as the player has control: the few places where
+                              the game gives a couple of seconds to act (Khan's handshake, the lion's fang,
+                              the brake in the train, the torch at the end)
+```
+
+The whole game is in [dists/walkthroughs/bs1.txt](dists/walkthroughs/bs1.txt) (Spanish CD, Windows version).
+
 ## Building
 
 The Flatpak: [dists/flatpak-walkthrough](dists/flatpak-walkthrough) is the Flathub recipe for ScummVM
@@ -202,7 +230,10 @@ On the Vita it needs `ur0:data/libshacccg.suprx`, as every vitaGL app does.
 - **The Dig** (CD, Spanish voices and text): the whole game to the good ending in one run (2 h 33 min).
   [Videos](https://www.youtube.com/playlist?list=PLdaVV4BLBwS8), from 3 December 2026.
 - **The Curse of Monkey Island** (CD, Spanish voices and text, Mega Monkey): the whole game to the end credits
-  ([dists/walkthroughs/comi.txt](dists/walkthroughs/comi.txt)); the one-run recording is under way.
+  ([dists/walkthroughs/comi.txt](dists/walkthroughs/comi.txt)).
+  [Videos](https://www.youtube.com/playlist?list=PLUmwk1Mn6GFY), from 7 December 2026.
+- **Broken Sword: The Shadow of the Templars** (CD, Spanish voices and text): the whole game to the end credits
+  ([dists/walkthroughs/bs1.txt](dists/walkthroughs/bs1.txt)).
 
 Other games are next. The sister project, the [Hollywood Monsters port](https://github.com/jmverges/hollywood-monsters-port),
 has its own walkthrough player; its videos are on the same channel

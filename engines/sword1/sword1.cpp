@@ -20,6 +20,7 @@
  */
 
 #include "sword1/sword1.h"
+#include "sword1/guide.h"
 
 #include "sword1/resman.h"
 #include "sword1/objectman.h"
@@ -43,6 +44,7 @@
 namespace Sword1 {
 
 SystemVars SwordEngine::_systemVars;
+SwordGuide *SwordEngine::_guide = nullptr;
 
 SwordEngine::SwordEngine(OSystem *syst, const ADGameDescription *gameDesc)
 	: Engine(syst) {
@@ -76,6 +78,8 @@ SwordEngine::SwordEngine(OSystem *syst, const ADGameDescription *gameDesc)
 }
 
 SwordEngine::~SwordEngine() {
+	delete _guide;
+	_guide = nullptr;
 	delete _control;
 	delete _logic;
 	delete _menu;
@@ -103,6 +107,7 @@ Common::Error SwordEngine::init() {
 	_menu = new Menu(_screen, _mouse);
 	_logic = new Logic(this, _objectMan, _resMan, _screen, _mouse, _sound, _menu, _system, _mixer);
 	_mouse->useLogicAndMenu(_logic, _menu);
+	_guide = new SwordGuide(this);
 	_mouse->useScreenMutex(&_screen->_screenAccessMutex);
 
 	// Init the virtual mouse coordinates to be at the center of the screen
@@ -1059,6 +1064,8 @@ uint8 SwordEngine::mainLoop() {
 				_ticker -= 1000;
 			}
 
+			if (_guide)
+				_guide->tick(_mouseCoord, _mouseState);
 			_mouse->engine(_mouseCoord.x, _mouseCoord.y, _mouseState);
 
 			checkKeys();

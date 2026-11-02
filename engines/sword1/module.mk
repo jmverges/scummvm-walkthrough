@@ -4,6 +4,7 @@ MODULE_OBJS := \
 	animation.o \
 	console.o \
 	control.o \
+	guide.o \
 	debug.o \
 	eventman.o \
 	logic.o \
