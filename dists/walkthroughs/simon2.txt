@@ -1,0 +1,601 @@
+# Simon the Sorcerer II, Spanish CD (DOS talkie): the whole game.
+# Verbs: 101 walk, 102 look, 103 pick up, 104 give, 105 talk, 106 use, 107 wear, 108 move, 109 open.
+# An item is its number; minus a box id for people and things that are boxes (names in the comments).
+# g x y = a click on the room (room coordinates: x with the scroll added); exits are spots in the room.
+
+== El callejón y la tienda de Calypso
+g 100 100 ; into Calypso's shop
+e 103 52 ; bate de béisbol
+e 103 107 ; tinte
+g 250 60 ; out to the alley
+g 200 90 ; up the road: the town map
+h 10 ; map: the castle
+k 3 ; Pero necesito entrar en el castillo.
+k 2 ; ... DE VERDAD.
+k 1 ; ¿Qué tipo de identificación?
+k 2 ; Soy nuevo aquí. ¿Cuánto es un dólar?
+k 3 ; Vale, conseguiré vuestro dinero.
+h 19 ; map: the three bears' cottage
+
+== La casa de los tres osos
+e 109 -11 ; open the letterbox
+e 103 103 ; carta
+g 5 110 ; out, the left edge: the map
+h 16 ; map: the street of traders
+
+== La calle del comercio: el quincallero
+e 105 -12 ; talk to the ironmonger
+e 105 -12 ; again
+k 1 ; ¿Qué tal va el negocio de la quincallería?
+k 1 ; Si haces que merezca la pena.
+c quince ; a gold sovereign is fifteen dollars
+c exacto ; sixteen quarters: a dollar exactly
+c que tres ; three gold sovereigns in a royal crown: a crowbar
+
+== La tienda de mascotas
+g 186 128 ; along the street to the stairs
+g 183 80 ; up the stairs: the pet shop
+k 3 ; ¿Qué tipo de experimentos?
+k 3 ; Soy el chico bueno de este juego.
+k 2 ; Vale. ¿Qué está pasando?
+k 1 ; ¿Y qué hace exactamente?
+e 103 57 ; try to take the electric turtle: a shock
+g 252 60 ; out to the street
+g 2 130 ; the left edge of the street: the joke shop
+b 43 1 ; the joke seller looks away (only then he lets the book go)
+E 103 73 ; libro de chistes
+e 102 -11 ; look at the poster
+e 102 -12 ; look at the stink bomb kit
+e 105 -10 ; talk to the joke seller: the buzzer, and out
+x 5 8 ; back past the ironmonger: the map
+h 15 ; map: the loan office
+
+== La oficina de préstamos: el bufón y la alcantarilla
+e 104 73 -11 ; give the joke book to the jester: his bladder
+e 106 101 -10 ; the crowbar on the drain cover
+e 0 -10 ; down into the sewers
+e 0 -11 ; toward the spider: back out, scared
+x 4 7 ; the Sunshine Loan Company
+e 105 -11 ; talk to the secretary
+k 1 ; Sí, estoy interesado en un préstamo.
+k 1 ; ¿Qué tipos hay?
+k 3 ; Apúnteme al préstamo de 'experimentos médicos'.
+k 5 ; Probaré con el de 'experimentos médicos'.
+e 109 -10 ; open the manager's door
+k 2 ; Estoy interesado en el préstamo 'experimentos médicos'.
+E 106 103 -10 ; while he looks for the form: the bears' letter into his in-tray
+x 1 29 ; out: the cottage gets bombed
+x 7 17 ; the right edge: the map
+h 19 ; map: the three bears' cottage
+
+== La casa de los osos: los guantes y el grifo
+x 1 30 ; into the house
+e 103 54 ; guantes de goma, in the kitchen
+e 108 -10 ; turn the tap off: the bears come home, out to the fountain
+x 1 0 ; out to the left: the map
+h 18 ; map: the docks
+
+== El muelle: Um Bongo y Ricitos de Oro
+e 105 -10 ; talk to Um Bongo
+k 1 ; ¿Eres nuevo aquí?
+k 1 ; Mi nombre es Simon y, ¿cómo pretendes hacer eso?
+k 2 ; ¿Y para qué sirve?
+k 4 ; No. Pero estaré al tanto por si acaso.
+e 105 -11 ; talk to Goldilocks (she peeks out from behind the crates)
+k 3 ; No, soy un mago pre-adolescente de verdad.
+k 3 ; ¿Por qué te escondes?
+k 2 ; El honor de los Scout.
+k 2 ; ¿Por qué te escondes tras esas cajas?
+c prisa ; Si tienes tanta prisa por escapar, ¿por qué estás aquí todavía?
+c ayudarte con las cajas ; Veré si puedo ayudarte con las cajas.
+c Volver ; Quédate aquí. Volveré más tarde.
+e 106 101 -12 ; the crowbar on the crate: she climbs in
+e 103 61 ; peluca
+e 103 125 ; bote de goma
+x 6 0 ; out at the far left: the map
+h 19 ; map: the three bears' cottage
+
+== Los tres osos: la peluca por el porridge
+x 1 30 ; into the house: Papa Bear catches Simon
+k 2 ; Pues resulta que soy el propietario de una importante constructora.
+k 3 ; ¿De quién me está hablando?
+k 2 ; ¿Tiene algún problema?
+k 2 ; No la había visto en mi vida. (he wants one of her curls; out)
+x 1 30 ; in again: the wig is just what they needed
+k 2 ; ¿Le importaría darme algo de porridge?
+x 1 0 ; out at the left edge: the map
+h 12 ; map: the town square
+
+== La plaza: el acordeonista
+e 105 -11 ; talk to the accordion player: a dancer breaks his stick
+e 104 52 -11 ; give him the baseball bat: knocked out
+x 1 0 ; out at the left: the map
+h 22 ; map: the tattooist
+
+== La Sociedad de los Locos
+e 108 -12 ; move the ladder
+e 109 -13 ; up to the door and open it
+x 5 1 ; in: the Insane Society
+e 105 -14 ; talk to the Frying Pan man: a vow of deafness, the fish man gives a notepad
+e 106 147 -14 ; write on the notepad for him
+k 3 ; ¿Qué es este lugar - qué está pasando?
+k 1 ; ¿Portador de porridge?
+k 1 ; Muy bien, entonces iré a conseguir algo de porridge.
+e 107 60 ; wear the porridge: the joining kit, out
+e 109 44 ; open the junk bag: money, a bungee rope and a wedge
+x 2 5 ; up the steps at the left: the map
+h 20 ; map: MucSwampy's
+
+== MucSwampy's
+e 105 -13 ; talk to the Swampling mascot
+k 2 ; ¿Puedes darme también un vale? (a balloon and a voucher)
+e 102 -12 ; look in the dustbin: a fishing rod
+x 5 0 ; into MucSwampy's
+e 105 -10 ; talk to the tattooist, at lunch
+k 1 ; ¿Dónde trabaja? (until two o'clock, and the clock is stopped)
+e 105 -16 ; talk to the anorak man
+k 1 ; Pareces un poco deprimido.
+k 2 ; ¿Qué es un manual Younick?
+k 2 ; Prueba a practicar un hobby típico de macho.
+e 105 -11 ; talk to the waiter
+k 1 ; ¿Puedo usar mi vale de Menú Infantil?
+k 1 ; ¿Qué sabores hay?
+k 4 ; Me quedo con el de sabor a Bichos.
+k 1 ; Bien, aquí tienes.
+e 109 64 ; open the kiddie meal: a maggot, swamp gum and a Swampling doll
+x 1 29 ; out of MucSwampy's
+x 6 24 ; the right edge: the map
+h 16 ; map: the street of traders
+
+== La calle del comercio: el póster y los gusanos luminosos
+e 103 -11 ; take the dancers' poster
+x 7 1 ; the pet shop
+e 106 54 57 ; the rubber gloves to pick up the electric turtle
+e 106 57 -12 ; the turtle into the cage at the right of the machine
+e 106 -10 ; the machine, lever left: a turtle and electric eels
+e 103 57 ; take the turtle back
+e 103 56 ; gusanos luminosos, off the shelf
+e 106 56 -13 ; the glow worms into the cage next to the eels
+e 108 -11 ; the lever to the right
+e 106 -10 ; the machine again: supercharged glow worms, and out
+x 1 0 ; the joke shop (the seller tricks Simon again, and stays)
+e 105 -10 ; talk to the joke seller
+k 2 ; ¿Puede hacerme un disfraz?
+k 1 ; ¿Puede hacerme un disfraz de Swampling? (he needs green cloth)
+x 1 15 ; back to the street
+e 105 -14 ; talk to Nefahpayup about green cloth
+k 1 ; ¿Ah sí? ¿Qué tipo de favor? (down a tunnel for a magic lamp)
+e 103 -13 ; take a lamp: the genie's answering machine
+e 105 -10 ; call up the cave entrance: the ladder comes down
+e 0 -11 ; up the ladder: Nefahpayup gives white cloth
+e 106 142 -10 ; tie the balloon to the railings by the ironmonger
+x 5 8 ; past the ironmonger: the map
+h 21 ; map: the fountain
+
+== La fuente: el tinte y el paño
+e 106 107 -10 ; the dye into the fountain
+e 106 106 -16 ; the white cloth into the washerwomen's basket
+x 1 0 ; out to the left: the map
+h 20 ; map: MucSwampy's
+e 105 -13 ; talk to the mascot
+c otro globo ; ¿Puedes darme otro globo?
+x 6 24 ; the right edge: the map
+h 21 ; map: the fountain
+e 103 106 ; take the cloth, green now
+x 1 0 ; out to the left: the map
+h 16 ; map: the street of traders
+e 106 142 -10 ; the second balloon on the railings
+x 1 0 ; the joke shop
+e 104 106 -10 ; give the joke seller the green cloth: a Swampling costume
+x 1 15 ; back to the street
+x 5 8 ; past the ironmonger: the map
+h 20 ; map: MucSwampy's
+e 105 -13 ; talk to the mascot
+c otro globo ; ¿Puedes darme otro globo? (the third one, kept)
+x 5 0 ; into MucSwampy's
+e 107 74 ; wear the Swampling costume: up to the kitchen
+
+== El despacho del Swampling
+x 1 4 ; up the stairs at the left: the Swampling's office
+k 3 ; No podía resistirme a tu adorable pote. Ñam, ñam.
+k 3 ; Yo no creo que sea horrible. He venido especialmente a por un poco.
+k 4 ; Suena delicioso.
+k 1 ; Yo te traeré un poco. (swamp mud: he gives a bucket)
+x 5 4 ; down to the restaurant
+x 1 29 ; out of MucSwampy's
+x 6 24 ; the right edge: the map
+h 18 ; map: the docks
+e 104 49 -10 ; give Um Bongo the dancers' poster
+x 6 0 ; out at the far left: the map
+h 12 ; map: the town square
+
+== La plaza: la danza de la lluvia
+e 105 -14 ; talk to Um Bongo: a drum skin is missing
+k 1 ; ¿Abacás?
+k 1 ; ¿Vaca? (a bladder: Simon has one, and it rains)
+h 15 ; map: the loan office
+
+== La alcantarilla y la ciénaga
+e 0 -10 ; down into the sewers (the spider is gone)
+e 106 56 ; the glow worms light the dark stretch
+x 5 2 ; up the ladder at the far left: the swamp
+e 106 130 -21 ; the bungee rope on the broken bridge's railing
+e 106 129 -19 ; the bucket on the mud below: a bungee jump, a bucket of mud
+e 106 140 -12 ; the fishing rod on the lake: a fish
+e 0 -10 ; back down into the sewers
+x 4 2 ; up the ladder at the right: the loan office
+x 7 17 ; the right edge: the map
+h 20 ; map: MucSwampy's
+
+== El pote cenagoso
+x 5 0 ; into MucSwampy's
+e 107 74 ; the costume: up to the kitchen
+x 1 4 ; the Swampling's office
+e 104 129 -10 ; give him the bucket of mud: a jar of swamp stew
+x 5 4 ; down to the restaurant
+x 1 29 ; out
+x 6 24 ; the map
+h 16 ; map: the street of traders
+x 1 0 ; the joke shop
+e 104 76 -10 ; give the joke seller the swamp stew: a free stink bomb
+k 1 ; Ahora no. Nos vemos.
+x 1 15 ; back to the street
+x 5 8 ; the map
+h 11 ; map: the magic competition
+
+== El torneo de magia
+e 105 -10 ; talk to the clerk
+k 3 ; ¿Es aquí donde me apunto al rollo ése del torneo de magia?
+k 1 ; Simon.
+k 3 ; Varón, aunque por supuesto no debe suponer diferencia alguna.
+k 1 ; Creo que fue un martes. (number 9)
+x 3 1 ; into the tent: the competition looks tough
+e 106 159 ; the stink bomb: everyone flees, Simon too
+x 3 1 ; into the tent again: one wizard is left, he has a cold
+e 103 161 ; libro de hechizos
+e 106 160 -11 ; half the swamp shake for the last wizard: deaf
+x 2 20 ; out: the map
+h 10 ; map: the castle, the guards want their money
+c Claro, aqu ; Claro, aquí tenéis.
+x 2 3 ; up to the gate: the official ID gets Simon in
+k 2 ; Quizá dentro de 60 o 70 años. (the prince's peashooter)
+k 4 ; Encantado de hablar contigo. Nos vemos.
+e 109 -11 ; open the castle door
+x 1 0 ; in
+x 1 0 ; along the hall to the left: the throne room
+k 3 ; ¿Qué le pasó a la niñera? (the job: put the baby to sleep)
+e 106 131 128 ; the fish for the royal seal: into the hat
+x 1 0 ; back to the hall
+e 109 -11 ; open the door at the right
+x 5 2 ; the nursery
+e 106 63 -13 ; the wedge under the cradle: it stops rocking
+e 103 86 ; take the cog from the gears
+x 1 21 ; out to the hall
+x 3 16 ; out to the courtyard
+x 1 33 ; out of the castle
+x 1 0 ; past the guards: the map
+h 20 ; map: MucSwampy's
+x 5 0 ; in
+e 107 74 ; the costume: up to the kitchen
+e 106 86 -10 ; the cog in the clock: it goes again (lunch is over)
+x 5 4 ; down to the restaurant
+x 1 29 ; out
+x 6 24 ; the map
+h 22 ; map: the tattooist
+
+== El tatuaje
+e 109 -10 ; open the tattooist's door, in (he is back from lunch)
+k 1 ; Quiero que me hagas un tatuaje.
+k 3 ; No sé. ¿Qué hay?
+k 4 ; ¿Qué tal la corona con incrustaciones y las dos espadas encantadas cruzadas? (400 dollars: a brochure)
+x 2 5 ; up the steps: the map
+h 20 ; map: MucSwampy's
+x 5 0 ; in
+e 104 114 -16 ; give the anorak man the tattoo brochure
+x 1 29 ; out
+x 6 24 ; the map
+h 22 ; map: the tattooist
+x 1 1 ; in again, the door is open: Simon has won a free tattoo
+C No s ; No sé. ¿Qué hay? (when he starts with the anchor)
+c corona ; ¿Qué tal la corona incrustada con el par de espadas encantadas cruzadas?
+x 1 14 ; out of the tattoo shop
+x 2 5 ; up the steps: the map
+h 14 ; map: the swamp
+
+== La Dama del Lago y la espada
+p 1 0 ; the far left of the swamp: the Lady of the Lake
+k 3 ; ¿Por qué llevas gafas y un respirador?
+k 4 ; No sabía que las Damas del Lago hicieran turnos.
+k 3 ; ¿Haciendo qué, exactamente?
+k 3 ; Me gustaría probar. ¿Dónde hay que firmar?
+k 1 ; ¿Qué ha pasado con la igualdad de oportunidades? (the royal seal does it)
+e 103 126 ; bombonas de aire
+e 103 127 ; traje húmedo
+e 106 126 125 ; the air tanks blow up the rubber dinghy
+e 106 125 ; paddle to the isle of the sword
+e 103 123 ; pull the sword out of the stone (the tattoo makes a man of Simon)
+e 106 125 ; paddle back
+e 0 -10 ; down into the sewers
+x 4 2 ; up the ladder at the right: the loan office
+x 7 17 ; the map
+h 10 ; map: the castle
+
+== El castillo: el príncipe y la princesa
+x 2 3 ; up to the gate
+e 104 123 -10 ; give the prince the sword: his peashooter and a pea
+x 1 0 ; into the castle
+e 109 -10 ; open the door at the left
+x 4 2 ; the princess's room
+e 106 110 -10 ; the pea under the mattresses: she wakes up
+k 2 ; Es el año del Hurón Pasmado.
+k 1 ; ¿Alguna idea de cómo callar al bebé?
+e 103 66 ; caramelo, the lolly she throws
+x 1 0 ; out to the hall
+x 3 16 ; out to the courtyard
+x 1 33 ; out of the castle
+x 1 0 ; past the guards: the map
+h 20 ; map: MucSwampy's
+x 5 0 ; in
+e 107 74 ; the costume: up to the kitchen
+x 1 4 ; the Swampling's office
+k 1 ; ¿Quiénes son esos pequeños bichos del rincón?
+k 1 ; Claro.
+e 104 66 -11 ; give the baby Swamplings the lolly: they drop their milk
+x 1 0 ; down to the kitchen
+x 5 4 ; down to the restaurant
+x 1 29 ; out
+x 6 24 ; the map
+h 10 ; map: the castle
+x 2 3 ; up to the gate
+x 1 0 ; into the castle
+x 5 2 ; the nursery
+e 104 62 -15 ; give the baby the milk: asleep at last
+x 1 21 ; out to the hall
+x 1 0 ; the throne room
+x 3 0 ; the treasury door by the king
+e 106 160 -10 ; the rest of the swamp shake on the pentagram: the demons are stuck in it, in the way
+x 2 0 ; back down to the throne room
+x 1 0 ; the hall
+x 3 16 ; the courtyard
+x 1 33 ; out of the castle
+x 1 0 ; the map
+h 16 ; map: the street of traders
+e 106 142 -10 ; the third balloon on the railings: up and away to the treasury window
+e 0 -14 ; toward the sarcophagus: a trap door down to the vault
+e 103 136 ; blandimoco, the Mucusade
+e 0 -10 ; back up the tube
+e 0 -10 ; out of the window to the balloons: a fall, outside the castle
+x 1 0 ; the map
+h 13 ; map: Calypso's
+k 2 ; ¿De verdad eres Long John Silver?
+
+== El barco pirata: la bodega
+e 106 161 ; the spell book breaks the chains
+e 103 -11 ; the eye patch off the skull
+p 1 0 ; up the stairs: the captain stops Simon
+k 3 ; Sólo iba al servicio. (the plank, then cabin boy instead)
+
+== El barco pirata: la cubierta
+e 103 -10 ; take a stuffed parrot
+e 102 -11 ; read the captain's diary: a postcard from Kalimari
+x 1 0 ; out of the cabin, to the deck
+e 104 139 -13 ; give the eye patch to the pirate pulling the rope: sunglasses
+x 17 1 ; up the steps: the poop deck
+e 106 153 -10 ; swap the stuffed parrot for the real one: a "Pentium parrot"
+e 106 144 -10 ; the swamp gum keeps it on its perch
+x 1 0 ; down from the poop deck: a nap, and what became of Calypso and Alix
+p 13 2 ; to the foot of the steps
+x 17 1 ; up to the poop deck again
+e 105 -11 ; talk to the helmsman
+x 1 0 ; down to the deck
+e 106 -15 ; climb the rigging: the crow's nest
+e 106 154 -11 ; the Kalimari postcard on the lookout's telescope
+x 3 1 ; down the rigging
+p 13 2 ; to the foot of the steps
+x 17 1 ; up to the poop deck
+e 108 -10 ; turn the parrot to face the helmsman
+x 1 0 ; down to the deck
+e 109 -21 ; open the door at the far left
+e 105 -10 ; talk to the tough guy
+k 1 ; ¿No tendrás por casualidad un soplete, verdad? (no fire for it)
+x 1 0 ; back out to the deck
+e 108 -12 ; push the pirate mending the plank overboard
+e 103 -11 ; take the hammer (and the nails): tools
+g 150 115 ; a step back from the crate
+e 103 135 ; plancha
+p 15 10 ; along the deck to the doors at the right
+e 109 -23 ; open the door at the right nearest the front: the crew's quarters
+e 103 150 ; cuchillo
+e 106 150 -10 ; the knife on the hammock
+e 103 149 ; pedernal, the tinder box
+x 1 15 ; back out to the deck
+e 106 152 -20 ; the torch on the hatch's chain: the captain stops Simon
+e 106 152 -20 ; again: the captain asks for the first mate and goes to the crew's quarters
+e 106 135 -23 ; the plank nailed across that door: the captain is locked in
+e 106 152 -20 ; the torch cuts the chain
+e 109 -18 ; open the hatch: down to the hold
+e 103 136 ; blandimoco
+e 0 -18 ; up the ladder: a nap, a ship attacks, shipwrecked on an island without the inventory
+
+== La isla: la playa
+e 103 85 ; the shovel head
+e 105 -13 ; talk to the beachcomber: he keeps the Mucusade
+e 103 84 ; the beachcomber's towel
+e 0 -16 ; into the jungle: the kid from MucSwampy's
+e 104 -11 -10 ; give him the balloon up there (without taking it): a shell
+e 103 91 ; the wooden pole
+e 106 91 85 ; the pole on the shovel head: a shovel
+x 2 23 ; back to the beach
+
+== La isla: la trampa del buscador
+e 106 85 ; dig: a sandcastle, and a hole
+e 106 84 -12 ; the towel over the hole
+e 106 90 -12 ; the shell on the towel
+e 105 -13 ; tell the beachcomber about the shell: into the hole he goes
+e 103 136 ; the Mucusade, back (devil and angel have their say)
+e 0 -16 ; into the jungle
+e 103 92 ; take the dog
+x 8 0 ; the path at the top left: the café
+
+== La isla: el café y el genio
+e 105 -13 ; talk to the waitress
+k 3 ; Sí, con leche y dos terrones. (decaf only: a nap, and Sordid dies)
+e 105 -13 ; talk to her again
+k 1 ; Me encantaría tomar otra taza de descafeinado. (to take away)
+x 2 14 ; out of the café
+x 4 18 ; the cave under the big sign
+e 103 -10 ; try to take the whisky bottle: the genie, on holiday
+k 1 ; Podrías decir 'Tienes tres deseos, amo'.
+k 1 ; Desearía estar de vuelta en la tienda de Calypso. (an alien ship instead: he needs sobering up)
+x 1 15 ; out of the cave
+x 1 0 ; the path at the left: the dealer
+e 105 -10 ; talk to the dealer
+k 4 ; ¡Yo! ¡Qué pasa, tío! ¿Cómo te cuelgas? ¡Palabra!
+k 4 ; Palabra, broder. ¿Hay salmón?
+k 4 ; Me llevaré unas pocas. (caffeine tablets, three Bungas each)
+k 1 ; No tengo Bungas.
+e 103 88 ; the whistle on the ground
+x 4 0 ; the path north: the torture machine
+x 1 0 ; on to the left: the generator
+e 106 92 -10 ; the dog on the generator's treadmill
+x 1 15 ; back to the torture machine
+e 108 -11 ; the lever on
+x 4 24 ; back to the dealer
+x 1 0 ; the path at the left: the limbo contest
+e 105 -10 ; talk to the judge
+k 2 ; Entonces vale.
+e 106 88 ; the whistle: the judges look at the screaming tortured man, Simon wins three Bungas
+x 1 22 ; back to the dealer
+e 105 -10 ; talk to the dealer
+e 106 120 121 ; the caffeine tablets into the decaf
+x 3 21 ; back to the jungle
+x 4 18 ; the genie's cave
+e 106 121 -10 ; the strong coffee into the whisky bottle
+e 103 -10 ; take the bottle: the genie again
+k 1 ; Desearía estar de vuelta en la tienda de Calypso. (the alley, this time)
+g 100 100 ; into Calypso's shop: the demons, and a long scene
+
+== El valle de la perdición
+e 109 -11 ; try the cell door: Alix's hairpin, and another Simon with a time stick
+x 8 10 ; to the right: the map of the valley
+h 11 ; map: the dark woods
+e 105 -10 ; talk to the kid: hungry
+e 102 -13 ; look at the antiques: woodworms who talk
+k 1 ; Lo siento, chicos. Me habéis pillado por sorpresa.
+k 2 ; ¿Qué cambios queréis?
+k 3 ; ¿Cómo vais a conseguir esos cambios?
+k 2 ; Con la violencia no se resuelve nada, ¿sabes?
+k 3 ; ¿No os conozco de algo?
+k 3 ; Eso me recuerda que tengo que limpiarme las uñas de los pies. Nos vemos. (they carve wood)
+x 4 62 ; the far right of the woods: the witches' cave
+p 1 0 ; out of the cave (the witches may call Simon back)
+C poci ; ¿Tienen alguna poción de sobra?
+C toda una ; Eso debe ser toda una p*t*d*.
+C enfrentarme ; ¿Tenéis algo que me ayude a enfrentarme a Sórdido?
+@22 x 1 0 ; out of the cave, if still in it
+
+== La cabaña apartada y el borde del volcán
+x 1 0 ; the far left of the woods: the map
+h 16 ; map: the secluded hut
+k 2 ; Soy un mago.
+k 1 ; Quiero saber qué pasa aquí.
+k 1 ; ¿Puedo probar? (no room in the game)
+e 109 -11 ; "open" the door: it shuts, the witches' cat is trapped
+e 0 -15 ; toward the soda bottles: the cat panics and knocks itself out
+e 103 -15 ; a soda bottle (and a straw)
+e 103 -15 ; a second one
+e 103 -15 ; a third one
+e 103 14 ; pañuelo, the hanky
+e 103 34 ; the cat
+e 109 -11 ; open the door
+x 6 8 ; out: the map
+h 10 ; map: the volcano rim
+e 103 23 ; spray químico
+e 103 28 ; the plant spotter's guide
+e 106 2 36 ; the straw on a soda: an empty bottle
+e 106 34 -12 ; show the cat to the carnivorous plants: they drool
+e 106 9 -13 ; the empty bottle on the drool: plant slobber
+x 1 0 ; the map
+h 14 ; map: the goblin camp
+e 106 19 -12 ; the plant slobber in the guards' goblets
+
+== El campamento goblin
+p 1 0 ; try to walk past the guards: they drink, and sleep
+e 103 21 ; cuerno, the conch horn
+x 1 0 ; into the camp
+e 105 -10 ; talk to the elf
+k 2 ; Me va más el rollo naturalista.
+k 1 ; ¿De qué vas?
+k 2 ; Ya sé lo que quieres decir - es tan diabólico.
+k 2 ; Uno estará honrado de servirte, oh noble elfo. (perfume: his old bottle)
+e 106 36 15 ; a soda into the perfume bottle
+e 0 -15 ; into the big tent
+e 103 37 ; raciones de comida
+e 103 16 ; pimienta
+x 1 0 ; out of the tent
+e 106 16 -10 ; the pepper on the elf: a sneeze, and no hanky
+e 104 14 -10 ; give him the hanky
+e 104 15 -10 ; give him the "perfume": a block of wood
+e 106 36 -13 ; the last soda on the dice players' fire: smoke in their eyes
+E 103 13 ; while they can't see: their "poco", and they fight
+e 103 12 ; dados, the loaded dice one of them leaves
+p 5 17 ; along to the right
+x 11 2 ; out of the camp
+x 8 10 ; the map
+h 16 ; map: the secluded hut
+e 103 -15 ; another soda (the empty bottles go back)
+e 103 -15 ; and another
+x 6 8 ; out: the map
+h 11 ; map: the dark woods
+e 104 37 -10 ; give the kid the food rations
+e 104 36 -10 ; and a soda: he drops a magnifier
+e 103 35 ; lupa
+e 104 33 -13 ; give the woodworms the block of wood
+k 2 ; Está bien. ¿Cuánto cuestan?
+k 1 ; Vale, aquí tenéis. (wooden teeth)
+x 4 62 ; the witches' cave
+C poci ; ¿Tienen alguna poción de sobra? (if they talk first)
+C toda una ; Eso debe ser toda una p*t*d*.
+C enfrentarme ; ¿Tenéis algo que me ayude a enfrentarme a Sórdido?
+e 104 32 -10 ; give the toothless witch the wooden teeth
+e 104 21 -11 ; the deaf one the conch horn
+e 104 35 -12 ; the blind one the magnifier: a potion to turn someone into a dog
+e 106 2 36 ; the straw on a soda: an empty bottle
+e 106 9 -13 ; some of the potion in it
+x 1 0 ; out of the cave
+x 1 0 ; the far left of the woods: the map
+h 16 ; map: the secluded hut
+e 106 10 -13 ; the potion on the role players: one turns into a beagle
+k 1 ; Yo lo haré.
+k 3 ; ¿Os importa si uso mis propios dados? (two twelves: a wallpaper catalogue)
+x 6 8 ; out: the map
+h 14 ; map: the goblin camp
+x 1 0 ; past the sleeping guards
+x 1 0 ; through the camp to the left: Sordid's tower
+
+== La torre de Sórdido
+p 1 0 ; on to the left: the pig guards
+k 2 ; Creo que no llevamos el trote adecuado.
+k 3 ; Acabo de acordarme. Estoy aquí para tratar un importante negocio. (the decorator: the catalogue gets Simon in)
+e 103 -10 ; tapiz, the tapestry
+x 3 3 ; the eerie passage
+p 1 1 ; on toward the door: the unspeakable horror knocks Simon down
+p 1 9 ; back the way he came: the horror has a word
+k 4 ; Bueno... ¿Vas a dejarme pasar?
+k 4 ; ¿En qué consiste tu trabajo exactamente?
+k 1 ; Encantado de hablar contigo. Repitámoslo en otra ocasión. Adiós.
+x 4 0 ; the stairs at the left
+e 106 45 -14 ; the tapestry in the goblin's sweat
+e 106 45 23 ; the sweat into the chemical sprayer
+e 108 -10 ; the lever: the lights go out
+x 1 19 ; out
+x 3 3 ; the eerie passage again
+e 106 23 ; the sprayer: Simon smells like a goblin
+e 107 25 ; wear the dog: magic turns it into fuzzy slippers
+e 107 24 ; wear the slippers: past the horror unseen, unsmelt, unheard
+x 1 0 ; across the lava channel: a ride up to Sordid's chamber
+e 103 -12 ; the screwdriver
+e 106 5 -13 ; unscrew Sordid's hand
+e 106 3 -10 ; the hand on the palm print identifier: the briefcase opens
+e 103 -11 ; the time stick
+p 1 0 ; toward the way out: Runt, and the end

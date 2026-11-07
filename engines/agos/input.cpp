@@ -141,7 +141,9 @@ void AGOSEngine::setup_cond_c_helper() {
 				}
 			}
 
+			_guideWaiting = 2;
 			delay(100);
+			_guideWaiting = 0;
 		} while ((_lastHitArea3 == (HitArea *) -1 || _lastHitArea3 == nullptr) && !shouldQuit());
 
 		if (_lastHitArea == nullptr) {
@@ -222,7 +224,9 @@ void AGOSEngine::waitForInput() {
 				if (_lastHitArea3 || _dragMode)
 					break;
 				hitarea_stuff_helper();
+				_guideWaiting = 1;
 				delay(100);
+				_guideWaiting = 0;
 			}
 		}
 

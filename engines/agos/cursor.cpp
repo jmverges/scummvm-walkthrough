@@ -26,6 +26,7 @@
 #include "graphics/cursorman.h"
 
 #include "agos/agos.h"
+#include "agos/guide.h"
 #include "agos/intern.h"
 
 namespace AGOS {
@@ -452,8 +453,16 @@ void AGOSEngine_Simon1::handleMouseMoved() {
 		return;
 	}
 
-	CursorMan.showMouse(true);
+	CursorMan.showMouse(!(_guide && _guide->hidesCursor()));
 	_mouse = _eventMan->getMousePos();
+	if (_guide) {
+		bool click = false;
+		if (_guide->frame(_mouse, click)) {
+			_system->warpMouse(_mouse.x, _mouse.y);
+			if (click)
+				_leftButtonDown = true;
+		}
+	}
 
 	if (_defaultVerb) {
 		uint id = 101;

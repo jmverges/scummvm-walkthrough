@@ -237,7 +237,10 @@ class Debugger;
 #	define _OPCODE(ver, x)	{ &ver::x, "" }
 #endif
 
+class AGOSGuide;
+
 class AGOSEngine : public Engine {
+	friend class AGOSGuide;
 protected:
 	// List of Simon 1 DOS floppy SFX which use rhythm notes.
 	static const byte SIMON1_RHYTHM_SFX[];
@@ -280,6 +283,9 @@ protected:
 	virtual void setupVideoOpcodes(VgaOpcodeProc *op);
 
 	const AGOSGameDescription * const _gameDescription;
+
+	AGOSGuide *_guide;	// the walkthrough player
+	int _guideWaiting;	// 1 while the game waits for a click, 2 while it waits for a second item
 
 public:
 	virtual void setupGame();

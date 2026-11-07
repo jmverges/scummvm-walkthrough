@@ -25,6 +25,7 @@
 #include "graphics/paletteman.h"
 
 #include "agos/agos.h"
+#include "agos/guide.h"
 #include "agos/intern.h"
 #include "agos/sound.h"
 
@@ -373,6 +374,9 @@ void AGOSEngine_Simon1::os1_screenTextMsg() {
 		if (!(getFeatures() & GF_TALKIE) && stringId == 33245)
 			tl->width = 96;
 	}
+
+	if (_guide && stringPtr != nullptr)
+		_guide->onTalk(vgaSpriteId, stringPtr);
 
 	if (stringPtr != nullptr && stringPtr[0] != 0 && (speechId == 0 || _subtitles))
 		printScreenText(vgaSpriteId, color, (const char *)stringPtr, tl->x, tl->y, tl->width);

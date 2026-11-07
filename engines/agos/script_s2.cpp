@@ -22,6 +22,7 @@
 
 
 #include "agos/agos.h"
+#include "agos/guide.h"
 #include "agos/intern.h"
 #include "agos/midi.h"
 
@@ -430,6 +431,8 @@ void AGOSEngine_Simon2::os2_screenTextPObj() {
 			}
 			stringPtr = buf;
 		}
+		if (_guide && stringPtr != nullptr)
+			_guide->onTalk(vgaSpriteId, (const byte *)stringPtr);
 		if (stringPtr != nullptr)
 			printScreenText(vgaSpriteId, color, stringPtr, tl->x, tl->y, tl->width);
 	}

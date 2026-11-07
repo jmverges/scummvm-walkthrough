@@ -20,6 +20,7 @@ MODULE_OBJS := \
 	draw.o \
 	event.o \
 	gfx.o \
+	guide.o \
 	icons.o \
 	input.o \
 	input_pn.o \
