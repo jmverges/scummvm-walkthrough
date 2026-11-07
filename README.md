@@ -194,6 +194,27 @@ E, U, S, G, I                 the same as e, u, s, g, i, as soon as the player h
 
 The whole game is in [dists/walkthroughs/bs1.txt](dists/walkthroughs/bs1.txt) (Spanish CD, Windows version).
 
+## Drascula (drascula)
+
+Drascula: The Vampire Strikes Back has its own player as well (`engines/drascula/guide.cpp`). Every action in this
+game runs to its end inside one pass of the main loop (walking up to something, talking, cutscenes), so the guide
+only acts from the main loop and from the conversation menu. It picks a verb from the bar at the top, takes items
+from the inventory screen (right click) and clicks on things the way a player would, with object and item numbers
+from the game's room files (the control command `objects` lists the room's objects and the inventory).
+
+```
+e <verb> <object>        a verb from the top bar (0 none: walk, go through a door) and a click on an object
+u <item> <object>        take an item from the inventory screen and click it on an object (50: John)
+i <verb|item> <item>     in the inventory screen, a verb or an item on an item (open the handbag, tie the rope)
+k <line>                 a line of the conversation menu, 1-4 (skipped if no conversation shows up)
+g <x> <y>                a click on the floor
+r <room> / n <flag> <v>  wait until John is in that room / a game flag has that value
+w <seconds>              wait
+```
+
+Verbs: 1 look, 2 pick up, 3 open, 4 close, 5 talk, 6 move. The whole game is in
+[dists/walkthroughs/drascula.txt](dists/walkthroughs/drascula.txt) (the freeware release, Spanish voices and text).
+
 ## Building
 
 The Flatpak: [dists/flatpak-walkthrough](dists/flatpak-walkthrough) is the Flathub recipe for ScummVM
@@ -234,6 +255,8 @@ On the Vita it needs `ur0:data/libshacccg.suprx`, as every vitaGL app does.
   [Videos](https://www.youtube.com/playlist?list=PLUmwk1Mn6GFY), from 7 December 2026.
 - **Broken Sword: The Shadow of the Templars** (CD, Spanish voices and text): the whole game to the end credits
   ([dists/walkthroughs/bs1.txt](dists/walkthroughs/bs1.txt)).
+- **Drascula: The Vampire Strikes Back** (freeware release, Spanish voices and text): the whole game to the end
+  credits ([dists/walkthroughs/drascula.txt](dists/walkthroughs/drascula.txt)).
 
 Other games are next. The sister project, the [Hollywood Monsters port](https://github.com/jmverges/hollywood-monsters-port),
 has its own walkthrough player; its videos are on the same channel

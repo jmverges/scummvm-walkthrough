@@ -266,7 +266,7 @@ void DrasculaGuide::execute(const Step &st) {
 		if (st.kind == Step::kPoint)
 			push(Move::kPoint, 0, 1, st.a, st.b);
 		else
-			push(st.b == 50 ? Move::kJohn : Move::kObject, st.b, 1);
+			push(st.b == 50 && objectIndex(50) < 0 ? Move::kJohn : Move::kObject, st.b, 1);
 		break;
 	}
 	case Step::kUse:
@@ -281,7 +281,7 @@ void DrasculaGuide::execute(const Step &st) {
 				push(Move::kPoint, 0, 2, 160, 100);
 			}
 		}
-		push(st.b == 50 ? Move::kJohn : Move::kObject, st.b, 1);
+		push(st.b == 50 && objectIndex(50) < 0 ? Move::kJohn : Move::kObject, st.b, 1);
 		break;
 	case Step::kInventory:
 		if (!menu || (held && held != st.a)) {
