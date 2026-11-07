@@ -7,6 +7,7 @@ MODULE_OBJS := \
 	converse.o \
 	drascula.o \
 	graphics.o \
+	guide.o \
 	interface.o \
 	metaengine.o \
 	objects.o \

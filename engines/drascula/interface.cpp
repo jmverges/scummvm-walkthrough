@@ -20,6 +20,7 @@
  */
 
 #include "drascula/drascula.h"
+#include "drascula/guide.h"
 #include "graphics/cursorman.h"
 
 #include "common/text-to-speech.h"
@@ -107,7 +108,7 @@ void DrasculaEngine::setCursor(int cursor) {
 }
 
 void DrasculaEngine::showCursor() {
-	CursorMan.showMouse(true);
+	CursorMan.showMouse(!(_guide && _guide->hidesCursor()));
 }
 
 void DrasculaEngine::hideCursor() {
