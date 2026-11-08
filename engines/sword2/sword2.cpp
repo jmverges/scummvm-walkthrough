@@ -28,10 +28,13 @@
 #include "common/translation.h"
 #include "common/error.h"
 
+#include "graphics/cursorman.h"
+
 #include "engines/util.h"
 
 #include "sword2/sword2.h"
 #include "sword2/defs.h"
+#include "sword2/guide.h"
 #include "sword2/detection.h"
 #include "sword2/header.h"
 #include "sword2/console.h"
@@ -71,6 +74,7 @@ Sword2Engine::Sword2Engine(OSystem *syst, const ADGameDescription *gameDesc) : E
 	_screen = nullptr;
 	_mouse = nullptr;
 	_logic = nullptr;
+	_guide = nullptr;
 	_fontRenderer = nullptr;
 	_isRTL = Common::parseLanguage(ConfMan.get("language")) == Common::HE_ISR;
 	_debugger = nullptr;
@@ -98,6 +102,7 @@ Sword2Engine::~Sword2Engine() {
 	delete _sound;
 	delete _fontRenderer;
 	delete _screen;
+	delete _guide;
 	delete _mouse;
 	delete _logic;
 	delete _resman;
@@ -187,6 +192,7 @@ Common::Error Sword2Engine::run() {
 	_screen = nullptr;
 	_mouse = nullptr;
 	_logic = nullptr;
+	_guide = nullptr;
 	_resman = nullptr;
 	_memory = nullptr;
 
@@ -264,6 +270,8 @@ Common::Error Sword2Engine::run() {
 
 	_screen->initializeRenderCycle();
 
+	_guide = new Sword2Guide(this);
+
 	while (1) {
 		// Handle GMM Loading
 		if (_gmmLoadSlot != -1) {
@@ -319,6 +327,7 @@ Common::Error Sword2Engine::run() {
 
 		// skip GameCycle if we're paused
 		if (!isPaused()) {
+			_guide->tick();
 			_gameCycle++;
 			gameCycle();
 		}
@@ -332,6 +341,9 @@ Common::Error Sword2Engine::run() {
 
 		// creates the debug text blocks
 		_debugger->buildDebugText();
+
+		if (_guide->hidesCursor())
+			CursorMan.showMouse(false);   // for a recording
 
 		_screen->buildDisplay();
 	}

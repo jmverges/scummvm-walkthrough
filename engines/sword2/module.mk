@@ -8,6 +8,7 @@ MODULE_OBJS := \
 	debug.o \
 	events.o \
 	function.o \
+	guide.o \
 	header.o \
 	icons.o \
 	interpreter.o \

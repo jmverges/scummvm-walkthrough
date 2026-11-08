@@ -194,6 +194,24 @@ E, U, S, G, I                 the same as e, u, s, g, i, as soon as the player h
 
 The whole game is in [dists/walkthroughs/bs1.txt](dists/walkthroughs/bs1.txt) (Spanish CD, Windows version).
 
+## Broken Sword II (sword2)
+
+Broken Sword II: The Smoking Mirror plays the same way, with the inventory at the bottom of the screen
+(`engines/sword2/guide.cpp`). The ids are the objects' resource ids; the `objects` control command lists what the mouse
+can touch on the screen, the items and a conversation's subjects. The same steps as for Broken Sword (`e`, `E`, `l`,
+`i`, `u`, `t`, `k`, `g`, `a`, `n`, `w`), and:
+
+```
+h <item>                      take an item and hold it: the next click uses it (pouring absinthe at the right moment)
+x <object> <min> <max>        wait until the left edge of someone's mouse box is in that range: a pose (the critic
+                              holding his glass away, the guard on the boat at one end of his round)
+v <object> <ms>               wait until someone has been out of sight that long
+```
+
+If George or Nico dies, the guide loads the save made as the section started and plays it again (the recording
+script leaves the failed try out). The whole game is in [dists/walkthroughs/bs2.txt](dists/walkthroughs/bs2.txt)
+(Spanish CD, Windows version).
+
 ## Building
 
 The Flatpak: [dists/flatpak-walkthrough](dists/flatpak-walkthrough) is the Flathub recipe for ScummVM
@@ -234,6 +252,8 @@ On the Vita it needs `ur0:data/libshacccg.suprx`, as every vitaGL app does.
   [Videos](https://www.youtube.com/playlist?list=PLUmwk1Mn6GFY), from 7 December 2026.
 - **Broken Sword: The Shadow of the Templars** (CD, Spanish voices and text): the whole game to the end credits
   ([dists/walkthroughs/bs1.txt](dists/walkthroughs/bs1.txt)).
+- **Broken Sword II: The Smoking Mirror** (CD, Spanish voices and text): the whole game to the end credits
+  ([dists/walkthroughs/bs2.txt](dists/walkthroughs/bs2.txt)).
 
 Other games are next. The sister project, the [Hollywood Monsters port](https://github.com/jmverges/hollywood-monsters-port),
 has its own walkthrough player; its videos are on the same channel

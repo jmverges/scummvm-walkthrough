@@ -50,6 +50,7 @@ struct EventUnit {
 };
 
 class Logic {
+	friend class Sword2Guide;
 private:
 	Sword2Engine *_vm;
 

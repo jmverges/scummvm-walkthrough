@@ -1,0 +1,592 @@
+# Broken Sword II: The Smoking Mirror (Spanish, Windows). Ids are resource ids, as "objects" lists them.
+== Atado en casa del profesor Oubier
+l 1135 ; the bookshelf: a loose wedge holds it
+e 1145 ; kick the wedge: the shelf squashes the spider
+e 1149 ; the metal bracket frees George
+e 1177 ; open the bureau
+e 1175 ; the tequila: George spits out the worm
+e 1214 ; the worm
+e 1225 ; the drawer: the pot
+i 100 ; look at the pot: the key
+e 1274 ; the dart
+e 1170 ; Nico's bag
+u 60 1281 ; the dart on the cabinet: it blows open
+u 116 1176 ; the stockings on the hot cylinder
+u 59 1235 ; the cylinder on the siphon
+e 1309 ; put out the fire
+e 1376 ; kick the door open
+e 1376 ; downstairs
+e 1375 ; the newspaper clipping on the table
+i 134 ; look at it: the bank statement
+i 93 ; read the note: Lobineau's number
+e 1401 ; phone Lobineau
+u 2426 1486 ; the key on the front door
+e 1486 ; out: to the café in Montfauçon
+== El café de Montfauçon
+x 1540 0 2000 ; wait for the waiter to come out
+e 1540 ; the waiter ignores George
+e 1540 ; again: he brings a coffee
+x 1505 0 2000 ; wait for the coffee: the waiter asks if there's anything else
+k 65 ; nothing
+x 1543 0 2000 ; wait for Lobineau to turn up
+k 100 ; the pot: the Glease Gallery
+k 65 ; goodbye (Nico and her captors)
+e 1544 ; the old gendarme
+k 90 ; George is here for his girlfriend
+k 69 ; why he left the police
+k 69 ; does he miss it: he sulks
+e 1700 ; his flask of absinthe
+e 1716 ; leave the café
+k 179 ; to the Glease Gallery
+== La Galería Glease
+u 131 1728 ; the absinthe on the critic: not yet (and he tells George who Glease is)
+h 131 ; take the absinthe
+x 1728 440 458 ; until he holds his glass away
+e 1737 ; pour some into his glass: he likes it
+h 131 ; again
+x 1728 440 458
+e 1737 ; he keels over onto a display case
+l 1814 ; the packing cases at the back
+e 1814 ; a torn label on one of them
+e 1817 ; take the label
+e 1729 ; talk to Glease: Oubier ships from Marseilles
+== Los muelles de Marsella
+l 652 ; the hut: a light in the window
+e 652 ; walk up to the hut
+e 708 ; knock on the window
+k 65 ; nothing to ask
+l 708 ; look through the window: the man and the trapdoor
+e 818 ; back from the window
+e 596 ; down the steps
+e 308 ; the boathook floating in the water
+u 51 309 ; fish out the bottle with it
+e 320 ; up the steps
+e 611 ; the chimney is hot
+u 125 611 ; the water in the bottle cools the cone
+e 611 ; take the cone off
+u 125 611 ; the bottle blocks the chimney: smoke
+e 596 ; down the steps again
+e 321 ; up through the trapdoor into the smoky hut
+e 729 ; the dog biscuits
+e 734 ; back down through the trapdoor
+u 48 759 ; a biscuit on the platform: the dog goes for it
+u 51 759 ; the boathook tips the platform: the dog in the water
+e 320 ; up the steps
+e 712 ; over the fence
+e 1028 ; up the ladder
+e 1101 ; open the window: the warehouse
+u 51 1162 ; jam the fan with the boathook
+e 1150 ; back out
+e 1028 ; down the ladder
+e 1026 ; knock on the warehouse door
+k 57 ; is this Condor Transglobal: he's coming out
+e 1028 ; up the ladder, quick
+e 1107 ; the first barrel goes down the cable: he walks over to look
+e 1125 ; the second one knocks him into the water
+e 1028 ; down the ladder
+== El almacén de Condor Transglobal
+e 1026 ; into the warehouse
+e 1189 ; the desk drawer: a small brass key
+e 3273 ; the crates at the back
+g 600 340 ; walk right: the little Indian with a blowpipe
+u 108 1183 ; the key: George unlocks his handcuffs and he hides
+e 1196 ; the lift button: George holds the doors upstairs
+e 1277 ; push a crate into the doors
+e 1294 ; the light switch
+l 1298 ; marks on the floor
+e 1298 ; a door opened there
+e 1292 ; the hidden door
+e 1292 ; in: Nico, tied up
+e 1303 ; the fetish
+e 1302 ; untie Nico
+e 2786 ; the masking tape she dropped
+e 1324 ; back out
+u 84 1288 ; the tape on the photoelectric cell
+e 1277 ; push that crate out of the lift
+e 1279 ; the small crate onto it
+e 1278 ; push the big crate away from the pallet carrier
+e 1285 ; raise the pallet
+u 104 1299 ; the rope round the statue
+e 1708 ; and onto the pulley
+w 6 ; George ties it (a long animation)
+l 1300 ; the pulley
+e 1285 ; lower the pallet
+e 1299 ; too heavy for George alone
+e 1378 ; Nico
+k 111 ; help me push this statue: it smashes the door
+e 1284 ; through the smashed door onto the roof
+u 82 1108 ; the manacles on the cable: down into the water, then Quaramonte
+== Quaramonte
+e 944 ; the band in the square
+k 85 ; why is Miguel in jail
+k 89 ; their music
+k 86 ; the mining accident
+k 65
+e 1227 ; Pearl Henderson
+k 63 ; is Duane with her
+k 63 ; why they don't talk
+k 63 ; the CIA
+k 65
+e 884 ; the police station: General Grasiento
+k 94 ; the man with him: Oubier
+k 94 ; what Oubier is doing here
+k 65
+l 572 ; the chart on the wall
+e 893 ; outside: Nico wants to talk
+k 65 ; not now
+e 1167 ; Oubier by the truck (Duane recognizes George)
+k 94 ; what he's doing in Quaramonte
+k 65
+e 992 ; up to the mining office: Concha García
+k 86 ; the accident: sabotage
+k 86 ; proof
+k 86 ; where the mine is
+k 94 ; Oubier rented equipment
+k 65
+e 1825 ; out
+e 1079 ; Duane in the truck
+k 120 ; did he drive here
+k 120 ; why such a big truck: a bomb
+k 89 ; traditional music is illegal
+k 85 ; why Miguel is in jail
+k 85 ; Duane is here for Miguel: he needs a detonator
+k 65
+e 992 ; back to the mining office
+e 1275 ; Concha
+k 1372 ; a detonator? not without a good reason
+k 1408 ; the general's map
+k 65
+e 1825 ; out
+e 3279 ; Nico
+k 1408 ; the map in the police station
+k 1408 ; could she distract the general
+e 1203 ; the general
+k 90 ; Nico wants an interview: he takes her to his flat
+e 1417 ; Renaldo
+k 1373 ; any pyramids near here
+k 1373 ; would he take a friend to the ruins
+e 893 ; out
+e 1227 ; Pearl
+k 1373 ; all set for her visit: Renaldo takes her
+l 572 ; the map, now nobody's watching
+e 572 ; Teoculcan
+e 893 ; out
+e 992 ; the mining office
+e 1275 ; Concha
+k 1408 ; the map shows Teoculcan: take the detonator
+k 65
+e 972 ; the cupboard: the detonator
+e 1825 ; out
+e 1079 ; Duane
+k 1372 ; how come no detonator
+k 1372 ; here's one: go tell Miguel
+e 884 ; the police station
+e 1402 ; the cells
+e 1845 ; Miguel: Renaldo locks George up
+== Nico en casa del general
+l 979 ; the TV
+l 977 ; the portrait
+l 978 ; the swordfish
+l 975 ; the lava lamp
+e 1884 ; the general
+k 1913 ; his TV
+k 102 ; the portrait: his mother
+k 1911 ; the swordfish
+k 1915 ; the lava lamp: his mother walks in (Duane's truck bomb is a dud)
+== George y Miguel en la cárcel
+e 1845 ; Miguel
+k 92 ; the noose
+k 92 ; give it here
+k 65
+u 92 1848 ; the noose on the window bars: Duane outside
+e 990 ; the other end of the rope
+e 2267 ; to Duane: tie it to the truck and drive off
+== La casa del árbol en la selva
+e 3017 ; the vine on the washing machine
+e 2953 ; the pile of wet leaves
+u 110 2953 ; the bank statement on the leaves
+u 66 2822 ; the fetish on the water wheel: sparks, fire, Father Hubert comes out
+e 3039 ; Hubert
+k 90 ; the girl he found is Nico: snakebite
+k 1512 ; where to find the root
+k 1512 ; take me to the village: his collar is creased
+u 1508 2999 ; the collar on the press
+u 1513 2999 ; the vine as a belt
+e 3003 ; the heavy cross
+e 2999 ; press the collar
+e 3174 ; take the collar
+e 3039 ; Hubert
+k 1508 ; here's your collar
+k 1512 ; now take me to the village
+== La aldea maya
+k 90 ; the guard: my girlfriend was bitten
+k 2082 ; Hubert said there's a wise man
+k 90 ; will they let her die
+k 3128 ; the shaman wants a tribute
+k 65
+u 48 3230 ; the dog biscuits for the shaman: he wants more
+t 112 48 ; the Mayan stone in the empty box
+u 48 3230 ; more "biscuits": the shaman will see George
+e 3232 ; the shaman
+k 90
+k 90
+k 1512
+k 1512
+k 1512
+k 112
+k 758
+k 487
+k 113
+k 113
+k 114
+k 114
+k 758
+k 758
+k 112
+k 112
+k 1512 ; the root (and the Monkey Dance all night)
+== El antídoto
+u 68 2999 ; the cone under the press
+u 1512 2999 ; the root on the press
+e 3003 ; the cross
+e 2999 ; squeeze the root
+e 3178 ; the cone with the juice
+e 3293 ; up to the tree house: Nico drinks it
+== Ketch's Landing
+e 1937 ; Bronson's plans: he won't let George look
+e 1941 ; Rio, the boy fishing
+k 65
+e 1935 ; the steps up to the museum
+e 1935 ; (again if George only walked up to them)
+e 1953 ; extend the ladder
+e 1948 ; the door: the museum is closed
+e 1971 ; the Ketch sisters
+k 54 ; their cat
+k 122 ; yes, George loves cats
+k 54
+k 103 ; Rio
+k 103
+k 103
+k 64 ; Emily
+k 65
+e 194 ; down the steps
+e 1941 ; Rio
+k 67 ; a fish for the cat
+k 72 ; the worm as bait
+e 1941
+k 64 ; Emily
+k 65
+e 1941
+k 67 ; how's the fishing: a bicycle
+k 67 ; still need a fish
+k 65
+e 1942 ; the inner tube off the bicycle
+w 15 ; Rio catches a fish
+e 1941 ; Rio hands it over
+e 1935 ; the steps
+e 1935 ; (again if George only walked up to them)
+e 1971 ; the sisters
+k 64 ; Emily
+k 64 ; she's on the beach with Rio: they rush off
+w 6 ; they walk off
+e 1953 ; up the ladder
+w 4 ; George climbs
+u 74 1951 ; the inner tube on the flagpole
+g 300 330 ; down
+u 67 1952 ; the fish on the tube: the cat goes for it
+e 2678 ; the cat's red ball
+w 3
+e 1953 ; up the ladder
+w 4 ; George climbs
+e 1952 ; take the inner tube back
+g 300 330 ; down
+u 74 2679 ; the inner tube on the tree: a catapult
+u 2594 1956 ; fire the ball: the target falls, Bronson comes up
+e 1953 ; take the ladder away while he's on the flagpole
+e 194 ; down the steps
+e 1937 ; the plans: a pirate hotel
+e 1947 ; the theodolite
+e 1935 ; up the steps
+e 1935 ; (again if George only walked up to them)
+e 1967 ; Bronson
+k 99 ; the plans
+k 99 ; promise to tell the truth
+k 65
+u 99 1971 ; show the plans to the sisters: they let George in
+== Nico en el Museo Británico
+l 3109 ; the jaguar stone in its cabinet
+e 3029 ; the attendant
+k 113 ; the jaguar stone: Dee's mirror, and Oubier is here
+k 114 ; ask Oubier: he leaves for the docks
+k 113 ; the stone's been stolen
+e 3036 ; the key the thief left on the cabinet
+e 3029 ; the attendant
+k 106 ; the ship: Princesa Xibalba at Tower Bridge
+k 77 ; the key: he phones the police
+u 77 3033 ; the key opens the dagger cabinet
+e 3033 ; the dagger
+i 133 ; Nico's handbag: a hairgrip
+e 3032 ; the curtain: a hidden door
+u 130 3123 ; prise it open with the dagger
+== El museo de Ketch
+e 1978 ; the sea chest: Emily hides inside
+k 65
+e 1987 ; the quill
+l 1990 ; Captain Ketch's portrait: a gold cross
+e 1981 ; Emily
+k 58 ; her cross
+k 58 ; what would she swap it for
+k 65
+e 2607 ; out
+u 1511 1879 ; the quill to the cat: shreds
+e 3383 ; the feathers
+e 194 ; down the steps
+e 1941 ; Rio
+k 64 ; a present for a little girl: a conch
+k 3385 ; his sister
+k 3384 ; the feathers for a fly: the conch
+k 65
+e 1935 ; up the steps
+e 1935 ; (again if George only walked up to them)
+e 1948 ; into the museum
+e 1981 ; Emily
+k 2888 ; the conch for the cross
+k 65
+e 1984 ; the hanging lantern
+e 1983 ; into the inkwell
+e 1977 ; the chart on the easel
+e 1980 ; into the recess in the desk
+u 58 1985 ; the cross in the pen holder: its shadow falls on Zombie Island
+e 2607 ; out
+e 194 ; down
+e 1941 ; Rio
+k 119 ; the treasure
+k 119
+k 2025 ; Zombie Island: he takes George there
+== La Isla de los Zombis
+l 1331 ; the boat full of nets
+l 1330 ; the rocky outcrop
+e 1333 ; Rio
+k 1510 ; borrow his net
+k 65
+u 1510 1330 ; throw the net over the outcrop and climb
+== Nico en el metro abandonado
+u 132 3323 ; the hairgrip in the coin slot
+e 3336 ; an old penny from the reject slot
+u 129 3323 ; the penny back in: an old chocolate bar
+e 3337 ; the chocolate
+e 3336 ; the penny again
+u 129 2420 ; the penny in the weighing machine: a card
+u 130 2418 ; the dagger in the cupboard door
+u 128 3338 ; the card in the crack: the latch
+e 3425 ; the red button: a train stops
+== George en la Isla de los Zombis
+e 2322 ; the upper path
+e 2393 ; the reed in the swamp
+e 1582 ; on to the right
+l 2893 ; something in the hole under the rock
+u 136 2893 ; poke it with the reed: it bites the end off
+e 1602 ; back
+e 1599 ; back to the cliff top
+e 2323 ; the lower path: the boar
+t 60 136 ; the dart in the reed: a blowpipe
+l 2417 ; the branch (and nothing left in hand)
+u 137 1910 ; shoot the boar
+E 2417 ; grab the branch as it charges: it uncovers a path
+e 2325 ; the needle rock
+e 2328 ; the creeper off the rock
+t 83 1510 ; the theodolite marker in the net
+u 2889 2328 ; the net on the creeper
+e 2328 ; take it all
+e 2842 ; throw it up the needle rock
+e 2331 ; back to the boar's lair
+e 2324 ; the path the boar uncovered: Camel's Hump Hill
+u 117 3424 ; the theodolite in the holes in the rock
+e 3494 ; look through it
+e 1925 ; turn right...
+e 1925
+e 1925
+e 1925
+e 1925
+e 1925
+e 1925
+e 1925
+e 1925
+e 1925
+e 1925
+e 2329 ; the marker
+e 2332 ; the pillar in line with it
+e 1926 ; stop looking
+e 1918 ; down the hill
+== Nico en el barco de Karzac
+e 3144 ; sneak to the crate nearest the boat
+e 3157 ; onto the cabin roof
+v 3170 10000 ; the guard's rounds take him out of sight for 4, 8.5 or 14 s in turn: wait for the 14 s one
+x 3170 138 150 ; left end
+x 3170 515 531 ; right end: 4 s out of sight
+x 3170 138 150
+x 3170 515 531 ; 8.5 s
+x 3170 138 150
+x 3170 515 531 ; right end before the 14 s one
+E 3145 ; open the cupboard
+E 3157 ; back up onto the roof: the guard comes to look
+x 3170 254 258 ; he steps into the cupboard
+E 3157 ; down
+E 3145 ; shut the door on him
+E 3195 ; the mop
+E 3145 ; through the hooks: he's locked in
+e 3154 ; a porthole: Karzac kills Oubier
+e 3300 ; Oubier
+e 3306 ; the jaguar stone
+u 130 3299 ; the dagger in Karzac's leg
+== El rodaje en la Isla de los Zombis
+e 1631 ; Haiku McEwan, the actor
+k 2574 ; his name
+k 2574 ; they shoot the scene again
+e 1623 ; a bun
+e 3452 ; the syrup
+e 2485 ; a pancake
+t 2015 2014 ; syrup on the pancake
+u 135 1607 ; offer it to Bert, the stuntman: he's sticky now
+k 65
+u 127 1630 ; the bun in the bush: hornets
+e 1623 ; another bun
+u 127 1630 ; the hornets go for the sticky stuntman: they move to the beach
+k 65
+l 1653 ; the rock pillar
+e 1651 ; Hawks
+k 2573 ; George offers to do the stunt
+k 88 ; the movie
+k 65
+e 1636 ; the hand-held camera: Flash likes the idea
+e 1651 ; Hawks
+k 53 ; the cameraman: shoot in the cave
+== Nico en la aldea arrasada
+e 3244 ; Titipoco
+k 3179 ; George's sunglasses: he has the eagle stone
+k 71 ; where's George
+k 65
+e 3238 ; the underpants
+e 3254 ; the coyote stone in the ashes: too hot
+e 3240 ; the big barrel: too heavy alone
+e 3244 ; Titipoco
+k 3204 ; help with the barrel: it cools the stone
+e 3254 ; the coyote stone
+g 20 300 ; out left: the pyramid
+== Al pie de la pirámide
+l 3351 ; the scaffolding gantry
+e 2705 ; the rope
+e 2162 ; Titipoco
+k 104 ; throw the rope over the top
+e 2705 ; the rope's end
+E 2694 ; onto the lift engine
+e 1962 ; the cylinder by the generator
+u 130 2677 ; cut the fuel line with the dagger
+u 3317 2677 ; fill the cylinder
+E 3328 ; into the engine's fuel cap
+e 2735 ; the crank...
+e 2735 ; ...twice
+e 2732 ; the button: the engine starts
+e 2162 ; Titipoco
+k 3022 ; do the same as me when I say
+e 2737 ; onto the lift
+e 2162 ; Titipoco pulls the lever: up
+e 2778 ; the ammunition belt
+e 2773 ; back down
+g 200 330 ; toward the guards
+e 3253 ; the torch: a sergeant stops Nico
+k 70 ; the general's friend
+e 3253 ; the torch
+E 2162 ; Titipoco lights it: the fuel puddle burns
+u 3201 2690 ; the ammo belt into the fire: the guards run
+== En lo alto de la pirámide
+e 2777 ; the general: Karzac killed Oubier
+e 2776 ; untie George: into the pyramid
+== Dentro de la pirámide
+e 2652 ; pull the left lever: nothing
+e 2655 ; the right one: nothing
+e 2645 ; George
+k 3022 ; pull them together: they fall into the pit
+== El puzle de las ruedas
+g 600 340 ; toward the wheels
+e 2498 ; tile 2
+e 2493 ; the first click on the wheels: Nico describes them
+e 2493 ; turn wheel 1
+e 2493 ; turn wheel 1 to 2
+e 2494 ; turn wheel 2
+e 2494 ; turn wheel 2
+e 2494 ; turn wheel 2
+e 2494 ; turn wheel 2
+e 2494 ; turn wheel 2
+e 2494 ; turn wheel 2 to 6
+e 2501 ; tile 5
+e 2507 ; glyph A = tiles 2 + 5
+e 2493 ; turn wheel 1 to 3
+e 2494 ; turn wheel 2
+e 2494 ; turn wheel 2
+e 2494 ; turn wheel 2
+e 2494 ; turn wheel 2
+e 2494 ; turn wheel 2 to 3
+e 2499 ; tile 3
+e 2493 ; turn wheel 1 to 4
+e 2494 ; turn wheel 2
+e 2494 ; turn wheel 2
+e 2494 ; turn wheel 2
+e 2494 ; turn wheel 2
+e 2494 ; turn wheel 2
+e 2494 ; turn wheel 2 to 1
+e 2506 ; tile 10
+e 2508 ; glyph B = tiles 3 + 10
+e 2493 ; turn wheel 1
+e 2493 ; turn wheel 1
+e 2493 ; turn wheel 1 to 7
+e 2494 ; turn wheel 2
+e 2494 ; turn wheel 2
+e 2494 ; turn wheel 2
+e 2494 ; turn wheel 2 to 5
+e 2497 ; tile 1
+e 2493 ; turn wheel 1
+e 2493 ; turn wheel 1
+e 2493 ; turn wheel 1
+e 2493 ; turn wheel 1
+e 2493 ; turn wheel 1
+e 2493 ; turn wheel 1 to 5
+e 2494 ; turn wheel 2
+e 2494 ; turn wheel 2
+e 2494 ; turn wheel 2
+e 2494 ; turn wheel 2
+e 2494 ; turn wheel 2
+e 2494 ; turn wheel 2
+e 2494 ; turn wheel 2 to 4
+e 2504 ; tile 8
+e 2509 ; glyph C = tiles 1 + 8
+e 2493 ; turn wheel 1 to 6
+e 2494 ; turn wheel 2
+e 2494 ; turn wheel 2
+e 2494 ; turn wheel 2 to 7
+e 2502 ; tile 6
+e 2493 ; turn wheel 1
+e 2493 ; turn wheel 1
+e 2493 ; turn wheel 1 to 1
+e 2494 ; turn wheel 2
+e 2494 ; turn wheel 2
+e 2494 ; turn wheel 2 to 2
+e 2505 ; tile 9
+e 2510 ; glyph D = tiles 6 + 9
+e 2511 ; the secret door
+== George en el laberinto de la pirámide
+e 3227 ; the torch on the wall
+E 3224 ; Titipoco
+k 2946 ; light it
+e 3236 ; the lever: Titipoco and George fall through
+e 2185 ; the lever in the middle of the room
+e 2189 ; the door on the left
+e 2196 ; the right lever
+e 2198 ; through that door
+e 2216 ; the far lever
+e 2206 ; through the door that opened: a secret passage
+e 2452 ; the burning torch on the floor
+E 2184 ; light the torch on the wall by the secret passage
+e 2360 ; down the secret stairs
+e 2477 ; the lever
+e 2483 ; down "toward certain death": the ending and the credits

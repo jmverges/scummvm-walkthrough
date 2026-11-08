@@ -134,6 +134,7 @@ struct MenuObject {
 };
 
 class Mouse {
+	friend class Sword2Guide;
 private:
 	Sword2Engine *_vm;
 

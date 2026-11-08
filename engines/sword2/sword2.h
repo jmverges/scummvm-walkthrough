@@ -60,6 +60,7 @@ class ResourceManager;
 class Sound;
 class Screen;
 class Mouse;
+class Sword2Guide;
 class Logic;
 class FontRenderer;
 class Gui;
@@ -97,6 +98,7 @@ struct StartUp {
 };
 
 class Sword2Engine : public Engine {
+	friend class Sword2Guide;
 private:
 	uint32 _inputEventFilter;
 
@@ -174,6 +176,7 @@ public:
 	Screen *_screen;
 	Mouse *_mouse;
 	Logic *_logic;
+	Sword2Guide *_guide;
 	FontRenderer *_fontRenderer;
 
 	bool _isRTL;

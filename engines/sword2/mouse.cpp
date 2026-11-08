@@ -36,6 +36,7 @@
 #include "sword2/header.h"
 #include "sword2/logic.h"
 #include "sword2/maketext.h"
+#include "sword2/guide.h"
 #include "sword2/mouse.h"
 #include "sword2/object.h"
 #include "sword2/resman.h"
@@ -124,6 +125,9 @@ Mouse::~Mouse() {
 }
 
 void Mouse::getPos(int &x, int &y) {
+	if (_vm->_guide && _vm->_guide->mousePos(x, y))
+		return;
+
 	Common::EventManager *eventMan = _vm->_system->getEventManager();
 	Common::Point pos = eventMan->getMousePos();
 
