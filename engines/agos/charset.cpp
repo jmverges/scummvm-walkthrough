@@ -22,6 +22,7 @@
 #include "common/system.h"
 
 #include "agos/agos.h"
+#include "agos/guide.h"
 #include "agos/intern.h"
 
 #include "graphics/surface.h"
@@ -105,6 +106,9 @@ void AGOSEngine::showMessageFormat(const char *s, ...) {
 	va_start(va, s);
 	vsnprintf(buf, STRINGBUFLEN, s, va);
 	va_end(va);
+
+	if (_guide)
+		_guide->onMessage(buf);
 
 	if (!_fcsData1[_curWindow]) {
 		if (getGameType() == GType_ELVIRA1 || getGameType() == GType_ELVIRA2 || getGameType() == GType_WW) {

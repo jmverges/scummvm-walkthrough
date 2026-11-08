@@ -31,6 +31,7 @@
 #include "agos/debugger.h"
 #include "agos/intern.h"
 #include "agos/agos.h"
+#include "agos/guide.h"
 #include "agos/midi.h"
 #include "agos/sound.h"
 
@@ -202,6 +203,8 @@ AGOSEngine::AGOSEngine(OSystem *system, const AGOSGameDescription *gd)
 	_numVideoOpcodes = 0;
 	_vgaBaseDelay = 0;
 	_vgaPeriod = 0;
+	_guide = nullptr;
+	_guideWaiting = 0;
 
 	_strippedTxtMem = nullptr;
 	_textMem = nullptr;
@@ -1085,6 +1088,8 @@ const AGOSEngine::PnAmigaTextPlane *AGOSEngine::getPnAmigaTextPlane(const Window
 
 
 AGOSEngine::~AGOSEngine() {
+	delete _guide;
+	_guide = nullptr;
 	_system->getAudioCDManager()->stop();
 	stopMusic();
 	delete _pnAmigaFont;
@@ -1221,6 +1226,9 @@ Common::Error AGOSEngine::go() {
 		(getFeatures() & GF_DEMO)) {
 		playMusic(0, 0);
 	}
+
+	if (getGameType() == GType_SIMON2)
+		_guide = new AGOSGuide(this);
 
 	runSubroutine101();
 	permitInput();

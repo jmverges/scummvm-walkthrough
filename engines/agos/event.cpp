@@ -20,6 +20,7 @@
  */
 
 #include "agos/agos.h"
+#include "agos/guide.h"
 #include "agos/animation.h"
 #include "agos/debugger.h"
 #include "agos/sound.h"
@@ -604,6 +605,9 @@ void AGOSEngine::delay(uint amount) {
 
 		if (_leftButton == 1)
 			_leftButtonCount++;
+
+		if (_guide && !_inCallBack)
+			_guide->tick();
 
 		_system->getAudioCDManager()->update();
 
