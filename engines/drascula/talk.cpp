@@ -20,6 +20,7 @@
  */
 
 #include "drascula/drascula.h"
+#include "drascula/guide.h"
 
 #include "backends/keymapper/keymapper.h"
 
@@ -28,7 +29,9 @@ namespace Drascula {
 static const int x_talk_dch[6] = {1, 25, 49, 73, 97, 121};
 static const int x_talk_izq[6] = {145, 169, 193, 217, 241, 265};
 
-void DrasculaEngine::talkInit(const char *filename) {
+void DrasculaEngine::talkInit(const char *filename, const char *said) {
+	if (_guide)
+		_guide->onTalk(filename, said);
 	_rnd->setSeed(Common::RandomSource::generateNewSeed());
 
 	playFile(filename);
@@ -75,7 +78,7 @@ void DrasculaEngine::talk_igor(int index, int talkerType) {
 
 	color_abc(kColorWhite);
 
-	talkInit(filename);
+	talkInit(filename, said);
 
 	do {
 		if (talkerType == kIgorDch || talkerType == kIgorFront) {
@@ -156,7 +159,7 @@ void DrasculaEngine::talk_drascula(int index, int talkerType) {
 
 	color_abc(kColorRed);
 
-	talkInit(filename);
+	talkInit(filename, said);
 
 	do {
 		face = _rnd->getRandomNumber(7);
@@ -214,7 +217,7 @@ void DrasculaEngine::talk_drascula_big(int index) {
 
 	color_abc(kColorRed);
 
-	talkInit(filename);
+	talkInit(filename, said);
 
 	keymapper->getKeymap("game-shortcuts")->setEnabled(false);
 	keymapper->getKeymap("animation")->setEnabled(true);
@@ -252,7 +255,7 @@ void DrasculaEngine::talk_solo(const char *said, const char *filename) {
 	else if (currentChapter == 5)
 		color_abc(kColorRed);
 
-	talkInit(filename);
+	talkInit(filename, said);
 
 	if (currentChapter == 6)
 		copyBackground();
@@ -295,7 +298,7 @@ void DrasculaEngine::talk_bartender(int index, int talkerType) {
 
 	color_abc(kColorMaroon);
 
-	talkInit(filename);
+	talkInit(filename, said);
 
 	do {
 		if (talkerType == 0) {
@@ -345,7 +348,7 @@ void DrasculaEngine::talk_bj(int index) {
 
 	color_abc(kColorWhite);
 
-	talkInit(filename);
+	talkInit(filename, said);
 
 	do {
 		if (currentChapter != 5) {
@@ -426,7 +429,7 @@ void DrasculaEngine::talk(const char *said, const char *filename) {
 		color_abc(kColorYellow);
 	}
 
-	talkInit(filename);
+	talkInit(filename, said);
 
 	do {
 		face = _rnd->getRandomNumber(5);
@@ -579,7 +582,7 @@ void DrasculaEngine::talk_vonBraun(int index, int talkerType) {
 
 	color_abc(kColorBrown);
 
-	talkInit(filename);
+	talkInit(filename, said);
 
 	copyBackground(vonBraunX + 5, 64, OBJWIDTH + 1, 0, 25, 27, bgSurface, drawSurface3);
 
@@ -635,7 +638,7 @@ void DrasculaEngine::talk_blind(int index) {
 	copyBackground();
 	updateScreen();
 
-	talkInit(filename);
+	talkInit(filename, said);
 
 	do {
 		copyBackground();
@@ -678,7 +681,7 @@ void DrasculaEngine::talk_hacker(int index) {
 
 	color_abc(kColorYellow);
 
-	talkInit(filename);
+	talkInit(filename, said);
 
 	do {
 		if (!_subtitlesDisabled)
@@ -726,7 +729,7 @@ void DrasculaEngine::talk_pen(const char *said, const char *filename, int talker
 
 	color_abc(kColorYellow);
 
-	talkInit(filename);
+	talkInit(filename, said);
 
 	do {
 		if (talkerType == 0)
@@ -772,7 +775,7 @@ void DrasculaEngine::talk_bj_bed(int index) {
 
 	color_abc(kColorWhite);
 
-	talkInit(filename);
+	talkInit(filename, said);
 
 	do {
 		face = _rnd->getRandomNumber(4);
@@ -808,7 +811,7 @@ void DrasculaEngine::talk_htel(int index) {
 
 	color_abc(kColorYellow);
 
-	talkInit(filename);
+	talkInit(filename, said);
 
 	do {
 		face = _rnd->getRandomNumber(2);
@@ -851,7 +854,7 @@ void DrasculaEngine::talk_sync(const char *said, const char *filename, const cha
 	p = 0;
 
 	memset(buf, 0, sizeof(buf));
-	talkInit(filename);
+	talkInit(filename, said);
 
 	do {
 		strncpy(buf, &syncChar[p], 1);
@@ -931,7 +934,7 @@ void DrasculaEngine::talk_trunk(int index) {
 
 	color_abc(kColorMaroon);
 
-	talkInit(filename);
+	talkInit(filename, said);
 
 	do {
 		face = (face == 1) ? 0 : 1;
@@ -955,7 +958,7 @@ void DrasculaEngine::talk_trunk(int index) {
 
 void DrasculaEngine::talk_generic(const char* said, const char* filename, int* faces, int faceCount, int* coords, byte* surface) {
 	int face;
-	talkInit(filename);
+	talkInit(filename, said);
 
 	do {
 		face = _rnd->getRandomNumber(faceCount - 1);

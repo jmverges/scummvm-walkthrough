@@ -55,6 +55,8 @@
  */
 namespace Drascula {
 
+class DrasculaGuide;
+
 #define DRASCULA_DAT_VER 7
 #define DATAALIGNMENT 4
 
@@ -336,6 +338,8 @@ static const int interf_y[] = { 51, 51, 51, 51, 83, 83, 83 };
 struct RoomHandlers;
 
 class DrasculaEngine : public Engine {
+	friend class DrasculaGuide;
+
 protected:
 	// Engine APIs
 	Common::Error run() override;
@@ -557,7 +561,7 @@ public:
 	void placeIgor();
 	void placeDrascula();
 
-	void talkInit(const char *filename);
+	void talkInit(const char *filename, const char *said = nullptr);
 	bool isTalkFinished();
 	void talk_igor(int, int);
 	void talk_drascula(int index, int talkerType = 0);
@@ -764,6 +768,7 @@ public:
 
 private:
 	int _lang;
+	DrasculaGuide *_guide;
 
 	CharInfo *_charMap;
 	int _charMapSize;

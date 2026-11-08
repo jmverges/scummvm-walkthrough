@@ -32,12 +32,14 @@
 #include "engines/util.h"
 
 #include "drascula/drascula.h"
+#include "drascula/guide.h"
 #include "drascula/console.h"
 
 namespace Drascula {
 
 DrasculaEngine::DrasculaEngine(OSystem *syst, const DrasculaGameDescription *gameDesc) : Engine(syst), _gameDescription(gameDesc) {
 	_charMap = nullptr;
+	_guide = nullptr;
 	_itemLocations = nullptr;
 	_polX = nullptr;
 	_polY = nullptr;
@@ -181,6 +183,7 @@ DrasculaEngine::DrasculaEngine(OSystem *syst, const DrasculaGameDescription *gam
 }
 
 DrasculaEngine::~DrasculaEngine() {
+	delete _guide;
 	delete _rnd;
 	stopSound();
 
@@ -268,6 +271,8 @@ Common::Error DrasculaEngine::run() {
 
 	if (!loadDrasculaDat())
 		return Common::kUnknownError;
+
+	_guide = new DrasculaGuide(this);
 
 	checkForOldSaveGames();
 
@@ -597,6 +602,14 @@ bool DrasculaEngine::runCurrentChapter() {
 		if (_loadedDifferentChapter)
 			return true;
 
+		if (_guide) {
+			_canSaveLoad = true;
+			_guide->tick();
+			_canSaveLoad = false;
+			if (_loadedDifferentChapter)
+				return true;
+		}
+
 		if (!_menuScreen && takeObject == 1)
 			checkObjects();
 
@@ -726,7 +739,8 @@ bool DrasculaEngine::runCurrentChapter() {
 			loadPic("alcbar.alg", bgSurface, 255);
 		}
 
-		if (_leftMouseButton != 0 || _rightMouseButton != 0 || key != 0 || action != kActionNone)
+		if (_leftMouseButton != 0 || _rightMouseButton != 0 || key != 0 || action != kActionNone ||
+			(_guide && _guide->playing()))
 			framesWithoutAction = 0;
 
 		if (framesWithoutAction == 15000) {
@@ -900,6 +914,8 @@ void DrasculaEngine::updateEvents() {
 			break;
 		}
 	}
+	if (_guide)
+		_guide->afterEvents();
 }
 
 void DrasculaEngine::delay(int ms) {

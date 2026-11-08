@@ -22,6 +22,7 @@
 #include "common/textconsole.h"
 
 #include "drascula/drascula.h"
+#include "drascula/guide.h"
 
 #include "common/text-to-speech.h"
 
@@ -191,6 +192,11 @@ void DrasculaEngine::converse(int index) {
 	cleanupString(phrase3);
 	cleanupString(phrase4);
 
+	if (_guide) {
+		const char *const lines[4] = { phrase1, phrase2, phrase3, phrase4 };
+		_guide->onConverse(lines);
+	}
+
 	loadPic("car.alg", backSurface);
 	// TODO code here should limit y position for mouse in dialog menu,
 	// but we can't implement this as there is lack in backend functionality
@@ -234,6 +240,11 @@ void DrasculaEngine::converse(int index) {
 		phrase2_bottom = phrase1_bottom + 8 * print_abc_opc(phrase2, phrase1_bottom + 2, game2);
 		phrase3_bottom = phrase2_bottom + 8 * print_abc_opc(phrase3, phrase2_bottom + 2, game3);
 		phrase4_bottom = phrase3_bottom + 8 * print_abc_opc(phrase4, phrase3_bottom + 2, kDialogOptionUnselected);
+
+		if (_guide) {
+			const int bottom[4] = { phrase1_bottom, phrase2_bottom, phrase3_bottom, phrase4_bottom };
+			_guide->tickConverse(bottom);
+		}
 
 		if (_mouseY > 0 && _mouseY < phrase1_bottom) {
 			if (game1 == kDialogOptionClicked && _color != kColorWhite)

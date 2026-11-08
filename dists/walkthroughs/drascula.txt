@@ -1,0 +1,259 @@
+# Drascula: The Vampire Strikes Back (Spanish), walkthrough for the guide player
+# verbs: 1 look, 2 pick up, 3 open, 4 close, 5 talk, 6 move; 0 walk / door
+
+== Capitulo 1: La posada
+e 5 52 ; talk to the bartender: a room, Drascula
+e 5 53 ; the drunk
+k 1
+k 2
+k 3
+k 4
+e 5 54 ; the pianist
+e 1 103 ; the blackboard
+e 1 102 ; the poster
+e 1 100 ; the skull
+e 0 105 ; up the stairs
+
+== Capitulo 2: Tras el secuestro
+e 5 52 ; the bartender
+e 5 53 ; the drunk: Von Braun
+k 1
+k 2
+k 3
+k 4
+e 5 54 ; the pianist
+k 1
+k 2
+k 3
+k 4
+e 0 162 ; up to the rooms
+e 1 187 ; the mirror
+e 1 184 ; the bed
+e 3 183 ; open the trunk: BJ's handbag
+i 3 22 ; open the handbag: money and two coins
+e 0 163 ; back to the bar
+e 0 171 ; the dining room
+e 1 205 ; the papers on the wall
+e 1 188 ; the cigarette machine
+u 18 188 ; a coin in the machine
+e 6 188 ; a kick: the cigarettes
+e 0 172 ; back to the bar
+e 0 159 ; out of the inn
+e 0 158 ; through the arch
+e 1 147 ; the bin: tissues
+e 0 161 ; on to the village
+e 0 149 ; the blind alley
+e 5 51 ; the blind man
+u 7 51 ; the money for the sickle
+e 0 152 ; back to the village
+e 0 146 ; the suburbs
+e 1 209 ; the sign: the sweet shop
+e 6 189 ; push the barrel: bubble gum
+e 0 126 ; on to the field
+e 0 127 ; the cemetery
+e 2 165 ; the loose bar of the fence
+e 1 133 ; the pantheon
+e 1 166 ; the plant
+u 14 166 ; cut it with the golden sickle: leaves
+e 0 134 ; along the church
+e 1 136 ; the boarded window
+u 10 136 ; prise the board off with the bar and climb in
+e 0 136 ; through the window
+e 1 144 ; the candelabrum
+e 3 143 ; the wardrobe: empty
+e 3 139 ; the drawer
+e 2 140 ; the golden crucifix
+e 3 138 ; open the door
+e 0 138 ; into the church
+e 2 190 ; a candle
+e 1 169 ; the altarpiece
+e 0 142 ; back to the small room
+e 0 137 ; out of the window
+e 0 135 ; back to the cemetery
+e 0 128 ; to the field
+e 0 175 ; Von Braun's hut
+e 3 177 ; open the door: the bell
+e 5 177 ; talk to the door
+k 1
+k 2 ; Von Braun's test: we lose
+e 3 177 ; open the door
+e 0 177 ; back inside: he sleeps
+e 1 182 ; the book on the shelf
+e 2 182 ; take it: Sleeping Beauty
+e 1 181 ; the diploma
+e 1 180 ; the graffiti
+e 0 178 ; out
+e 0 176 ; to the field
+e 0 125 ; to the village
+e 0 145 ; the square
+e 0 148 ; the inn
+e 0 156 ; inside
+u 12 54 ; the book for the pianist: his earplugs
+e 0 159 ; out of the inn
+e 0 151 ; the square
+e 0 146 ; the suburbs
+e 0 126 ; the field
+e 0 175 ; the hut
+e 3 177 ; open the door
+e 0 177 ; in
+u 11 50 ; the earplugs in
+e 5 55 ; wake Von Braun up
+k 2 ; ready for the test: we pass with the earplugs
+e 3 177 ; open the door
+e 0 177 ; in again
+e 5 55 ; wake him up
+k 1 ; how to kill a vampire
+k 2 ; why Drascula could not kill him: the potion
+k 3
+k 4
+e 3 177 ; open the door
+e 0 177 ; in again
+e 5 55 ; wake him up
+k 3 ; we have all the ingredients: the potion and the way to the castle
+e 0 176 ; to the field
+e 0 127 ; the cemetery
+e 0 134 ; along the church
+e 0 136 ; through the window
+e 0 138 ; into the church
+e 0 164 ; the courtyard
+e 1 173 ; the old well
+e 0 173 ; jump in
+
+== Capitulo 3: La gruta
+e 0 100 ; on through the cave
+e 1 51 ; the vampire guard
+e 5 51 ; talk to him
+k 2
+k 4
+u 9 51 ; the crucifix: the vampire turns to dust
+
+== Capitulo 4: El castillo
+e 2 141 ; the rope by the well
+e 0 100 ; up to the big tree
+e 1 52 ; the magpie
+u 22 52 ; throw it the coin
+e 2 180 ; the key
+e 0 102 ; back down
+u 7 101 ; open the small door with the key
+e 0 101 ; in
+e 1 174 ; the painting
+e 4 103 ; close the door behind us: a table
+e 2 142 ; a bag of Draskis
+e 3 104 ; open the left door
+e 0 104 ; the main hall
+e 3 106 ; open the other door
+e 0 106 ; Igor's office
+e 5 51 ; talk to Igor
+k 1
+k 2
+k 3
+k 4
+e 0 107 ; out
+e 4 106 ; close the office door
+e 0 108 ; up the stairs
+e 0 118 ; the library
+e 1 120 ; the wardrobe
+e 3 120 ; open it: a wooden stake
+e 0 120 ; through the wardrobe
+e 1 147 ; the brains
+e 2 147 ; take the big one
+e 2 149 ; the can of oil behind it
+e 2 148 ; Drascula's cape
+e 0 121 ; back through the passage
+e 0 119 ; to the corridor
+e 0 112 ; the kitchen
+e 3 114 ; open the pantry door
+e 0 114 ; in
+e 3 144 ; the little cupboard: rusty hinges
+u 13 144 ; oil the hinges
+e 3 144 ; open it: flour
+e 0 115 ; back to the kitchen
+e 0 113 ; the corridor
+e 0 109 ; down the stairs
+e 3 106 ; open Igor's office
+e 0 106 ; in
+e 2 143 ; the wig: Igor locks us in
+u 16 50 ; disguise as Drascula: cape, wig, Draskis fangs and flour
+e 0 108 ; upstairs
+u 17 116 ; Igor's keys on the first door
+e 0 116 ; the living room
+e 1 160 ; the TV
+e 2 145 ; one of the axes
+e 0 117 ; out
+e 0 109 ; down
+e 0 105 ; the ballroom
+e 3 103 ; open the door
+e 0 103 ; the courtyard
+e 0 100 ; the tree
+u 11 140 ; cut the branch with the axe
+i 19 18 ; tie the rope to the branch
+e 0 102 ; back down
+u 21 179 ; throw the rope at the tower and climb
+
+== Capitulo 5: Los torreones
+e 0 100 ; tower 1
+e 0 112 ; down the trapdoor
+e 1 52 ; Frankenstein, burnt
+e 2 120 ; the machine's plug
+u 16 121 ; into the socket
+e 0 116 ; back up
+e 0 107 ; out of the tower
+e 0 101 ; tower 2
+e 0 113 ; down to the dungeon
+e 1 53 ; the skeleton
+e 2 9999 ; its bone
+e 5 53 ; talk to him: a hungry prisoner
+k 1
+k 2
+k 3
+k 4
+e 1 118 ; the door: BJ is in there
+k 3 ; a hairpin
+u 10 119 ; pick the padlock: the hairpin breaks
+e 0 115 ; back up
+e 0 108 ; out of the tower
+e 0 102 ; tower 3
+e 1 51 ; the werewolf
+e 5 51 ; talk to him
+k 2 ; why he isn't eating people: a vegetarian
+k 4
+u 8 203 ; throw the bone out of the window: he jumps after it
+e 0 110 ; out by the right door
+e 0 103 ; tower 4
+e 0 114 ; down the trapdoor
+e 1 204 ; a security camera
+e 1 206 ; the grille: the stake detector goes off
+e 2 122 ; the loose screws of the mirror
+e 0 117 ; back up
+e 0 111 ; out of the tower
+e 0 100 ; tower 1
+e 0 112 ; down to Frankenstein
+u 12 52 ; the screws in Frankenstein
+u 15 52 ; and the brain
+e 6 123 ; pull the lever
+e 0 104 ; on through the door
+e 1 207 ; the clock
+e 3 124 ; open the coffin: empty, a trap
+k 1
+k 3
+k 4 ; my last wish: the potion
+
+== Capitulo 6: El pendulo
+e 1 50 ; John, tied up
+e 2 101 ; pick up our own hands
+u 20 100 ; on the pendulum: free
+e 6 103 ; move the torch: a secret door
+e 0 104 ; through it
+e 5 51 ; talk to BJ, tied to the bed
+e 0 108 ; down to the bar
+e 5 52 ; ask the bartender for a drink
+k 1
+k 2
+k 3 ; a drink, please: no
+k 4
+e 6 112 ; play the piano: the bartender wants silence
+e 5 52 ; the bartender again
+k 3 ; a drink or I play the piano again
+e 1 56 ; Drascula, watching the match
+u 21 56 ; give him the drink: the potion is gone
+u 9 56 ; and now the crucifix

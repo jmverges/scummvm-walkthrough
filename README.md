@@ -211,6 +211,7 @@ v <object> <ms>               wait until someone has been out of sight that long
 If George or Nico dies, the guide loads the save made as the section started and plays it again (the recording
 script leaves the failed try out). The whole game is in [dists/walkthroughs/bs2.txt](dists/walkthroughs/bs2.txt)
 (Spanish CD, Windows version).
+
 ## Simon the Sorcerer II (AGOS)
 
 Simon the Sorcerer II has its own player too (`engines/agos/guide.cpp`). The game has verb icons in the panel at the
@@ -240,6 +241,27 @@ The whole game is in [dists/walkthroughs/simon2.txt](dists/walkthroughs/simon2.t
 for Tinsel, there is no menu button yet: the walkthrough is set with `guide_file` and played with the commands in
 the file named by `guide_control` (`play`, `stop`, `goto`, `save`, `load`, `objects`...); `guide_save_sections`
 saves the game at the start of each section, from that slot on.
+
+## Drascula (drascula)
+
+Drascula: The Vampire Strikes Back has its own player as well (`engines/drascula/guide.cpp`). Every action in this
+game runs to its end inside one pass of the main loop (walking up to something, talking, cutscenes), so the guide
+only acts from the main loop and from the conversation menu. It picks a verb from the bar at the top, takes items
+from the inventory screen (right click) and clicks on things the way a player would, with object and item numbers
+from the game's room files (the control command `objects` lists the room's objects and the inventory).
+
+```
+e <verb> <object>        a verb from the top bar (0 none: walk, go through a door) and a click on an object
+u <item> <object>        take an item from the inventory screen and click it on an object (50: John)
+i <verb|item> <item>     in the inventory screen, a verb or an item on an item (open the handbag, tie the rope)
+k <line>                 a line of the conversation menu, 1-4 (skipped if no conversation shows up)
+g <x> <y>                a click on the floor
+r <room> / n <flag> <v>  wait until John is in that room / a game flag has that value
+w <seconds>              wait
+```
+
+Verbs: 1 look, 2 pick up, 3 open, 4 close, 5 talk, 6 move. The whole game is in
+[dists/walkthroughs/drascula.txt](dists/walkthroughs/drascula.txt) (the freeware release, Spanish voices and text).
 
 ## Building
 
@@ -285,6 +307,8 @@ On the Vita it needs `ur0:data/libshacccg.suprx`, as every vitaGL app does.
   ([dists/walkthroughs/bs2.txt](dists/walkthroughs/bs2.txt)).
 - **Simon the Sorcerer II** (CD, Spanish voices and text): the whole game to the end credits in one run
   (3 h 40 min) ([dists/walkthroughs/simon2.txt](dists/walkthroughs/simon2.txt)).
+- **Drascula: The Vampire Strikes Back** (freeware release, Spanish voices and text): the whole game to the end
+  credits ([dists/walkthroughs/drascula.txt](dists/walkthroughs/drascula.txt)).
 
 Other games are next. The sister project, the [Hollywood Monsters port](https://github.com/jmverges/hollywood-monsters-port),
 has its own walkthrough player; its videos are on the same channel
