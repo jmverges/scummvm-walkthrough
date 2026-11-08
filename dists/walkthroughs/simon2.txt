@@ -124,13 +124,13 @@ k 1 ; Muy bien, entonces iré a conseguir algo de porridge.
 e 107 60 ; wear the porridge: the joining kit, out
 e 109 44 ; open the junk bag: money, a bungee rope and a wedge
 x 2 5 ; up the steps at the left: the map
-h 20 ; map: MucSwampy's
+h 20 ; map: MucSwamplings
 
-== MucSwampy's
+== MucSwamplings
 e 105 -13 ; talk to the Swampling mascot
 k 2 ; ¿Puedes darme también un vale? (a balloon and a voucher)
 e 102 -12 ; look in the dustbin: a fishing rod
-x 5 0 ; into MucSwampy's
+x 5 0 ; into MucSwamplings
 e 105 -10 ; talk to the tattooist, at lunch
 k 1 ; ¿Dónde trabaja? (until two o'clock, and the clock is stopped)
 e 105 -16 ; talk to the anorak man
@@ -143,7 +143,7 @@ k 1 ; ¿Qué sabores hay?
 k 4 ; Me quedo con el de sabor a Bichos.
 k 1 ; Bien, aquí tienes.
 e 109 64 ; open the kiddie meal: a maggot, swamp gum and a Swampling doll
-x 1 29 ; out of MucSwampy's
+x 1 29 ; out of MucSwamplings
 x 6 24 ; the right edge: the map
 h 16 ; map: the street of traders
 
@@ -176,7 +176,7 @@ h 21 ; map: the fountain
 e 106 107 -10 ; the dye into the fountain
 e 106 106 -16 ; the white cloth into the washerwomen's basket
 x 1 0 ; out to the left: the map
-h 20 ; map: MucSwampy's
+h 20 ; map: MucSwamplings
 e 105 -13 ; talk to the mascot
 c otro globo ; ¿Puedes darme otro globo?
 x 6 24 ; the right edge: the map
@@ -189,10 +189,10 @@ x 1 0 ; the joke shop
 e 104 106 -10 ; give the joke seller the green cloth: a Swampling costume
 x 1 15 ; back to the street
 x 5 8 ; past the ironmonger: the map
-h 20 ; map: MucSwampy's
+h 20 ; map: MucSwamplings
 e 105 -13 ; talk to the mascot
 c otro globo ; ¿Puedes darme otro globo? (the third one, kept)
-x 5 0 ; into MucSwampy's
+x 5 0 ; into MucSwamplings
 e 107 74 ; wear the Swampling costume: up to the kitchen
 
 == El despacho del Swampling
@@ -202,7 +202,7 @@ k 3 ; Yo no creo que sea horrible. He venido especialmente a por un poco.
 k 4 ; Suena delicioso.
 k 1 ; Yo te traeré un poco. (swamp mud: he gives a bucket)
 x 5 4 ; down to the restaurant
-x 1 29 ; out of MucSwampy's
+x 1 29 ; out of MucSwamplings
 x 6 24 ; the right edge: the map
 h 18 ; map: the docks
 e 104 49 -10 ; give Um Bongo the dancers' poster
@@ -225,10 +225,10 @@ e 106 140 -12 ; the fishing rod on the lake: a fish
 e 0 -10 ; back down into the sewers
 x 4 2 ; up the ladder at the right: the loan office
 x 7 17 ; the right edge: the map
-h 20 ; map: MucSwampy's
+h 20 ; map: MucSwamplings
 
 == El pote cenagoso
-x 5 0 ; into MucSwampy's
+x 5 0 ; into MucSwamplings
 e 107 74 ; the costume: up to the kitchen
 x 1 4 ; the Swampling's office
 e 104 129 -10 ; give him the bucket of mud: a jar of swamp stew
@@ -274,7 +274,7 @@ x 1 21 ; out to the hall
 x 3 16 ; out to the courtyard
 x 1 33 ; out of the castle
 x 1 0 ; past the guards: the map
-h 20 ; map: MucSwampy's
+h 20 ; map: MucSwamplings
 x 5 0 ; in
 e 107 74 ; the costume: up to the kitchen
 e 106 86 -10 ; the cog in the clock: it goes again (lunch is over)
@@ -289,7 +289,7 @@ k 1 ; Quiero que me hagas un tatuaje.
 k 3 ; No sé. ¿Qué hay?
 k 4 ; ¿Qué tal la corona con incrustaciones y las dos espadas encantadas cruzadas? (400 dollars: a brochure)
 x 2 5 ; up the steps: the map
-h 20 ; map: MucSwampy's
+h 20 ; map: MucSwamplings
 x 5 0 ; in
 e 104 114 -16 ; give the anorak man the tattoo brochure
 x 1 29 ; out
@@ -334,7 +334,7 @@ x 1 0 ; out to the hall
 x 3 16 ; out to the courtyard
 x 1 33 ; out of the castle
 x 1 0 ; past the guards: the map
-h 20 ; map: MucSwampy's
+h 20 ; map: MucSwamplings
 x 5 0 ; in
 e 107 74 ; the costume: up to the kitchen
 x 1 4 ; the Swampling's office
@@ -421,7 +421,7 @@ e 0 -18 ; up the ladder: a nap, a ship attacks, shipwrecked on an island without
 e 103 85 ; the shovel head
 e 105 -13 ; talk to the beachcomber: he keeps the Mucusade
 e 103 84 ; the beachcomber's towel
-e 0 -16 ; into the jungle: the kid from MucSwampy's
+e 0 -16 ; into the jungle: the kid from MucSwamplings
 e 104 -11 -10 ; give him the balloon up there (without taking it): a shell
 e 103 91 ; the wooden pole
 e 106 91 85 ; the pole on the shovel head: a shovel
@@ -475,7 +475,7 @@ e 103 -10 ; take the bottle: the genie again
 k 1 ; Desearía estar de vuelta en la tienda de Calypso. (the alley, this time)
 g 100 100 ; into Calypso's shop: the demons, and a long scene
 
-== El valle de la perdición
+== El Valle del Mal
 e 109 -11 ; try the cell door: Alix's hairpin, and another Simon with a time stick
 x 8 10 ; to the right: the map of the valley
 h 11 ; map: the dark woods

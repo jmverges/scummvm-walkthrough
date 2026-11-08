@@ -194,6 +194,36 @@ E, U, S, G, I                 the same as e, u, s, g, i, as soon as the player h
 
 The whole game is in [dists/walkthroughs/bs1.txt](dists/walkthroughs/bs1.txt) (Spanish CD, Windows version).
 
+## Simon the Sorcerer II (AGOS)
+
+Simon the Sorcerer II has its own player too (`engines/agos/guide.cpp`). The game has verb icons in the panel at the
+bottom, the inventory next to them, and conversations as numbered lines in the panel; the guide clicks the verb, the
+item, and for "use with" and "give to" the second item once the game asks for it, the way a player would, one step at
+a time when the game waits for a click. Exits are spots on the rooms' walking paths that each room's script checks, so
+a step can click a path point by its number; an item off a scrolling room first walks Simon toward it, and an item in
+the inventory but out of its window scrolls the inventory.
+
+```
+e <verb> <item> [<item2>]     a verb (102 look, 103 pick up, 104 give, 105 talk, 106 use, 107 wear, 108 move,
+                              109 open; 0 for none: walk), then the item and the second one; an item is its
+                              number, or minus a box id for people and things the game draws as named spots
+h <box>                       a click on a box (the places on the maps)
+k <n> / c <words>             a line of a conversation: the n-th from the top / the one with those words
+C <words>                     the same as c, skipped if that line is not offered (the witches do not always talk)
+g <x> <y>                     a click on the room (walk there)
+p <path> <point>              a click on a point of the room's paths; x <path> <point> for an exit: clicked
+                              again until Simon is in another room
+@<room> <step>                that step only if Simon is in that room
+b <bit> <value>, n <var> <value>, r <room>, w <seconds>   waits
+E                             the same as e, as soon as the game takes clicks (the joke book while the seller
+                              looks away, the letter while the manager looks for a form, the goblins' drink)
+```
+
+The whole game is in [dists/walkthroughs/simon2.txt](dists/walkthroughs/simon2.txt) (Spanish CD, DOS talkie). As
+for Tinsel, there is no menu button yet: the walkthrough is set with `guide_file` and played with the commands in
+the file named by `guide_control` (`play`, `stop`, `goto`, `save`, `load`, `objects`...); `guide_save_sections`
+saves the game at the start of each section, from that slot on.
+
 ## Building
 
 The Flatpak: [dists/flatpak-walkthrough](dists/flatpak-walkthrough) is the Flathub recipe for ScummVM
@@ -234,6 +264,8 @@ On the Vita it needs `ur0:data/libshacccg.suprx`, as every vitaGL app does.
   [Videos](https://www.youtube.com/playlist?list=PLUmwk1Mn6GFY), from 7 December 2026.
 - **Broken Sword: The Shadow of the Templars** (CD, Spanish voices and text): the whole game to the end credits
   ([dists/walkthroughs/bs1.txt](dists/walkthroughs/bs1.txt)).
+- **Simon the Sorcerer II** (CD, Spanish voices and text): the whole game to the end credits in one run
+  (3 h 40 min) ([dists/walkthroughs/simon2.txt](dists/walkthroughs/simon2.txt)).
 
 Other games are next. The sister project, the [Hollywood Monsters port](https://github.com/jmverges/hollywood-monsters-port),
 has its own walkthrough player; its videos are on the same channel
