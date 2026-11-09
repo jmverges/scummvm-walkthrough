@@ -27,6 +27,7 @@
 #include "gui/message.h"
 
 #include "agos/agos.h"
+#include "agos/guide.h"
 #include "agos/intern.h"
 
 namespace AGOS {
@@ -846,6 +847,9 @@ void AGOSEngine_Feeble::printInteractText(uint16 num, const char *string) {
 	_variableArray[52] = _interactY;
 	_variableArray[53] = w;
 	_variableArray[54] = height;
+
+	if (_guide)
+		_guide->onInteract(num, _interactY, string);
 
 	stopAnimateSimon2(2, num + 6);
 	renderString(num, 0, w, height, convertedString);

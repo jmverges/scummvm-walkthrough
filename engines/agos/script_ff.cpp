@@ -27,6 +27,7 @@
 
 #include "agos/animation.h"
 #include "agos/agos.h"
+#include "agos/guide.h"
 #include "agos/intern.h"
 #include "agos/sound.h"
 
@@ -601,6 +602,8 @@ void AGOSEngine_Feeble::off_screenTextPObj() {
 			Common::sprintf_s(buf, "%d%s", subObject->objectFlagValue[getOffsetOfChild2Param(subObject, kOFNumber)], string_ptr);
 			string_ptr = buf;
 		}
+		if (_guide && string_ptr != NULL)
+			_guide->onTalk(vgaSpriteId, (const byte *)string_ptr);
 		if (string_ptr != NULL)
 			printScreenText(vgaSpriteId, color, string_ptr, tl->x, tl->y, tl->width);
 	}
