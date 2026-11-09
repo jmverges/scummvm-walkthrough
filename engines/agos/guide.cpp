@@ -1431,6 +1431,12 @@ bool AGOSGuide::save(int slot, const Common::String &desc) {
 bool AGOSGuide::restore(int slot) {
 	const bool ok = _vm->loadGame(_vm->genSaveName(slot));
 	if (ok && feeble()) {
+		// the voices of the CD the game was on (a save made on a later CD loads with the first one's)
+		const uint disc = _vm->_variableArray[97];
+		if (!strcmp(_vm->getExtra(), "4CD") && disc >= 1 && disc <= 4)
+			_vm->_sound->switchVoiceFile(_vm->gss, disc);
+		else if (!strcmp(_vm->getExtra(), "2CD") && disc >= 1 && disc <= 4)
+			_vm->_sound->switchVoiceFile(_vm->gss, disc <= 2 ? 1 : 2);
 		// The Feeble Files puts a room back up when its Oracle closes (its own saves are made with it open):
 		// open and close it
 		Move m;
