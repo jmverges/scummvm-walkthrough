@@ -79,6 +79,8 @@ bool AGOSGuide::parseLine(const Common::String &text, Step &st) const {
 		line = line.substr(sp + 1);
 		line.trim();
 	}
+	if (line == "m")
+		line += ' ';   // the one step without numbers
 	if (line.size() < 2 || line[1] != ' ')
 		return false;
 	if (line.contains('$')) {
@@ -112,6 +114,11 @@ bool AGOSGuide::parseLine(const Common::String &text, Step &st) const {
 	case 'w': st.kind = Step::kWait; return n >= 1;
 	case 's': st.kind = Step::kSwitch; return feeble() && n == 1;
 	case 'v': st.kind = Step::kVar2Wait; return feeble() && n >= 2;
+	case 'm': st.kind = Step::kRoomLeave; return true;
+	case 'P': st.kind = Step::kPairs; return n == 3 && st.b > 0;
+	case 'H': st.kind = Step::kHold; return n == 3;
+	case 'O': st.kind = Step::kLights; return n == 3 && st.b > 0 && st.b <= 8;
+	case 'l': st.kind = Step::kLoop; return n == 2 && st.a > 0;
 	case 't':
 		st.kind = Step::kTalkWait;
 		st.text = line.substr(2);
@@ -479,14 +486,15 @@ bool AGOSGuide::inInventory(int item) const {
 // A screen point that picks this box (as boxController picks: the highest priority there), if any is in view.
 bool AGOSGuide::boxOnScreen(const HitArea *ha, int &x, int &y) const {
 	const bool room = feeble() || _vm->getBitFlag(79) || ha->y < 134;
-	const int sx = room ? scrollXAt(0) : 0, sy = scrollY();
+	const bool oracle = feeble() && _vm->getBitFlag(99);   // the Oracle's boxes are on the screen, not the room
+	const int sx = room && !oracle ? scrollXAt(0) : 0, sy = oracle ? 0 : scrollY();
 	const int cx = ha->x + ha->width / 2 - sx, cy = ha->y + ha->height / 2 - sy;
 	int best = -1;
 	for (int py = ha->y - sy; py < ha->y - sy + ha->height; py += 2)
 		for (int px = ha->x - sx; px < ha->x - sx + ha->width; px += 2) {
 			if (px < 0 || px >= screenW() || py < 0 || py >= screenH())
 				continue;
-			if (feeble() && _vm->_scrollXMax && (px < 48 || px >= screenW() - 48))
+			if (feeble() && !oracle && _vm->_scrollXMax && (px < 48 || px >= screenW() - 48))
 				continue;   // the edges of a room that scrolls scroll it
 			if (!feeble() && ((room && py >= 134 && !_vm->getBitFlag(79)) || (!room && py < 134)))
 				continue;
@@ -539,8 +547,8 @@ AGOSGuide::Aim AGOSGuide::aim(const Move &m, int &x, int &y) const {
 		break;
 	case Move::kItem:
 		ha = findItemBox(m.id);
-		if (!ha && inInventory(m.id) && feeble())
-			return _vm->getBitFlag(99) ? kGone : kOracle;   // the inventory is in the Oracle
+		if (!ha && inInventory(m.id) && feeble() && !_vm->getBitFlag(99))
+			return kOracle;   // the inventory is in the Oracle
 		if (!ha && inInventory(m.id)) {
 			// in the inventory but not in its window
 			HitArea *arrow = findBoxId(0x7FFC);
@@ -562,6 +570,8 @@ AGOSGuide::Aim AGOSGuide::aim(const Move &m, int &x, int &y) const {
 		return boxOnScreen(list[m.id - 1], x, y) ? kHere : kGone;
 	}
 	default: {
+		if (feeble() && _vm->getBitFlag(99) && m.target == Move::kPoint && m.id != -1)
+			return kLeaveOracle;   // a place in the room, under the Oracle
 		x = m.x - scrollXAt(m.y);
 		y = m.y - scrollY();
 		const bool inY = y >= 0 && y < screenH();
@@ -585,6 +595,8 @@ AGOSGuide::Aim AGOSGuide::aim(const Move &m, int &x, int &y) const {
 		return oracle ? kLeaveOracle : kGone;
 	if (boxOnScreen(ha, x, y))
 		return kHere;
+	if (oracle && m.target == Move::kItem && inInventory(m.id) && (findBoxId(0x7FFC) || findBoxId(0x7FFB)))
+		return kArrow;   // an item in the Oracle's list, behind its frame: the list on
 	if (oracle)
 		return kLeaveOracle;   // something in the room, under the Oracle
 	if (!feeble() && ha->y >= 134 && !_vm->getBitFlag(79))
@@ -692,6 +704,98 @@ void AGOSGuide::execute(const Step &st) {
 		pushClick(_moves, 0, Move::kPoint, 0, x, y, 0);
 		break;
 	}
+	case Step::kPairs: {
+		// each card, then the one with the same face; after each click the game turns it over
+		Common::Array<bool> done(st.b, false);
+		for (int i = 0; i < st.b; i++) {
+			if (done[i])
+				continue;
+			for (int j = i + 1; j < st.b; j++) {
+				if (done[j] || _vm->_variableArray[st.a + j] != _vm->_variableArray[st.a + i])
+					continue;
+				done[i] = done[j] = true;
+				const int pair[2] = {i, j};
+				for (int k = 0; k < 2; k++) {
+					pushClick(_moves, _moves.size(), Move::kBox, st.c + pair[k], 0, 0, 0);
+					Move w;
+					w.target = Move::kStay;
+					w.frames = 10;
+					_moves.push_back(w);
+					w.target = Move::kIdle;
+					_moves.push_back(w);
+				}
+				break;
+			}
+		}
+		break;
+	}
+	case Step::kHold: {
+		Move m;
+		m.target = Move::kHold;
+		m.id = st.a;
+		m.x = st.b;
+		m.y = st.c;
+		m.gate = _vm->_variableArray[st.b] > st.c ? -1 : 1;   // the way the variable goes
+		_moves.push_back(m);
+		Move w;
+		w.target = Move::kStay;
+		w.frames = 10;
+		_moves.push_back(w);
+		break;
+	}
+	case Step::kLights: {
+		// Gaussian elimination over GF(2): which cells to click so that every cell ends as the target (all
+		// ones, or else all zeros)
+		const int n = st.b * st.b;
+		for (int target = 1; target >= 0; target--) {
+			Common::Array<uint64> rows(n);
+			for (int i = 0; i < n; i++) {
+				uint64 row = 0;
+				for (int j = 0; j < n; j++) {
+					const int ri = i / st.b, ci = i % st.b, rj = j / st.b, cj = j % st.b;
+					if (ABS(ri - rj) + ABS(ci - cj) <= 1)
+						row |= (uint64)1 << j;
+				}
+				if ((_vm->_variableArray[st.a + i] != 0) != (target != 0))
+					row |= (uint64)1 << n;
+				rows[i] = row;
+			}
+			Common::Array<int> pivots;
+			int r = 0;
+			for (int col = 0; col < n && r < n; col++) {
+				int p = r;
+				while (p < n && !(rows[p] >> col & 1))
+					p++;
+				if (p == n)
+					continue;
+				SWAP(rows[r], rows[p]);
+				for (int k = 0; k < n; k++)
+					if (k != r && (rows[k] >> col & 1))
+						rows[k] ^= rows[r];
+				pivots.push_back(col);
+				r++;
+			}
+			bool solvable = true;
+			for (int k = r; k < n; k++)
+				if (rows[k] >> n & 1)
+					solvable = false;
+			if (!solvable)
+				continue;
+			for (int k = 0; k < r; k++) {
+				if (!(rows[k] >> n & 1))
+					continue;
+				pushClick(_moves, _moves.size(), Move::kBox, st.c + pivots[k], 0, 0, 0);
+				Move w;
+				w.target = Move::kStay;
+				w.frames = 10;
+				_moves.push_back(w);
+				w.target = Move::kIdle;
+				_moves.push_back(w);
+			}
+			break;
+		}
+		break;
+	}
 	case Step::kSwitch: {
 		// the button right of the Oracle's (the scripts check the position)
 		if (_vm->_variableArray[99] == st.a)
@@ -716,7 +820,7 @@ void AGOSGuide::execute(const Step &st) {
 }
 
 Common::String AGOSGuide::describe(const Step &st) const {
-	static const char *const names[] = {"verb", "box", "choice", "point", "room", "var", "bit", "wait", "choice", "path", "talk", "switch", "var2"};
+	static const char *const names[] = {"verb", "box", "choice", "point", "room", "var", "bit", "wait", "choice", "path", "talk", "switch", "var2", "leave", "loop", "pairs", "lights", "hold"};
 	Common::String s = Common::String::format("%s %d %d %d", names[st.kind], st.a, st.b, st.c);
 	if (st.kind == Step::kChoiceText)
 		s = Common::String::format("choice '%s' (%d)", st.text.c_str(), choiceWith(st.text));
@@ -753,6 +857,25 @@ bool AGOSGuide::frame(Common::Point &mouse, bool &click) {
 		}
 		return true;
 	}
+	if (m.target == Move::kHold) {
+		// the button down on the box until the variable gets there, then let go
+		Move box;
+		box.target = Move::kBox;
+		box.id = m.id;
+		int x = 0, y = 0;
+		if (aim(box, x, y) == kHere)
+			_guideMouse = Common::Point(x, y);
+		mouse = _guideMouse;
+		const int v = _vm->_variableArray[m.x];
+		if ((m.gate < 0 ? v <= m.y : v >= m.y) || ++m.waited > 1500) {
+			_hold = 0;
+			logf("let go at %d", v);
+			_moves.remove_at(0);
+		} else {
+			_hold = 1;
+		}
+		return true;
+	}
 	if (m.target == Move::kLeave) {
 		// out of the Oracle: the pointer out of its frame
 		if (feeble() && _vm->getBitFlag(99) && ++m.waited < 200)
@@ -764,7 +887,9 @@ bool AGOSGuide::frame(Common::Point &mouse, bool &click) {
 	}
 	if (m.target == Move::kCursor) {
 		// a right click every few frames until the pointer has that verb
-		if (feeble() && _guideMouse.x < 112 && _guideMouse.y < 64)
+		if (feeble() && _vm->getBitFlag(99))
+			_guideMouse = Common::Point(320, 160);   // the Oracle's text screen: on nothing (not its arrows)
+		else if (feeble() && _guideMouse.x < 112 && _guideMouse.y < 64)
 			_guideMouse = Common::Point(screenW() / 2, screenH() / 2);   // not on the Oracle's or the switch's button
 		mouse = _guideMouse;
 		if (_vm->_mouseCursor == m.id || ++m.waited > 60) {
@@ -820,10 +945,24 @@ bool AGOSGuide::frame(Common::Point &mouse, bool &click) {
 			_moves.remove_at(0);
 		break;
 	case kArrow:
-		if (++m.arrows > 12) {
+		if (++m.arrows > (feeble() ? 60 : 12)) {   // the Oracle's list moves a few pixels a click
 			_moves.remove_at(0);
 		} else {
 			HitArea *arrow = findBoxId(0x7FFC);
+			if (feeble() && m.target == Move::kItem) {
+				// The Oracle's list: up if the item comes before the first one in view, else down
+				Item *me = _vm->me();
+				HitArea *first = findBoxId(201);
+				int at = 0, wanted = -1, shown = -1;
+				for (Item *it = me ? _vm->derefItem(me->child) : nullptr; it; it = _vm->derefItem(it->next), at++) {
+					if (itemId(it) == m.id)
+						wanted = at;
+					if (first && first->itemPtr == it)
+						shown = at;
+				}
+				if (wanted >= 0 && shown >= 0 && wanted < shown)
+					arrow = nullptr;
+			}
 			pushClick(_moves, 0, Move::kBox, arrow ? 0x7FFC : 0x7FFB, 0, 0, 0);
 		}
 		break;
@@ -952,7 +1091,8 @@ void AGOSGuide::tick() {
 	if (_state == kSettle) {
 		const Step &cur = _steps[_current];
 		const bool waited = cur.kind == Step::kWait || cur.kind == Step::kRoomWait || cur.kind == Step::kVarWait ||
-			cur.kind == Step::kBitWait || cur.kind == Step::kTalkWait || cur.kind == Step::kVar2Wait;
+			cur.kind == Step::kBitWait || cur.kind == Step::kTalkWait || cur.kind == Step::kVar2Wait ||
+			cur.kind == Step::kRoomLeave || cur.kind == Step::kLoop;
 		if (!waited && now - _stateSince < kSettle)
 			return;
 		// done once the game reacted and waits again, or when nothing happened for a while
@@ -1024,7 +1164,20 @@ void AGOSGuide::tick() {
 			done = bit(st.a) == (st.b != 0);
 		else if (st.kind == Step::kTalkWait)
 			done = _heard.contains(st.text);
-		else if (st.kind == Step::kVar2Wait && _vm->_variableArray2)
+		else if (st.kind == Step::kRoomLeave)
+			done = room() != (st.a ? st.a : _prevStepRoom);
+		else if (st.kind == Step::kLoop) {
+			Step &loop = _steps[_current];
+			if (loop.loops < st.b) {
+				loop.loops++;
+				logf("step %d: back %d steps (%d of %d)", _current + 1, st.a, loop.loops, st.b);
+				setCurrent(_current - st.a);
+				_state = kWaitIdle;
+				return;
+			}
+			loop.loops = 0;
+			done = true;
+		} else if (st.kind == Step::kVar2Wait && _vm->_variableArray2)
 			done = _vm->_variableArray2[st.a] == st.b || (st.c && _vm->_variableArray2[st.a] == st.c);
 		if (done) {
 			_state = kSettle;
@@ -1050,7 +1203,8 @@ void AGOSGuide::tick() {
 	}
 	const Step &st = _steps[_current];
 	const bool waitStep = st.kind == Step::kWait || st.kind == Step::kRoomWait || st.kind == Step::kVarWait ||
-		st.kind == Step::kBitWait || st.kind == Step::kTalkWait || st.kind == Step::kVar2Wait;
+		st.kind == Step::kBitWait || st.kind == Step::kTalkWait || st.kind == Step::kVar2Wait ||
+		st.kind == Step::kRoomLeave || st.kind == Step::kLoop;
 	if (st.now) {
 		if (_vm->_guideWaiting != 1 || _vm->_mouseHideCount)
 			return;   // as soon as the game takes clicks, even while someone talks
@@ -1108,6 +1262,7 @@ void AGOSGuide::tick() {
 	}
 	_missingSince = 0;
 	logf("step %d: %s", _current + 1, describe(st).c_str());
+	_prevStepRoom = _stepRoom;
 	_stepRoom = room();
 	_stepMap = _vm->getBitFlag(79);
 	_lastFrame = now;
@@ -1309,7 +1464,7 @@ void AGOSGuide::runCommand(const Common::String &text) {
 		// point the mouse there and click (screen coordinates)
 		Move m;
 		m.target = Move::kPoint;
-		m.id = 0;
+		m.id = -1;   // as given, even on the Oracle
 		m.x = x + scrollXAt(y);
 		m.y = y + scrollY();
 		m.click = false;
@@ -1344,6 +1499,13 @@ void AGOSGuide::runCommand(const Common::String &text) {
 		Subroutine *sub = sr ? _vm->getSubroutineByID(sr->subroutine_id) : nullptr;
 		if (sub)
 			_vm->dumpSubroutine(sub);
+	} else if (c == "sub") {
+		// one subroutine by its number (the current room's ones are not in "dump")
+		Subroutine *sub = _vm->getSubroutineByID(x);
+		if (sub)
+			_vm->dumpSubroutine(sub);
+		else
+			logf("no subroutine %d", x);
 	} else if (c == "item") {
 		Item *it = (x > 0 && x < (int)_vm->_itemArraySize) ? _vm->derefItem(x) : nullptr;
 		if (it)

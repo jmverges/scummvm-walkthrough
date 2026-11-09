@@ -462,6 +462,20 @@ void AGOSEngine_Simon1::handleMouseMoved() {
 			if (click)
 				_leftButtonDown = true;
 		}
+		const int hold = _guide->holdButton();
+		if (hold == 1) {
+			// as a real button down: The Feeble Files' scripts look at bit 89 while it is held
+			if (!_leftButton)
+				_leftButtonDown = true;
+			_leftButton = 1;
+			if (getGameType() == GType_FF)
+				setBitFlag(89, true);
+		} else if (hold == 0) {
+			_leftButton = 0;
+			_leftButtonCount = 0;
+			if (getGameType() == GType_FF)
+				setBitFlag(89, false);
+		}
 	}
 
 	if (_defaultVerb) {

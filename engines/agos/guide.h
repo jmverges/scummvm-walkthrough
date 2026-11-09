@@ -63,6 +63,14 @@ struct Item;
  *   t <words> [; comment]                   wait until someone says something with these words (the game's text)
  *   v <var> <value> [<value2>] [; comment]  The Feeble Files: wait until a variable of the second set (someone
  *                                           else walking: the native in the valley) has that value, or the other
+ *   m [<room>] [; comment]                  wait until Simon is out of that room (or the one the last step began in)
+ *   l <n> <times> [; comment]               go back n steps, times times (the same steps again)
+ *   P <var> <count> <box> [; comment]       a game of pairs: the cards' faces are in count variables from var,
+ *                                           their boxes from box: click each pair in turn
+ *   O <var> <side> <box> [; comment]        a "lights out" board: side x side cells in variables from var, boxes
+ *                                           from box; a click turns a cell and its four neighbours: click
+ *                                           those that leave all cells alike
+ *   H <box> <var> <value> [; comment]       hold the button down on a box until a variable gets to that value
  *   s <who> [; comment]                     The Feeble Files: play as 15 Feeble or 16 SAM (the button by the
  *                                           Oracle's, where both can be played)
  * Any number may be "$<var>[+<n>]" instead: what that script variable holds when the step comes up, plus n
@@ -78,6 +86,8 @@ public:
 	/** From the timer, once a frame: where the mouse is and whether it clicks, when the guide moves it. */
 	bool frame(Common::Point &mouse, bool &click);
 
+	/** The left button held down by the guide: 1 down, 0 let go now, -1 nothing to do. */
+	int holdButton() { const int h = _hold; if (_hold == 0) _hold = -1; return h; }
 	bool hidesCursor() const { return _hideCursor; }
 	bool active() const { return !_moves.empty(); }
 
@@ -90,17 +100,18 @@ public:
 
 private:
 	struct Step {
-		enum Kind { kVerb, kBox, kChoice, kPoint, kRoomWait, kVarWait, kBitWait, kWait, kChoiceText, kPathPoint, kTalkWait, kSwitch, kVar2Wait } kind;
+		enum Kind { kVerb, kBox, kChoice, kPoint, kRoomWait, kVarWait, kBitWait, kWait, kChoiceText, kPathPoint, kTalkWait, kSwitch, kVar2Wait, kRoomLeave, kLoop, kPairs, kLights, kHold } kind;
 		int a = 0, b = 0, c = 0;
 		bool now = false;   // E: as soon as the game takes clicks
 		bool exit = false;  // x: done only once Simon is in another room
 		bool optional = false;   // C: a line that may not be offered, then skipped
 		int onlyRoom = 0;        // @<room>: only in that room, else skipped
+		int loops = 0;           // l: how many times it went back so far
 		Common::String text, comment, section;
 		Common::String raw;      // a line with $<var> in it, read again when the step comes up
 	};
 	struct Move {
-		enum Target { kBox, kItem, kChoice, kPoint, kIdle, kStay, kCursor, kLeave, kOpen } target = kPoint;
+		enum Target { kBox, kItem, kChoice, kPoint, kIdle, kStay, kCursor, kLeave, kOpen, kHold } target = kPoint;
 		int id = 0, x = 0, y = 0;
 		bool click = false;
 		int frames = 0;   // how many frames to stay here
@@ -167,7 +178,7 @@ private:
 	int _stepInv = 0;
 	uint32 _stepBoxes = 0;
 	bool _logClicks = true;
-	int _stepRoom = 0, _retries = 0;
+	int _stepRoom = 0, _prevStepRoom = 0, _retries = 0;
 	int _choiceGen = 0, _clickGen = -1;
 	int _seenRoom = 0;
 	uint32 _roomSince = 0;   // when the room the guide last saw came up
@@ -176,6 +187,7 @@ private:
 	bool _stepMap = false;
 	bool _hideCursor, _logTalk;
 	int _saveSections, _sectionSaved;
+	int _hold = -1;
 	int _pendingLoad = -1, _pendingSave = -1;
 	Common::String _controlPath;
 	uint32 _controlOffset;
