@@ -56,6 +56,7 @@
 #include "engines/grim/md5checkdialog.h"
 #include "engines/grim/debug.h"
 #include "engines/grim/grim.h"
+#include "engines/grim/guide.h"
 #include "engines/grim/lua.h"
 #include "engines/grim/lua_v1.h"
 #include "engines/grim/emi/poolsound.h"
@@ -88,7 +89,7 @@ GfxBase *g_driver = nullptr;
 int g_imuseState = -1;
 
 GrimEngine::GrimEngine(OSystem *syst, uint32 gameFlags, GrimGameType gameType, Common::Platform platform, Common::Language language) :
-		Engine(syst), _currSet(nullptr), _selectedActor(nullptr), _pauseStartTime(0), _language(0) {
+		Engine(syst), _currSet(nullptr), _selectedActor(nullptr), _pauseStartTime(0), _language(0), _guide(nullptr) {
 	g_grim = this;
 
 	setDebugger(new Debugger());
@@ -200,6 +201,7 @@ GrimEngine::GrimEngine(OSystem *syst, uint32 gameFlags, GrimGameType gameType, C
 }
 
 GrimEngine::~GrimEngine() {
+	delete _guide;
 	delete[] _controlsEnabled;
 	delete[] _controlsState;
 	delete[] _joyAxisPosition;
@@ -467,6 +469,8 @@ Common::Error GrimEngine::run() {
 
 	g_grim->setMode(NormalMode);
 	delete splash_bm;
+	if (ConfMan.hasKey("guide_file") && getGameType() == GType_GRIM)
+		_guide = new Guide();
 	g_grim->mainLoop();
 
 	return Common::kNoError;
@@ -808,6 +812,8 @@ void GrimEngine::luaUpdate() {
 	}
 	_frameTime = newStart - _frameStart;
 	_frameStart = newStart;
+	if (_guide)
+		_frameTime = _guide->scaleTime(_frameTime);
 
 	if (_mode == PauseMode || _shortFrame) {
 		_frameTime = 0;
@@ -1153,6 +1159,9 @@ void GrimEngine::mainLoop() {
 			luaUpdate();
 		}
 
+		if (_guide && !_savegameLoadRequest && !_savegameSaveRequest)
+			_guide->tick();
+
 		if (g_imuseState != -1) {
 			g_sound->setMusicState(g_imuseState);
 			g_imuseState = -1;
@@ -1273,6 +1282,8 @@ void GrimEngine::savegameRestore() {
 	delete _savedState;
 
 	_justSaveLoaded = true;
+	if (_guide)
+		_guide->onLoaded();
 
 	//Re-read the values, since we may have been in some state that changed them when loading the savegame,
 	//e.g. running a cutscene, which sets the sfx volume to 0.

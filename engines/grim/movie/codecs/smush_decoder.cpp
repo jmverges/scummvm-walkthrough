@@ -244,6 +244,12 @@ bool SmushDecoder::handleFramesHeader() {
 	} while (pos < size);
 	delete[] f_header;
 
+	// A movie with no sound (the Calavera Cafe's water, cb_water.snm, in the Spanish release) has no Wave entry:
+	// a silent track then, as a rate of 0 fails the mixer's assertion when the movie starts
+	if (freq <= 0 || channels <= 0) {
+		freq = 22050;
+		channels = 2;
+	}
 	_audioTrack = new SmushAudioTrack(getSoundType(), true, freq, channels);
 	addTrack(_audioTrack);
 	return true;

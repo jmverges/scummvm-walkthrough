@@ -1,0 +1,1095 @@
+# Grim Fandango (Spanish CD) walkthrough for the ScummVM walkthrough player (engines/grim/guide.h)
+# Steps: l look, p pick up, u use [with item], o walk out, h hold, c dialog line, g walk, x/X Lua, w wait, W wait for
+{{{lua
+-- the wheelbarrow at the tree pump (tr): pushed (fwd) or pulled back, as the keys do, until stop() or the end
+guide_barrow_move = function(fwd, stop)
+  if fwd then
+    tr.set_walk_backwards(FALSE)
+    manny:play_chore_looping(ma_use_wb_walk, "ma_use_wb.cos")
+    tr.barrow:play_chore_looping(wheelbarrow_ma_walk, "wheelbarrow.cos")
+    while not stop() and not manny:find_sector_name("wb_push_lim") do
+      manny:walk_forward()
+      tr.barrow:walk_forward()
+      break_here()
+    end
+    manny:stop_chore(ma_use_wb_walk, "ma_use_wb.cos")
+  else
+    tr.set_walk_backwards(TRUE)
+    manny:stop_chore()
+    manny:play_chore_looping(ma_use_wb_walk_back, "ma_use_wb.cos")
+    tr.barrow:play_chore_looping(wheelbarrow_ma_walk, "wheelbarrow.cos")
+    while not stop() and not manny:find_sector_name("wb_pull_lim") do
+      manny:walk_forward()
+      tr.barrow:walk_forward()
+      break_here()
+    end
+    manny:stop_chore(ma_use_wb_walk_back, "ma_use_wb.cos")
+    tr.set_walk_backwards(FALSE)
+  end
+  tr.barrow:stop_chore(wheelbarrow_ma_walk, "wheelbarrow.cos")
+  manny:play_chore(ma_use_wb_hold_wb, "ma_use_wb.cos")
+  tr.barrow:play_chore(wheelbarrow_ma_hold, "wheelbarrow.cos")
+end
+guide_barrow_box = function()
+  local id, name = tr.barrow:find_sector_type(HOT)
+  return name
+end
+-- waits for the pumps' next beat that passes ok(beat)
+guide_wait_beat = function(ok)
+  local b = tr.beat
+  while TRUE do
+    while tr.beat == b do break_here() end
+    b = tr.beat
+    if ok(b) then return end
+  end
+end
+-- onto a hose (moving fwd or back), until the right beat, then off it the way it came: the hose's pump then
+-- beats on that beat (tr.hose_watch)
+guide_hose = function(box, fwd, ok)
+  guide_barrow_move(fwd, function() return guide_barrow_box() == %box end)
+  guide_wait_beat(ok)
+  guide_barrow_move(not fwd, function() return guide_barrow_box() == nil end)
+end
+-- the tree rocks when the two pumps on each side beat together, and the sides don't (tr.pump_timer_and_checker).
+-- Along the barrow's path: hose_box4 (pump1), hose_box3 (pump2), hose_box2 (pump3), hose_box1 (pump4).
+guide_tree_pumps = function()
+  local n = 0
+  -- the right side first: pump3 onto pump4's beat, coming from the left
+  repeat
+    guide_hose("hose_box2", tr.barrow:getpos().x < 3.3, function(b) return b == tr.pump4.beat end)
+    n = n + 1
+  until tr.pump3.beat == tr.pump4.beat or n > 6
+  -- the left side must beat apart from the right: pump1 over again if not (never crossing the right hoses)
+  n = 0
+  while tr.pump1.beat == tr.pump3.beat and n < 6 do
+    guide_hose("hose_box4", FALSE, function(b) return b ~= tr.pump3.beat end)
+    n = n + 1
+  end
+  -- then pump2 onto pump1's beat
+  n = 0
+  repeat
+    guide_hose("hose_box3", tr.barrow:getpos().x < 3.05, function(b) return b == tr.pump1.beat end)
+    n = n + 1
+  until tr.pump2.beat == tr.pump1.beat or n > 6
+end
+-- the beavers (bd): a bone into the tar from the rock, and while the beaver dives for it, the extinguisher
+-- (bd.throw_bone_in_tar: a beaver hit while bd.guarenteed_win gets stuck in the tar)
+guide_beaver = function()
+  local bone = guide_item(sp.bones)
+  if not bone then return end
+  -- the next beaver first walks onto the rock (bd.fake_beaver, a cut scene)
+  break_here()
+  while find_script(bd.beaver_gets_stuck) or not find_script(bd.fake_beaver) or cutSceneLevel > 0 do break_here() end
+  sleep_for(500)
+  guide_hold(bone)
+  local t = start_script(bd.throw_bone_in_tar)
+  break_here()
+  while not bd.guarenteed_win and find_script(t) do break_here() end
+  guide_hold(bd.extinguisher)
+  start_script(bd.extinguisher.use, bd.extinguisher)
+  guide_wait_for(t)
+  guide_wait_for(bd.extinguisher.use)
+  guide_wait_for(bd.beaver_gets_stuck)
+end
+guide_beavers = function()
+  local n = 0
+  while not bd.all_beavers_dead and guide_item(sp.bones) and n < 8 do
+    guide_beaver()
+    n = n + 1
+  end
+end
+guide_fork_to = function(x, y, z)
+  local f = de.forklift_actor
+  local d = proximity(f.hActor, x, y, z)
+  local last = d + 1
+  start_sfx("forkDriv.IMU")
+  while d > 0.01 and d < last + 0.001 do
+    while TurnActorTo(f.hActor, x, y, z) do break_here() end
+    if d < 0.15 then f:set_walk_rate(0.1) else f:set_walk_rate(0.4) end
+    WalkActorForward(f.hActor)
+    break_here()
+    last = d
+    d = proximity(f.hActor, x, y, z)
+  end
+  f:set_walk_rate(0.4)
+  fade_sfx("forkDriv.IMU", 500, 0)
+end
+-- the dillopede elevator (de): with the forklift lined up with the door's right-hand slot, Manny gets out,
+-- sends the elevator up, gets back in and keeps driving forward: as the hidden floor goes by, the forks go
+-- through the slot and the elevator sticks there (de.fork_stuck_trig)
+guide_fork_block = function()
+  local f = de.forklift_actor
+  guide_wait_for(start_script(f.dismount, f))
+  guide_sentence("use", de.button)
+  guide_wait_for(start_script(f.mount, f))
+  start_sfx("forkDriv.IMU")
+  f:set_walk_rate(0.4)
+  local n = 0
+  while not de.shaft.stuck and n < 2000 do
+    if cutSceneLevel <= 0 then WalkActorForward(f.hActor) end
+    break_here()
+    n = n + 1
+    if de.shaft.floor == "top_floor" then n = 2000 end
+  end
+  fade_sfx("forkDriv.IMU", 500, 0)
+  guide_wait_for(f.stop_elevator)
+end
+-- the betting stub printer (tp): the hands go to a button as the arrow keys take them, then up presses
+guide_tp_pos = { }
+guide_tp_next = { }
+guide_tp_button = function(b)
+  guide_tp_pos[tp.RACE] = { -0.0289999992, 0.00200000009 }
+  guide_tp_pos[tp.DAY] = { -0.0149999997, 0.00200000009 }
+  guide_tp_pos[tp.WEEK] = { -0.00100000005, 0.00200000009 }
+  guide_tp_pos[tp.PRINT] = { -0.0149999997, -0.0199999996 }
+  guide_tp_next[tp.WEEK] = tp.DAY
+  guide_tp_next[tp.DAY] = tp.RACE
+  guide_tp_next[tp.RACE] = tp.PRINT
+  guide_tp_next[tp.PRINT] = tp.WEEK
+  while tp.current_button ~= b do
+    tp.current_button = guide_tp_next[tp.current_button]
+    local p = guide_tp_pos[tp.current_button]
+    mannys_hands:moveto(p[1], p[2], 0)
+    mannys_hands:wait_for_actor()
+    sleep_for(300)
+  end
+end
+guide_tp_set = function(b, field, value)
+  guide_tp_button(b)
+  local n = 0
+  while tp[field] ~= value and n < 40 do
+    tp.push_up()
+    sleep_for(300)
+    n = n + 1
+  end
+end
+guide_printer = function(week, day, race)
+  guide_wait_for(start_script(cn.printer.use, cn.printer))
+  sleep_for(1000)
+  guide_tp_set(tp.WEEK, "week", week)
+  guide_tp_set(tp.DAY, "day", day)
+  guide_tp_set(tp.RACE, "race", race)
+  sleep_for(500)
+  guide_tp_button(tp.PRINT)
+  tp.push_up()
+end
+-- the café's roulette panel (cf): when Bogen's wheel (the right-hand one) is live, the magnet on and off:
+-- his ball jumps, and he shuts the club down (cut_scene.byeruba)
+guide_roulette = function()
+  local n = 0
+  while n < 6 and not find_script(cut_scene.byeruba) do
+    while not (current_roulette_table == bogen_table and bogen_table.rate > 0) do break_here() end
+    cf.toggle_magnet()
+    sleep_for(1500)
+    n = n + 1
+  end
+end
+-- under the sea (su): the lantern grabbed while Chepito dangles it, then a turn hands him to Glottis (the turn
+-- keys while suButtonHandler is up)
+guide_grab_chepito = function()
+  start_script(su.grab_lantern)
+  break_here()
+  while system.buttonHandler ~= suButtonHandler or cutSceneLevel > 0 do break_here() end
+  sleep_for(800)
+  guide_wait_for(start_script(su.give_chepito_to_glottis))
+end
+-- into a trigger box from outside it (the Doorman fires on the way in), again until it does
+guide_reach_trigger = function(ox, oy, oz, x, y, z)
+  local n = 0
+  local set = system.currentSet
+  while system.currentSet == set and cutSceneLevel <= 0 and n < 4 do
+    guide_walk(ox, oy, oz)
+    sleep_for(300)
+    guide_walk(x, y, z)
+    sleep_for(1000)
+    n = n + 1
+  end
+end
+-- Meche's ashtray (ar): turned again and again until she flicks her ash as it turns (her next idle is random)
+guide_ashtray = function()
+  local n = 0
+  while not ar.stockings_tossed and n < 10 do
+    guide_sentence("use", ar.ashtray)
+    sleep_for(1000)
+    n = n + 1
+  end
+  guide_wait_for(cut_scene.leg)
+  while meche.burning do break_here() end
+end
+-- the crane at the end of the world (ew): moved point by point as holding the turn keys does (point 0 is over
+-- the conveyor, ew.at_crusher over the crusher), lowered, raised, left
+guide_crane_to = function(target)
+  local c = ew.crane_actor
+  if ew.crane_down then guide_wait_for(start_script(ew.raise_crane, ew)) end
+  start_sfx("crane.imu")
+  while c.cur_point ~= target do
+    if target > c.cur_point then c:move_to_point(c.cur_point + 1) else c:move_to_point(c.cur_point - 1) end
+  end
+  fade_sfx("crane.imu", 500, 0)
+  sleep_for(500)
+end
+guide_crane_down = function() guide_wait_for(start_script(ew.lower_crane, ew)) sleep_for(500) end
+guide_crane_up = function() guide_wait_for(start_script(ew.raise_crane, ew)) sleep_for(500) end
+guide_crane_exit = function() guide_wait_for(start_script(ew.exit_crane, ew)) guide_wait_for(cu.exit_crane) end
+-- down the chain on the conveyor (cy), as holding the back key does (cy.manny_climb_down_chain)
+guide_chain_down = function()
+  local done = FALSE
+  local n = 0
+  while not done and n < 300 do
+    local p = manny:getpos()
+    local d = RotateVector({ x = 0, y = -0.400000006, z = 0 }, cy.chain_drift_bottom.rot)
+    d.x = d.x + p.x
+    d.y = d.y + p.y
+    d.z = d.z + p.z
+    manny:stop_chore(mn_conveyor_drift, "mn_conveyor.cos")
+    manny:stop_chore(mn_conveyor_crawl, "mn_conveyor.cos")
+    manny:play_chore_looping(mn_conveyor_crawl, "mn_conveyor.cos")
+    cy:manny_drift_to(d, nil, 20, TRUE)
+    break_here()
+    if manny:getpos().z < cy.chain_abort_bottom then done = TRUE end
+    n = n + 1
+  end
+  manny:stop_chore(mn_conveyor_crawl, "mn_conveyor.cos")
+  manny:play_chore_looping(mn_conveyor_drift, "mn_conveyor.cos")
+  guide_wait_for(start_script(cy.end_drift_gracefully, cy))
+end
+-- the vault's combination (vd): four tumblers driven by the wheel; each picks up the next one when it reaches
+-- that one's pin, and turning the other way lets 2-4 go (Safe.monitor_lock).  A plan is found on a copy of
+-- them, one degree at a time: clockwise until the fourth sits in the open window (248-290), back until the
+-- third does without the fourth moving, and so on; then the wheel is turned that way.
+guide_vault_copy = function(t)
+  local s = { r = { }, l = { }, v = { }, p = { } }
+  local i = 1
+  while i <= 4 do
+    s.r[i] = t[i].rot
+    s.l[i] = t[i].lock
+    s.v[i] = t[i].lock_val
+    s.p[i] = t[i].lock_pin
+    i = i + 1
+  end
+  return s
+end
+guide_vault_clone = function(s)
+  local c = { r = { }, l = { }, v = { }, p = { } }
+  local i = 1
+  while i <= 4 do
+    c.r[i] = s.r[i]
+    c.l[i] = s.l[i]
+    c.v[i] = s.v[i]
+    c.p[i] = s.p[i]
+    i = i + 1
+  end
+  return c
+end
+-- a turn the other way: tumblers 2-4 let go, each to be picked up again lock_pin degrees on
+guide_vault_reverse = function(s)
+  local i = 2
+  while i <= 4 do
+    s.l[i] = FALSE
+    s.v[i] = s.r[i] + s.p[i]
+    if s.v[i] >= 360 then s.v[i] = s.v[i] - 360 end
+    i = i + 1
+  end
+end
+-- one degree (d = 1 clockwise, -1 back), as Safe.spin_tumblers_right/left
+guide_vault_step = function(s, d)
+  local i = 1
+  while i <= 4 do
+    if s.l[i] then
+      s.r[i] = s.r[i] + d
+      if s.r[i] == 360 then s.r[i] = 0 end
+      if s.r[i] == -1 then s.r[i] = 359 end
+      if i < 4 and s.r[i] == s.v[i + 1] and not s.l[i + 1] then s.l[i + 1] = TRUE end
+    end
+    i = i + 1
+  end
+end
+guide_vault_open = function(r) return r >= 252 and r <= 286 end
+-- phase k (4 down to 1): turn d until tumbler k is engaged and open while k+1.. stay where they are
+guide_vault_plan = function(s, k, d, plan)
+  if k == 0 then return plan end
+  local c = guide_vault_clone(s)
+  if k < 4 then guide_vault_reverse(c) end
+  local n = 0
+  local kept = { }
+  local i = k + 1
+  while i <= 4 do kept[i] = c.r[i] i = i + 1 end
+  while n < 1500 do
+    guide_vault_step(c, d)
+    n = n + 1
+    i = k + 1
+    while i <= 4 do
+      if c.r[i] ~= kept[i] then return nil end
+      i = i + 1
+    end
+    if c.l[k] and guide_vault_open(c.r[k]) then
+      local rest = { }
+      local j = 1
+      while plan[j] do rest[j] = plan[j] j = j + 1 end
+      rest[j] = { d = d, n = n }
+      local found = guide_vault_plan(c, k - 1, -d, rest)
+      if found then return found end
+      -- else try a few degrees further, while k stays open
+    end
+  end
+  return nil
+end
+guide_vault_turn = function(d, n)
+  local sd = vd.safe_door
+  if d == 1 then sd:spin_right(0) else sd:spin_left(0) end
+  break_here()
+  break_here()
+  manny:play_chore_looping(49, manny.base_costume)
+  local done = 0
+  while done < n do
+    local k = 6
+    if n - done < k then k = n - done end
+    if d == 1 then sd:spin_right(k) else sd:spin_left(k) end
+    local j = 0
+    while j < k do
+      if d == 1 then sd:spin_tumblers_right() else sd:spin_tumblers_left() end
+      j = j + 1
+    end
+    vd.play_wheel_sfx()
+    done = done + k
+    break_here()
+  end
+  manny:set_chore_looping(49, FALSE, manny.base_costume)
+  manny:wait_for_chore(49, manny.base_costume)
+  sleep_for(400)
+end
+guide_vault = function()
+  local plan = guide_vault_plan(guide_vault_copy(vd.safe_door.tumblers), 4, 1, { })
+  if not plan then
+    guide_error = "no plan for the vault's tumblers"
+    return
+  end
+  local i = 1
+  while plan[i] do
+    guide_vault_turn(plan[i].d, plan[i].n)
+    i = i + 1
+  end
+end
+-- the broadaxe (vo, vi): turned and dragged backwards as the keys do (vo.turn_left, vo.walk_backward)
+guide_axe_face = function(x, y, off)
+  local want = GetActorYawToPoint(manny.hActor, { x = x, y = y, z = 0 }) + (off or 0)
+  manny:play_chore_looping(mn_lift_ax_drag_ax, "mn_lift_ax.cos")
+  start_sfx("voAxTDrg.imu")
+  local n = 0
+  while n < 60 do
+    local r = manny:getrot()
+    local d = want - r.y
+    while d > 180 do d = d - 360 end
+    while d < -180 do d = d + 360 end
+    if abs(d) <= 10 then
+      manny:setrot(r.x, want, r.z, TRUE)
+      n = 60
+    elseif d > 0 then
+      manny:setrot(r.x, r.y + 10, r.z, TRUE)
+    else
+      manny:setrot(r.x, r.y - 10, r.z, TRUE)
+    end
+    break_here()
+    n = n + 1
+  end
+  stop_sound("voAxTDrg.imu")
+  manny:stop_chore(mn_lift_ax_drag_ax, "mn_lift_ax.cos")
+  manny:play_chore_looping(mn_lift_ax_hold_ax, "mn_lift_ax.cos")
+end
+guide_axe_back = function(test)
+  manny:set_walk_rate(-0.200000003)
+  manny:play_chore_looping(mn_lift_ax_drag_ax, "mn_lift_ax.cos")
+  start_sfx("voAxBDrg.imu")
+  local n = 0
+  while not test() and n < 900 do
+    manny:walk_forward()
+    break_here()
+    n = n + 1
+  end
+  stop_sound("voAxBDrg.imu")
+  manny:stop_chore(mn_lift_ax_drag_ax, "mn_lift_ax.cos")
+  manny:play_chore_looping(mn_lift_ax_hold_ax, "mn_lift_ax.cos")
+end
+guide_axe_dist = function()
+  local q = manny:getpos()
+  return sqrt((q.x + 0.236278996) ^ 2 + (q.y + 0.387933999) ^ 2)
+end
+guide_axe_near_tile = function() return guide_axe_dist() <= 0.3 end
+guide_axe_off_tile = function() return guide_axe_dist() >= 0.25 end
+guide_axe_in_vi = function() return system.currentSet == vi end
+-- the axe from the vault, backwards through the secret door, onto the tile the water runs through (drop_test)
+guide_axe = function()
+  guide_sentence("use", vo.broadaxe)
+  local p = manny:getpos()
+  guide_axe_face(p.x + (p.x + 1.346), p.y + (p.y - 1.032))
+  guide_axe_back(guide_axe_in_vi)
+  while cutSceneLevel > 0 or vo.manny_exiting do break_here() end
+  -- the game's drop_test: 0.15 to 0.43 from the tile, facing it within 30 degrees, but not exactly (the angle
+  -- of two equal vectors comes out NaN there); backwards only, so too close is mended by facing the tile and
+  -- backing off
+  local n = 0
+  while n < 4 and not drop_test() do
+    p = manny:getpos()
+    if guide_axe_dist() > 0.35 then
+      guide_axe_face(p.x + (p.x + 0.236278996), p.y + (p.y + 0.387933999))
+      guide_axe_back(guide_axe_near_tile)
+    elseif guide_axe_dist() < 0.2 then
+      guide_axe_face(-0.236278996, -0.387933999)
+      guide_axe_back(guide_axe_off_tile)
+    end
+    guide_axe_face(-0.236278996, -0.387933999, 8)
+    n = n + 1
+  end
+  guide_wait_for(start_script(vo.drop_axe))
+end
+-- the Bone Wagon in the alligator's tunnel (at), driven forward by remote as the forward key does, until
+-- the catwalk is close enough to jump onto
+guide_bw_forward = function()
+  start_script(at.drive_forward)
+  local n = 0
+  while not glottis:find_sector_name("close_enough") and n < 1500 do
+    break_here()
+    n = n + 1
+  end
+  stop_script(at.drive_forward)
+  glottis:freeze()
+end
+-- the elevator demon (br2): the answer is the number the keno board just showed, picked as with the arrow keys
+guide_keno = function()
+  local d = br2
+  local n = ly.keno_actor.current_number
+  d.current_line = n
+  d.top_line = n
+  if d.top_line > d.num_choices - 3 then d.top_line = d.num_choices - 3 end
+  d:display_lines()
+  sleep_for(800)
+  guide_wait_for(start_script(d.choose_line, d))
+end
+}}}
+== El despacho de Manny
+u mo.tube ; the message: a mass poisoning, first come first served
+o mo.ha_door
+o ha.ga_door ; the garage elevator
+== El garaje y Glottis
+o ga.gs_door ; knock on Glottis' door
+c conductor ; ¿Tú un conductor?
+c Calavera ; Me llamo Calavera. Manny Calavera.
+c conductor nuevo ; Parece que necesito un conductor nuevo.
+c sustituto ; ¿Quieres ser el sustituto de mi conductor?
+c Venga, Glottis
+c coches son demasiado ; Tú no eres muy grande. Los coches son demasiado pequeños.
+o ga.ha_door ; back up
+u ha.eva_obj ga.work_order ; Eva asks Don, who won't sign
+== El despacho de Don Copal
+o ha.lo_door ; down to the lobby
+o lo.os_door
+o os.st_door
+o st.al_door ; the alley
+o al.rope ; up the rope of ties
+o le.co_door ; in through Don's window
+u co.computer
+X while co.computer.selection < 4 do co.computer:scroll_down() sleep_for(800) end
+X co.computer:make_selection() ; "Ah, cripes Eva! Just sign it yourself"
+o co.le_door
+o le.rope_down
+o al.st_door
+o st.os_door
+o os.lo_door
+o lo.ha_door
+u ha.eva_obj ga.work_order ; signed
+== El cliente de la Tierra de los Vivos
+u lr.cocoon mo.scythe ; reap Bruno
+== Un cliente mejor
+o ha.mo_door
+p mo.cards
+o mo.ha_door
+u ha.hole_punch mo.cards ; a punched card
+o ha.lo_door ; the demon complains about the tubes
+o lo.os_door
+o os.st_door
+o st.fe_door ; the festival
+u fe.clown_obj
+c Practicando ; ¿Practicando qué?
+c Retuérceme ; Retuérceme uno de esos, ¿vale amigo?
+c gato ; Seguro que no puedes hacer un gato.
+c gusano muerto ; Un gusano muerto.
+u fe.clown_obj
+c otro globo ; Mi niño quiere otro globo con forma de animal.
+c más gusanos ; ¿Tienes más gusanos muertos ahí detrás?
+o fe.st_door
+o st.os_door
+o os.lo_door
+o lo.pk_door ; the packing room
+u pk.nozzle_1 guide_item(fe.balloons)
+u pk.nozzle_2 guide_item(fe.balloons)
+o pk.lo_door
+o lo.ha_door
+o ha.mo_door
+u mo.tube guide_item(pk.balloons)
+u mo.tube guide_item(pk.balloons)
+o mo.ha_door
+o ha.lo_door
+o lo.tu_door ; the tube-switching room
+u tu.open_bolt ; lock the deadbolt while the door is open
+u tu.brennis_obj
+c terrible ; ¿Quién haría algo tan terrible?
+c me piro ; Bueno, me piro. (he leaves the fire extinguisher with Manny)
+o tu.lo_door
+o lo.tu_door ; the repairman is gone, the deadbolt kept the door ajar
+u tu.door_wheel
+u tu.red_tube mo.one_card ; the card stops Domino's message: Mercedes Colomar
+c desenredar ; Perdona, pero tengo que desenredar todo este lío.
+o mo.ha_door
+o ha.co_door ; Don Copal's office: trouble
+== La revolución
+u gs.ga_door ; locked in Glottis' office: knock
+c ajustarte las cuentas ; Estoy pensando en salir y ajustarte las cuentas. Nada más.
+c juega sucio ; El DDM juega sucio y yo quiero demostrarlo.
+c volar la tapa ; ¡Voy a hacer volar la tapa de este sitio! (the LSA's headquarters)
+u hq.salvador_obj
+c Qué es lo que tengo que hacer ; Vale, pues sí. ¿Qué es lo que tengo que hacer?
+c mensajero ; ¿Quieres que yo sea tu mensajero?
+c palomas ; Si atrapo unas cuantas palomas del tejado, ¿me dejarás ir?
+c Ya voy
+== Las palomas
+o hq.al_door
+o al.st_door
+o st.fe_door
+u fe.clown_obj
+c otro globo ; Mi niño quiere otro globo con forma de animal.
+c un gato ; Vale, un gato.
+p fe.basket ; bread
+o fe.st_door
+o st.al_door
+o al.rope
+o le.dom_door ; Domino's office
+u dom.bag ; three hits on the speed bag
+u dom.bag
+u dom.bag
+p dom.mouthpiece ; the mouthpiece falls
+u dom.drawer_object ; open
+u dom.drawer_object ; the coral
+== El tejado y los huevos
+o dom.window
+u le.loose_end dom.coral ; a grappling hook made of ties and coral
+u le.grappling_hook
+X le:manny_throw_rope() ; a bridge to the next ledge
+u le.rope_up
+x guide_climb(le.ladder_to_roof, TRUE)
+u rf.dish fe.balloon_cat
+u rf.dish guide_item(fe.breads) ; the pigeons fly away
+p rf.nest ; the eggs
+== La dentadura
+o rf.ladder_object
+o le.rope_down
+o al.ga_door
+o ga.gs_door
+u gs.bondo_machine dom.mouthpiece
+u dom.mouthpiece ; a perfect print of Manny's teeth
+o gs.ga_door
+o ga.al_door
+u al.lens ; Agente Calavera y dos invitados
+u hq.salvador_obj rf.eggs
+u hq.eva_obj dom.mouthpiece ; off to Rubacava
+== El Bosque Petrificado
+o sm.sg_door ; Glottis tears his heart out
+o sg.sp_door ; the spiders' web
+p sp.bone_pile => guide_item(sp.bones)
+u sp.web guide_item(sp.bones) => sp.web.has_bone
+u sp.web mo.scythe => sp.freed_heart ; the bone flings the heart out
+o sp.sg_door
+p sg.heart
+u sg.glottis_obj sg.heart ; Glottis drives the Bone Wagon
+== El extractor de tuétano
+o sg.tr_door ; the tree pump
+u tr.wheelbarrow
+X guide_tree_pumps() ; the wheelbarrow on the hoses: each side's pumps beat together
+X tr.drop_wheelbarrow() ; the tree rocks
+u tr.switch ; off: Glottis climbs up to unbalance the wheel
+u tr.switch ; on: the tree falls, the Bone Wagon gets shocks
+== El poste indicador
+X sg:leave_BW()
+p sg.signpost
+o sg.na_door ; the clearing
+u sg.signpost ; planted: it points at the spot
+u na.signpost
+g -0.95 -0.45 0.5
+u sg.signpost => nav_solved ; the trapdoor
+o na.trapdoor
+u lb.sign => lb.key.owner == manny ; the key
+o lb.na_door
+o na.sg_door
+u sg.bone_wagon
+== Los castores
+o sg.mod_door ; over the rocks
+o bv.bd_door ; the beavers chase Manny out
+@bv o bv.bd_door
+p bd.dam
+p bd.dam
+p bd.dam
+g 3.866 2.744 -0.1 ; the rock by the river of tar
+X guide_beavers() => bd.all_beavers_dead
+u bv.padlock lb.key ; the gate: on to Rubacava
+== Rubacava
+o re.ri_door ; the Rubamat: Celso
+u ri.celso_obj
+c Qué estás haciendo aquí ; ¿Qué estás haciendo aquí?
+c quererla mucho ; Debes quererla mucho, Celso.
+c adelantado ; ¿Cómo sabes que tu mujer no te ha adelantado?
+c Yo te ayudaré ; Yo te ayudaré a encontrar a tu mujer. ¿Cómo era?
+c otros clientes ; Bien, mejor que me vaya a ver cómo les va a mis otros clientes... (Celso's photo)
+o ri.re_door
+x guide_walk(6.68, 0.45, -1.99) ; into the fog: Manny falls in, Velasco fishes him out
+X re.manny_get_up()
+u re.velasco_obj
+c no dejéis de hablar ; Por mí no dejéis de hablar.
+u re.velasco_obj ri.photo
+c No me lo creo ; ¿Cómo sabes que salió navegando de aquí? ¡No me lo creo!
+c no dejéis de hablar ; (the port log)
+o re.ri_door
+u ri.celso_obj re.logbook ; Celso leaves Manny his job: end of Year 1
+== Año 2: el Calavera Café
+o cb.cf_door ; Manny's office
+p cf.letters ; a letter from Salvador
+o cf.cc_door
+o ci.cc_door
+o cc.ce_door ; Lupe and her coat system
+c de vuelta al trabajo ; Vale, de vuelta al trabajo.
+x guide_walk(5.58, -1.93, -1.0) ; past the raven: Meche on the docks... and Velasco's ship in a bottle
+@ce o ce.ev_door
+u lm.velasco_obj
+c listo para zarpar ; ¡Vale, listo para zarpar!
+c Yo trabajaré ; ¡Yo trabajaré!
+c si consigo herramientas ; Vale, si consigo herramientas para Glottis, ¿podremos embarcar?
+c todavía no ha embarcado ; ¿Quién es ése que todavía no ha embarcado?
+c no aparece Naranja ; ¿Y qué pasa si no aparece Naranja? ¿Podría ocupar yo su puesto?
+c a ver si lo entiendo ; Entonces, a ver si lo entiendo...
+c termine de empaquetar ; Será mejor que termine de empaquetar.
+== El carnet del sindicato
+o lm.hb_door
+o hb.bw_door
+o bw.ev_door
+o ev.ce_door
+o ce.cc_door
+o cc.ci_door
+p ci.liqueur => ci.liqueur.owner == manny ; gold flake liqueur
+o ci.cn_door ; the roulette room: Charlie
+u cn.charlie_obj
+c qué estás haciendo aquí ; Vale. ¿Y qué estás haciendo aquí?
+c resguardos de apuestas falsos ; ¿Cómo imprimiste resguardos de apuestas falsos?
+c Qué más puedes falsificar ; ¿Qué más puedes falsificar?
+c carnets del sindicato ; ¿Puedes hacer carnets del sindicato? (a V.I.P. pass and the ticket printer)
+o cn.ci_door
+u ci.glottis_obj cn.pass ; Glottis goes off to the Cat Track
+o ci.cc_door
+o cc.ce_door
+o ce.ev_door
+o ev.be_door
+o bw.hb_door
+o hb.xb_door
+u xb.bridge ; the extendo bridge
+o xb.tx_door
+o tx.ts_door
+o ts.kh_door
+o kh.ks_door ; the litter room
+p ks.opener => ks.opener.owner == manny
+o ks.kh_door
+o kh.ts_door
+@tw o tw.tb_door
+@ts o ts.tb_door
+o tb.hh_door
+o hh.hl_door ; the V.I.P. lounge
+o hl.hk_door ; the kitchen
+p hk.turkey_baster => hk.turkey_baster.owner == manny
+W hk.raoul_in_pantry ; Raoul goes into the pantry
+u hk.pantry mo.scythe => hk.raoul_trapped ; shut in with the scythe
+W hk.cask_empty ; Glottis drinks the cask dry
+u hk.upper_cask ks.opener
+u hk.upper_cask ; into the cask, down to the wine cellar
+u wc.forklift
+X guide_fork_to(1.4, -1.3, 0)
+X while TurnActorTo(de.forklift_actor.hActor, 1.4, 1, 0) do break_here() end ; facing the elevator: its drive-in turns no more
+X guide_fork_to(1.4, -0.7, 0) ; into the elevator
+X guide_fork_to(0.1, 0.003, 0)
+X guide_fork_to(-0.1, 0.003, 0)
+X while TurnActorTo(de.forklift_actor.hActor, -1, 0.003, 0) do break_here() end ; lined up with the door's slot
+X guide_fork_block() => de.shaft.stuck ; up, and stuck at the hidden floor
+X guide_wait_for(start_script(de.forklift_actor.dismount, de.forklift_actor))
+u de.lever ; the forks open the door
+o de.grating
+p dh.suitcase ; Charlie: the union card
+== El Marinero Naranja
+o hh.tb_door
+o tb.ts_door
+o ts.tx_door
+o tx.xb_door
+o xb.hb_door
+o hb.bw_door
+o bw.be_door
+o be.bi_door ; the Blue Casket
+u bi.olivia_obj
+c nos vemos ; Pues, nos vemos depués, nena. (Lola)
+c nos vemos ; Pues, nos vemos depués, nena.
+o bi.bk_door ; the kitchen
+u bk.sink hk.turkey_baster => hk.turkey_baster.full ; dishwater
+o bk.bi_door
+o bi.be_door
+o be.bw_door
+o bw.hb_door
+o hb.xb_door
+o xb.se_door
+o se.si_door ; Toto's scrimshaw parlor
+u si.fridge
+u si.lettuce_crisper ; the fridge's motor slows Toto's drill
+u si.booze hk.turkey_baster => si.naranja_out ; Naranja passes out
+u si.cot => si.dog_tags.owner == manny ; his dog tags
+o si.ladder
+o se.sd_door
+o xb.tx_door
+o tx.ts_door
+o ts.tb_door
+o tb.gt_door
+o gt.sl_door ; blimp security: Carla
+u ci.liqueur ; gold flakes, for the metal detector
+o sl.detector_box ; searched, and taken to the back
+c detectores de metal ; ¿Sabes lo que me gusta a mí? ¡LOS DETECTORES DE METALES!
+c 1 ; Sí. (she throws it down to the litter box)
+o sl.gt_door
+o gt.tb_door
+o tb.ts_door
+o ts.kh_door
+o kh.ks_door ; the litter room
+g 0.03 -0.05 0 ; the end of the ledge, over the detector
+h mo.scythe
+x ks:use_scythe() => sl.detector.owner == manny
+o ks.kh_door
+o kh.ts_door
+@tw o tw.tb_door
+@tb o tb.ts_door
+o ts.tx_door
+o tx.xb_door
+o xb.hb_door
+o hb.bw_door
+o bw.ev_door
+o ev.pc_door ; the police station
+o pc.mg_door ; the morgue
+u mg.membrillo_obj sl.detector ; Membrillo busy with the detector...
+u mg.corpse_1 si.dog_tags ; ...finds Naranja's tags on a corpse: Naranja is declared dead
+== Un abogado para Terry
+o pc.ev_door
+o ev.be_door
+o bw.be_door
+o be.bi_door
+u bi.commies cf.letters ; Salvador's letter: Manny is one of them
+p bi.book => bi.book.owner == manny
+o bi.be_door
+o be.bw_door
+o bw.dd_door ; the dry dock
+u dd.barrel_bees bi.book ; the bees strike, Terry is arrested: a lawyer
+o dd.hb_door
+o hb.xb_door
+o xb.tx_door
+o tx.ts_door
+o ts.tb_door
+@tw o tw.tb_door
+o tb.hh_door
+o hh.hl_door
+u hl.virago_obj
+c necesito un abogado ; Nick, necesito un abogado.
+c en la trena ; Un amigo mío está en la trena.
+c abogado excelente ; Un abogado excelente.
+c Lo mejor de lo mejor ; Lo mejor de lo mejor es bastante para mí.
+c Tú, Nick ; Tú, Nick.
+u hl.virago_obj
+c DE VERDAD ; Virago, DE VERDAD que necesito un abogado.
+c de ti y de Olivia ; Podría hablarle a Max de ti y de Olivia. (he leaves his cigarette case)
+p hl.case => hl.case.owner == manny
+o hl.hh_door
+o hh.tb_door
+o tb.gt_door
+o gt.sl_door
+u sl.carla_obj hl.case
+c debajo de tu escritorio ; No lo sé. Lo encontré debajo de tu escritorio.
+c 1 ; Sí. (a bomb? a key)
+o gt.tb_door
+o tb.ts_door
+o ts.tx_door
+o tx.xb_door
+o xb.hb_door
+o hb.dd_door
+o dd.lx_door ; the lighthouse
+u lx.lighthouse_door sl.key
+x guide_walkout(lx.lighthouse_door) ; Lola
+o lx.dd_door
+o dd.bw_door
+o bw.ev_door
+o ev.ce_door
+o ce.cc_door
+u cc.lupe_obj lx.lengua ; the coat check card: a little girl's jacket
+u cc.jacket => cc.anchor_paper.owner == manny ; "Nº 36 - El Ancla Oxidada"
+o cc.ce_door
+o ce.ev_door
+o ev.be_door
+o bw.hb_door
+o hb.xb_door
+o xb.se_door
+o se.si_door
+u si.toto_obj cc.anchor_paper => si.photofinish.owner == manny ; Lola's photo finish
+o si.ladder
+o se.sd_door
+o xb.tx_door
+o tx.ts_door
+o ts.tb_door
+@tw o tw.tb_door
+X guide_printer(2, 2, 6) => cn.ticket.week == 2 and cn.ticket.day == 2 and cn.ticket.race == 6 ; week 2, Tuesday, race 6
+u tb.photo_window cn.ticket => tb.blackmail_photo.owner == manny ; the photo finish: Nick and Olivia
+o tb.hh_door
+o hh.hl_door
+u hl.virago_obj tb.blackmail_photo ; Nick is Terry's lawyer now
+== El cierre del club
+o pc.ev_door
+o ev.ce_door
+o ce.cc_door
+o cc.cf_door ; Manny's office
+u cf.panel ; the roulette panel
+X guide_roulette() ; Bogen's ball jumps: he shuts the club, Glottis is thrown out of the track
+== Año 3: en alta mar
+o lz.il_door ; into the Lambada
+x guide_walk(-0.17, -2.25, 0) ; down the hall: the hit men, Glottis pulls Manny into the engine room
+u ei.dp_button ; starboard anchor up
+u ei.left_control
+X ei:drive_ship("starboard") ; alongside the pier
+X ei:drop_controls()
+u ei.dp_button => ei.anchors_hooked ; starboard anchor down: the anchors hook under the pier
+u ei.dp_button ; starboard anchor up
+o ei.dp_door ; the starboard porthole
+u dp.anchor mo.scythe ; the anchor through the porthole
+o dp.ei_door
+u ei.op_button => ei.ship_ripped ; port anchor up: the ship rips in half
+u ei.left_control
+X ei:drive_ship("reverse") ; and off, to the bottom of the sea
+== Bajo el mar
+x guide_walk(-1.44, -3.46, 0) ; the edge of the light
+W find_script(su.chepito_orbit)
+x guide_walk(-0.3, -4.4, 0) ; where Chepito swims by
+W not su.chepito_mad and proximity(manny.hActor, chepito.hActor) < 1.4
+u su.moving_chepito_obj
+c romperte el ritmo ; Bueno, no quiero romperte el ritmo, así que...
+!X while not su.lantern.touchable do break_here() end guide_grab_chepito() ; as he dangles his lantern (a few seconds, singing): Glottis holds him, to the pearl
+x guide_walk(6.0, 9.7, 2.52) guide_walk(2.6, 10.9, 2.52) guide_walk(-3.0, 10.4, 2.52) guide_walk(-7.0, 9.3, 2.52) guide_walk(-10.4, 7.0, 2.52) guide_walk(-11.15, 5.4, 2.52) ; along the middle of the ridge (at its edges Manny won't go down while the octopus watches)
+x guide_walk(-11.6, 4.75, 2.52) guide_walk(-11.78, 4.45, 2.52) guide_walk(-11.95, 3.84, 2.52) guide_walk(-11.6, 3.55, 2.52) guide_walk(-11.37, 3.40, 2.52) => chepito.trapped_in_ps ; round the rock behind the clam (it would grope Manny and send him back): it catches Chepito, Manny takes his sub
+== El borde del mundo
+o ea.fh_door ; up the elevator
+o fh.vd_door ; the walkway
+o vd.ar_door ; Meche's office...
+o ar.dr_door ; ...and Domino's: Meche is with him; Manny wakes up in the foreman's office
+u fo.pugsy_obj ; the angelitos
+c morderme ; ¿Por qué quieres morderme?
+c en esta jaula ; ¿Qué estáis haciendo en esta jaula?
+c Estoy aquí para ayudaros ; Escuchad, niños. Estoy aquí para ayudaros.
+c salir de esta jaula ; Estoy aquí para ayudaros a salir de esta jaula.
+c no son demasiado grandes ; Mis manos no son demasiado grandes para hacer bombillas.
+c herramientitas ; Sólo que no tengo ninguna de esas herramientitas, eso es.
+c volvamos al trabajo ; ¡Muy bien, volvamos al trabajo! (a hammer flies out of the cage)
+p fo.hammer => fo.hammer.owner == manny
+o fo.fh_door
+o fh.vd_door
+o vd.ar_door
+x guide_ashtray() => ar.stockings_tossed ; the ashtray turns as Meche flicks: her stockings burn
+u ar.wastebasket => ar.stockings.owner == manny
+o ar.vd_door
+o vd.fh_door ; down to the airlock
+@fh o fh.ea_door
+o ea.mn_door ; the mine: Chepito
+u mn.chepito_obj fo.hammer => mn.chisel.owner == manny ; the hammer for his chisel
+u mn.chepito_obj ar.stockings => mn.gun.owner == manny ; the stockings for his gun
+== La grúa
+o mn.ea_door ; the elevator takes Manny up
+@fh o fh.ea_door
+o ea.cy_door ; the conveyor
+u cy.lever ; the belt runs down
+u cy.belt
+o cy.cv_door ; up out of the water
+u cv.crane
+X guide_crane_to(ew.at_crusher) ; over to the crusher
+X guide_crane_down() ; the claw on the beach
+X guide_crane_exit()
+o cu.bu_door1
+u bu.scoop mn.chisel => ew.crane_broken ; the claw breaks off
+o bu.cu_door1
+o cu.ew_door
+X guide_crane_down() ; the bare chain
+X guide_crane_up() ; and the crusher falls down to the beach
+X guide_crane_to(ew.at_conveyor)
+X guide_crane_down() ; the chain down the conveyor, to the sunken ship
+X guide_crane_exit()
+o cv.cy_door
+X guide_chain_down()
+u cy.lever ; the belt runs up: the chain bunches
+u cy.lever => ac.chain_state == "wrapped" ; and down: it wraps round the anchor
+u cy.belt
+o cy.cv_door
+u cv.crane
+X guide_crane_up() ; up comes the Lamancha
+== Rescatar a Meche
+o bu.cu_door1
+o cu.ew_door
+X guide_crane_to(ew.at_conveyor)
+X guide_crane_exit()
+o cv.cy_door
+o cy.ea_door
+o ea.fh_door
+o fh.vd_door
+o vd.ar_door
+u ar.meche_obj mn.gun ; Meche takes the gun to Domino: locked in the vault
+@dr o dr.ar_door
+@ar o ar.vd_door
+u vd.door_jam mn.chisel => vd.door_busted ; the vault door's jamb
+u vd.wheel
+X guide_vault() => vd.tumblers.alligned ; the combination
+X vd.back_off()
+u vd.tumblers mo.scythe ; the scythe holds the tumblers
+u vd.handle ; open
+o vd.vo_door
+u vo.open_door ; shut behind
+u vo.wall_tab mo.scythe ; the secret door
+o vo.secret_door ; Meche
+u vi.sprinkler mo.scythe
+u vi.valve ; the water runs out through one tile
+o vi.vo_door
+X guide_axe() => vi.tile_broken ; the broadaxe dropped on that tile: out, and away on the Lamancha
+u lu.eye mo.scythe ; the octopus takes Domino
+== Año 4: el Templo
+o bs.td_door ; the truck depot
+u td.coffin => td.mug.owner == manny ; Bruno, after four years with only a mug to read
+o td.bs_door ; up to the temple gate: the waiting room
+o tg.bs_door => tg.note.owner == manny ; the Gate Keeper gives Manny a note from Salvador
+@tg o tg.bs_door
+o bs.my_door ; the Mayan workshop: Glottis is ill
+u my.glottis_obj
+c Te ayudaría algo ; ¿Qué puedo darte? ¿Te ayudaría algo?
+c nuevo deportivo ; ¿No podemos construir un nuevo deportivo?
+o my.mk_door ; the kitchen
+u mk.mug_rack td.mug
+u mk.drawers ; open
+u mk.drawers => mk.rag.owner == manny ; a rag
+o mk.my_door
+u my.oil_drum mk.rag => my.oily_rag.owner == manny
+o my.mk_door
+u mk.toaster my.oily_rag ; rocket fuel: Glottis on a rocket, back to Rubacava
+== Año 4: el Bone Wagon
+o jb.xb_door
+o xb.hb_door
+o hb.lm_door ; Velasco takes his ship in the bottle and leaves
+p lm.bottle
+o lm.hb_door
+o hb.bw_door
+o bw.be_door
+o be.bi_door
+o bi.bk_door
+u bk.keg lm.bottle ; fake ocean water
+o bk.bi_door
+o bi.be_door
+o be.bw_door
+o bw.hb_door
+o hb.xb_door
+o xb.jb_door
+u jb.glottis_obj lm.bottle ; Lubago Limonada, and Glottis feels sick
+@jb o jb.xb_door
+o xb.se_door
+o se.si_door
+u si.cabinet
+p si.nitrogen => si.nitrogen.owner == manny
+o si.ladder
+o se.sd_door
+o xb.jb_door
+u jb.glottis_obj ; Glottis empties his stomach over the dominoes
+@xb o xb.jb_door
+u jb.dominos si.nitrogen => jb.frozen ; frozen hard
+p jb.dynamite ; across, the fuse: out of Rubacava
+== El traje
+p nq.remains => nq.arm.owner == manny ; the fallen soldier's arm
+u nq.meche_obj
+o nq.lw_door
+o lw.sh_door
+x guide_climb(sh.te_ladder, TRUE)
+x guide_climb(te.th_ladder, TRUE) ; backstage: the Thunder Boys
+p th.coffee_pot
+u th.ladder_bot
+u th.thunderboys_from_above th.coffee_pot ; their make-up runs
+u th.ladder_top
+u th.coffee_rack th.coffee_pot
+u th.dressing_room => manny.thunder ; Manny gets their make-up instead
+u th.ladder_bot
+u th.snow_machine nq.arm ; the arm into the grinder
+p th.snow_machine => th.grinder.owner == manny
+u th.ladder_top
+o th.te_door
+o te.ly_door ; the casino
+u ly.unicycle_man ; the soldier, robbing the slot machines
+u ly.unicycle_man
+u ly.meche_obj
+u ly.meche_obj => ly.sheet.owner == manny ; Meche's sheet
+u ly.charlie_obj ly.sheet ; Charlie under the sheet...
+u ly.unicycle_man => ly.charlie_gone ; ...the soldier helps: Charlie goes off with Meche
+u ly.mens_room => manny.fancy ; Charlie's suit
+== La pistola
+o ly.service_door
+o te.sh_door
+o sh.lw_door
+o lw.nq_door
+u nq.wastebasket ; Meche's photo
+u nq.pigeon tg.note ; the pigeons: a note to Hector, and the photo
+u nq.pigeon nq.photo
+o nq.lw_door
+o lw.sh_door ; Manny grabs the Bone Wagon's remote from Glottis as he bounces by
+o sh.zw_door
+x guide_walk(2.36, 0.86, 0) ; in front of the alligator's lair, facing it
+x while TurnActorTo(manny.hActor, 2.67, 1.15, 0) do break_here() end
+h th.grinder
+u th.grinder ; the alligator wakes up and chases Manny into the Bone Wagon
+X at.toggle_remote()
+X guide_sentence("use", sh.remote) ; the Bone Wagon up on its legs
+X at.toggle_remote()
+X guide_bw_forward() ; Glottis drives up to the catwalk
+X at.ledge:use() ; Manny climbs out onto it
+h sh.remote
+x guide_walk(0.49, -0.575, 1.3) ; down the ladder: the alligator turns around
+W zod_set_to_pin
+X guide_sentence("use", sh.remote) => albinizod_pinned ; the wagon comes down on its tail
+x local n = 0 while manny.is_climbing and n < 40 do guide_wait_for(start_script(manny.climb_down, manny)) n = n + 1 end
+o at.fp_door
+o fp.fi_door ; the florist's
+u fi.bell mo.scythe ; the tape off the bell: Bowlsley throws Manny out...
+o fp.fi_door ; ...and now hands over a gun and the Sproutella
+== Hector LeMans
+x guide_climb(sh.te_ladder, TRUE)
+o te.ly_door
+u ly.brennis_obj ; the elevator demon's question...
+X guide_keno() ; ...the last number on the keno board
+u hf.couple ; Celso and his wife, upstairs
+c Ahora trabajo para Hector
+c no crees que te lo mereces
+c Para un día lluvioso
+c basta ya de hablar de vosotros
+c peores vacaciones de mi vida ; they take the ticket
+x guide_walk(0.18, -0.56, 0) ; Hector's office: the job offer, and the ledge
+== El letrero de neón
+x guide_walk(0.035, 1.93, -0.02) ; along the ledge to the roof
+x guide_walk(-7.5, 1.85, 3.71) ; up on the parapet by the sign's arm
+u nl.gargoyle th.grinder => nl.gargoyle.boned ; the gargoyle's crack, seeded with bone...
+u nl.gargoyle fi.sproutella => nl.sign_down ; ...and the Sproutella: down comes Lady Luck
+u nl.sign_ladder ; the slide, and Hector's greenhouse
+== El invernadero
+u me.door ; Hector shoots Manny with Sproutella
+X manny.is_holding = si.nitrogen guide_wait_for(start_script(dead_close_inventory))
+X guide_wait_for(start_script(si.nitrogen.use, si.nitrogen)) ; the liquid nitrogen on the wound
+u me.salvador_obj ; Salvador's head in the back seat
+W not find_script(me.salvador_goodbye) ; his goodbye has quiet moments: to its end
+u me.suitcase => me.ticket_free ; Olivia's suitcase: the scythe, and a ticket
+p me.salvador_obj => me.plucked_ticket
+x guide_walk(-0.555, 2.749, -0.414) ; behind the greenhouse, the ticket leads to Salvador's body
+u me.sals_body => me.key.owner == manny ; the trunk key
+u me.car me.key => me.gun.owner == manny ; the gun in the trunk
+u me.tanks me.gun => me.hector_dying ; the water tank: Sproutella water on Hector
+u me.door ; the end

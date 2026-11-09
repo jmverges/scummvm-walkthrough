@@ -263,6 +263,38 @@ w <seconds>              wait
 Verbs: 1 look, 2 pick up, 3 open, 4 close, 5 talk, 6 move. The whole game is in
 [dists/walkthroughs/drascula.txt](dists/walkthroughs/drascula.txt) (the freeware release, Spanish voices and text).
 
+## Grim Fandango (grim)
+
+Grim Fandango has its own player too (`engines/grim/guide.cpp`). The game's logic is Lua, and so are the steps:
+each one is a few lines of Lua run as a script of its own, doing what the keys do (the use, look at and pick up
+sentences, the inventory hot keys, a dialog's line). A step waits until Manny can be moved (no cut scene, nobody
+talking or walking, no step still running) and is done when its script has ended and the game is idle again.
+Objects go by the game's own Lua names (`mo.scythe`, `gs.door`), as its scripts have them.
+
+```
+l <obj> / p <obj>        look at / pick up
+u <obj> [<item>]         use (with an item, taken out of the inventory first)
+o <door>                 walk out through a door or an exit (again if Manny is still in the same set)
+h <item> / h -           take an item out / put it away
+c <n|text> / C <text>    a dialog line, by number or by (part of) its text; C: only if it is offered
+g <x y z> / t <x y z>    walk there / turn to look there
+x <lua> / X <lua>        any Lua, run as a script; X also while one of the game's own interfaces is up (driving)
+w <s> / W <lua>          wait / wait until the Lua expression is true
+@<set> <step>            that step only in that set
+<step> => <lua>          the Lua must be true once the step is done, or the step is done again (twice at most)
+!<step>                  starts as soon as the step before is done, even while someone else is talking
+```
+
+Lines between `{{{lua` and `}}}` are Lua of the walkthrough's own: the real-time puzzles (the forklift, the vault's
+tumblers, the Bone Wagon) are loops that press what the keys would. The whole game is in
+[dists/walkthroughs/grim.txt](dists/walkthroughs/grim.txt) (Spanish CD, Spanish voices and text). It is set with `guide_file`
+and played with the commands in the file named by `guide_control`; `guide_save_sections` saves the game at the
+start of each section, and `guide_speed` runs the game that many times faster to test a walkthrough (full screen
+movies are skipped; at speed 3 Manny can walk past a thin trigger box).
+
+Two engine fixes came with it: a Smush movie without a sound track (`cb_water.snm`) no longer crashes the mixer, and
+TinyGL's draw-call buffer is larger (the crowd at the Blue Casket filled it).
+
 ## Building
 
 The Flatpak: [dists/flatpak-walkthrough](dists/flatpak-walkthrough) is the Flathub recipe for ScummVM

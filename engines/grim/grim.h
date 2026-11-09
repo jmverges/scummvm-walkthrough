@@ -55,6 +55,8 @@ struct ControlDescriptor {
 	int key;
 };
 
+class Guide;
+
 class GrimEngine : public Engine {
 
 protected:
@@ -197,6 +199,8 @@ public:
 	TextObjectDefaults _sayLineDefaults, _printLineDefaults, _blastTextDefaults;
 
 	void debugLua(const Common::String &str);
+
+	Guide *_guide;   // the walkthrough player (guide_file)
 
 protected:
 	void pauseEngineIntern(bool pause) override;

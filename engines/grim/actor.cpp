@@ -25,6 +25,7 @@
 #include "engines/grim/debug.h"
 #include "engines/grim/actor.h"
 #include "engines/grim/grim.h"
+#include "engines/grim/guide.h"
 #include "engines/grim/costume.h"
 #include "engines/grim/lipsync.h"
 #include "engines/grim/movie/movie.h"
@@ -1148,6 +1149,8 @@ void Actor::sayLine(const char *msgId, bool background, float x, float y) {
 
 	char id[50];
 	Common::String msg = LuaBase::instance()->parseMsgText(msgId, id);
+	if (g_grim->_guide && !msg.empty())
+		g_grim->_guide->onSay(getName().c_str(), msg);
 
 	if (id[0] == 0) {
 		error("Actor::sayLine: No message ID for text");
