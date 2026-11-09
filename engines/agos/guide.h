@@ -45,6 +45,8 @@ struct Item;
  *                                           number, or minus a box id for the people and things that are boxes
  *   E <verb> <item> [<item2>] [; comment]   the same as soon as the game takes clicks, even while people talk
  *   h <box> [; comment]                     click a box by its id (one with no item)
+ *   B <box> [; comment]                     the same as soon as the box is there and the game takes clicks
+ *                                           (something to hit before it goes away)
  *   k <n> [; comment]                       the n-th line of a conversation's choices, from the top
  *   c <words> [; comment]                   the choice whose text has these words (the game's own text, so
  *                                           better without accented letters)

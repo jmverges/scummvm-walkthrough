@@ -96,6 +96,7 @@ bool AGOSGuide::parseLine(const Common::String &text, Step &st) const {
 	case 'e': st.kind = Step::kVerb; return n >= 2;
 	case 'E': st.kind = Step::kVerb; st.now = true; return n >= 2;
 	case 'h': st.kind = Step::kBox; return n >= 1;
+	case 'B': st.kind = Step::kBox; st.now = true; return n >= 1;
 	case 'k': st.kind = Step::kChoice; return n >= 1;
 	case 'C':
 		st.optional = true;
@@ -1121,7 +1122,8 @@ void AGOSGuide::tick() {
 		const Step &cur = _steps[_current];
 		const bool waited = cur.kind == Step::kWait || cur.kind == Step::kRoomWait || cur.kind == Step::kVarWait ||
 			cur.kind == Step::kBitWait || cur.kind == Step::kTalkWait || cur.kind == Step::kVar2Wait ||
-			cur.kind == Step::kRoomLeave || cur.kind == Step::kLoop || cur.kind == Step::kClickTo;
+			cur.kind == Step::kRoomLeave || cur.kind == Step::kLoop || cur.kind == Step::kClickTo ||
+			(cur.kind == Step::kBox && cur.now);   // B: the next one may come right away
 		if (!waited && now - _stateSince < kSettle)
 			return;
 		// done once the game reacted and waits again, or when nothing happened for a while
@@ -1254,7 +1256,7 @@ void AGOSGuide::tick() {
 		st.kind == Step::kBitWait || st.kind == Step::kTalkWait || st.kind == Step::kVar2Wait ||
 		st.kind == Step::kRoomLeave || st.kind == Step::kLoop;
 	if (st.now) {
-		if (_vm->_guideWaiting != 1 || _vm->_mouseHideCount)
+		if (!(_vm->_guideWaiting == 1 || (st.kind == Step::kBox && _vm->_guideWaiting == 2)) || _vm->_mouseHideCount)
 			return;   // as soon as the game takes clicks, even while someone talks
 	} else if (!waitStep && (!_idleSince || now - _idleSince < kIdleSettle)) {
 		return;
