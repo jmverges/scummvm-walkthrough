@@ -62,7 +62,7 @@ struct Item;
  *   n <var> <value> [; comment]             wait until a script variable has that value
  *   N <var> <value> -<n> [; comment]        once the game waits, check that a variable has that value, else
  *                                           n steps back to try them again
- *   b <bit> <value> [; comment]             wait until a bit flag has that value (256 + n: the second array's n)
+ *   b <bit> <value> [; comment]             wait until a bit flag has that value (256 + n: the second array's n, 512 + n: the third's)
  *   w <seconds> [; comment]                 wait
  *   t <words> [; comment]                   wait until someone says something with these words (the game's text)
  *   v <var> <value> [<value2>] [; comment]  The Feeble Files: wait until a variable of the second set (someone

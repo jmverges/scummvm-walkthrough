@@ -246,6 +246,8 @@ uint32 AGOSGuide::flagSignature() const {
 
 // A bit flag; from 256 on, the second array's (SET_BIT2 n is 256 + n).
 bool AGOSGuide::bit(int n) const {
+	if (n >= 512)
+		return (_vm->_bitArrayThree[(n - 512) / 16] & (1 << ((n - 512) & 15))) != 0;
 	if (n >= 256)
 		return (_vm->_bitArrayTwo[(n - 256) / 16] & (1 << ((n - 256) & 15))) != 0;
 	return _vm->getBitFlag(n);
