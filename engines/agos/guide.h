@@ -58,6 +58,8 @@ struct Item;
  *   r <room> [; comment]                    wait until Simon is in that room
  *   r <room> <s> -<n> [; comment]           the same for s seconds at most, then n steps back to try again
  *   n <var> <value> [; comment]             wait until a script variable has that value
+ *   N <var> <value> -<n> [; comment]        once the game waits, check that a variable has that value, else
+ *                                           n steps back to try them again
  *   b <bit> <value> [; comment]             wait until a bit flag has that value (256 + n: the second array's n)
  *   w <seconds> [; comment]                 wait
  *   t <words> [; comment]                   wait until someone says something with these words (the game's text)
@@ -71,6 +73,10 @@ struct Item;
  *                                           from box; a click turns a cell and its four neighbours: click
  *                                           those that leave all cells alike
  *   H <box> <var> <value> [; comment]       hold the button down on a box until a variable gets to that value
+ *   K <box> <var> <value> [; comment]       click a box, again and again, until a variable has that value (a
+ *                                           dial, a digit that goes round)
+ *   L [; comment]                           The Feeble Files: out of a close-up (a console, a machine): the
+ *                                           pointer to the screen's edge
  *   s <who> [; comment]                     The Feeble Files: play as 15 Feeble or 16 SAM (the button by the
  *                                           Oracle's, where both can be played)
  * Any number may be "$<var>[+<n>]" instead: what that script variable holds when the step comes up, plus n
@@ -100,11 +106,12 @@ public:
 
 private:
 	struct Step {
-		enum Kind { kVerb, kBox, kChoice, kPoint, kRoomWait, kVarWait, kBitWait, kWait, kChoiceText, kPathPoint, kTalkWait, kSwitch, kVar2Wait, kRoomLeave, kLoop, kPairs, kLights, kHold } kind;
+		enum Kind { kVerb, kBox, kChoice, kPoint, kRoomWait, kVarWait, kBitWait, kWait, kChoiceText, kPathPoint, kTalkWait, kSwitch, kVar2Wait, kRoomLeave, kLoop, kPairs, kLights, kHold, kCloseUp, kClickTo } kind;
 		int a = 0, b = 0, c = 0;
 		bool now = false;   // E: as soon as the game takes clicks
 		bool exit = false;  // x: done only once Simon is in another room
 		bool optional = false;   // C: a line that may not be offered, then skipped
+		bool check = false;      // N: a variable checked once the game waits, else some steps back
 		int onlyRoom = 0;        // @<room>: only in that room, else skipped
 		int loops = 0;           // l: how many times it went back so far
 		Common::String text, comment, section;

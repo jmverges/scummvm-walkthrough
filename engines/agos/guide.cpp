@@ -79,8 +79,8 @@ bool AGOSGuide::parseLine(const Common::String &text, Step &st) const {
 		line = line.substr(sp + 1);
 		line.trim();
 	}
-	if (line == "m")
-		line += ' ';   // the one step without numbers
+	if (line == "m" || line == "L")
+		line += ' ';   // the steps without numbers
 	if (line.size() < 2 || line[1] != ' ')
 		return false;
 	if (line.contains('$')) {
@@ -110,13 +110,16 @@ bool AGOSGuide::parseLine(const Common::String &text, Step &st) const {
 	case 'x': st.kind = Step::kPathPoint; st.exit = true; return n == 2;
 	case 'r': st.kind = Step::kRoomWait; return n >= 1;
 	case 'n': st.kind = Step::kVarWait; return n == 2;
+	case 'N': st.kind = Step::kVarWait; st.check = true; return n == 3 && st.c < 0;
 	case 'b': st.kind = Step::kBitWait; return n == 2;
 	case 'w': st.kind = Step::kWait; return n >= 1;
 	case 's': st.kind = Step::kSwitch; return feeble() && n == 1;
 	case 'v': st.kind = Step::kVar2Wait; return feeble() && n >= 2;
 	case 'm': st.kind = Step::kRoomLeave; return true;
+	case 'L': st.kind = Step::kCloseUp; return feeble();
 	case 'P': st.kind = Step::kPairs; return n == 3 && st.b > 0;
 	case 'H': st.kind = Step::kHold; return n == 3;
+	case 'K': st.kind = Step::kClickTo; return n == 3;
 	case 'O': st.kind = Step::kLights; return n == 3 && st.b > 0 && st.b <= 8;
 	case 'l': st.kind = Step::kLoop; return n == 2 && st.a > 0;
 	case 't':
@@ -523,6 +526,7 @@ bool AGOSGuide::available(const Step &st) const {
 		}
 		return findItemBox(st.b) || inInventory(st.b);
 	case Step::kBox:
+	case Step::kClickTo:
 		return findBoxId(st.a) != nullptr;
 	case Step::kChoice:
 		return (int)choices().size() >= st.a;
@@ -689,6 +693,18 @@ void AGOSGuide::execute(const Step &st) {
 	case Step::kBox:
 		pushClick(_moves, 0, Move::kBox, st.a, 0, 0, 0);
 		break;
+	case Step::kClickTo:
+		// one click, then the game's turn; the settling clicks again until the variable has the value
+		if (_vm->_variableArray[st.b] != st.c) {
+			pushClick(_moves, 0, Move::kBox, st.a, 0, 0, 0);
+			Move w;
+			w.target = Move::kStay;
+			w.frames = 10;
+			_moves.push_back(w);
+			w.target = Move::kIdle;
+			_moves.push_back(w);
+		}
+		break;
 	case Step::kChoice:
 		pushClick(_moves, 0, Move::kChoice, st.a, 0, 0, 0);
 		break;
@@ -796,6 +812,12 @@ void AGOSGuide::execute(const Step &st) {
 		}
 		break;
 	}
+	case Step::kCloseUp: {
+		Move m;
+		m.target = Move::kLeave;
+		_moves.push_back(m);
+		break;
+	}
 	case Step::kSwitch: {
 		// the button right of the Oracle's (the scripts check the position)
 		if (_vm->_variableArray[99] == st.a)
@@ -820,7 +842,7 @@ void AGOSGuide::execute(const Step &st) {
 }
 
 Common::String AGOSGuide::describe(const Step &st) const {
-	static const char *const names[] = {"verb", "box", "choice", "point", "room", "var", "bit", "wait", "choice", "path", "talk", "switch", "var2", "leave", "loop", "pairs", "lights", "hold"};
+	static const char *const names[] = {"verb", "box", "choice", "point", "room", "var", "bit", "wait", "choice", "path", "talk", "switch", "var2", "leave", "loop", "pairs", "lights", "hold", "close-up", "click to"};
 	Common::String s = Common::String::format("%s %d %d %d", names[st.kind], st.a, st.b, st.c);
 	if (st.kind == Step::kChoiceText)
 		s = Common::String::format("choice '%s' (%d)", st.text.c_str(), choiceWith(st.text));
@@ -877,12 +899,16 @@ bool AGOSGuide::frame(Common::Point &mouse, bool &click) {
 		return true;
 	}
 	if (m.target == Move::kLeave) {
-		// out of the Oracle: the pointer out of its frame
-		if (feeble() && _vm->getBitFlag(99) && ++m.waited < 200)
+		// out of the Oracle or a close-up (88): the pointer out of its frame
+		if (feeble() && (_vm->getBitFlag(99) || _vm->getBitFlag(88)) && ++m.waited < 200)
 			_guideMouse = Common::Point(screenW() - 1, screenH() / 2);
 		else
 			_moves.remove_at(0);
 		mouse = _guideMouse;
+		if (_moves.empty() && _state == kRunning) {
+			_state = kSettle;
+			_stateSince = g_system->getMillis();
+		}
 		return true;
 	}
 	if (m.target == Move::kCursor) {
@@ -950,15 +976,18 @@ bool AGOSGuide::frame(Common::Point &mouse, bool &click) {
 		} else {
 			HitArea *arrow = findBoxId(0x7FFC);
 			if (feeble() && m.target == Move::kItem) {
-				// The Oracle's list: up if the item comes before the first one in view, else down
+				// The Oracle's list: up if the item comes before the first one in view, else down (its rows take
+				// the boxes from 201 on in turn as it moves, so the first in view is the one first in the list)
 				Item *me = _vm->me();
-				HitArea *first = findBoxId(201);
 				int at = 0, wanted = -1, shown = -1;
 				for (Item *it = me ? _vm->derefItem(me->child) : nullptr; it; it = _vm->derefItem(it->next), at++) {
 					if (itemId(it) == m.id)
 						wanted = at;
-					if (first && first->itemPtr == it)
-						shown = at;
+					for (int id = 201; shown < 0 && id < 300; id++) {
+						HitArea *ha = findBoxId(id);
+						if (ha && ha->itemPtr == it)
+							shown = at;
+					}
 				}
 				if (wanted >= 0 && shown >= 0 && wanted < shown)
 					arrow = nullptr;
@@ -1092,7 +1121,7 @@ void AGOSGuide::tick() {
 		const Step &cur = _steps[_current];
 		const bool waited = cur.kind == Step::kWait || cur.kind == Step::kRoomWait || cur.kind == Step::kVarWait ||
 			cur.kind == Step::kBitWait || cur.kind == Step::kTalkWait || cur.kind == Step::kVar2Wait ||
-			cur.kind == Step::kRoomLeave || cur.kind == Step::kLoop;
+			cur.kind == Step::kRoomLeave || cur.kind == Step::kLoop || cur.kind == Step::kClickTo;
 		if (!waited && now - _stateSince < kSettle)
 			return;
 		// done once the game reacted and waits again, or when nothing happened for a while
@@ -1113,6 +1142,17 @@ void AGOSGuide::tick() {
 			logf("step %d: Simon never left room %d; stopping", _current + 1, room());
 			_state = kStopped;
 			return;
+		}
+		if (cur.kind == Step::kClickTo && _vm->_variableArray[cur.b] != cur.c) {
+			if (++_retries <= 30) {
+				_state = kRunning;
+				_stateSince = now;
+				execute(cur);
+				if (_moves.empty())
+					_state = kSettle;
+				return;
+			}
+			logf("step %d: variable %d never got to %d (it is %d)", _current + 1, cur.b, cur.c, _vm->_variableArray[cur.b]);
 		}
 		if (cur.kind == Step::kSwitch && _vm->_variableArray[99] != cur.a && ++_retries <= 5) {
 			logf("step %d: the other one is not playing yet, again", _current + 1);
@@ -1158,8 +1198,16 @@ void AGOSGuide::tick() {
 				return;
 			}
 		}
-		else if (st.kind == Step::kVarWait)
+		else if (st.kind == Step::kVarWait) {
 			done = _vm->_variableArray[st.a] == st.b;
+			if (!done && st.check && isIdle()) {
+				logf("step %d: variable %d is %d, not %d: back to step %d", _current + 1, st.a,
+					_vm->_variableArray[st.a], st.b, _current + 1 + st.c);
+				setCurrent(_current + st.c);
+				_state = kWaitIdle;
+				return;
+			}
+		}
 		else if (st.kind == Step::kBitWait)
 			done = bit(st.a) == (st.b != 0);
 		else if (st.kind == Step::kTalkWait)
