@@ -1,0 +1,665 @@
+# Toonstruck walkthrough (Spanish version, ScummVM toon engine): see the format in engines/toon/guide.h
+== El castillo del rey Hugo
+e 2008 ; the lab: Bricabrac lost his glasses
+e 994 ; the nervous bird
+e 2004
+e 2007 ; the trophy room
+e 950 ; the footman
+k 0 ; the trophies
+k 2 ; Bricabrac
+k 1 ; goodbye
+e 2004
+e 2008
+e 990 ; Bricabrac finds his glasses in his pocket: the blueprint and the bag
+e 2004
+e 954 ; outside: the guards Tango and Mambo
+e 950
+k 0 ; what they do: the welcome dance
+k 3 ; a hard day: they dance again
+E 960 ; the key falls off a guard's belt while they dance
+w 2
+E 960
+w 3
+b ; into the bag
+e 954 ; back into the hall
+u 106 962 ; the key opens the king's bedroom
+e -3 ; take Flux
+e 970 ; Flux climbs the ladder: a free costume voucher from the king's bed
+b
+e 950 ; under the rug: a trapdoor
+e 956 ; the music box
+b
+e 952 ; the note: a clue for the drawers
+e 954 ; the drawers: open the top and the bottom one
+g 146 190 ; left knob
+g 151 310 ; bottom
+g 457 246 ; right
+g 297 70 ; top
+e 974 ; back: a secret passage in the bed
+e 2006 ; the cellar
+e -3
+e 950 ; Flux stands on the loose floorboard
+e 950 ; Drew jumps on the other end: Flux flies up and opens the trapdoor
+e 2005
+e 960 ; the rug back over the open trapdoor
+e 958 ; the bell cord: the footman comes and falls through the trapdoor
+e 2004
+e 954
+== El pueblo de Contentilandia
+e 2010 ; the town
+e 2013 ; the Irish pub
+g 270 334 ; the mouse on the bar runs off to the mousetrap
+e 954 ; Drew plays the organ: the mouse dances under the hammer
+e -3
+e 958 ; Flux and the mousetrap: whack. The barman gives us an old tankard
+b
+g 400 220 ; the stunned mouse
+b
+e 2010
+e 2002 ; back to the castle
+e 954
+e 2007 ; the trophy room again
+e 952 ; the fish trophy: a red herring
+b
+e 951 ; the golden watering can: the security door shuts
+b
+u 45 954 ; the tankard on the pedestal arm opens it again
+e 2004
+e 954
+e 2010
+e 2001 ; south: Fluffy Fluffy Bun Bun's meadow
+e 950
+k 0 ; how she is
+k 2 ; what she does here
+k 0 ; Nefarious: she wants popcorn, not her cotton candy
+k 1
+e 2015 ; the farm
+e 950 ; the scarecrow
+k 0 ; his clothes
+k 0 ; the outfit he wants
+k 1
+e 960 ; a corncob
+b
+e 954 ; the barn
+e 950 ; Marge the cow
+k 0 ; butter: the Churnatron broke
+k 0 ; four legs
+k 2 ; what happened: a metal part flew off
+k 1
+u 93 966 ; fertilizer in the watering can
+b
+e 972 ; out of the barn
+e 2020 ; the forest: the squirrel and the pepper
+e 966 ; the path west: the dark side of the forest
+e 2030 ; a path: B.B. Wolf wants a bottle of wine
+e 966 ; back east
+e 2021 ; north: the shuttle to Zanydu
+p 52 236 309 ; the mouse in the right hand of the cable car
+p 94 236 309 ; fertilizer wakes it up: the wheel turns
+b
+== Loquilandia
+e 950 ; into the cable car
+e 964 ; to Zanydu
+e 2023 ; right: the WACME store
+g 176 345 ; in front of the second revolving door
+w 1
+v 1 2 ; its light is on
+G 176 286
+q 24 4 ; it went off before Drew got there: again
+e 958 ; the clerks
+k 0 ; who they are
+k 2 ; the Gift-o-Matic: only for customers
+k 1
+e 962 ; Lose, the other clerk
+k 0 ; anything new: the products in the showcase
+k 4 ; a demonstration of the boxing glove
+E 956 ; the stars over the punched clerk's head
+b
+e 2023
+e 2022
+e 2025 ; left: Jim's Gym and the fish toilet
+e 950 ; the fish toilet guard
+k 0 ; nobody goes in until the clock marks the end of his shift
+k 1
+e 956 ; the ad: the WACME phone quiz and its colors
+e 958 ; out of the ad
+e 2022
+e 2023
+e 950 ; the clock: right, left, left, right, left, right, left makes it six o'clock
+g 371 354
+g 240 355
+g 240 355
+g 371 354
+g 240 355
+g 371 354
+g 240 355 ; the cuckoo: the guard's shift is over
+e 2022
+e 2025
+e 2027 ; the fish-flushing facility
+e 956 ; the toilet is clogged
+e 950 ; the toilet paper: the rules and the fish ranking
+e 970
+e 968
+e 2022
+e 2021 ; back down to the cable car: home to Cutopia
+e 960
+e 2015
+e 2001
+e 2010
+e 2013 ; the pub: the colour phone
+e 956 ; the phone
+e 968 ; blue
+w 4
+d 964 968 ; red and blue together: purple
+w 4
+e 964 ; red
+w 4
+d 964 966 ; orange
+w 4
+e 966 ; yellow
+w 4
+d 968 966 ; green
+w 4
+d 964 966 ; orange: the WACME quiz line
+e 968 ; Jim's fur: blue
+e 966 ; the fish on the toilet building: yellow
+d 964 966 ; Warp's fur: orange
+e 964 ; the fish on a guard's right shoulder: red
+d 968 966 ; Woof's collar: green
+e 968 ; the arrow to Jim's Gym: blue. We won
+e 970 ; hang up
+e 972
+e 2010
+e 954 ; the prize parcel: WACME Martian fleas
+b
+e 2001
+e 2015
+e 2020
+e 2021
+e 950
+e 964 ; to Zanydu again
+e 2023
+g 176 345 ; in front of the second revolving door
+w 1
+v 1 2 ; its light is on
+G 176 286
+q 24 4 ; it went off before Drew got there: again
+u 19 960 ; the Martian fleas prove we are customers
+b
+# the Gift-o-Matic: the button starts it, a second press stops it; the prize between the arrows is Drew's.
+# Where it stops drifts a little, so: three tries (magnet, mallet, glove) that skip what Drew has, again and again
+J 47 6
+e 950
+g 310 373
+R 5 1
+P 310 373 ; the magnet
+w 3
+b
+J 49 6
+e 950
+g 310 373
+R 5 4
+P 310 373 ; the mallet
+w 3
+b
+J 33 6
+e 950
+g 310 373
+R 5 7
+P 310 373 ; the boxing glove
+w 3
+b
+j 47 21
+j 49 22
+j 33 23
+e 2023
+e 2022
+e 2021 ; home again
+e 960
+e 2015
+e 954 ; the barn
+u 47 968 ; the magnet in the haystack: the missing part
+e 974 ; on the Churnatron: butter
+b
+e 972
+e 2020
+e 2021
+e 950
+e 964 ; to Zanydu
+e 2025
+e 2026 ; Jim's Gym
+u 12 956 ; butter on the vaulting horse
+e 952 ; Jim
+k 0 ; who he is
+k 3 ; his equipment: a demonstration. He slips on the butter
+e 950 ; the Pump-o-Tron: muscles
+e 966
+e 2022
+e 2021
+e 960
+e 2015
+e 2001
+e 2010
+e 2014 ; the arcade
+u 49 954 ; the mallet: talk to the cashier first
+b
+e 950 ; the cashier
+k 0 ; his business
+k 3 ; the Strength-o-Meter: a bottle of wine for ringing the bell
+u 49 954 ; our big mallet and the new muscles: the wine
+b
+e 956 ; the bells from the wreck
+b
+e 968 ; Fingers
+k 2 ; WACMAN: a gold chain if Drew beats him
+w 1
+A ; the WACMAN duel: stand and throw, duck when he ducks
+j 13 4 ; lost: another game
+b
+e 2010
+e 2011 ; the bakery
+e 964 ; the baker frogs
+k 0 ; who they are: their brother Renato is missing
+k 2 ; kidnapped by Nefarious' henchmen?
+k 1
+i 11 ; a stick of Marge's butter
+u 11 954 ; butter for Donato: raw dough
+b
+e 950 ; the piano: a handful of keys
+b
+e 2010
+e 2001
+e 2015
+e 954 ; the barn, malevolated now
+u 94 960 ; the dangerous-looking gunk in the watering can
+b
+e 962
+e 2020 ; the forest
+u 95 956 ; the gunk is weedkiller: the briar patch dies
+e 954 ; the PEPPER
+b
+e 966 ; west: B.B. Wolf
+u 96 950 ; the wine: dinner for the wolves, and Drew and Flux in the stewpot
+P 376 302 ; rock the pot: push each time it swings back
+v 2 1
+P 494 303
+v 2 2
+H 554 4 ; until it tips over onto the wolves
+w 3
+u 24 952 ; the dough on the spit: a ROLL
+b
+e 952 ; the SPIT
+b
+u 26 954 ; the corncob in the fire: popcorn
+b
+e 958 ; a book
+b
+i 8 ; a guide to squirrel romance
+e 2020
+== Malevolandia
+e 2030 ; the Malevolands town
+w 2
+e 956 ; a hunk of meat
+j 115 1 ; (the first click may only walk Drew there)
+b
+e 2033 ; the prison office
+e 954 ; the ink pad
+b
+e 2030
+e 2020
+e 966
+e 2015
+e 2001
+e 2010
+e 2012 ; Ms. Fit's costume shop: Nefarious' henchmen come in
+E 986 ; hide in the changing room
+t 53 40 ; the music box (a royal seal on its base) and the ink pad
+b
+t 54 91 ; the inked seal on the voucher: stamped
+b
+u 92 988 ; the stamped voucher for Ms. Fit: a fly costume for the king, and a free rental
+e 970 ; the harlequin costume
+b
+u 8 988 ; the squirrel book for her Book of Enigmas
+b
+e 2010
+e 2001
+e 2015 ; the scarecrow, malevolated too
+u 32 952 ; the harlequin costume: his CLOAK
+e 2020
+e 966
+e 2030
+e 2032 ; the robot maker's workshop
+u 7 950 ; the Book of Enigmas: a question the robot cannot answer
+e 954 ; the PLUNGER
+b
+e 2030
+e 2020
+e 966
+e 2021
+e 950
+e 964 ; to Zanydu
+e 2025
+e 2027 ; the fish toilet
+u 59 952 ; the plunger unclogs it
+u 67 952 ; the red herring in the bowl: the fish start running through
+g 281 265 ; (a wrong fish goes back in)
+w 2
+P 270 232 ; the chain catches whatever fish is in the bowl
+W 3000
+P 270 232
+w 9
+j 76 6 ; until it is the SOLE
+b
+e 968 ; out
+e 2022
+e 2021 ; back to Cutopia
+e 960
+e 2015
+e 950 ; the barn
+u 93 960 ; more weedkiller
+b
+t 115 95 ; on the hunk of meat
+b
+e 962
+e 2020
+e 2021
+e 950
+e 964 ; to Zanydu
+e 2028 ; the middle path: the vulture
+u 116 954 ; the poisoned meat
+e 950 ; the ARROW sign
+b
+e 958 ; a loose feather
+b
+e 2022
+e 2021 ; home
+e 960
+e 2015
+e 950 ; the barn
+u 28 950 ; the feather tickles Marge: GLUE
+b
+e 962
+e 2020
+e 966
+e 2030 ; the Malevolands town
+u 18 -4 ; Drew puts on the cloak: Sady lets him into Seedy's bowling alley. The henchmen come
+G 600 290 ; hide behind the swing doors
+u 35 950 ; glue for the bear's ball when he leaves it
+w 2
+e 950
+j -1 2 ; until the glue is on it
+e -3
+e 958 ; Flux on the lane: a strike. The PINS trophy
+b
+e 2030
+e 2020
+e 966
+e 2015
+e 2001
+e 2010
+e 2002
+e 954 ; the castle hall
+u 79 956 ; the spit is the crank for the cabinet
+e 950 ; the stuffed cat
+b
+e 954
+e 2010
+e 2001 ; Fluffy Fluffy Bun Bun
+u 64 950 ; popcorn for her: the cotton candy
+b
+t 68 36 ; the piano keys in the glue
+b
+t 20 37 ; the cotton candy in the glue
+b
+t 69 107 ; the sticky keys on the stuffed cat
+t 21 108 ; the sticky cotton candy too
+t 19 110 ; and the Martian fleas: a lively lady squirrel
+e 2015
+e 2020 ; the forest
+u 114 958 ; the lady squirrel on the doorstep: the squirrel comes down
+e -3
+e 964 ; Flux climbs up for the NUTS
+b
+e 2015
+e 2001
+e 2010
+e 2002
+e 954
+e 2008 ; the lab
+== El Contentificador
+e 996 ; the Cutifier hangar: the twelve slots around the cabin
+p 18 300 46 ; the CLOAK for the sword
+p 80 364 105 ; the STARS for the moon
+p 76 382 175 ; the SOLE for the hook
+p 4 366 240 ; the BELLS for the envelope
+p 79 310 304 ; the SPIT for the meat
+p 87 224 318 ; the PINS for the ball
+p 56 140 302 ; the NUTS for the nutcracker
+p 13 79 250 ; the CHAIN for the link
+p 2 63 178 ; the ARROW for the bow
+p 57 76 108 ; the PEPPER for the salt
+p 71 135 49 ; the ROLL for the wine
+e 991 ; System Analysis: twelve of twelve. Launch
+== El castillo de Nefastus
+e 951 ; Snout the jailer
+k 0
+k 2 ; his allergies: dust above all
+k 1
+f 1 15 ; he turns away and breathes in
+E 954 ; under the mat: a yellow CRYSTAL
+b
+f 1 15
+E 954 ; the dusty mat
+e -4 ; shake it: a cloud of dust, and Snout sneezes himself out
+b
+e 950 ; the key on the wall
+e 953 ; the keyhole: out, and our things back
+b
+e 966 ; the myna bird: clues for a bookcase upstairs
+e 966
+e 966
+e 966
+e 2040 ; the stairway
+e 954 ; the clown door: a game of Simon
+C ; repeat what the door shows, eleven parts in the end
+e 2042 ; Spike the clown's room
+e 950
+k 0
+k 1
+e 2040
+e 978 ; upstairs: the second floor landing
+e 954 ; in the left gargoyle's mouth: another CRYSTAL
+b
+== La sala del caballero
+e 2045 ; the knight hall
+e 956 ; the odd books: the myna bird's order
+g 226 266 ; blue 1
+g 235 84 ; red 1
+g 354 81 ; red 3
+g 285 267 ; blue 2
+g 344 266 ; blue 3
+g 406 82 ; red 4
+g 296 83 ; red 2
+g 400 267 ; blue 4: a secret passage
+e 2046 ; the monitor room behind the bookcase
+u 54 -4 ; the music box puts the guard to sleep
+e 950 ; the monitor
+e 954 ; the cameras
+e 956
+e 958
+e 960 ; camera 4: the knight hall
+e 972
+u 47 968 ; the magnet on the bolted platform: the knight upstairs moves with it
+g 236 288 ; the four raised tiles
+g 288 325
+g 343 256
+g 409 326 ; the gate opens
+e 2045
+e 2043
+e 2040
+e 2037 ; down to the dungeon
+== El Climatrón
+e 2038 ; the Climatron hallway
+e 958 ; the button opens the air circulator
+e 2039 ; inside
+u 22 -4 ; the fly costume: up the air duct to a bathroom
+e 962 ; the sink plug
+e 960 ; the taps: water all over the floor
+e 956 ; the medicine cabinet
+e 958 ; chloroform wipes
+b
+u 93 970 ; water in the watering can
+b
+e 2039
+e 2038
+e 2037
+e 2040
+e 2042 ; back to Spike
+f 4 -1 ; he takes off his nose to powder it
+E 954 ; grab the nose
+T 16 ; chloroform on it: he puts it back on and passes out
+e 958 ; the PIN
+b
+e 966 ; the balloon
+b
+u 100 960 ; helium from the tank
+b
+u 33 960 ; and in the boxing glove
+b
+e 2040
+e 2037
+e 2038 ; the Climatron
+e 954 ; its controls
+p 58 319 257 ; the pin makes a lever
+g 213 215 ; cold
+e 966
+e 2039
+u 22 -4 ; up the duct: the bathroom floor is ice now
+e 968 ; open the door: the guards outside slip away
+e 968 ; through it
+e 2043 ; down to the second floor landing
+e 958 ; the left gargoyle's horn moves to the right one
+e 2048 ; up to the bathroom
+e 2049
+e 2039 ; down the duct
+e 2038
+e 954
+g 442 217 ; hot: the goldfish on the stairs jumps out of its bowl
+W 10000 ; time for the fish to boil out of its bowl
+g 324 198 ; medium
+P 20 200 ; out of the close-up
+E 2037
+E 2040 ; quick, before it gets back
+E 952 ; the treasure chest from the bowl
+J 14 11
+e 2037 ; the fish was faster: again
+e 2038
+e 954
+g 442 217
+W 10000
+g 324 198
+P 20 200
+E 2037
+E 2040
+E 952
+j 14 10
+b
+i 14 ; inside: a KEY
+e 2037
+e 2038
+e 954
+e 964 ; the pin back
+b
+e 966
+e 2037
+e 2040
+a 40
+w 6 ; the fish back in its bowl: the stairs are free
+e 990 ; up to the second floor landing
+g 466 245 ; push the right gargoyle's head (the horn is on it): the third CRYSTAL
+b
+e 2045
+== La armería
+e 2047 ; up to the armory: the henchmen play cards
+u 58 952 ; the pin in the jumping box: a frog, and the fourth CRYSTAL
+b
+e 954 ; into the empty crate
+W 9000 ; the crate moves right one push at a time; a guard looks round after each, so wait
+c 6 13
+j 84 2 ; until the TNT is ours
+b
+e 950
+e 2043
+e 2040
+e 2041 ; the kitchen
+u 117 962 ; bathroom water on the Robochef: rusted
+b
+e 956 ; a turkey
+b
+t 84 88 ; a stick of dynamite from the box
+b
+e 952 ; open the stove
+t 102 88 ; the stick in the turkey: turkey surprise
+b
+u 90 954 ; on the embers: the fuse is lit
+h 89
+E 958 ; quick, into the dumbwaiter
+E 960 ; the send button: up to the henchmen's rec room
+w 3
+e 2040
+e 990
+e 2044 ; the rec room, empty now
+e 958 ; the pool cue
+b
+e 2043
+e 2045 ; the knight hall
+e 952 ; the knight's gauntlet
+b
+e 2043
+e 2048 ; the third floor
+u 42 952 ; the key from the treasure chest opens the door on the right
+== El despacho de Nefastus
+e 2050 ; Nefarious' study
+g 403 41 ; the sunglasses on the bookcase: they end up on the fan
+e 952 ; the switch: now on the donkey head
+e 956 ; move the desk chair
+g 50 139 ; now the flytrap has them
+u 22 -4 ; the fly costume: now they are in the vase
+b
+u 49 982 ; the mallet on the vase
+b
+g 261 282 ; the SUNGLASSES
+h 75
+b
+e 2048
+e 2051 ; the top floor
+t 31 61 ; the gauntlet on the pool cue: a long arm
+g 520 191 ; it reaches the button behind the gate
+e 2052
+u 101 -4 ; helium from the balloon: a squeaky voice
+e 976 ; pretend to be one of the henchmen at the intercom
+e 2053 ; Ms. Fortune's lair: Nefarious' fortune teller
+u 75 -4 ; Drew puts on the mirror sunglasses
+e 956 ; her hypnotic gaze bounces back: she obeys Drew now
+e 952
+e 952 ; take her along
+e 2052 ; out to the landing
+e 2052
+e 954
+e 952 ; her eye on the scanner opens the other door
+e 2054 ; the control center
+e 960 ; the panel under the big monitor: four slots
+p 5 332 157 ; blue on top
+p 38 229 213 ; green on the left
+p 97 329 277 ; yellow at the bottom
+p 66 426 213 ; red on the right: the panel closes
+e 958 ; the lever
+e 956 ; the warp device
+h 118
+b
+e 950 ; the monitor by the door: the launch systems
+g 70 62 ; top left switch
+g 562 344 ; bottom right: ON, open, open, deactivated
+g 330 395 ; back
+e 968 ; into the Malevolator: off to save Cutopia

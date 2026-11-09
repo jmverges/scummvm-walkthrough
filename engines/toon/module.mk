@@ -8,6 +8,7 @@ MODULE_OBJS := \
 	conversation.o \
 	drew.o \
 	flux.o \
+	guide.o \
 	font.o \
 	hotspot.o \
 	metaengine.o \

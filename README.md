@@ -295,6 +295,36 @@ movies are skipped; at speed 3 Manny can walk past a thin trigger box).
 Two engine fixes came with it: a Smush movie without a sound track (`cb_water.snm`) no longer crashes the mixer, and
 TinyGL's draw-call buffer is larger (the crowd at the Blue Casket filled it).
 
+## Toonstruck (toon)
+
+Toonstruck has its own player too (`engines/toon/guide.cpp`). A hotspot is the id the game's info line names it
+by, as the `objects` control command lists them (exits on the map are 2000 + their location, Flux is -3, Drew -4);
+the bag is opened, an item taken and clicked the way a player does. Besides `e`, `l`, `u`, `t`, `i`, `k`, `g`, `n`,
+`a` and `w`:
+
+```
+b                             put the item in Drew's hand into the bag
+p <item> <x> <y>              take an item from the bag and click it on a point (one of several same-named hotspots)
+T <item>                      the item in Drew's hand on an item of the bag
+d <hotspot> <hotspot>         two quick clicks (two buttons of the colour phone at once)
+E <hotspot> / G <x> <y>       as e / g, as soon as Drew can be moved (a key that falls during a dance)
+h <item>                      wait until Drew holds that item
+v <global> <value>            wait until a global of the game scripts has that value (R and V: reaches it)
+f <slot> <frame>              wait until a scene animation shows that frame (the jailer turning away)
+P <x> <y>                     press there right away, whatever the game is doing (to stop the Gift-o-Matic)
+c <slot> [dx]                 click a moving scene animation (the crate in the armory)
+J <item> <n> / j <item> <n>   skip n steps if Drew has the item / go back n steps until he has it (random prizes,
+                              the fish toilet, the fish that gets back to its bowl first)
+q <scene> <n> / H <line> <n>  go back n steps until Drew is in that scene (a revolving door open now and then) /
+                              until that line is said (rocking the pot until it tips over)
+A                             play Fingers' WACMAN duel in the arcade to the end
+C                             play the clown door's Simon game until it opens
+```
+
+The `flags`, `anims`, `regs` and `stack` control commands dump the game's globals and flags, the scene animations
+and the scripts' registers: the arcade duel, the clock, the Gift-o-Matic and the pot were read from them. The whole
+game is in [dists/walkthroughs/toon.txt](dists/walkthroughs/toon.txt) (Spanish DOS CD).
+
 ## Building
 
 The Flatpak: [dists/flatpak-walkthrough](dists/flatpak-walkthrough) is the Flathub recipe for ScummVM
@@ -341,6 +371,8 @@ On the Vita it needs `ur0:data/libshacccg.suprx`, as every vitaGL app does.
   (3 h 40 min) ([dists/walkthroughs/simon2.txt](dists/walkthroughs/simon2.txt)).
 - **Drascula: The Vampire Strikes Back** (freeware release, Spanish voices and text): the whole game to the end
   credits ([dists/walkthroughs/drascula.txt](dists/walkthroughs/drascula.txt)).
+- **Toonstruck** (CD, Spanish voices and text): the whole game to the end credits
+  ([dists/walkthroughs/toon.txt](dists/walkthroughs/toon.txt)).
 
 Other games are next. The sister project, the [Hollywood Monsters port](https://github.com/jmverges/hollywood-monsters-port),
 has its own walkthrough player; its videos are on the same channel

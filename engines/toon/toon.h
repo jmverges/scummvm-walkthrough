@@ -113,6 +113,7 @@ class CharacterFlux;
 class FontRenderer;
 class TextResource;
 class AudioManager;
+class ToonGuide;
 class PathFinding;
 
 class ToonEngine : public Engine {
@@ -269,6 +270,7 @@ public:
 		return &_sceneAnimations[id];
 	}
 
+	EMCState *getScriptState(int32 id) { return &_scriptState[id]; }
 	SceneAnimationScript *getSceneAnimationScript(int32 id) {
 		return &_sceneAnimationScripts[id];
 	}
@@ -312,6 +314,12 @@ public:
 	int32 getOldMilli() {
 		return _oldTimer2;
 	}
+
+	TextResource *getRoomTexts() {
+		return _roomTexts;
+	}
+
+	ToonGuide *_guide = nullptr;
 
 	AudioManager *getAudioManager() {
 		return _audioManager;

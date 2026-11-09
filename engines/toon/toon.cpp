@@ -44,6 +44,7 @@
 #include "gui/message.h"
 #include "toon/resource.h"
 #include "toon/toon.h"
+#include "toon/guide.h"
 #include "toon/anim.h"
 #include "toon/picture.h"
 #include "toon/hotspot.h"
@@ -312,6 +313,9 @@ void ToonEngine::parseInput() {
 		}
 	}
 
+	if (_guide)
+		_guide->tick(_mouseX, _mouseY, _mouseButton);
+
 	if (!_gameState->_inConversation && !_gameState->_mouseHidden && !_gameState->_inInventory && !_gameState->_inMenu) {
 		selectHotspot();
 		clickEvent();
@@ -542,8 +546,8 @@ void ToonEngine::doMagnifierEffect() {
 }
 
 void ToonEngine::copyToVirtualScreen(bool updateScreen) {
-	// render cursor last
-	if (!_gameState->_mouseHidden) {
+	// render cursor last (not while the walkthrough player plays with the cursor hidden)
+	if (!_gameState->_mouseHidden && !(_guide && _guide->hidesCursor())) {
 		if (_cursorAnimationInstance->getFrame() == 7 && _cursorAnimationInstance->getAnimation() == _cursorAnimation) // magnifier icon needs a special effect
 			doMagnifierEffect();
 		_cursorAnimationInstance->setPosition(_mouseX - 40 + state()->_currentScrollValue - _cursorOffsetX, _mouseY - 40 - _cursorOffsetY, 0, false);
@@ -600,6 +604,8 @@ void ToonEngine::copyToVirtualScreen(bool updateScreen) {
 }
 
 void ToonEngine::doFrame() {
+	if (_guide)
+		_guide->enterFrame();
 
 	if (_gameState->_inInventory) {
 		renderInventory();
@@ -613,6 +619,9 @@ void ToonEngine::doFrame() {
 		_oldTimer2 = currentTimer;
 	}
 	parseInput();
+
+	if (_guide)
+		_guide->leaveFrame();
 }
 
 enum MainMenuSelections {
@@ -1585,6 +1594,8 @@ Common::Error ToonEngine::run() {
 		newGame();
 	}
 
+	if (!_guide)
+		_guide = new ToonGuide(this);
 	while (!_shouldQuit && _gameState->_currentScene != -1)
 		doFrame();
 	return Common::kNoError;
@@ -1736,6 +1747,7 @@ ToonEngine::ToonEngine(OSystem *syst, const ADGameDescription *gameDescription)
 }
 
 ToonEngine::~ToonEngine() {
+	delete _guide;
 	delete _currentPicture;
 	delete _currentCutaway;
 	delete _currentMask;
@@ -2847,6 +2859,9 @@ int32 ToonEngine::characterTalk(int32 dialogid, bool blocking) {
 	if (!myLine)
 		return 0;
 
+	if (_guide)
+		_guide->onTalk(dialogid, myLine);
+
 	bool oldMouseHidden = _gameState->_mouseHidden;
 	if (blocking)
 		_gameState->_mouseHidden = true;
@@ -3531,6 +3546,8 @@ void ToonEngine::getMouseEvent() {
 	_mouseX = _event->getMousePos().x;
 	_mouseY = _event->getMousePos().y;
 	_mouseButton = _event->getButtonState();
+	if (_guide)
+		_guide->tick(_mouseX, _mouseY, _mouseButton);
 }
 
 void ToonEngine::drawSack() {
