@@ -831,7 +831,7 @@ e 1 -10 ; the docking panel: over to the bike
 r 15
 e 3 -10 ; the bike
 r 81
-== Capitulo 5: La tumba del abuelo
+== Capitulo 8: La tumba del abuelo
 h 15 ; the Ministry: the guard is off to the airlock
 r 143
 g 385 230 ; in
@@ -973,7 +973,7 @@ B 20 ; shoot
 B 20 ; shoot
 B 20 ; shoot
 r 65 ; Major Benson's briefing
-== Capitulo 6: La base rebelde
+== Capitulo 9: La base rebelde
 x 1 0 ; left, to the bunks
 r 67
 x 1 0 ; further left, the icy bunk
@@ -990,7 +990,7 @@ r 65
 x 4 35 ; and right again: off to Aldoria Major
 m 65
 r 48
-== Capitulo 7: Aldoria Major
+== Capitulo 10: Aldoria Major
 e 3 -11 ; close the vent
 x 3 68 ; right
 r 28
@@ -1174,7 +1174,7 @@ r 60
 e 2 49 ; the class A pass
 x 3 11 ; the turbolift
 r 51
-== Capitulo 8: El Templo
+== Capitulo 11: El Templo
 h 15 ; the Temple
 r 5
 e 1 -11 ; the book on the chest
