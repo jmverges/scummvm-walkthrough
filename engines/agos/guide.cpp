@@ -1373,8 +1373,8 @@ void AGOSGuide::tick() {
 	_retries = 0;
 	_busy = false;
 	_effect = false;
-	if (st.kind != Step::kTalkWait)
-		_heard.clear();   // a line to wait for may already have come during the step before
+	if (!waitStep)
+		_heard.clear();   // a line a wait step waits for may have come since the last action
 	_stepInv = inventoryCount();
 	_stepBoxes = boxSignature();
 	_stepFlags = flagSignature();
