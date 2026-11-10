@@ -597,14 +597,15 @@ void AGOSEngine_Feeble::off_screenTextPObj() {
 		playSpeech(subObject->objectFlagValue[offs], vgaSpriteId);
 	}
 
-	if (subObject != NULL && (subObject->objectFlags & kOFText) && _subtitles) {
+	if (subObject != NULL && (subObject->objectFlags & kOFText) && (_subtitles || _guide)) {
 		if (subObject->objectFlags & kOFNumber) {
 			Common::sprintf_s(buf, "%d%s", subObject->objectFlagValue[getOffsetOfChild2Param(subObject, kOFNumber)], string_ptr);
 			string_ptr = buf;
 		}
+		// the walkthrough player follows what is said, shown or not
 		if (_guide && string_ptr != NULL)
 			_guide->onTalk(vgaSpriteId, (const byte *)string_ptr);
-		if (string_ptr != NULL)
+		if (string_ptr != NULL && _subtitles)
 			printScreenText(vgaSpriteId, color, string_ptr, tl->x, tl->y, tl->width);
 	}
 }
