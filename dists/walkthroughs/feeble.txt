@@ -100,6 +100,7 @@ g 1060 320
 g 1075 280 ; out
 r 149
 e 3 -11 ; the vid booth: its man wants a Light Wave Soda
+Q 329 1 -1 ; he asked (SET_BIT2 73): a dropped click talks to him again
 e 0 -12 ; back in
 r 150
 e 3 -11 ; Dave
