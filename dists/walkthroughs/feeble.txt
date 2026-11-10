@@ -16,8 +16,8 @@ e 2 139 ; the doll back
 x 1 0 ; out
 e 3 -10 ; the bike
 h 11 ; Dave's Space Bar
-== Capitulo 2: El bar de Dave
 r 149
+== Capitulo 2: El bar de Dave
 e 0 -12 ; into the bar
 r 150
 e 3 -10 ; the protester
@@ -88,8 +88,8 @@ e 3 -10 ; the docking panel: the bike
 r 15
 e 3 -10 ; the bike
 h 11 ; Dave's
-== Capitulo 4: El piloto y la cabina
 r 149
+== Capitulo 4: El piloto y la cabina
 e 0 -12 ; into the bar
 r 150
 e 3 -13 ; the enforcer
@@ -104,7 +104,7 @@ e 0 -12 ; back in
 r 150
 e 3 -11 ; Dave
 c Onda Cola ; the soda
-c No gracias
+C No gracias ; when he offers another
 g 1060 320
 g 1075 280 ; out
 r 149
@@ -163,8 +163,8 @@ r 116
 e 3 -11 ; the lift: the Minister
 r 121 ; the prison shuttle
 e 3 -10 ; a fellow prisoner
-== Capitulo 5: Cygnus Alpha
 r 188
+== Capitulo 5: Cygnus Alpha
 # The prison moves Feeble from room to room (200, 198, 185 recreation, 188 cell), 20 s or so in each
 r 198
 r 185
@@ -347,8 +347,8 @@ e 4 -10 -$224+13 ; input 1 to its output
 e 4 -11 -$225+13
 e 4 -12 -$226+13
 e 4 -13 -$227+13
-== Capitulo 6: El planeta Filb
 r 160 ; the coach takes off and lands on Filb
+== Capitulo 6: El planeta Filb
 x 2 31 ; right, into the forest valley
 r 176
 x 76 12 ; the path at the far right, up the hillside
@@ -494,8 +494,8 @@ r 174
 e 4 165 -12 ; Delores gets the battery
 e 4 164 -12 ; the gem, to focus the beam
 e 4 168 -12 ; and the laser relay: the transmitter calls for help
-== Capitulo 7: Metro Prime
 r 103 ; rescued: the rebels' hideout
+== Capitulo 7: Metro Prime
 e 2 106 ; an old newspaper
 e 1 -11 ; the cabinet
 e 2 101 ; the dress
@@ -962,8 +962,8 @@ B 20 ; shoot
 B 20 ; shoot
 B 20 ; shoot
 B 20 ; shoot
-== Capitulo 6: La base rebelde
 r 65 ; Major Benson's briefing
+== Capitulo 6: La base rebelde
 x 1 0 ; left, to the bunks
 r 67
 x 1 0 ; further left, the icy bunk
@@ -979,8 +979,8 @@ x 2 29 ; right
 r 65
 x 4 35 ; and right again: off to Aldoria Major
 m 65
-== Capitulo 7: Aldoria Major
 r 48
+== Capitulo 7: Aldoria Major
 e 3 -11 ; close the vent
 x 3 68 ; right
 r 28
