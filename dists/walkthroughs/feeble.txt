@@ -242,6 +242,11 @@ b 99 1 ; she loads the Freedom Fighters' database into the Oracle
 e 3 -13 ; then talk to her
 c toqueteando ; "what's that thing you're fiddling with?": the reworked doll
 c Mejor que me vaya ; "I'd better go"
+e 2 -10 ; the traitor dolls on the belt: Feeble takes five, one by one
+e 2 -10
+e 2 -10
+e 2 -10
+e 2 -10
 e 0 -12 ; back up the chute (a plain click on it)
 r 198
 x 1 0 ; out
