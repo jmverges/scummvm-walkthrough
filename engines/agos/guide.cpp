@@ -1299,6 +1299,16 @@ void AGOSGuide::tick() {
 			_state = kStopped;
 		return;
 	}
+	if (feeble() && st.kind == Step::kVerb && _current + 1 < (int)_steps.size() &&
+			(_steps[_current + 1].kind == Step::kChoice || _steps[_current + 1].kind == Step::kChoiceText) &&
+			!choices().empty() && _idleSince && now - _idleSince > 1500) {
+		// a retry of the step before already started the conversation this step should start
+		logf("step %d: its conversation is already up, skipped", _current + 1);
+		setCurrent(_current + 1);
+		if (_remaining > 0 && --_remaining == 0)
+			_state = kStopped;
+		return;
+	}
 	if (st.optional && choices().empty() && _vm->_guideWaiting == 1 && _idleSince && now - _idleSince > 3000) {
 		logf("step %d: no conversation, skipped", _current + 1);
 		setCurrent(_current + 1);
