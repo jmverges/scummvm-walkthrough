@@ -180,6 +180,7 @@ private:
 	Common::Array<Step> _steps;
 	Common::Array<Move> _moves;
 	int _current, _remaining;
+	int _until = 0;   // control "until": stop as this step comes up
 	State _state;
 	uint32 _stateSince, _idleSince, _missingSince;
 	int _missingBackStep = -1, _missingBacks = 0;   // a map that never came up: the click before it again

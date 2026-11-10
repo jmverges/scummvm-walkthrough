@@ -1267,6 +1267,12 @@ void AGOSGuide::tick() {
 	}
 
 	// kWaitIdle: the next step, once the game waits for the player
+	if (_until > 0 && _current + 1 == _until) {
+		logf("stopped at step %d", _until);
+		_until = 0;
+		_state = kStopped;
+		return;
+	}
 	if (_current >= (int)_steps.size()) {
 		logf("walkthrough finished");
 		_state = kStopped;
@@ -1526,6 +1532,10 @@ void AGOSGuide::runCommand(const Common::String &text) {
 	} else if (c == "stop") {
 		_state = kStopped;
 		_moves.clear();
+	} else if (c == "until") {
+		// play on, but stop as step x comes up (to load a save at a quiet moment)
+		_until = x;
+		logf("until step %d", x);
 	} else if (c == "goto") {
 		setCurrent(x > 0 ? x - 1 : 0);
 		_sectionSaved = _current;   // no save for the section it starts in
