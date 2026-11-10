@@ -191,14 +191,10 @@ e 2 -10 ; a bowl
 e 4 181 -11 ; gunge from the dispenser
 x 4 21 ; out
 r 178
+# the cameras catch Feeble now and then as he passes them (a recorded run from chapter 3 was caught every time
+# on its way to the barrels, at the same moment): a short wait first changes the moment
+w 2
 p 11 6 ; the barrels: the gunge reaches the first camera from here
-# a walk that stops under a camera gets Feeble caught and sent back to the mess hall, gunge and all: out again
-@200 x 4 21
-r 178
-p 11 6
-@200 x 4 21
-r 178
-p 11 6
 e 4 180 -10 ; gunge on the camera below
 b 114 1 ; it is gunged
 e 4 180 -11 ; and on the one at the bottom (Feeble goes down to it)
