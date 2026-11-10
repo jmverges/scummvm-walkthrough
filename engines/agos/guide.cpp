@@ -1317,6 +1317,22 @@ void AGOSGuide::tick() {
 				_state = kStopped;
 			return;
 		}
+		if (now - _missingSince > kMissing && feeble() && st.kind == Step::kBox && _current > 0 &&
+				_steps[_current - 1].kind == Step::kVerb) {
+			// The Feeble Files drops a click now and then: the bike (or the like) that should have brought
+			// up the map, again (three times at most)
+			if (_missingBackStep != _current) {
+				_missingBackStep = _current;
+				_missingBacks = 0;
+			}
+			if (++_missingBacks <= 3) {
+				logf("step %d: its item is not here (room %d): back to step %d", _current + 1, room(), _current);
+				_missingSince = 0;
+				setCurrent(_current - 1);
+				_state = kWaitIdle;
+				return;
+			}
+		}
 		if (now - _missingSince > kMissing) {
 			logf("step %d: its item is not here (room %d); stopping", _current + 1, room());
 			_state = kStopped;

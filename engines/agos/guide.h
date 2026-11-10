@@ -181,6 +181,7 @@ private:
 	int _current, _remaining;
 	State _state;
 	uint32 _stateSince, _idleSince, _missingSince;
+	int _missingBackStep = -1, _missingBacks = 0;   // a map that never came up: the click before it again
 	mutable uint32 _walkSince = 0;
 	uint32 _stepFlags = 0;
 	bool _busy = false;   // the game took control after the step started
