@@ -156,6 +156,7 @@ r 117
 x 2 94 ; back to level 1
 r 99
 e 4 138 -11 ; the lab coat on in the vid booth (no changing in public)
+N 99 209 -1 ; the booth swaps coat and jacket: a retry can swap them back, then again
 x 9 0 ; up to the headquarters
 r 117
 x 3 14 ; in
