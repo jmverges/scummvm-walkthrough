@@ -378,7 +378,7 @@ r 176
 t split up ; the native runs off and the game hands over to SAM
 s 16 ; switch to SAM
 e 3 -10 ; SAM smashes the log bridge: the native's way across is gone
-b 151 1
+Q 151 1 -1 ; smashed (a lost click: again)
 p 65 5 ; SAM waits by the east end of the broken log
 s 15 ; back to Feeble
 p 44 6 ; Feeble waits below the mountain path, out of the way
