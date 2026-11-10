@@ -254,6 +254,14 @@ bool AGOSGuide::bit(int n) const {
 	return _vm->getBitFlag(n);
 }
 
+// A verb step followed by a choice, with choices already up: the conversation it should start already started.
+bool AGOSGuide::conversationAhead() const {
+	if (_current + 1 >= (int)_steps.size() || _steps[_current].kind != Step::kVerb)
+		return false;
+	const Step::Kind next = _steps[_current + 1].kind;
+	return (next == Step::kChoice || next == Step::kChoiceText) && !choices().empty();
+}
+
 bool AGOSGuide::feeble() const {
 	return _vm->getGameType() == GType_FF;
 }
@@ -926,6 +934,14 @@ bool AGOSGuide::frame(Common::Point &mouse, bool &click) {
 		else if (feeble() && _guideMouse.x < 112 && _guideMouse.y < 64)
 			_guideMouse = Common::Point(screenW() / 2, screenH() / 2);   // not on the Oracle's or the switch's button
 		mouse = _guideMouse;
+		if (feeble() && _vm->_mouseCursor != m.id && conversationAhead()) {
+			// a retry of the step before started the conversation this step should start, while it waited
+			logf("step %d: its conversation is already up, skipped", _current + 1);
+			_moves.clear();
+			setCurrent(_current + 1);
+			_state = kWaitIdle;
+			return true;
+		}
 		if (_vm->_mouseCursor == m.id || ++m.waited > 60) {
 			if (_vm->_mouseCursor != m.id)
 				logf("step %d: the pointer never turned to verb %d (it is %d)", _current + 1, m.id, _vm->_mouseCursor);
@@ -1299,9 +1315,7 @@ void AGOSGuide::tick() {
 			_state = kStopped;
 		return;
 	}
-	if (feeble() && st.kind == Step::kVerb && _current + 1 < (int)_steps.size() &&
-			(_steps[_current + 1].kind == Step::kChoice || _steps[_current + 1].kind == Step::kChoiceText) &&
-			!choices().empty() && _idleSince && now - _idleSince > 1500) {
+	if (feeble() && conversationAhead() && _idleSince && now - _idleSince > 1500) {
 		// a retry of the step before already started the conversation this step should start
 		logf("step %d: its conversation is already up, skipped", _current + 1);
 		setCurrent(_current + 1);

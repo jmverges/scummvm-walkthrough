@@ -153,6 +153,7 @@ private:
 	bool boxOnScreen(const HitArea *ha, int &x, int &y) const;
 	int room() const;
 	int inventoryCount() const;   // a signature of the inventory
+	bool conversationAhead() const;
 	uint32 boxSignature() const;
 	uint32 flagSignature() const;
 	bool feeble() const;
