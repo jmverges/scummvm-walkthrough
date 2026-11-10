@@ -1,0 +1,1182 @@
+# The Feeble Files walkthrough (Spanish voices). Verbs are the pointer's: 1 look, 2 pick up, 3 use/talk/wear,
+# 4 use with (a right click turns the pointer to the next one). Items from the inventory come from the Oracle.
+== Capitulo 1: El Ministerio
+h 10 ; new game
+r 143 ; after the intro, outside the Ministry
+g 385 230 ; in
+r 142
+e 3 -13 ; the HoloMail: three messages
+e 2 139 ; the doll
+e 4 139 -12 ; on the broken teleporter: it grows
+e 2 140 ; the leather jacket
+e 3 140 ; wear it
+e 3 -10 ; open the cupboard
+e 2 141 ; the helmet
+e 2 139 ; the doll back
+x 1 0 ; out
+e 3 -10 ; the bike
+h 11 ; Dave's Space Bar
+== Capitulo 2: El bar de Dave
+r 149
+e 0 -12 ; into the bar
+r 150
+e 3 -10 ; the protester
+c panfleto ; "I'll read this leaflet"
+e 1 148 ; read it
+e 3 -14 ; the pilot
+c piloto de carga
+c transportas
+c concretar ; TLC's musical discs
+e 3 -12 ; Delores
+c tengo que hacer
+c un honor ; the package
+g 1075 280 ; out
+r 149
+e 3 -10 ; the bike
+h 15 ; the Ministry
+r 143
+g 385 230 ; in
+r 142
+e 4 148 -12 ; the leaflet on the broken teleporter: it grows
+e 2 148
+x 1 0 ; out
+e 3 -10 ; the bike
+h 14 ; Metro Prime
+r 124
+== Capitulo 3: Metro Prime
+x 6 37 ; from the docking pad into Metro Prime
+r 98
+e 3 -10 ; the teleporter to level 1
+r 99
+x 16 0 ; past the vid booth, to the news stand
+r 119
+x 2 3 ; the alley
+r 118
+e 3 -10 ; knock: the package, for credits
+x 1 0 ; back
+r 119
+x 1 0
+r 99
+e 0 -12 ; the pill shop
+r 125
+e 3 -16 ; the shopkeeper
+k 1
+c Me has convencido ; Charisma X: "come back later"
+r 99
+x 9 0 ; up to the Ministry's headquarters
+r 117
+x 1 0 ; left, the Observation Dome
+r 96
+e 4 123 -11 ; a credit in the right vending machine
+e 4 123 -11 ; again
+e 4 123 -11 ; a third time: a kick, vandalism
+x 2 20 ; back to the headquarters
+r 117
+x 2 94 ; right, back to level 1
+r 99
+x 7 23 ; the OmniBrain's red door
+r 97
+e 3 -11 ; confess the vandalism: the traitor alert station opens
+e 4 148 -10 ; the big leaflet in the traitor alert station
+x 2 50 ; out
+r 99
+e 3 -10 ; the teleporter to level 2
+r 98
+x 7 48 ; the docking pad
+r 124
+e 3 -10 ; the docking panel: the bike
+r 15
+e 3 -10 ; the bike
+h 11 ; Dave's
+== Capitulo 4: El piloto y la cabina
+r 149
+e 0 -12 ; into the bar
+r 150
+e 3 -13 ; the enforcer
+c Directiva ; any new directives? The TLC disc is banned
+c cierta informaci ; the pilot carries it: the enforcer kills him
+e 2 145 ; the docking pass he dropped
+g 1060 320
+g 1075 280 ; out
+r 149
+e 3 -11 ; the vid booth: its man wants a Light Wave Soda
+e 0 -12 ; back in
+r 150
+e 3 -11 ; Dave
+c Onda Cola ; the soda
+c No gracias
+g 1060 320
+g 1075 280 ; out
+r 149
+e 3 -10 ; the bike
+h 14 ; Metro Prime
+r 124
+e 4 145 -13 ; the docking pass to the pilot and the controller: the pill shop gets its delivery
+x 6 37 ; into Metro Prime
+r 98
+e 3 -10 ; the teleporter to level 1
+r 99
+e 0 -12 ; the pill shop: the Charisma X is in
+r 125
+c algo caro
+c demasiado caras ; no discount
+r 99
+e 0 -12 ; back in
+r 125
+c cambiado de opini ; 300 credits
+c Me las llevo ; and the out of date pills for 20
+r 99
+e 4 144 147 ; the out of date pills in the soda
+e 3 -10 ; the teleporter to level 2
+r 98
+x 7 48 ; the docking pad
+r 124
+e 3 -10 ; the docking panel: the bike
+r 15
+e 3 -10 ; the bike
+h 11 ; Dave's
+r 149
+e 4 147 -11 ; the soda to the vid booth's man
+e 3 -10 ; the bike
+h 14 ; Metro Prime
+r 124
+x 6 37
+r 98
+e 3 -10 ; the teleporter to level 1
+r 99
+e 3 -13 ; the unhappy citizen
+x 9 0 ; up to the headquarters
+r 117
+x 3 14 ; in
+r 116
+e 3 122 ; swallow the Charisma X
+e 3 -12 ; Molly: "go up whenever you like"
+x 1 0 ; out
+r 117
+x 2 94 ; back to level 1
+r 99
+e 4 138 -11 ; the lab coat on in the vid booth (no changing in public)
+x 9 0 ; up to the headquarters
+r 117
+x 3 14 ; in
+r 116
+e 3 -11 ; the lift: the Minister
+r 121 ; the prison shuttle
+e 3 -10 ; a fellow prisoner
+== Capitulo 5: Cygnus Alpha
+r 188
+# The prison moves Feeble from room to room (200, 198, 185 recreation, 188 cell), 20 s or so in each
+r 198
+r 185
+e 2 184 ; the poster, and its tacks
+r 188 ; the cell
+e 2 187 ; the Directive Charter
+e 3 -10 ; open the sanitation unit
+b 101 1
+r 200
+r 188
+e 4 186 -11 ; the tacks on the bed
+t Ye-ow ; they wake Feeble up
+e 2 186 ; the tacks back
+e 3 -11 ; lie down: the warden comes to close the sanitation unit
+b 263 1 ; he is at it
+x 4 3 ; get up and off the bed, to the right, while he is busy: the prison loses track of Feeble
+r 178 ; the corridors
+# The warden comes for Feeble when he stops on the walkway by the barrels while its camera can see him (path 10
+# point 1, path 11 point 2): walk all the way to the barrels, where the gunge reaches both cameras
+x 14 0 ; door 11, the mess hall
+r 200
+e 2 -10 ; a bowl
+e 4 181 -11 ; gunge from the dispenser
+x 4 21 ; out
+r 178
+p 11 6 ; the barrels: the gunge reaches the first camera from here
+e 4 180 -10 ; gunge on the camera below
+b 114 1 ; it is gunged
+e 4 180 -11 ; and on the one at the bottom (Feeble goes down to it)
+b 115 1
+p 29 20 ; down to the lift at the bottom left
+x 31 32 ; up on it and along to the work area
+r 198
+e 4 180 -11 ; gunge on the camera over the conveyor belt
+b 110 1
+e 1 -10 ; the chute
+e 3 -10 ; talk down it: a voice
+c dormir ; "I couldn't sleep"
+k 1 ; "my favourite colour?"
+c convencido ; "you've convinced me"
+k 1 ; "what's down there?"
+c Vale ; "I'll find a way down"
+e 3 -10 ; again: the chute won't open
+e 3 -10 ; and again: the Freedom Fighters
+b 287 1 ; that was it
+x 1 0 ; back out
+r 178
+x 12 10 ; door 8, the recreation room
+r 183
+e 3 -10 ; open the cupboard
+# From the moment the VidScreen is on, the warden is on his way: half a minute to get the knob and hide
+e 3 182 ; the VidScreen on: alarm
+e 3 182 ; the traitors' channel
+e 2 182 ; and the knob off
+e 0 -10 ; into the cupboard (a plain click on it, open)
+b 77 1 ; hidden
+t CANNOT ; the warden can't switch it off and breaks down
+g 420 420 ; out of the cupboard
+x 1 0 ; out
+r 178
+p 29 20 ; down to the lift
+x 31 32 ; and to the work area
+r 198
+e 3 -12 ; the lever: the conveyor runs and the chute opens
+b 111 1
+e 3 -10 ; down the chute
+r 191 ; the doll store, with Delores
+k 1 ; "I escaped on my own"
+b 99 1 ; she loads the Freedom Fighters' database into the Oracle
+e 3 -13 ; then talk to her
+c toqueteando ; "what's that thing you're fiddling with?": the reworked doll
+c Mejor que me vaya ; "I'd better go"
+e 0 -12 ; back up the chute (a plain click on it)
+r 198
+x 1 0 ; out
+r 178
+e 4 189 -12 ; the traitor dolls by the vent, five of them
+e 4 189 -12
+e 4 189 -12
+e 4 189 -12
+e 4 189 -12
+e 4 190 -12 ; and the reworked one on it
+e 0 -12 ; through the blown vent
+r 159 ; the coloured tiles
+# Each tile shows its colour in turn, five phases a second apart; a jump must land in the first phase, so it
+# goes the moment that phase comes round (the path itself is the only one the room allows)
+p 1 6 ; Feeble takes a look at the tiles first
+p 1 0 ; onto the first tile
+n 110 4
+n 110 0
+e 0 -11 ; tile 103
+n 110 4
+n 110 0
+e 0 -11 ; tile 94
+n 110 4
+n 110 0
+e 0 -13 ; tile 95
+n 110 4
+n 110 0
+e 0 -15 ; tile 105
+n 110 4
+n 110 0
+e 0 -13 ; tile 106
+n 110 4
+n 110 0
+e 0 -11 ; tile 97
+n 110 4
+n 110 0
+e 0 -13 ; tile 98
+n 110 4
+n 110 0
+e 0 -10 ; tile 86
+n 110 4
+n 110 0
+e 0 -12 ; tile 85
+n 110 4
+n 110 0
+e 0 -10 ; tile 73
+n 110 4
+n 110 0
+e 0 -11 ; tile 62
+n 110 4
+n 110 0
+e 0 -13 ; tile 63
+n 110 4
+n 110 0
+e 0 -13 ; tile 64
+n 110 4
+n 110 0
+e 0 -11 ; tile 52
+n 110 4
+n 110 0
+e 0 -13 ; tile 53
+n 110 4
+n 110 0
+e 0 -10 ; tile 41
+n 110 4
+n 110 0
+e 0 -12 ; tile 40
+n 110 4
+n 110 0
+e 0 -12 ; tile 39
+n 110 4
+n 110 0
+e 0 -14 ; tile 50
+n 110 4
+n 110 0
+e 0 -10 ; tile 38
+n 110 4
+n 110 0
+e 0 -12 ; tile 37
+n 110 4
+n 110 0
+e 0 -11 ; tile 25
+n 110 4
+n 110 0
+e 0 -11 ; tile 14
+n 110 4
+n 110 0
+e 0 -12 ; tile 13
+n 110 4
+n 110 0
+e 0 -12 ; tile 12
+n 110 4
+n 110 0
+e 0 -12 ; tile 11
+n 110 4
+n 110 0
+e 0 -10 ; tile 3
+x 2 0 ; on to the ship
+r 158 ; the ship
+e 3 -11 ; open the cover on the dashboard
+e 2 157 ; pull the wires out
+e 3 -10 ; the ignition circuit open
+e 1 -10 ; a close look
+r 137
+e 4 157 -10 ; the wires in
+# Which output each input wants is drawn at random when the wires come out (variables 224 to 227)
+e 4 -10 -$224+13 ; input 1 to its output
+e 4 -11 -$225+13
+e 4 -12 -$226+13
+e 4 -13 -$227+13
+== Capitulo 6: El planeta Filb
+r 160 ; the coach takes off and lands on Filb
+x 2 31 ; right, into the forest valley
+r 176
+x 76 12 ; the path at the far right, up the hillside
+r 179
+x 39 21 ; down to its bottom right
+r 166 ; the village with the great statue
+p 1 0 ; onto the bridge: SAM charges and the Filbs shut the gate
+x 1 0 ; back to the gate, now shut
+r 170
+e 2 -10 ; take the spear SAM's charge knocked down
+x 1 25 ; back out of the gate
+r 166
+x 1 9 ; out of the village
+r 179
+x 45 0 ; down to the valley
+r 176
+t split up ; the native runs off and the game hands over to SAM
+s 16 ; switch to SAM
+e 3 -10 ; SAM smashes the log bridge: the native's way across is gone
+b 151 1
+p 65 5 ; SAM waits by the east end of the broken log
+s 15 ; back to Feeble
+p 44 6 ; Feeble waits below the mountain path, out of the way
+v 12 64 ; the native has gone onto the broken log's path: he cannot get off it now
+@176 p 64 16 ; Feeble steps onto it: caught
+r 171 60 -3 ; taken to the rebels' ship
+x 3 0 ; out of the ship: the Filbs knock Feeble out and carry him off
+r 175 ; the Filbs' lab
+k 1 ; Filbert, his brother, has sold him out
+k 1
+k 1
+k 1
+e 2 -14 ; the rope: the Oracle unties him
+e 3 -23 ; the chemistry set
+# the chemistry set: a flask, then a tube, fills that tube; mixing empties the tubes onto the results rack
+h 20 ; red into the first tube
+h 10
+h 18 ; yellow into the second
+h 11
+h 24 ; pink into the third
+h 12
+h 16 ; mix and heat: the first compound
+h 20 ; red into the first tube
+h 10
+h 18 ; yellow into the second
+h 11
+h 22 ; green into the third
+h 12
+h 16 ; mix and heat: the second compound
+h 18 ; yellow into the first tube
+h 10
+h 24 ; pink into the second
+h 11
+h 26 ; blue into the third
+h 12
+h 16 ; mix and heat: the third compound
+h 27 ; the first compound off the rack, into the first tube
+h 10
+h 28 ; the second
+h 11
+h 29 ; the third
+h 12
+h 15 ; cold mix: the Passive Control Compound
+e 4 173 -17 ; the compound into the water supply: the villagers drink it
+e 3 172 ; the remote: SAM takes over, outside
+x 3 0 ; SAM out of the ship
+r 160
+x 2 31
+r 176
+p 63 3 ; off the broken log, back to the west bank
+p 21 15 ; over the rope bridge
+x 76 12 ; up the mountain path
+r 179
+x 39 21
+r 166 ; the village with the great statue
+x 1 0 ; SAM to the gate
+r 170
+x 1 0 ; into the village, the natives are out of it
+e 1 -11 ; SAM looks up the statue
+e 2 164 ; his tractor beam takes the gem from the statue's eye
+s 11 ; back to Feeble, in the lab
+e 3 -18 ; the top button: the statue's door opens
+s 19 ; SAM again
+p 8 0 ; into the statue, onto its teleport
+s 11 ; Feeble
+e 3 -19 ; the bottom button: SAM is beamed into the lab
+e 1 -15 ; the directory
+e 3 -16 ; the phone
+c cancelar mi estado ; cancel Filbert's unlisted number: the phone rings for him, he comes in
+x 21 0 ; back into the lab
+r 175
+e 2 167 ; Filbert's God costume
+e 4 167 -22 ; the costume on the projector: Filbert's god speaks to the villagers
+s 19 ; SAM
+x 1 0 ; out of the lab
+r 179
+x 30 0 ; up to the mountain top
+r 174
+e 3 -10 ; SAM shoots the bird down
+x 1 0 ; back down
+r 179
+p 6 16 ; down the mountain path
+p 7 5
+e 2 162 ; the roast bird, on the way
+x 21 0 ; back into the lab
+r 175
+s 11 ; Feeble
+x 1 0 ; out of the lab
+r 179
+x 22 4 ; down to the broken bridge
+r 163
+e 4 162 -10 ; the bird on the flat rock: an offering
+x 4 12 ; away: the villagers mend the bridge for the gift
+r 179
+x 45 0 ; down to the valley
+r 176
+p 21 15 ; over the rope bridge
+x 1 0 ; west, back to the landing site
+r 160
+e 4 161 -11 ; the spear prises the cover off the coach
+e 2 165 ; its battery: a power source
+x 4 0 ; into the ship: Delores is back
+r 171
+x 3 0 ; out of the ship
+r 160
+x 2 31 ; to the valley
+r 176
+p 63 3 ; off the broken log
+p 21 15 ; over the rope bridge
+x 76 12 ; up the mountain path
+r 179
+p 26 20 ; up the slope
+p 22 30
+x 21 0 ; into the lab
+r 175
+e 1 -15 ; the directory: a laser relay company
+e 3 -16 ; the phone
+c Repetidores ; the laser relay firm: one is sent at once
+x 1 0 ; out of the lab
+r 179
+x 30 0 ; over the mended bridge and up to the mountain top
+r 174
+e 4 165 -12 ; Delores gets the battery
+e 4 164 -12 ; the gem, to focus the beam
+e 4 168 -12 ; and the laser relay: the transmitter calls for help
+== Capitulo 7: Metro Prime
+r 103 ; rescued: the rebels' hideout
+e 2 106 ; an old newspaper
+e 1 -11 ; the cabinet
+e 2 101 ; the dress
+x 5 0 ; out of the hideout
+r 118
+p 1 0 ; toward the street: his face is on every front page, he turns back
+t good side
+e 3 101 ; the dress, as a disguise
+x 5 0 ; out again, in disguise
+r 118
+x 1 0 ; to the street
+r 119
+e 2 -11 ; a new paper off the pile
+E 4 106 -11 ; quick, the old paper back on the pile instead
+e 3 107 ; read it: adverts fall out
+x 1 0 ; past the news stand
+r 99
+e 3 -10 ; the teleporter, to level 2
+r 98
+e 0 -14 ; into the arcade: the kiosk boy talks
+r 75
+c unas cuantas fichas ; some tokens
+x 3 43 ; upstairs
+r 76
+e 1 105 ; the tokens (down the Oracle's list)
+e 4 105 -10 ; a token in the Simon the Sorcerer machine
+h 10 ; start
+m 76 ; the first round: one of six games, at random
+@8 h $124 ; Swamp Stew: the six ingredients of the hidden recipe
+@8 h $125
+@8 h $126
+@8 h $127
+@8 h $128
+@8 h $129
+@12 P 124 20 10 ; Wizard's Pairs: each pair of cards in turn
+@13 h $124+10 ; Find the Frog: the hat it is under
+@11 h $124+10 ; Goblin Banging: the goblins in the order they popped up, 4, then 6, then 8 of them
+@11 h $125+10
+@11 h $126+10
+@11 h $127+10
+@11 h $124+10
+@11 h $125+10
+@11 h $126+10
+@11 h $127+10
+@11 h $128+10
+@11 h $129+10
+@11 h $124+10
+@11 h $125+10
+@11 h $126+10
+@11 h $127+10
+@11 h $128+10
+@11 h $129+10
+@11 h $130+10
+@11 h $131+10
+@9 h 10 ; Dwarf Balancing: each dwarf (weights 2 2 3 1 2 3) to its seat, 20 a side
+@9 h 10
+@9 h 11
+@9 h 11
+@9 h 12
+@9 h 12
+@9 h 13
+@9 h 15
+@9 h 14
+@9 h 16
+@9 h 15
+@9 h 17
+@10 O 124 6 10 ; Sorcerer's Challenge: every coin turns its neighbours over too; the coins that leave them all alike
+h 11 ; continue: the next round
+m
+l 41 3 ; the same for rounds 2 to 4
+@8 h $124 ; round 5
+@8 h $125
+@8 h $126
+@8 h $127
+@8 h $128
+@8 h $129
+@12 P 124 20 10
+@13 h $124+10
+@11 h $124+10
+@11 h $125+10
+@11 h $126+10
+@11 h $127+10
+@11 h $124+10
+@11 h $125+10
+@11 h $126+10
+@11 h $127+10
+@11 h $128+10
+@11 h $129+10
+@11 h $124+10
+@11 h $125+10
+@11 h $126+10
+@11 h $127+10
+@11 h $128+10
+@11 h $129+10
+@11 h $130+10
+@11 h $131+10
+@9 h 10
+@9 h 10
+@9 h 11
+@9 h 11
+@9 h 12
+@9 h 12
+@9 h 13
+@9 h 15
+@9 h 14
+@9 h 16
+@9 h 15
+@9 h 17
+@10 O 124 6 10
+h 10 ; collect: five rounds in a row
+x 5 6 ; downstairs
+r 75
+e 4 105 -11 ; tokens in the grabber machine: 20 a go
+w 1
+H 10 15 300 ; hold "left" until the claw is over the red fish
+H 11 16 278 ; then "forward"; letting go drops the claw
+r 75
+e 4 105 -11 ; another go
+w 1
+H 10 15 300 ; the same spot: the Wild Cat doll was under the fish
+H 11 16 278
+r 75
+e 3 -10 ; the kiosk
+c tan grande ; the big new machine
+c Super Virtua ; a go on it
+x 5 6 ; downstairs
+r 75
+e 3 -10 ; the kiosk again
+c Bonita charla ; bye
+x 1 0 ; out of the arcade
+r 98
+e 4 93 -11 ; the ticket into the zoo
+e 3 -14 ; the tourist
+e 3 -10 ; the flash control up, five times: as bright as it goes
+e 3 -10
+e 3 -10
+e 3 -10
+e 3 -10
+e 3 -11 ; the red button: the tourist is blinded
+x 1 0 ; out of the zoo before he can see again
+r 98
+p 5 10 ; along the lower walkway (the upper one is the arcade's)
+x 7 47 ; to the docking bays
+r 124
+e 1 -10 ; the docking panel: over to the bike's pad
+r 15
+e 3 -10 ; the bike: the Docking Controller clamps it
+x 1 0
+r 124
+x 6 37
+r 98
+e 3 -10 ; the teleporter, back to level 1
+r 99
+x 16 1 ; to the news stand
+r 119
+x 2 3 ; the alley
+r 118
+x 3 3 ; the hideout
+r 103
+e 3 -12 ; Delores
+c un cepo ; the bike is clamped: she sends Gardum
+c me voy ; bye
+x 5 0
+r 118
+x 1 0
+r 119
+x 1 0
+r 99
+x 9 7 ; to the Ministry's entrance
+r 117
+e 3 -10 ; Gardum, undercover by the statue: a distraction is on its way, watch for freighter K1CK A55
+x 1 0 ; left of the Ministry steps: the Observation Dome
+r 96
+x 1 0 ; left, to the airlock
+r 89
+e 3 -10 ; the pressure off
+e 3 -11 ; the airlock door open
+e 4 104 -15 ; the camera's zoom on the porthole: K1CK A55 docking
+x 2 4 ; back to the dome
+r 96
+x 2 20 ; and out of it
+r 117
+x 2 94
+r 99
+e 3 -10 ; the teleporter, to level 2
+r 98
+p 5 10
+x 7 47 ; the docking bays
+r 124
+e 1 -10 ; the docking panel: over to the bike
+r 15
+e 3 -12 ; the saddle: a Wurble is inside
+x 1 0
+r 77
+x 1 0 ; the Docking Administration office
+r 86
+e 3 -10 ; the locker open
+t vacate ; the Docking Controller rushes in and throws him out
+x 1 0 ; back in
+r 86
+e 4 85 -11 ; the Wurble in the locker
+e 4 84 -11 ; and the Wild Cat doll with it: Wurbles multiply when they are scared
+e 3 -10 ; the locker shut
+e 2 100 ; the Docking Controller's keys
+x 1 70 ; out
+r 77
+x 2 0
+r 124
+e 1 -10 ; over to the bike
+r 15
+e 4 100 -10 ; the keys take the clamp off
+h 15 ; the Ministry
+r 143
+e 3 -11 ; the guard
+c encontrarle ; the bounty hunter gives Feeble his card
+e 3 -10 ; back on the bike
+h 10 ; the Junk Ship
+r 152
+e 3 -15 ; the trunk: a bicycle pump and a space hopper
+e 1 -11 ; the door: the number above it
+E 4 135 136 ; the pump on the hopper breaks: a pipe, a metal bar and a valve
+e 3 -10 ; the bike
+h 17 ; the broken-down bike: Feeble tows the salesman to Dave's
+r 132
+c Lodo Milagroso
+c hace exactamente ; a bottle of Miracle Mud
+e 1 -11 ; the salesman's bike: the alarm
+e 1 -11 ; again
+w 2
+e 1 -11 ; and again: he thinks the alarm is broken
+w 3
+e 1 -11 ; the bike again: the tow cable
+e 2 154 ; the tow cable
+e 3 -10 ; the bike
+r 81
+h 13 ; the OmniClub
+r 128
+E 4 127 -11 ; the metal bar prises the doors open
+x 4 0 ; in
+e 3 -10 ; the DJ console
+e 3 -10 ; the master control
+E 4 92 -15 ; the pipe on the broken handle
+e 3 -15 ; the bar light master switch
+e 3 -13 ; blue spotlight on and off
+e 3 -13 ; blue spotlight on and off
+e 3 -13 ; blue spotlight on and off
+e 3 -13 ; blue spotlight on and off
+e 3 -13
+e 3 -13
+e 3 -13
+e 3 -13
+e 3 -13 ; the fifth time on, the blue filter falls out
+L ; out of the console
+r 79
+e 2 88 ; the blue filter
+e 3 -10 ; the DJ console
+e 3 -16 ; play the bar lights
+n 117 1
+E 3 -17 ; stop when the light is on the second stool from the left, the loose one
+N 117 1 -3
+L ; the pointer at the screen's edge leaves the console
+r 79
+e 2 -12 ; the loose stool
+x 1 0 ; out
+r 128
+e 3 -10 ; the bike
+r 81
+h 14 ; Metro Prime
+r 124
+x 6 37 ; from the docking pad into Metro Prime
+r 98
+e 3 -10 ; the teleporter to level 1
+r 99
+x 7 23 ; the OmniBrain's red door
+r 97
+e 3 -11 ; the confessional
+c NO me voy a entregar ; Feeble confesses who he is
+x 2 50 ; out
+r 99
+e 3 -10 ; the teleporter to level 2
+r 98
+E 4 91 136 ; the valve on the space hopper
+E 4 136 -13 ; the hopper on the air supply: it leaks
+E 4 131 136 ; the Miracle Mud on the hopper
+E 4 136 -13 ; the hopper on the air supply again: pumped up
+e 3 -10 ; the teleporter to level 1: the OmniBrain announces a prize for the confession
+r 99
+g 300 390 ; away from the red door: it is suicidal to collect the prize
+w 125 ; the OmniBrain's second announcement: someone else collected it
+x 7 23 ; the confession booth
+r 97
+e 2 94 ; the jumper
+x 2 50 ; out
+r 99
+x 9 0 ; up to the Ministry's headquarters
+r 117
+x 1 0 ; the Observation Dome
+r 96
+x 1 0 ; the airlock
+r 89
+E 4 87 -14 ; the bar stool on the stand-here spot: the legs
+E 4 136 -14 ; the space hopper on the stool: the head
+E 4 94 -14 ; the jumper wipes the mud off it
+E 4 102 -14 ; the prison uniform: the body
+E 4 107 -14 ; the new newspaper: the face
+e 3 -12 ; close the airlock door
+e 3 -10 ; the pressure off
+E 4 88 -13 ; the blue filter on the porthole: a perfect Feeble
+x 2 4 ; back to the dome
+r 96
+x 2 20 ; and out of it
+r 117
+x 2 94
+r 99
+E 4 90 -11 ; the bounty hunter's card in the vid booth: Feeble is in the airlock
+w 3
+e 3 -10 ; the teleporter to level 2
+r 98
+p 5 10
+x 7 47 ; the docking bays
+r 124
+e 1 -10 ; the docking panel: over to the bike
+r 15
+e 3 -10 ; the bike
+r 81
+== Capitulo 5: La tumba del abuelo
+h 15 ; the Ministry: the guard is off to the airlock
+r 143
+g 385 230 ; in
+r 142
+e 3 -13 ; the HoloMail: two messages from mother, grandfather's tomb is passing by
+x 1 0 ; out
+r 143
+e 3 -10 ; the bike
+r 81
+h 12 ; the tomb
+r 68
+w 4 ; grandfather's hologram: prove yourself worthy
+p 2 9
+e 3 -12 ; the strongbox: a large blank paper and spray paint
+x 1 0 ; out to the bike
+r 81
+h 14 ; Metro Prime
+r 124
+x 6 37
+r 98
+e 3 -10 ; the teleporter to level 1
+r 99
+x 16 0 ; to the news stand
+r 119
+x 2 3 ; the alley
+r 118
+E 4 113 -11 ; the adverts on the boxes
+E 4 114 -11
+E 4 115 -11 ; high enough to reach the symbol
+E 4 112 -12 ; spray paint on the symbol
+E 4 111 -12 ; the paper on it: a copy of the symbol
+b 448 1
+x 1 0 ; back
+r 119
+x 1 0
+r 99
+e 3 -10 ; the teleporter to level 2
+r 98
+p 5 10
+x 7 47 ; the docking bays
+r 124
+e 1 -10 ; over to the bike
+r 15
+e 3 -10 ; the bike
+r 81
+h 12 ; the tomb
+r 68
+E 4 111 -11 ; the copied symbol on the faded one: grandfather's inheritance
+w 4 ; a magnetic swipe card and a screwdriver
+x 1 0 ; out to the bike
+r 81
+h 15 ; the Ministry
+r 143
+g 385 230 ; in
+r 142
+E 4 151 -16 ; the swipe card on the small drawer
+e 2 -16 ; the souvenir coin and the photograph
+x 1 0 ; out
+r 143
+e 3 -10 ; the bike
+r 81
+h 14 ; Metro Prime
+r 124
+x 6 37
+r 98
+e 3 -10 ; the teleporter to level 1
+r 99
+x 9 0 ; up to the Ministry's headquarters
+r 117
+x 1 0 ; the Observation Dome
+r 96
+E 4 133 -10 ; the souvenir coin in the left vending machine: a jammed credit falls out
+E 4 69 -11 ; the credit in the right machine: a star map and an activity pack
+e 3 -15 ; the telescope: the planets' positions
+h 10 ; back from the telescope
+x 2 20 ; out of the dome
+r 117
+x 3 0 ; up the steps into the Ministry's headquarters
+r 116
+e 3 -10 ; the intercom: the Minister wants an OmniCofe
+e 2 108 ; the OmniCofe cup
+E 4 131 108 ; the Miracle Mud in it
+E 4 109 -14 ; the activity pack keeps the guard busy
+e 3 -11 ; the lift: the Minister drinks his OmniCofe and is off to Cygnus Alpha
+E 4 151 -10 ; the swipe card through the encoder
+# the encoder's digits are their variables less 2: ID code 7829353 (the number on the junk ship's door), date code 2130778 (the stardate)
+K 10 220 9
+K 11 221 10
+K 12 222 4
+K 13 223 11
+K 14 224 5
+K 15 225 7
+K 16 226 5
+K 17 227 4
+K 18 228 3
+K 19 229 5
+K 20 230 2
+K 21 231 9
+K 22 232 9
+K 23 233 10
+h 38 ; exit: the card is encoded
+r 83
+x 1 0 ; back down
+r 116
+x 1 0 ; out
+r 117
+x 2 94
+r 99
+e 3 -10 ; the teleporter to level 2
+r 98
+p 5 10
+x 7 47 ; the docking bays
+r 124
+e 1 -10 ; over to the bike
+r 15
+e 3 -10 ; the bike
+r 81
+h 10 ; the junk ship
+r 152
+E 4 154 -12 ; the tow cable on the car
+E 4 151 -11 ; the swipe card in the door
+x 1 0 ; inside the junk ship
+r 155
+e 3 -11 ; the lever: the big magnet lets go of the car
+g 330 470 ; down by the hatch (the door only works when Feeble walks up to it)
+g 312 320 ; the back door: off with the car, which breaks down
+r 80
+h 11 ; Dave's Space Bar
+r 132
+E 4 130 129 ; the screwdriver on the salesman's number plate
+E 4 129 -14 ; the number plate on the car: the SVA comes to fix it
+b 41 1 ; the SVA repairs the car; Delores and SAM are rescued from the prison coach, under fire
+B 20 ; shoot each guard as soon as he shows up
+B 20 ; shoot
+B 20 ; shoot
+B 20 ; shoot
+B 20 ; shoot
+B 20 ; shoot
+B 20 ; shoot
+B 20 ; shoot
+== Capitulo 6: La base rebelde
+r 65 ; Major Benson's briefing
+x 1 0 ; left, to the bunks
+r 67
+x 1 0 ; further left, the icy bunk
+r 66
+e 3 -10 ; the icy bunk: sleep. Everyone but SAM leaves
+p 4 35 ; the right-hand door: locked, SAM shoots it open
+w 3
+e 2 64 ; the small metal discs
+x 1 0 ; left
+r 67
+E 4 64 -12 ; a disc in the burpy machine: a cola, and an empty can
+x 2 29 ; right
+r 65
+x 4 35 ; and right again: off to Aldoria Major
+m 65
+== Capitulo 7: Aldoria Major
+r 48
+e 3 -11 ; close the vent
+x 3 68 ; right
+r 28
+e 3 -15 ; close this vent
+e 3 -16 ; and this one
+E 4 50 -12 ; the empty can on the far-left post
+x 3 33 ; right, the rear entrance
+r 29
+p 3 56 ; right: PEG and WCDF, the two apprehender droids
+b 144 1 ; PEG's patrol: he sees the can and goes for it
+E 4 130 -10 ; the screwdriver on PEG while he aims at the can: switched off
+e 1 -12 ; look at PEG: his circuit boards
+e 2 46 ; PEG's blue board (personality, slot B)
+e 2 44 ; and his green one (CPU, slot 4)
+L ; out of the panel
+r 29
+E 4 130 -11 ; the screwdriver on SAM
+e 1 -11 ; look at SAM: his boards
+e 2 47 ; SAM's blue board (slot D)
+e 2 45 ; and his green one (slot 2)
+L ; out
+r 29
+e 1 -12 ; PEG again
+r 30
+E 4 47 -15 ; SAM's blue board in PEG's slot B
+E 4 45 -13 ; SAM's green board in slot 4
+L ; out
+r 29
+e 3 -12 ; the company robot: Newlook SAM
+e 3 -12 ; Newlook SAM: pass off as PEG and get in by the front
+r 63
+e 3 -10 ; the turbolift
+h 11 ; Maintenance
+r 26
+e 3 -12 ; the lever
+e 3 -12 ; the lever
+e 3 -12 ; the lever, a third time: the vent outside blows its grill off
+r 48
+s 15 ; play as SAM, in the maintenance room
+e 3 -12 ; the lever
+e 3 -12 ; the lever
+e 3 -12 ; the lever: the air off
+s 309 ; Feeble again
+e 3 -15 ; down the deep hole
+r 16
+h 12 ; forward
+h 12 ; forward
+h 10 ; turn left
+h 12 ; forward
+h 12 ; forward: back in the maintenance room
+r 27
+e 3 -10 ; turn SAM off
+e 2 -14 ; the grenades
+e 2 -11 ; the engineer's jacket, with a class B pass
+E 4 130 -13 ; the screwdriver on the mangled robot: its metal plate
+e 3 -12 ; the turbolift
+r 51
+h 13 ; Interrogation
+r 60
+e 3 -10 ; the Gakky rebel: Gardum is on the surface, Mandrin wakes
+e 3 -11 ; Mandrin: he wants water
+x 3 11 ; back to the turbolift
+r 51
+h 12 ; the Brain Room
+r 62
+e 2 -10 ; the brain slime, up the stairs: and a chain
+x 1 0 ; the turbolift
+r 51
+h 13 ; Interrogation
+r 60
+E 4 54 -11 ; the brain slime for Mandrin: a key
+w 2 ; Mandrin drinks it and talks a long while
+x 3 11 ; the turbolift
+r 51
+h 14 ; Research and Testing
+r 61
+e 2 58 ; the fire extinguisher (dry ice)
+e 3 57 ; switch the antimatter weight off
+e 2 57 ; and take it
+x 1 0 ; the turbolift
+r 51
+h 10 ; up to the surface
+r 63
+x 1 0 ; outside
+r 29
+x 4 0 ; left
+r 28
+x 1 0 ; left again, to the car
+r 48
+e 3 -12 ; Gardum, sunbathing
+c hecho de un metal ; Gardum is liquid metal: keep him warm
+c me voy a ir
+e 3 -10 ; the bugmobile: back to the base
+r 14
+x 1 0 ; into the base
+r 65
+x 1 0 ; left
+r 67
+E 4 52 -11 ; the key on the cabinet by the burpy machine: a stretchy rope
+x 2 29 ; right
+r 65
+x 4 35 ; out to the car
+r 14
+e 3 -10 ; back to Aldoria Major
+r 48
+E 4 58 -12 ; the fire extinguisher on Gardum: frozen
+E 4 -13 -14 ; roll frozen Gardum onto the deep hole
+x 3 68 ; right
+r 28
+x 3 33
+r 29
+x 3 56 ; the front entrance
+r 63
+e 3 -10 ; the turbolift
+r 51
+h 11 ; Maintenance
+r 27
+x 7 3 ; across the walkway, up the steps to the vents
+r 22
+h 14 ; look up
+h 15 ; move up
+h 13 ; turn around
+h 12 ; forward
+h 12 ; forward: a grill
+E 4 53 -20 ; the stretchy rope on the grill
+E 4 55 -20 ; and the chain
+h 13 ; back from the grill
+h 12 ; forward
+h 10 ; turn left
+h 12 ; forward
+h 12 ; forward: the maintenance room
+r 27
+e 3 -12 ; the turbolift
+r 51
+h 12 ; the Brain Room
+r 62
+x 6 2 ; far right, round the back of the vats
+r 59
+e 3 -11 ; pull the chain down onto the hook
+E 4 57 -13 ; the antimatter weight on it
+e 3 -14 ; switch the weight on: a bungee rope
+e 3 -16 ; hold the weight and switch it off: up he goes
+e 3 -18 ; the lever: this vent shuts
+x 1 48 ; back
+r 62
+x 1 0 ; the turbolift
+r 51
+h 11 ; Maintenance
+r 27
+e 3 -15 ; the lever, once: suck
+e 3 -12 ; the turbolift
+r 51
+h 14 ; Research and Testing
+r 61
+e 3 -11 ; the big yellow button: this vent shuts
+b 133 1
+E 4 56 -10 ; a grenade on the firing range
+Q 156 1 -1 ; again until one lets out yellow gas: the fan sucks it in
+x 1 0 ; the turbolift
+r 51
+h 11 ; Maintenance
+r 27
+x 7 3 ; across the walkway, up the steps to the vents
+r 22
+h 14 ; look up
+h 15 ; move up
+h 12 ; forward: the fan
+E 4 23 -20 ; the metal plate on the fan: sealed
+h 13 ; back
+h 11 ; turn right
+h 12 ; forward
+h 12 ; forward: the maintenance room
+r 27
+e 3 -15 ; the lever: off
+e 3 -15 ; the lever: blow, into the only open vent, Interrogation's
+N 123 2 -1
+e 3 -12 ; the turbolift
+r 51
+h 13 ; Interrogation: the guards are out cold
+r 60
+e 2 49 ; the class A pass
+x 3 11 ; the turbolift
+r 51
+== Capitulo 8: El Templo
+h 15 ; the Temple
+r 5
+e 1 -11 ; the book on the chest
+e 3 -10 ; open the chest: an axe
+E 4 3 -12 ; the axe on the OmniBrain: Major Benson
+B 11 ; jump behind the OmniBrain at once: Benson shoots it
+w 4
+e 3 -12 ; the OmniBrain: down to the Founder's room
+r 2
+e 3 -10 ; the body: the Founder
+k 1 ; Comrade Feeble of the Freedom Fighters
+k 1 ; you must be the Founder
+e 3 -12 ; the Founder's computer
+w 3
+e 3 -12 ; the Founder's computer: the end, and the credits

@@ -113,6 +113,7 @@ bool AGOSGuide::parseLine(const Common::String &text, Step &st) const {
 	case 'n': st.kind = Step::kVarWait; return n == 2;
 	case 'N': st.kind = Step::kVarWait; st.check = true; return n == 3 && st.c < 0;
 	case 'b': st.kind = Step::kBitWait; return n == 2;
+	case 'Q': st.kind = Step::kBitWait; st.check = true; return n == 3 && st.c < 0;
 	case 'w': st.kind = Step::kWait; return n >= 1;
 	case 's': st.kind = Step::kSwitch; return feeble() && n == 1;
 	case 'v': st.kind = Step::kVar2Wait; return feeble() && n >= 2;
@@ -338,6 +339,10 @@ HitArea *AGOSGuide::findItemBox(int item) const {
 }
 
 HitArea *AGOSGuide::findBoxId(int id) const {
+	// The Feeble Files' Oracle takes boxes 20 and 80 to 82 while it is up: a room's boxes with those ids come
+	// back once it closes
+	if (feeble() && _vm->getBitFlag(99) && (id == 20 || (id >= 80 && id <= 82)))
+		return nullptr;
 	for (uint i = 0; i < ARRAYSIZE(_vm->_hitAreas); i++) {
 		HitArea *ha = &_vm->_hitAreas[i];
 		if ((ha->flags & kBFBoxInUse) && !(ha->flags & kBFBoxDead) && ha->id == id)
@@ -1212,8 +1217,15 @@ void AGOSGuide::tick() {
 				return;
 			}
 		}
-		else if (st.kind == Step::kBitWait)
+		else if (st.kind == Step::kBitWait) {
 			done = bit(st.a) == (st.b != 0);
+			if (!done && st.check && isIdle()) {
+				logf("step %d: bit %d is not %d: back to step %d", _current + 1, st.a, st.b, _current + 1 + st.c);
+				setCurrent(_current + st.c);
+				_state = kWaitIdle;
+				return;
+			}
+		}
 		else if (st.kind == Step::kTalkWait)
 			done = _heard.contains(st.text);
 		else if (st.kind == Step::kRoomLeave)
