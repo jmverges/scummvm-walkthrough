@@ -793,8 +793,13 @@ E 4 131 136 ; the Miracle Mud on the hopper
 E 4 136 -13 ; the hopper on the air supply again: pumped up
 e 3 -10 ; the teleporter to level 1: the OmniBrain announces a prize for the confession
 r 99
-g 300 390 ; away from the red door: it is suicidal to collect the prize
-w 125 ; the OmniBrain's second announcement: someone else collected it
+t OmniBrain speaking ; the first announcement: it is suicidal to collect the prize
+# the second announcement comes some 120 s later, but not while Feeble stays on this level near the red door
+x 16 0 ; to the news stand to wait
+r 119
+w 130 ; the OmniBrain's second announcement: someone else collected it
+x 1 0 ; back
+r 99
 x 7 23 ; the confession booth
 r 97
 e 2 94 ; the jumper
