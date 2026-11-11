@@ -1098,9 +1098,9 @@ c hecho de un metal ; Gardum is liquid metal: keep him warm
 c me voy a ir
 e 3 -10 ; the bugmobile: back to the base
 r 14
-x 1 0 ; into the base
-r 65
-x 1 0 ; left
+x 1 0 ; into the base (sometimes straight into the bunk room)
+m 14
+@65 x 1 0 ; left
 r 67
 E 4 52 -11 ; the key on the cabinet by the burpy machine: a stretchy rope
 x 2 29 ; right
