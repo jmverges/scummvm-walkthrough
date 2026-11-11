@@ -795,14 +795,21 @@ E 4 136 -13 ; the hopper on the air supply again: pumped up
 e 3 -10 ; the teleporter to level 1: the OmniBrain announces a prize for the confession
 r 99
 t OmniBrain speaking ; the first announcement: it is suicidal to collect the prize
-# the second announcement (someone else collected the prize) comes a couple of minutes after the first, but not
-# always as soon in a recording: until it does, Feeble refuses the booth, so try it every 20 s or so
-g 300 390 ; away from the red door
+# The announcement's script stops halfway until a click comes (a walk will do); the second announcement's timer
+# starts only when Feeble comes onto this level after the first one, and it goes off two minutes after the first
+# ended, while he stays left of the middle (x 600)
+g 300 390 ; away from the red door: the click lets the first announcement end
+w 5
+x 16 0 ; to the news stand
+r 119
+x 1 0 ; and back: the timer starts
+r 99
+g 300 390 ; left of the middle
 w 125 ; the OmniBrain's second announcement: someone else collected it
-g 300 390
+g 280 400 ; a click, in case its script waits for one too
 w 15
 p 7 23 ; the confession booth
-r 97 25 -3 ; refused: away, wait and try again
+r 97 25 -3 ; refused (not yet): a click, wait and try again
 e 2 94 ; the jumper
 x 2 50 ; out
 r 99

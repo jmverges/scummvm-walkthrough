@@ -1562,6 +1562,15 @@ void AGOSGuide::runCommand(const Common::String &text) {
 			if (_vm->_variableArray[i])
 				s += Common::String::format(" %u=%d", i, _vm->_variableArray[i]);
 		logf("vars%s", s.c_str());
+	} else if (c == "clock") {
+		// The Feeble Files' script clock (if time / set time) and its timers
+		logf("clock: time %u, stopped clock %u, clock stopped at %u, time store %u", _vm->getTime(),
+			_vm->_gameStoppedClock, _vm->_clockStopped, _vm->_timeStore);
+		for (TimeEvent *te = _vm->_firstTimeStruct; te; te = te->next)
+			logf("clock: timer at %u, subroutine %u", te->time, te->subroutine_id);
+	} else if (c == "state") {
+		Item *it = _vm->derefItem(x);
+		logf("state of item %d: %d", x, it ? it->state : -1);
 	} else if (c == "vars2") {
 		// the second set (The Feeble Files: someone else's walking, while bit 83 is on)
 		Common::String s;
