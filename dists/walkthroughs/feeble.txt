@@ -799,9 +799,10 @@ t OmniBrain speaking ; the first announcement: it is suicidal to collect the pri
 # always as soon in a recording: until it does, Feeble refuses the booth, so try it every 20 s or so
 g 300 390 ; away from the red door
 w 125 ; the OmniBrain's second announcement: someone else collected it
-w 20
+g 300 390
+w 15
 p 7 23 ; the confession booth
-r 97 25 -2 ; refused: wait and try again
+r 97 25 -3 ; refused: away, wait and try again
 e 2 94 ; the jumper
 x 2 50 ; out
 r 99
