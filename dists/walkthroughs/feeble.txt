@@ -797,7 +797,7 @@ r 99
 t OmniBrain speaking ; the first announcement: it is suicidal to collect the prize
 # the second announcement comes 120 s after the first one ends, while Feeble stays on this level away from the
 # red door (leaving the level cancels it)
-g 300 390 ; away from the red door
+g 750 390 ; right of the middle (the timer holds while Feeble is left of x 600), still away from the red door
 w 150 ; the OmniBrain's second announcement: someone else collected it
 x 7 23 ; the confession booth
 r 97
