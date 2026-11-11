@@ -638,6 +638,7 @@ c Bonita charla ; bye
 x 1 0 ; out of the arcade
 r 98
 e 4 93 -11 ; the ticket into the zoo
+r 126 30 -1 ; in (a lost click: the ticket again)
 e 3 -14 ; the tourist
 e 3 -10 ; the flash control up, five times: as bright as it goes
 e 3 -10
