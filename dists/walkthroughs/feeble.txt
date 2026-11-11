@@ -1144,11 +1144,9 @@ x 6 2 ; far right, round the back of the vats
 r 59
 e 3 -11 ; pull the chain down onto the hook
 E 4 57 -13 ; the antimatter weight on it
-w 2
 e 3 -14 ; switch the weight on: a bungee rope
-w 2
-e 3 -16 ; hold the weight and switch it off: up he goes
-I 57 2 -4 ; up (the weight's state 2), else again from switching it on
+e 3 -15 ; Feeble holds on to the rope (he won't climb it)
+e 3 -16 ; switch the weight off while he holds on: up he goes
 e 3 -18 ; the lever: this vent shuts
 x 1 48 ; back
 r 62
