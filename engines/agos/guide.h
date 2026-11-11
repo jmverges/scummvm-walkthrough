@@ -115,6 +115,7 @@ private:
 		bool exit = false;  // x: done only once Simon is in another room
 		bool optional = false;   // C: a line that may not be offered, then skipped
 		bool check = false;      // N: a variable checked once the game waits, else some steps back
+		bool item = false;       // I: an item's state instead of a variable
 		int onlyRoom = 0;        // @<room>: only in that room, else skipped
 		int loops = 0;           // l: how many times it went back so far
 		Common::String text, comment, section;

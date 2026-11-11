@@ -114,6 +114,7 @@ bool AGOSGuide::parseLine(const Common::String &text, Step &st) const {
 	case 'N': st.kind = Step::kVarWait; st.check = true; return n == 3 && st.c < 0;
 	case 'b': st.kind = Step::kBitWait; return n == 2;
 	case 'Q': st.kind = Step::kBitWait; st.check = true; return n == 3 && st.c < 0;
+	case 'I': st.kind = Step::kVarWait; st.check = true; st.item = true; return n == 3 && st.c < 0;
 	case 'w': st.kind = Step::kWait; return n >= 1;
 	case 's': st.kind = Step::kSwitch; return feeble() && n == 1;
 	case 'v': st.kind = Step::kVar2Wait; return feeble() && n >= 2;
@@ -1224,10 +1225,12 @@ void AGOSGuide::tick() {
 			}
 		}
 		else if (st.kind == Step::kVarWait) {
-			done = _vm->_variableArray[st.a] == st.b;
+			Item *it = st.item ? _vm->derefItem(st.a) : nullptr;
+			const int value = st.item ? (it ? it->state : -1) : _vm->_variableArray[st.a];
+			done = value == st.b;
 			if (!done && st.check && isIdle()) {
-				logf("step %d: variable %d is %d, not %d: back to step %d", _current + 1, st.a,
-					_vm->_variableArray[st.a], st.b, _current + 1 + st.c);
+				logf("step %d: %s %d is %d, not %d: back to step %d", _current + 1, st.item ? "item" : "variable", st.a,
+					value, st.b, _current + 1 + st.c);
 				setCurrent(_current + st.c);
 				_state = kWaitIdle;
 				return;
