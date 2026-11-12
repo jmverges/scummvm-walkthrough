@@ -27,6 +27,7 @@
 
 #include "toltecs/toltecs.h"
 #include "toltecs/animation.h"
+#include "toltecs/guide.h"
 #include "toltecs/menu.h"
 #include "toltecs/movie.h"
 #include "toltecs/music.h"
@@ -764,6 +765,8 @@ void ScriptInterpreter::sfDrawGuiTextMulti() {
 
 void ScriptInterpreter::sfUpdateVerbLine() {
 	_vm->_screen->updateVerbLine(arg16(5), arg16(3));
+	if (_vm->_guide)
+		_vm->_guide->onVerbLine(arg16(5), arg16(3));
 }
 
 void ScriptInterpreter::sfSetFontColor() {
@@ -858,6 +861,8 @@ void ScriptInterpreter::sfFindMouseInRectIndex1() {
 			arg16(11) + 1, arg16(7),
 			getSlotData(slotIndex) + _slots[slotIndex].size);
 	}
+	if (_vm->_guide)
+		_vm->_guide->onRects(1, arg16(5), arg16(3), arg16(7), arg16(11) + 1, index);
 	localWrite16(arg16(9), index);
 }
 
@@ -872,6 +877,8 @@ void ScriptInterpreter::sfFindMouseInRectIndex2() {
 				0, arg16(7),
 				getSlotData(slotIndex) + _slots[slotIndex].size);
 		}
+		if (_vm->_guide)
+			_vm->_guide->onRects(2, arg16(5), arg16(3), arg16(7), 0, index);
 	}
 	localWrite16(arg16(9), index);
 }
@@ -902,6 +909,8 @@ void ScriptInterpreter::sfFindPath() {
 
 void ScriptInterpreter::sfWalk() {
 	_vm->walk(getSlotData(arg16(5)) + arg16(3));
+	if (_vm->_guide)
+		_vm->_guide->onWalk();
 }
 
 void ScriptInterpreter::sfScrollCameraUp() {

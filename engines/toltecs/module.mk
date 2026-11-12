@@ -3,6 +3,7 @@ MODULE := engines/toltecs
 MODULE_OBJS = \
 	animation.o \
 	console.o \
+	guide.o \
 	menu.o \
 	metaengine.o \
 	microtiles.o \

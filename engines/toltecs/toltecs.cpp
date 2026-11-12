@@ -38,6 +38,7 @@
 #include "toltecs/toltecs.h"
 #include "toltecs/animation.h"
 #include "toltecs/console.h"
+#include "toltecs/guide.h"
 #include "toltecs/menu.h"
 #include "toltecs/movie.h"
 #include "toltecs/music.h"
@@ -100,6 +101,7 @@ ToltecsEngine::ToltecsEngine(OSystem *syst, const ToltecsGameDescription *gameDe
 	_moviePlayer = nullptr;
 	_music = nullptr;
 	_menuSystem = nullptr;
+	_guide = nullptr;
 
 	_sound = nullptr;
 
@@ -172,6 +174,7 @@ Common::Error ToltecsEngine::run() {
 
 	_sound = new Sound(this);
 	setDebugger(new Console(this));
+	_guide = new ToltecsGuide(this);
 
 	_cfgText = ConfMan.getBool("subtitles");
 	_cfgVoices = !ConfMan.getBool("speech_mute");
@@ -236,6 +239,8 @@ Common::Error ToltecsEngine::run() {
 	delete _menuSystem;
 
 	delete _sound;
+	delete _guide;
+	_guide = nullptr;
 
 	return Common::kNoError;
 }
@@ -419,6 +424,10 @@ void ToltecsEngine::updateInput() {
 		}	// switch
 	}	// while
 
+	// the walkthrough player may move and click the mouse instead of the player
+	if (_guide)
+		_guide->tick();
+
 	if (!_mouseDisabled) {
 
 		if (_mouseDblClickTicks > 0)
@@ -533,6 +542,9 @@ void ToltecsEngine::talk(int16 slotIndex, int16 slotOffset) {
 	// active, don't overwrite it. Fixes bug #6224.
 	if (_screen->isTalkTextActive(slotIndex))
 		return;
+
+	if (_guide)
+		_guide->onTalk(slotIndex, slotOffset);
 
 	while (*scanData < 0xF0) {
 		if (*scanData == 0x19) {

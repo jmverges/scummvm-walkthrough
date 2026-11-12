@@ -1,0 +1,467 @@
+# 3 Skulls of the Toltecs (Spanish CD) walkthrough for the ScummVM walkthrough player (engines/toltecs/guide.cpp).
+# Starts in the canyon right after the intro (slot 1).
+
+== El cañón
+s hablar fray gordo
+k que hace un monje
+k de que orden
+k a donde ha ido
+k donde esta vuestro
+k le dejo
+s mover buck ; behind the wagon
+s hablar fray gordo
+k no le parece extrano
+k quien los ha expulsado
+k que hace un monje ; he goes looking for the dead man
+s coger pico
+s coger pico
+s usar estaca > fray gordo ; knocks him out
+s coger sotana
+s usar burro
+c 170 371 ; the donkey's ways: Camino (left), to the monastery
+
+== El monasterio
+s hablar soldado
+k quisiera entrar
+k que aroma
+k ese mexicano dormilon
+k por que han ocupado
+k me gustaria probar
+k apuesto a que es mejor ; he gives Fenimore some tobacco
+s hablar soldado
+k han encontrado a gordinflas
+k seguro que el mexicano
+s hablar mexicano ; asleep
+c 610 375 ; the map
+s ir cañon ; on the map
+s hablar fray gordo ; he now thinks he is general Gordinflas
+k esta usted amnesico
+k yo creia que dios
+k como que no
+k no tiene usted mucha pinta
+k que le han robado
+k que es la estrella
+k dele mis saludos
+k yo se donde estan
+k he visto a uno de ellos
+s coger sombrero ; the donkey won't let him
+s usar burro
+c 490 371 ; Cañón (right): to Big Town
+
+== Big Town: el establo
+s mirar letrero ; the blue P sign
+s ir puerta ; into the stable
+s mirar barreño ; full of screws: takes one
+s ir escalera ; up to the loft
+s mirar ventana
+s coger letrero
+s mover letrero ; it falls down
+s ir escalera ; down again
+s coger letrero ; the P (a barrel lid)
+
+== Big Town: el pozo
+s ir puerta ; out of the stable
+s hablar pozo ; someone is down the well
+k quien eres
+k que haces ahi
+k ahora tengo que irme
+s ir pueblo ; past the water tank, into the main street
+
+== Big Town: la estación
+s mirar semaforo
+s abrir puerta
+s ir puerta ; into the station
+s hablar telegrafista ; deaf
+k cuando pasa el proximo
+k quiero enviar un telegrama
+k senor maquinista
+k con quien se comunica ; chess with the train driver at Fort Apache
+s mirar estanteria
+s coger libro ; not allowed
+s ir puerta ; out
+s usar palanquin ; the handcar is broken
+
+== Big Town: el almacén
+s abrir caja ; the big box by the store
+s mirar caja ; logs inside: takes them
+b puerta#6
+s abrir puerta#6 ; the store's door
+b puerta#6
+s ir puerta#6
+s hablar tendero ; Bobby
+k mi nombre es
+k quisiera comprar
+k quiero uno de esos cigarros ; free: takes one
+s coger puros
+s ir puerta#2 ; out
+
+== Big Town: la oficina del sheriff
+b puerta#1
+s abrir puerta#1 ; right of the bank
+b puerta#1
+s ir puerta#1
+s hablar gordito ; Mortimer Pettyboom, the deputy
+k quien es usted
+k fenimore fillmore pistolero
+k que hace usted
+k donde esta el sheriff
+k parece que es complicado ; he was always last in his class
+k quiere que le eche una mano
+k no sobrara la cafetera
+k porque el cafe pone nerviosa
+k yo creo que no sobra nada
+s mirar tablon
+s mirar cartel ; wanted poster
+s ir puerta#2 ; the cells
+s mirar diana
+s mirar argolla
+s ir puerta ; back
+s ir puerta#1 ; out to the street
+
+== Big Town: el banco
+b puerta#4
+s abrir puerta#4 ; the bank
+b puerta#4
+s ir puerta#4
+g 740 200 ; to the cashier's window
+s hablar cajero
+k quiero abrir una cuenta
+k fenimore fillmore
+k millonario
+k alli donde me halle ; the ticket will come in a week
+s hablar cajero
+k quiero pedir un credito
+k el mas gordo
+k esta bien lo acepto ; 10 dollars
+s hablar cajero
+k quiero pedir un credito
+k un credito mercantil
+k entonces deme el credito
+k esta bien lo acepto ; 20 dollars
+s hablar cajero
+k busco a un tal fray anselmo ; the one with a golden skull
+k si ese mismo ; only for close relatives
+
+== Big Town: el salón
+s ir salon ; the layabout stops him
+k por que no puedo entrar
+k quiero entrar
+k quien me lo impide
+k no seras swappy smith
+k yo estudie contigo
+k mortimer pettyboom ; the dunce of the class: lets him in
+s hablar sheriff
+k se ha cometido un crimen
+k han asesinado a un hombre
+k tres tipos
+k un tuerto un barbudo ; sends Fenimore to his deputy
+s hablar malo ; Pat Dickson
+k donde esta el tuerto
+k dickson tu jefe
+k solo es para una encuesta ; he loves surveys
+k miembros de la banda
+k lugares de residencia
+k para quien acostumbrais
+k que clase de trabajitos
+k que personas importantes ; John Smith, doctor Hengelhoffer, colonel Leconte
+k seguire luego con la encuesta
+k que pasa con la calavera
+k me invitas a un trago
+s hablar feo ; he only grunts
+s hablar barman
+k algo de beber
+k de veras solo tiene ; prohibition
+k a que prohibicion
+k y no tiene whisky
+k quien ha promocionado
+k no podria darme la botella
+k y usted para que demonios ; he gives it away
+s hablar barman
+k tampoco tiene cafe ; the coffee pot vanished two weeks ago
+k pongame un agua de regaliz
+k que certificado
+k donde esta el wc
+s mirar botella ; the distillery's address
+s coger cubo ; the barman won't let him
+g 470 275 ; up the stairs
+s abrir puerta#2 ; the dancer's room: she answers
+k es usted una princesa
+k quiere venir conmigo ; Mimi won't let her out
+k por que no la dejan salir
+k cuando van a bajar ; when the pianist shows up
+k me parece que mimi
+k ya encontre al pianista ; tell Mimi, on the balcony
+s abrir puerta#2
+k mimi deberia guardar ; Mimi keeps the money in her pillow
+k no queria molestarla
+s mirar cerradura ; Dickson asleep in the other room
+c 480 330 ; down the stairs
+s ir puerta#3 ; out to the street
+s hablar señorita ; Mimi, on the balcony
+k ando buscando a un tipo
+k moreno
+k blanca
+k un ojo
+k botas ; he lodges next door to her
+b puerta#1
+s abrir puerta#1 ; the sheriff's office again
+b puerta#1
+s ir puerta#1
+s hablar gordito
+k creo que ya se que es lo que sobra
+k no sobrara la cafetera
+k porque la cafetera deberia ; it belongs in the saloon
+s coger cafetera
+s ir puerta#1 ; out
+
+== Big Town: la barbería
+s hablar vieja ; Bobby's mother, at the barber shop
+k atiende usted la barberia
+s hablar vieja
+k que esta remendando ; her son should bring her thread
+k es que yo no conozco ; his name is Bobby
+b puerta#6
+s abrir puerta#6 ; the store
+b puerta#6
+s ir puerta#6
+s hablar tendero
+k bobby su madre le llama ; he leaves the store
+s coger azucar
+s coger cafe
+s coger galletas
+s coger zanahorias
+s ir puerta#2 ; out
+
+== Big Town: la iglesia
+b puerta#2
+s abrir puerta#2 ; the church
+b puerta#2
+s ir puerta#2
+s hablar parroco
+k bueno ; his sermon
+k tal vez con un poco
+s hablar parroco
+k no deberia tenerle tanto miedo
+k tal vez si usted se impone
+k le dejo reverendo
+s mirar candelabro
+s mirar confesionario
+b puerta#2
+s abrir puerta#2 ; the sacristy, on the right
+b puerta#2
+s ir puerta#2
+s mirar tiquet ; Fray Anselmo throws him out
+b puerta#1
+s abrir puerta#1 ; out of the church
+b puerta#1
+s ir puerta#1
+
+== Big Town: el palanquín
+s usar cafetera > deposito de agua ; water in the coffee pot
+s usar cafe > cafetera
+s usar tornillo > palanquin ; the screw fixes the handcar
+s usar palanquin
+s ir cementerio
+
+== El cementerio
+s coger cuerda ; hanging from the tree
+s hablar loro ; a repentant parrot
+k eres religioso
+s dar galletas > loro
+S coger loro ; while it eats
+s mirar lapida
+s mirar parcela
+s usar estaca > pico ; the pick in one piece
+s usar pico > parcela#3 ; the fertile plot: hours of digging
+s mirar surcos
+s ir entrada ; back to the handcar
+s ir poblado indio
+
+== El poblado indio
+s coger cuchillo ; stuck in the post
+s ir descosido ; into the tent through the rip
+s coger vela
+s coger botellas ; a magic cloud
+s mirar nube magica ; "use when lightning falls"
+s ir descosido ; out
+s hablar apache#5 ; by the totem
+k como te llamas ; Moco de Pavo
+k eso no es moco de pavo ; offended
+s hablar apache#5
+k perdona por burlarme
+k adios
+s hablar apache#4 ; guarding the secret meeting
+k quien estar ahi dentro
+k cual es el motivo
+k yo darte algo ; he wants something he can't name
+k de que color ser ; pink
+k ser solida
+k para que sirve
+k da igual que sea de segunda
+k creo que yo ya saber ; bring it, then
+s ir tienda#1 ; the trophy tent
+s hablar apache ; the guard and guide
+k quien eres tu
+k que significa todo este tinglado ; a museum of Apache trophies
+k quiero que me cuentes
+k la calavera de oro ; the Sacred Skull
+k los guantes de boxeo
+k ha sido muy instructivo
+k en este museo regalan ; take a souvenir from the basket
+k que tengas buen dia
+s mirar calavera de oro ; one of the three skulls of the Toltecs
+s mirar canasto ; matchboxes
+s coger cerillas
+s coger calavera de oro ; thrown out
+s usar palanquin
+s ir bosque
+
+== El bosque
+s coger tela ; caught in the tree
+s coger tela ; a torn balloon
+s mirar globo
+s usar cuchillo > chicle ; the gum on the tree
+b puerta
+s abrir puerta ; Tom's cabin
+b puerta
+s ir puerta
+s coger caña
+s hablar tom
+k si que es dificil
+k me han dicho que el suyo ; it WAS the best whisky
+k por que dice era
+k a que liga se refiere ; the Anti-Alcohol League
+k de modo que la liga
+k no podria fabricar
+k de que depende
+k que pasa con los ingredientes
+k yo conseguire los ingredientes ; water, sugar, barley, in the barrel
+k le dejo
+s ir puerta ; out
+s usar caña > rio ; a bugle
+s ir camino ; back to the handcar
+s ir fort apache
+
+== Fort Apache
+s hablar maquinista ; the train driver
+k cuando piensa usted arrancar
+k debe aburrirse ; chess by telegraph
+k como va la partida
+k hasta la vista
+s ir puerta ; into the fort
+s hablar teniente ; Leconte's secretary
+k que haces
+k conoces bien al coronel
+k que planes tiene leconte ; an attack on the Indians
+k que tiene de malo la paz
+k estas seguro de que leconte ; he is after some Indian trophies
+k te dejo con tus practicas
+b puerta#1
+s abrir puerta#1 ; the kitchen (the triangle over its door)
+b puerta#1
+s ir puerta#1
+s mirar horno
+s mirar hornalla
+s abrir armario
+s coger tabasco
+s abrir tabasco ; stuck
+s ir puerta ; out
+s mirar ventana ; colonel Leconte in his bath
+s hablar coronel ; he wants a towel
+k como van las cosas con los indios
+k si senor
+s hablar vigia ; the lookout on the wall
+k haciendo la ronda
+k sabes donde puedo encontrar
+s abrir trampilla ; the powder store
+s mirar trampilla
+s usar caña > trampilla ; fishes out dynamite
+s usar corneta ; the lookout lowers the flag
+s coger bandera
+s mirar ventana
+s dar bandera > coronel ; "your towel, sir"
+s mirar ventana ; he is getting dressed
+c 610 375 ; the map
+s ir poblado indio
+
+== El poblado indio: la reunión
+s dar chicle > apache#4 ; he lets Fenimore into the secret meeting
+k yo fumar pipa ; the chief, the interpreter and the senator
+S usar pipa de la paz > tabaco ligth ; at once (timed): the mild tobacco; the senator smokes too and the party starts
+s ir tienda#2 ; back into the meeting tent
+s mirar caldero ; barley seeds inside: takes them
+s ir salida
+
+== El cementerio: la cebada
+c 610 375 ; the map
+s ir cementerio
+s usar semillas > surcos
+s usar nube magica ; rain: the barley grows at once
+s coger cebada
+
+== Fort Apache: los aposentos del coronel
+c 610 375 ; the map
+s ir fort apache
+s ir puerta ; into the fort
+s mirar ventana ; the colonel has gone: the door is free
+b puerta#2
+s abrir puerta#2 ; the colonel's quarters
+b puerta#2
+s ir puerta#2
+s mover tonel ; the barrel rolls out, onto the handcar
+s coger uniforme
+s coger esponja
+s mirar cerradura ; a locked door, with an alarm
+s usar esponja > alarma
+s ir puerta#2 ; out to the yard
+
+== Fort Apache: la cárcel y la lavandería
+b puerta#4
+s abrir puerta#4 ; the fort's jail
+b puerta#4
+s ir puerta#4
+s hablar cabo ; the jailer, "not asleep"
+k esto parece un calabozo
+s hablar cabo
+k que tal son los oficiales
+k hablemos del sargento
+k has dicho que es un alcoholico
+k ha muerto ; the Anti-Alcohol League got him
+k pasemos a otro tema
+k que hacemos aqui
+s ir puerta ; out
+b puerta#5
+s abrir puerta#5 ; the Chinese laundry
+b puerta#5
+s ir puerta#5
+s hablar chino
+k me llamo fenimore
+k te he dicho mi nombre
+k usted es chino
+k yo sel tonto y sel cliente
+k solo estaba mirando
+s dar traje > chino ; to wash the uniform
+s coger cuenco ; a bowl of rice
+s mirar tablon
+s mirar cartel
+s ir puerta ; out
+b puerta#5
+s ir puerta#5 ; back in (the door stays open)
+s hablar chino
+k ya has lavado el uniforme
+s mirar traje ; a key in a pocket
+s mirar llave ; Leconte must have left it in the uniform
+s ir puerta ; out
+b puerta#2
+s ir puerta#2 ; the colonel's quarters again (left open)
+s usar llave > cerradura ; the locked door
+b puerta#1
+s abrir puerta#1
+b puerta#1
+s ir puerta#1
+s mirar cerradura ; the safe
+s mirar manivela
+s ir salida
+s ir puerta#2 ; out to the yard
+
+== Fort Apache: la cocina y el sargento
