@@ -79,6 +79,8 @@ void AGOSEngine_Feeble::vc48_setPathFinder() {
 	const uint16 *p = _pathFindArray[a - 1];
 
 	VgaSprite *vsp = findCurSprite();
+	if (!p || !vsp)
+		return;	// a room put back up after a load, before it set its paths
 	int16 x, y, ydiff;
 	int16 x1, y1, x2, y2;
 	uint pos = 0;
@@ -185,6 +187,8 @@ void AGOSEngine::vc78_computeXY() {
 	uint16 b = (uint16)_variableArrayPtr[13];
 
 	const uint16 *p = _pathFindArray[a - 1];
+	if (!p)
+		return;	// a room put back up after a load, before it set its paths
 	p += b * 2;
 
 	uint16 posx = readUint16Wrapper(p);

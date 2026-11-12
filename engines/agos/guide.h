@@ -45,6 +45,8 @@ struct Item;
  *                                           number, or minus a box id for the people and things that are boxes
  *   E <verb> <item> [<item2>] [; comment]   the same as soon as the game takes clicks, even while people talk
  *   h <box> [; comment]                     click a box by its id (one with no item)
+ *   B <box> [; comment]                     the same as soon as the box is there and the game takes clicks
+ *                                           (something to hit before it goes away)
  *   k <n> [; comment]                       the n-th line of a conversation's choices, from the top
  *   c <words> [; comment]                   the choice whose text has these words (the game's own text, so
  *                                           better without accented letters)
@@ -56,9 +58,32 @@ struct Item;
  *                                           points (the room's script says which)
  *   x <path> <point> [; comment]            the same for an exit: clicked again until Simon is in another room
  *   r <room> [; comment]                    wait until Simon is in that room
+ *   r <room> <s> -<n> [; comment]           the same for s seconds at most, then n steps back to try again
  *   n <var> <value> [; comment]             wait until a script variable has that value
- *   b <bit> <value> [; comment]             wait until a bit flag has that value
+ *   N <var> <value> -<n> [; comment]        once the game waits, check that a variable has that value, else
+ *                                           n steps back to try them again
+ *   b <bit> <value> [; comment]             wait until a bit flag has that value (256 + n: the second array's n, 512 + n: the third's)
+ *   Q <bit> <value> -<n> [; comment]        the same as N for a bit flag
  *   w <seconds> [; comment]                 wait
+ *   t <words> [; comment]                   wait until someone says something with these words (the game's text)
+ *   v <var> <value> [<value2>] [; comment]  The Feeble Files: wait until a variable of the second set (someone
+ *                                           else walking: the native in the valley) has that value, or the other
+ *   m [<room>] [; comment]                  wait until Simon is out of that room (or the one the last step began in)
+ *   l <n> <times> [; comment]               go back n steps, times times (the same steps again)
+ *   P <var> <count> <box> [; comment]       a game of pairs: the cards' faces are in count variables from var,
+ *                                           their boxes from box: click each pair in turn
+ *   O <var> <side> <box> [; comment]        a "lights out" board: side x side cells in variables from var, boxes
+ *                                           from box; a click turns a cell and its four neighbours: click
+ *                                           those that leave all cells alike
+ *   H <box> <var> <value> [; comment]       hold the button down on a box until a variable gets to that value
+ *   K <box> <var> <value> [; comment]       click a box, again and again, until a variable has that value (a
+ *                                           dial, a digit that goes round)
+ *   L [; comment]                           The Feeble Files: out of a close-up (a console, a machine): the
+ *                                           pointer to the screen's edge
+ *   s <who> [; comment]                     The Feeble Files: play as 15 Feeble or 16 SAM (the button by the
+ *                                           Oracle's, where both can be played)
+ * Any number may be "$<var>[+<n>]" instead: what that script variable holds when the step comes up, plus n
+ * (a puzzle the game sets up at random).
  *   # comment
  */
 class AGOSGuide {
@@ -70,27 +95,34 @@ public:
 	/** From the timer, once a frame: where the mouse is and whether it clicks, when the guide moves it. */
 	bool frame(Common::Point &mouse, bool &click);
 
+	/** The left button held down by the guide: 1 down, 0 let go now, -1 nothing to do. */
+	int holdButton() { const int h = _hold; if (_hold == 0) _hold = -1; return h; }
 	bool hidesCursor() const { return _hideCursor; }
 	bool active() const { return !_moves.empty(); }
 
 	// Hooks.
 	void onTalk(uint sprite, const byte *text);
 	void onMessage(const char *text);
+	void onInteract(uint num, int y, const char *text);
 
 	bool load(const Common::String &path);
 
 private:
 	struct Step {
-		enum Kind { kVerb, kBox, kChoice, kPoint, kRoomWait, kVarWait, kBitWait, kWait, kChoiceText, kPathPoint } kind;
+		enum Kind { kVerb, kBox, kChoice, kPoint, kRoomWait, kVarWait, kBitWait, kWait, kChoiceText, kPathPoint, kTalkWait, kSwitch, kVar2Wait, kRoomLeave, kLoop, kPairs, kLights, kHold, kCloseUp, kClickTo } kind;
 		int a = 0, b = 0, c = 0;
 		bool now = false;   // E: as soon as the game takes clicks
 		bool exit = false;  // x: done only once Simon is in another room
 		bool optional = false;   // C: a line that may not be offered, then skipped
+		bool check = false;      // N: a variable checked once the game waits, else some steps back
+		bool item = false;       // I: an item's state instead of a variable
 		int onlyRoom = 0;        // @<room>: only in that room, else skipped
+		int loops = 0;           // l: how many times it went back so far
 		Common::String text, comment, section;
+		Common::String raw;      // a line with $<var> in it, read again when the step comes up
 	};
 	struct Move {
-		enum Target { kBox, kItem, kChoice, kPoint, kIdle, kStay } target = kPoint;
+		enum Target { kBox, kItem, kChoice, kPoint, kIdle, kStay, kCursor, kLeave, kOpen, kHold } target = kPoint;
 		int id = 0, x = 0, y = 0;
 		bool click = false;
 		int frames = 0;   // how many frames to stay here
@@ -100,8 +132,9 @@ private:
 		int aheadId = 0;
 	};
 	enum State { kStopped, kWaitIdle, kRunning, kSettle };
-	enum Aim { kHere, kGone, kArrow, kScrolling, kWalk };
+	enum Aim { kHere, kGone, kArrow, kScrolling, kWalk, kOracle, kLeaveOracle };
 
+	Common::String withVariables(const Common::String &line) const;
 	bool parseLine(const Common::String &line, Step &st) const;
 	bool isIdle() const;
 	bool available(const Step &st) const;
@@ -120,6 +153,19 @@ private:
 	bool floorPoint(int path, int point, int &x, int &y) const;
 	bool boxOnScreen(const HitArea *ha, int &x, int &y) const;
 	int room() const;
+	int inventoryCount() const;   // a signature of the inventory
+	bool conversationAhead() const;
+	uint32 boxSignature() const;
+	uint32 flagSignature() const;
+	bool feeble() const;
+	bool bit(int n) const;
+	int maxPaths() const;
+	uint pathEnd() const;
+	int scrollXAt(int y) const;
+	int scrollY() const;
+	int screenW() const;
+	int screenH() const;
+	int roomBottom() const;
 	int itemId(Item *item) const;
 	Common::String itemName(Item *item) const;
 	Common::String describe(const Step &st) const;
@@ -135,23 +181,33 @@ private:
 	Common::Array<Step> _steps;
 	Common::Array<Move> _moves;
 	int _current, _remaining;
+	int _until = 0;   // control "until": stop as this step comes up
 	State _state;
 	uint32 _stateSince, _idleSince, _missingSince;
+	int _missingBackStep = -1, _missingBacks = 0;   // a map that never came up: the click before it again
 	mutable uint32 _walkSince = 0;
+	uint32 _stepFlags = 0;
 	bool _busy = false;   // the game took control after the step started
+	bool _effect = false;   // somebody talked, a choice came up (since the step started)
+	int _stepInv = 0;
+	uint32 _stepBoxes = 0;
 	bool _logClicks = true;
-	int _stepRoom = 0, _retries = 0;
+	int _stepRoom = 0, _prevStepRoom = 0, _retries = 0;
 	int _choiceGen = 0, _clickGen = -1;
+	int _seenRoom = 0;
+	uint32 _roomSince = 0;   // when the room the guide last saw came up
 	uint32 _lastFrame = 0;   // when the timer last took the guide's pointer
 	uint32 _clickableSince = 0;   // conversation lines printed so far, and when the step clicked
 	bool _stepMap = false;
 	bool _hideCursor, _logTalk;
 	int _saveSections, _sectionSaved;
+	int _hold = -1;
 	int _pendingLoad = -1, _pendingSave = -1;
 	Common::String _controlPath;
 	uint32 _controlOffset;
 	Common::Point _guideMouse;
 	Common::String _msgLine;
+	Common::String _heard;   // what was said since the step started
 	Common::Array<Common::String> _choiceText;
 };
 

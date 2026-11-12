@@ -1227,7 +1227,7 @@ Common::Error AGOSEngine::go() {
 		playMusic(0, 0);
 	}
 
-	if (getGameType() == GType_SIMON2)
+	if (getGameType() == GType_SIMON2 || getGameType() == GType_FF)
 		_guide = new AGOSGuide(this);
 
 	runSubroutine101();
