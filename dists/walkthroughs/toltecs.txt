@@ -684,3 +684,134 @@ k dandole a la botella ; they go for him
 s mirar medalla#13 ; the Star of Free Mexico, on the board
 s coger medalla#13
 s mirar medalla y sacacorchos ; the star and a corkscrew
+s ir puerta ; out to the yard
+s hablar cabo ; the jailer
+k que clase de carcelero
+k sintomas de desnutricion
+k de veras tienes hambre ; only rice, and the cook comes tonight
+k podria traerte algo de comer ; "leave it in the kitchen and ring the mess call"
+b puerta#1
+s abrir puerta#1 ; the kitchen
+s ir puerta#1
+s usar tabasco > cuenco ; the rice cooking since the first visit, with hot sauce
+s ir puerta ; out
+s usar triangulo ; the mess call: the jailer goes to eat
+
+== Fort Apache: la caja fuerte de Leconte
+s usar llave > puerta#4 ; the cell key
+s ir puerta#4 ; Fray Anselmo and Bull, the Indian doctor
+s hablar toro
+k caja fuerte de leconte
+s dar estetoscopio > toro ; he'll crack the safe while Fenimore keeps the soldiers busy
+s ir puerta ; out
+s hablar soldados
+k que esta meditando
+s hablar soldados
+k por que tenemos que atacar
+s hablar soldados
+k hartos de estar aqui
+s hablar soldados
+k esperando a alguien
+s hablar soldados
+k negociaciones con los indios
+b puerta#2
+s abrir puerta#2 ; Leconte's quarters
+s ir puerta#2
+s abrir puerta#1
+s ir puerta#1 ; the safe room: Leconte, the explosion, and Fenimore wakes up at the waterfall
+
+== La catarata
+s ir arriba ; up the rocks
+s usar cuerda > saliente ; across into a cave behind the water
+s ir reja ; the bars look into the monastery: a secret way in
+c 610 375 ; the map
+
+== El cañón: Gordinflas
+s ir cañon
+s dar medalla > fray gordo|gordinflas ; the Star of Free Mexico: he is general Gordinflas again
+s hablar fray gordo|gordinflas
+k yo se donde estan sus hombres
+k en la guarida del canon ; off to the hideout, a speech to his men
+k que planes tiene
+k que complicaciones ; someone inside, a surprise attack, and air support
+k respecto al apoyo aereo
+k globo aerostatico
+k fabricarlo con algo ; "give me that thing of yours"
+S dar globo > gordinflas ; he throws the cloth down
+k respecto al infiltrado
+k uniforme del ejercito frances
+k uno de sus hombres ; someone who speaks good French
+k echar una siesta
+s usar tela ; the balloon, over the pot and the basket
+s ir torre
+k respecto al apoyo aereo ; Fenimore will fly it and drop dynamite
+k echar una siesta
+c 610 375 ; the map
+
+== Big Town: el plan
+s ir big town
+s ir salon ; Leconte and Fray Anselmo
+s hablar leconte
+k tengo un plan
+k que le cuente mi plan ; hours later: they need air support, a man inside and a secret way in
+s dar traje > leconte ; his old French uniform: he will open the yard gate
+s hablar anselmo
+k otra entrada del pasadizo ; behind the waterfall: he will open it with his master key
+s ir puerta
+c 610 375 ; the map
+
+== El cañón: el ataque
+s ir cañon
+s ir cueva
+s ir torre
+k respecto al infiltrado
+k ya lo tenemos dentro
+k del coronel leconte
+k respecto al ataque sorpresa
+k pasadizo secreto ; someone has to lead half his men through it
+k respecto al ataque sorpresa
+k ya tengo a alguien en el pasadizo
+k fray anselmo ; the attack on the monastery begins
+
+== El monasterio: el asalto
+s ir puerta#1 ; across the yard, into the building
+s abrir puerta#1 ; the first door on the left: the cells
+s ir puerta#1
+s usar timon ; the wheel opens Juan Bostezos' cell
+s coger bola ; a cannonball
+s ir puerta
+s ir puerta#6 ; out to the yard
+s usar cuerda > cañon ; up onto the wall by the cannon
+s mover cañon
+s usar bola > cañon
+s mover cañon
+s usar cuerda > cañon
+s usar bola > cañon ; the shot blows the top off the tower
+s mover cañon
+s usar cuerda > cañon ; back down
+s ir puerta#1 ; into the building again
+g 900 250 ; along the corridor to the right
+s abrir puerta#4
+s ir puerta#4 ; the store room
+s abrir cajon#1
+s abrir cajon#2
+s abrir cajon#3
+s abrir cajon#4 ; a stair up the chest of drawers
+s mirar barril ; flammable liquid
+s usar =manguera > grifo ; the hose from the window onto the tap
+s ir ventana ; out onto the roof
+s usar =manguera#2 > ventana#2
+s usar =manguera#1 > ventana#2 ; the liquid sprays over the library's books
+s ir ventana#2 ; the library window
+s usar cerillas > libros#5 ; fire: the French run, the monastery is taken
+
+== El monasterio: el oráculo
+s ir puerta#2 ; the main door: the library
+s coger libro ; the green book
+s mirar libro ; a key inside: the oracle's
+s ir escaleras
+s usar llave > puerta#4 ; the oracle's gate: a rockfall
+s mover manta ; the carpet hides a fresco
+s mirar fresco ; three skulls on three monoliths
+s mover sol ; the sun symbol turns to the moon
+s ir cueva ; the oracle: the end

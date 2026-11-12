@@ -895,7 +895,7 @@ bool ToltecsGuide::runReveal(Action &a) {
 		_aimFrames = 0;
 		if (upper850(_lastVerb) == a.name)
 			return true;
-		if (_lastVerb == _scrollSeen || _lastVerb.empty() || ++_scrollMoves > 20) {
+		if (_lastVerb == _scrollSeen || _lastVerb.empty() || ++_scrollMoves > 60) {
 			// it did not move: the end on this side
 			_scrollPhase++;
 			_scrollSeen.clear();
