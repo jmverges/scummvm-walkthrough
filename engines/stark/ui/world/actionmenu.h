@@ -26,6 +26,8 @@
 
 namespace Stark {
 
+class Guide;
+
 class Cursor;
 class VisualImageXMG;
 class VisualText;
@@ -38,6 +40,8 @@ class Sound;
 }
 
 class ActionMenu : public Window {
+	friend class Guide;
+
 public:
 	ActionMenu(Gfx::Driver *gfx, Cursor *cursor);
 	~ActionMenu() override;

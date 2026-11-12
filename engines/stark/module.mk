@@ -2,6 +2,7 @@ MODULE := engines/stark
 
 MODULE_OBJS := \
 	console.o \
+	guide.o \
 	gfx/driver.o \
 	gfx/opengls.o \
 	gfx/openglsactor.o \

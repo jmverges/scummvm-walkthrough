@@ -33,6 +33,8 @@
 
 namespace Stark {
 
+class Guide;
+
 class VisualImageXMG;
 class VisualText;
 class ClickText;
@@ -42,6 +44,8 @@ class Speech;
 }
 
 class DialogPanel : public Window {
+	friend class Guide;
+
 public:
 	DialogPanel(Gfx::Driver *gfx, Cursor *cursor);
 	virtual ~DialogPanel();

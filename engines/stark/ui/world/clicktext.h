@@ -33,6 +33,8 @@ namespace Stark {
 class VisualText;
 
 class ClickText {
+	friend class Guide;
+
 public:
 	ClickText(const Common::String &text, const Gfx::Color &color);
 	~ClickText();

@@ -22,6 +22,7 @@
 #include "engines/stark/stark.h"
 
 #include "engines/stark/console.h"
+#include "engines/stark/guide.h"
 #include "engines/stark/debug.h"
 #include "engines/stark/resources/level.h"
 #include "engines/stark/resources/location.h"
@@ -145,8 +146,14 @@ Common::Error StarkEngine::run() {
 		}
 	}
 
+	if (ConfMan.hasKey("guide_file"))
+		g_guide = new Guide();
+
 	// Start running
 	mainLoop();
+
+	delete g_guide;
+	g_guide = nullptr;
 
 	services.staticProvider->shutdown();
 	services.resourceProvider->shutdown();
@@ -162,6 +169,9 @@ void StarkEngine::mainLoop() {
 
 		if (StarkUserInterface->shouldExit())
 			break;
+
+		if (g_guide)
+			g_guide->tick();
 
 		if (StarkResourceProvider->hasLocationChangeRequest()) {
 			StarkGlobal->setNormalSpeed();
@@ -250,7 +260,7 @@ void StarkEngine::updateDisplayScene() {
 			// When the game is in fast forward mode, update
 			// the game resources for multiple frames,
 			// but render only once.
-		} while (StarkGlobal->isFastForward() && frames < 100);
+		} while ((StarkGlobal->isFastForward() && frames < 100) || (g_guide && frames < (int)g_guide->loopsPerFrame()));
 		StarkGlobal->setNormalSpeed();
 	}
 

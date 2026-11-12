@@ -29,6 +29,8 @@
 
 namespace Stark {
 
+class Guide;
+
 namespace Formats {
 class XRCReadStream;
 }
@@ -42,6 +44,8 @@ class ItemTemplate;
 typedef Common::Array<uint32> ActionArray;
 
 class PATTable : public Object {
+	friend class Stark::Guide;
+
 public:
 	static const Type::ResourceType TYPE = Type::kPATTable;
 

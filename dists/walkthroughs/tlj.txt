@@ -1,0 +1,575 @@
+# The Longest Journey (Spanish CD), walkthrough for the stark guide player
+== El sueño de April
+o Al árbol
+u Ramita
+c Qué le ha pasado al árbol
+c huevo
+c ayudar
+u Nido
+o Hacia el río
+i Rama > Escama
+i Canalizador > Riachuelo
+o Hacia el borde del precipicio
+t Viejo árbol
+== Capítulo 1: Penumbra
+u Diario
+u Foto
+L Diario
+u Hoja de servicios
+o Salida => loc Inn ; the innkeeper stops April at the door with clothes
+u Armario
+u Mono de juguete
+o Salida => loc Inn ; the innkeeper stops April at the door with clothes
+L Mono de juguete
+u Ojo
+u Ojo
+u Tornillo
+o Salida => loc Inn ; the innkeeper stops April at the door with clothes
+u Ventana
+l Ventana
+u Cuerda de tender
+o Salida => loc Inn ; the innkeeper stops April at the door with clothes
+o Hacia el pasillo
+c Todo iba bien
+c no creo que funcione
+u Planta
+o Escaleras abajo
+l Tablón de anuncios
+u Nota rosa
+o Salida => loc Inn ; the innkeeper stops April at the door with clothes
+L Nota rosa
+i Nota rosa > Fiona
+t Fiona
+c pesadilla
+c Dónde se ha metido
+c No deberías estar ahí fuera
+c Puedo hacerte una pregunta
+c no hay más preguntas
+c ponga en marcha
+u Caja de cerillas
+o Puerta principal
+l Máquina
+i Anillo de oro > Cables
+u Palanca izquierda
+u Palanca izquierda
+u Palanca derecha
+u Palanca derecha
+u Palanca izquierda
+u Palanca derecha
+u Palanca derecha
+u Palanca derecha
+u Palanca izquierda
+u Palanca derecha
+u Válvula
+u Rueda
+u Tenazas
+u Conducto con el anillo de oro
+o Salida => loc Inn ; the innkeeper stops April at the door with clothes
+o Hacia los puentes
+c Muerta de calor
+c Frío y lluvioso
+o Hacia los puentes
+o Al parque
+o A la Academia
+o Puerta
+u Guante de goma
+o Arriba
+u Pincel y paleta
+i Pincel y paleta > Lienzo
+c Qué dice el mensaje
+c Dijo algo más
+c alusión a las pesadillas
+c Quieres que te cuente mi sueño
+c Me pasaré por allí
+o Abajo
+o Salida => loc Inn ; the innkeeper stops April at the door with clothes
+o Al parque
+o A los puentes
+o Al café
+o Puerta
+u Recipiente de caramelos
+t Charlie
+c Has visto a Corthès
+c visualizan sus sueños
+c Gracias
+c Tengo que irme, Charlie
+o Al café
+t Stanley
+c Me gustaría que me pagaras
+c De todas formas
+c Sí.
+i Hoja de servicios > Stanley
+c Dimito
+c Sí, necesito el dinero
+l Póster
+u Entrada
+o Salida => loc Inn ; the innkeeper stops April at the door with clothes
+L Entrada
+l Dirección
+o Salida => loc Inn ; the innkeeper stops April at the door with clothes
+u Cesta de pan
+o Salida => loc Inn ; the innkeeper stops April at the door with clothes
+o Salida a los puentes
+o A la residencia
+o La Residencia
+o Escaleras arriba
+o Mi apartamento
+l Ventana
+i Pan > Patito hinchable
+u Cadena
+o Hacia el pasillo
+o Escaleras abajo
+o Puerta principal
+o Hacia los puentes
+o Al café
+u Patito hinchable
+L Patito hinchable
+u Tirita
+o Salida => loc Inn ; the innkeeper stops April at the door with clothes
+o Salida a los puentes
+o Al metro
+o Metro
+u Escáner genético
+u Botones @210,296
+i Tarjeta de crédito > Lente
+o Salida => loc Inn ; the innkeeper stops April at the door with clothes
+o En el tren
+l Mapa del metro
+o Puente Watertown
+o Puerta
+t Corthès
+c Por qué?
+c Mira el cuadro
+c Qué debo mirar
+c chico abrazando
+c cuadro al óleo
+c obra de arte
+c Una ilusión
+c La verdad
+c Cómo demonios sabe
+o Puerta
+o Metro
+l Mapa del metro
+o Venecia Este
+o A los puentes
+o Al café
+o Puerta
+o Al café
+== Capítulo 2: A través del espejo
+o Hacia el pasillo
+o Escaleras abajo
+t Fiona
+c Buenos días
+c Sin duda alguna
+c Necesito saber algo más
+c Anoche ocurrió algo parecido
+c Has visto hoy a Corthès
+c Sabes dónde puedo encontrar a Corthès
+c Debo seguir adelante
+o Escaleras arriba
+u Apartamento de Zack
+c No te emociones
+c Conoces algún cine
+o Escaleras abajo
+o Puerta principal
+o Hacia los puentes
+o Al metro
+o Metro
+l Chispas
+i Cuerda de tender > Tenazas
+L Patito hinchable
+t Válvula
+o Salida => loc Inn ; the innkeeper stops April at the door with clothes
+i Patito hinchable > Tenazas
+!i Tenazas > Llave ; the duck deflates on the key (its script runs 30 s): no waiting for it
+o En el tren
+l Mapa del metro
+o Metro Circle
+o Salida Este
+o Bajando la calle
+u Cubo de basura
+i Caramelos > Barro
+t Tipo sospechoso
+c Sí, lo cierto es que sí
+c No se cansa de estar aquí
+c Así que acaba de comer
+i Caramelo apestoso > Detective
+u Cuadro de fusibles
+i Llave > Cerrojo
+i Titita > Guante de goma
+i Guante de goma > Chispas
+o A Metro Circle
+u Sombrero
+o Bajando la calle
+o Dentro del pasadizo
+g 330 300
+i Mono de juguete > Montón de basura
+i Sombrero > Bolsa de basura
+u Cubo de basura
+i Caja de cerillas > Cubo de basura
+u Mono
+o En el cine
+t Corthès
+c Quedamos esta mañana
+c Muy bien. Allá voy
+o Luz parpadeante
+o Salida => loc Inn ; the innkeeper stops April at the door with clothes
+t Sacerdote
+c Hablas español
+c (escucha)
+c (escucha)
+c (escucha)
+o Templo
+t El Vestrum Tobías
+o Salida => loc Inn ; the innkeeper stops April at the door with clothes
+t El Vestrum Tobías
+c Conoces a un hombre llamado Brian Westhouse
+c Quién podría informarme sobre Westhouse
+c A quién me dijiste
+c Volveré
+o Salida => loc Inn ; the innkeeper stops April at the door with clothes
+o Puestos
+t Mercader
+c dónde vive el Hombre Rodante
+c Necesito saber dónde vive
+c Por favor, dígame dónde vive
+c sin chico de los recados
+c yo podría ayudarle
+c Acepto el trabajo
+o Mercado
+o Ciudad
+o Las puertas de la ciudad
+o Muelles
+o Barco
+t Marinero
+c Es este el
+i Mapa del Capitán Nevebay > Capitán Nevebay
+i Lista de entregas > Capitán Nevebay
+c Por qué no?
+c Quién le contó esa patraña
+c No sabe escribir
+c poner una
+c Hay algo que pueda hacer
+c Qué tiene que ver la música
+c Así que si le toco algo
+c Volveré
+o Ciudad
+o Puertas de la ciudad
+l Puesto
+t Mercader de instrumentos
+i Moneda metálica > Mercader de instrumentos
+o Muelles
+o Barco
+i Lista de entregas > Capitán Nevebay
+o Ciudad
+o Puertas de la ciudad
+o Puertas de la ciudad
+o Mercado
+o Puestos
+i Lista de entregas > Mercader
+o Mercado
+o Ciudad
+o El Bungalow de Westhouse
+t Hombre
+c Tengo una entrega
+c Corthès me dijo que fuera
+c le buscara cuando quisiera volver
+c Debo irme
+o A la ciudad => has Reloj de bolsillo ; Westhouse stops April at the door with the watch
+L Reloj de bolsillo
+i Lista de entregas > Brian Westhouse
+i Chincheta > Reloj de bolsillo
+c Y que pasará ahora
+c Qué quieres decir
+c Quién eres tú realmente
+c Cómo vamos a encontrar al Guardián
+c quién conoce la entrada
+c Dónde está la llave
+c acabar con la Vanguardia
+c luchar contra ese Caos
+c salvemos el mundo
+o A los puentes
+o Al café
+o Puerta
+o Al café
+o Salida => loc Inn ; the innkeeper stops April at the door with clothes
+o Salida a los puentes
+o A la residencia
+o La Residencia
+o Escaleras arriba
+o Mi apartamento
+o Hacia el pasillo
+o Escaleras abajo
+o Puerta principal
+o Hacia los puentes
+o Al café
+o Puerta
+t Charlie
+c Acabo de tener la experiencia
+c Anda Emma por aquí
+c Gracias, Charlie
+o Al café
+c Tienes razón. Me quedo
+== Capítulo 3: Amigos y enemigos
+o Hacia el pasillo
+c Te diría que eres un bastardo
+o Escaleras abajo
+o Puerta principal
+o Hacia los puentes
+o Al metro
+o Metro
+o En el tren
+l Mapa del metro
+o Hope Street
+o Catedral
+o Confesionarios
+t Sacerdote
+c Conoce a un chico llamado Warren
+c Dónde vive Warren
+c Gracias, Padre
+o Salida => loc Inn ; the innkeeper stops April at the door with clothes
+o Salida => loc Inn ; the innkeeper stops April at the door with clothes
+o Edificio 87
+t Chico
+c Sabes dónde puedo encontrar a un chico
+c No busco problemas
+c Qué es lo que quieres
+c Lo haré
+c Dónde está la comisaría
+c Será mejor que me ponga en marcha
+o Escaleras => loc Amongst the Cranes ; up to the walkway, same location
+o Metro
+l Mapa del metro
+o Metro Oeste
+o Comisaría
+t Poli
+c Excepto aquella lanzadera
+c Salvo usted, agente
+o Calle
+l Calle cortada
+l Señal
+l Señal [2]
+u Calle cortada
+u Contenedor
+t Sargento
+c Dónde están los archivos
+c Estoy estudiando en la academia
+c Respecto a los archivos
+c Y qué si no lo soy
+t Tipo corpulento
+c Por qué no están trabajando
+c No se supone que tienen que arreglar
+c Sería muy amable
+c Hay algo que pueda hacer yo
+c disfrutad del recreo
+l Caja de herramientas
+u Caja de herramientas
+L Solicitud caducada
+t Sargento
+t Tipo corpulento
+c A propósito de esa orden
+c Adónde tengo que dirigirme
+c disfrutad del recreo
+t Sargento
+c Necesito el formulario 09042
+i Solicitud del sindicato #09042 > Tipo corpulento
+t Sargento
+c también necesito el anexo
+i Solicitud del sindicato #09042-A > Tipo corpulento
+l Pantalla ; the left phone's number: 099-12090
+u Videoteléfono derecho
+c (Marcar un número) ; the first call is to April's mother
+u Videoteléfono derecho
+c (Marcar 099-12090)
+!t Tipo corpulento ; while the phone rings
+c te llaman por teléfono
+!t Tipo delgaducho => know Thin guy on the phone? ; he only goes after being told twice
+u Destornillador ; left on the floor by the workmen
+u Cables => see Pasillo ; the crossed wires don't always spark: again until the door opens
+o Pasillo => loc Precinct Lobby ; the sergeant stops April and shuts the door: she has to be distracted first
+l Estanterías
+u Cables => see Pasillo
+t Sargento
+c comportamientos lascivos
+!o Pasillo => loc Corridor
+i Tarjeta de crédito > Máquina expendedora de refrescos ¡Bingo!
+o Puerta de entrada
+l Taquilla 1
+l Taquilla 2
+l Taquilla 3
+l Taquilla 4
+l Taquilla 5
+l Taquilla 6
+t Retrete
+c La sargento Hernández
+i Llave de la taquilla > Taquilla de Minnelli
+l Taquilla abierta
+l Receptáculo
+u Medicina
+l Espejo [2]
+l Trozo de espejo
+u Trozo de espejo
+l Nota
+o Salida => loc Inn ; the innkeeper stops April at the door with clothes
+i Medicina > Minnelli
+t Minnelli
+c Qué tal la Sra. Minnelli
+c Respecto a la Sra. Minnelli
+c Tengo que irme, Minnelli
+u Interruptor
+h Ojo de mono
+W see Ojo artificial ; Minnelli sneezes his eye out
+!i Ojo de mono > Ojo artificial ; 10 s before his hand finds it
+o Pasillo
+i Ojo de Minnelli > Escáner de retina
+o Archivos
+u Ordenador
+c ("Warren Hughes")
+u BORRAR
+u IMPRIMIR
+l Erika Hughes
+u PRINCIPAL
+c col#0050123185353260
+u IMPRIMIR
+o Salida => loc Inn ; the innkeeper stops April at the door with clothes
+u Ordenador
+c ("Iglesia de Voltec")
+l Jacob McAllen
+u PRINCIPAL
+c ("Jacob McAllen")
+u CONTINUAR
+l Código
+o Salida => loc Inn ; the innkeeper stops April at the door with clothes
+u Informe impreso
+u Panel de control
+u Botón 11
+u Botón 16
+u Botón 1
+u Botón 8
+L Carpeta de la Vanguardia
+o Salida => loc Inn ; the innkeeper stops April at the door with clothes
+o A la recepción
+o Salida => loc Inn ; the innkeeper stops April at the door with clothes
+o Salida => loc Inn ; the innkeeper stops April at the door with clothes
+l Luces parpadeantes
+o Calle
+o Metro
+l Mapa del metro
+o Hope Street
+o Edificio 87
+i Listado impreso > Warren
+c puedes ponerme en contacto
+c Adiós, Warren
+o Escaleras => loc Amongst the Cranes ; up to the walkway, same location
+o Metro
+l Mapa del metro
+o Muelles de Newport
+o Escaleras => loc Amongst the Cranes ; up to the walkway, same location
+o Almacén en construcción
+o Garaje
+l Máquina
+u Puerta del garaje
+u Puerta del garaje
+u Puerta del garaje
+i Lata de refresco > Pulverizador
+o Garaje
+o Dentro del pozo
+t Burns Flipper
+c Necesito cierta información
+c Necesito información sobre un tipo llamado Jacob McAllen
+c Muchas gracias por la ayuda
+i Datacubo de la Vanguardia > Burns Flipper
+t Burns Flipper
+c tarjeta de identificación falsa
+c Podemos hablar de la identificación
+c formas de pago alternativas
+c Qué le pasa a tu silla
+c Gracias.
+o Salida => loc Inn ; the innkeeper stops April at the door with clothes
+o Salida => loc Inn ; the innkeeper stops April at the door with clothes
+o Almacén en construcción
+o Puerto marítimo
+o Metro
+l Mapa del metro
+o Metro Oeste
+o Comisaría
+t Poli
+i Lata de refresco > Poli
+i Trozo de espejo > Valla láser
+i Destornillador > Unidad
+o Calle
+o Metro
+l Mapa del metro
+o Muelles de Newport
+o Almacén en construcción
+o Garaje
+o Garaje
+o Dentro del pozo
+i Unidad de control antigravitatoria > Burns Flipper
+o Salida => loc Inn ; the innkeeper stops April at the door with clothes
+o Salida => loc Inn ; the innkeeper stops April at the door with clothes
+o Almacén en construcción
+o Puerto marítimo
+o Metro
+l Mapa del metro
+o Hope Street
+o Catedral
+o Confesionarios
+t Corthès
+o Salida => loc Inn ; the innkeeper stops April at the door with clothes
+o Salida => loc Inn ; the innkeeper stops April at the door with clothes
+o Metro
+l Mapa del metro
+o Venecia Este
+o A los puentes
+o A la residencia
+o La Residencia
+o Escaleras arriba
+o Mi apartamento
+c No me creeríais
+c he sido elegida para salvar al mundo
+c un par de cosas que podríais hacer
+== Capítulo 4: El monstruo
+o Posada
+t Mujer
+c Lo siento mucho, señora
+c Están de fiesta
+c Cómo te llamas
+c Gracias.
+t Posadera
+c Por qué celebran la Fiesta
+c Qué quieres decir con eso
+c Por qué quiere la Vanguardia
+c Qué es una
+c Háblame de mi futuro
+W see Criatura extraña ; Abnaxus comes in once the innkeeper leaves
+t Criatura extraña
+u Silla cómoda
+o Salida => loc Inn ; the innkeeper stops April at the door with clothes
+c Dime por dónde empiezo
+o Salida
+o A la ciudad
+o La Ciudad Green
+u Puerta
+c Quién es usted
+c Yo fluyo por el tiempo
+c Puede ver el futuro
+c velo del que tanto habla
+c Hábleme de las profecías
+c Necesito pedirle que me ayude
+c Sabe algo de dragones
+c disco que sirve para acceder
+c una grieta que va a dar
+c Cómo podría luchar contra el Caos
+c dónde puedo encontrar a este Draic Kin
+c no sabe dónde puedo encontrar el disco
+c Qué hay del otro dragón
+c dios" que cayó del cielo
+c Eso es todo por el momento
+c Gracias por su hospitalidad
+o Salida
+o A la ciudad
+o Mercado
+o Templo
+t El Vestrum Tobías
+c Necesito encontrar a los dos dragones

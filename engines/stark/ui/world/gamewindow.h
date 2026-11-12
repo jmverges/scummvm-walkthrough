@@ -32,10 +32,14 @@
 
 namespace Stark {
 
+class Guide;
+
 class ActionMenu;
 class InventoryWindow;
 
 class GameWindow : public Window {
+	friend class Guide;
+
 public:
 	GameWindow(Gfx::Driver *gfx, Cursor *cursor, ActionMenu *actionMenu, InventoryWindow *inventory);
 	virtual ~GameWindow();

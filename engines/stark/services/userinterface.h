@@ -123,6 +123,9 @@ public:
 	/** Is the game screen currently displayed? */
 	bool isInGameScreen() const;
 
+	GameScreen *getGameScreen() const { return _gameScreen; }
+	Cursor *getCursor() const { return _cursor; }
+
 	/** Is the save & load menu screen currently displayed? */
 	bool isInSaveLoadMenuScreen() const;
 

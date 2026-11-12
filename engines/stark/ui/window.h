@@ -31,6 +31,8 @@ struct Surface;
 
 namespace Stark {
 
+class Guide;
+
 class Cursor;
 
 namespace Gfx {
@@ -52,6 +54,8 @@ namespace Resources {
  *
  */
 class Window {
+	friend class Guide;
+
 public:
 	Window(Gfx::Driver *gfx, Cursor *cursor);
 	virtual ~Window();

@@ -49,7 +49,8 @@ TinyGLDriver::~TinyGLDriver() {
 void TinyGLDriver::init() {
 	computeScreenViewport();
 
-	TinyGL::createContext(kOriginalWidth, kOriginalHeight, g_system->getScreenFormat(), 512, true, ConfMan.getBool("dirtyrects"));
+	// a crowded room (the Fringe Cafe) and a save's thumbnail, drawn in the same frame, outrun the default 5 MB of draw calls
+	TinyGL::createContext(kOriginalWidth, kOriginalHeight, g_system->getScreenFormat(), 512, true, ConfMan.getBool("dirtyrects"), 32 * 1024 * 1024);
 
 	tglMatrixMode(TGL_PROJECTION);
 	tglLoadIdentity();

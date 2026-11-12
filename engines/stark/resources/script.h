@@ -137,6 +137,9 @@ public:
 	/** Returns true if the script is enabled and valid for this call mode */
 	bool shouldExecute(uint32 callMode);
 
+	uint32 getScriptType() const { return _scriptType; }
+	uint32 getRunEvent() const { return _runEvent; }
+
 	/** Step the script to the next command, overriding all checks */
 	void goToNextCommand();
 

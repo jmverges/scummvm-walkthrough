@@ -31,6 +31,8 @@
 
 namespace Stark {
 
+class Guide;
+
 class ActionMenu;
 
 namespace Resources {
@@ -38,6 +40,8 @@ class Anim;
 }
 
 class InventoryWindow : public Window {
+	friend class Guide;
+
 public:
 	InventoryWindow(Gfx::Driver *gfx, Cursor *cursor, ActionMenu *actionMenu);
 	~InventoryWindow() override {}

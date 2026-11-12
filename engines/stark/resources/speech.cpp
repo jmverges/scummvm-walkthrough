@@ -20,6 +20,7 @@
  */
 
 #include "engines/stark/resources/speech.h"
+#include "engines/stark/guide.h"
 
 #include "engines/stark/formats/xrc.h"
 
@@ -58,6 +59,8 @@ Common::String Speech::getPhrase() const {
 }
 
 void Speech::playSound() {
+	if (g_guide)
+		g_guide->onSpeech(this);
 	StarkGlobal->setNormalSpeed();
 
 	if (_playTalkAnim) {
