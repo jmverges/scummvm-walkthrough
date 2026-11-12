@@ -465,3 +465,222 @@ s ir salida
 s ir puerta#2 ; out to the yard
 
 == Fort Apache: la cocina y el sargento
+b puerta#1
+s ir puerta#1 ; the kitchen
+s usar leños > horno
+s usar cerillas > horno ; a fire
+s usar cafetera > hornalla
+s coger cafetera ; hot coffee
+s ir puerta ; out
+b puerta#3
+s abrir puerta#3 ; sergeant Smith and the two ladies of the Anti-Alcohol League
+b puerta#3
+s ir puerta#3
+s hablar sargento
+k me llamo fenimore
+k hace buen tiempo
+k vaya al grano
+k bebedor empedernido
+k proporcione una botella ; "no thanks, I gave it up"
+k ya no le tira
+k como puede asegurar ; easy to resist when there is no bottle around
+k de veras no quiere ; "get me a bottle"
+k ya nos veremos
+s hablar señoras
+k yo no tengo problemas
+k liga antialcoholica
+k uniforme muy elegante
+k me tengo que ir
+s mirar cuadro
+s ir puerta ; out
+c 610 375 ; the map
+s ir big town
+
+== Big Town: el barril de whisky
+s usar =barril > deposito de agua ; water (the barrel on the handcar)
+s usar cebada > barril
+s usar azucar > barril
+s usar p > barril ; the lid: ready for the distillery
+s usar palanquin ; the handcar, with the barrel
+s ir bosque ; on its map: Tom distils the whiskey, then on to the Indian village
+
+== El poblado indio: el whisky
+s coger calavera ; the golden skull behind the chief: Leconte turns up and takes it
+s usar botella > barril ; a bottle of whiskey
+c 610 375 ; the map
+s ir big town
+
+== Big Town: el globo y la iglesia
+s dar globo > vieja ; she mends it
+b puerta#2
+s abrir puerta#2 ; the church
+s ir puerta#2
+s usar vela > candelabro
+s usar cerillas > vela ; the smoke makes the priest dizzy
+s usar loro > confesionario
+s hablar parroco
+k digale a fray anselmo ; Anselmo comes out to confess the parrot
+b puerta#2
+s abrir puerta#2 ; the sacristy
+s ir puerta#2
+s coger tiquet ; Fray Anselmo's deposit at the bank: a golden skull
+s abrir baul
+s mirar baul ; pistols inside
+s coger baul ; the gun belt
+s ir puerta ; back into the church
+b puerta#1
+s abrir puerta#1 ; out
+s ir puerta#1
+
+== Big Town: la caja fuerte
+b puerta#4
+s abrir puerta#4 ; the bank
+s ir puerta#4
+s usar sotana ; dressed as Fray Anselmo
+g 740 200 ; to the cashier's window
+s hablar cajero
+k en efecto
+k tenga ; the ticket: the safe is broken, the locksmith comes next week
+k el mas incompetente
+k retiren sus fondos
+k volvere luego
+s usar sotana ; off again
+s hablar cajero
+k cerrar mi cuenta
+k este banco es un desastre ; would Fenimore try to open the safe?
+s usar dinamita > manivela
+s usar cerillas > dinamita ; Leconte arrests Fray Anselmo, the cashier runs off
+s ir puerta ; out of the bank
+
+== Big Town: el cubo y el pozo
+s ir salon
+g 470 275 ; up the stairs
+s usar nube magica ; rain indoors: the barman puts his bucket by the door
+c 480 330 ; down the stairs
+s coger cubo
+s ir puerta#3 ; out to the street
+s ir establo ; along the street to the stable and the well
+s hablar pozo ; Sam, down the well
+k algo pesado ; something heavy and shiny fell in
+k esa cosa me pertenece ; he'll give it back once he is out
+k ahora tengo que irme
+s usar cubo > pozo
+s usar manivela
+s usar manivela ; Sam climbs out and hands over the skull
+s mirar calavera con estetoscopio ; the stethoscope comes off
+s mirar estetoscopio ; a safecracker's tool
+s ir pueblo
+s ir salon ; Sam is back at the piano and the girls dance
+s ir puerta ; out
+
+== Big Town: la habitación de Dickson
+b puerta#2
+s abrir puerta#2 ; the church
+s ir puerta#2
+s ir campanario ; up the belfry
+s ir campanario
+s ir balcon#1 ; a plain click on Dickson's balcony: Fenimore swings over into his room
+s abrir cajon#1
+s mirar cajon#1 ; a manual
+s coger cajon#1
+s mirar cajon#2
+s ir puerta ; out to the landing
+s abrir puerta#2 ; the girls' room, empty now
+s ir puerta#2
+s coger almohadon#1
+s coger almohadon#2
+s usar almohadon > cuchillo ; a hundred dollars inside
+s usar almohadon > cuchillo ; the other one is empty
+s ir puerta ; out
+c 610 375 ; the map
+
+== El monasterio: Juan Bostezos
+s ir monasterio
+s usar cafetera > mexicano ; the coffee wakes him up
+s hablar mexicano
+k uno de esos juaristas
+k usted es un impostor ; "ask me something only a rebel would know"
+k donde suelen refugiarse
+k por donde cae la guarida ; Quebrado canyon, through a hole above a big rock
+k juarista de verdad
+c 610 375 ; the map
+
+== El cañón: la guarida
+s ir cañon
+s dar zanahoria > burro
+S coger sombrero ; while the donkey eats
+s dar sombrero > fray gordo|gordinflas ; it hides his tonsure
+s dar pistoleras > fray gordo|gordinflas
+s ir cueva ; the rebels' hideout, through the hole above the big rock
+s coger cartas ; the aces
+s ir torre ; the provisional leader
+k que hace usted aqui arriba
+k tienen ocupado un enclave
+k respecto al monasterio
+k expulsar de alli
+k usted es el jefe ; he only stands in until HE comes back
+k me tengo que ir
+c 610 375 ; the map
+
+== Big Town: el póquer
+s ir big town ; by the stable
+s ir pueblo
+s ir salon
+s hablar sheriff
+k quiero jugar
+k tengo algunos dolares
+s usar silla ; at the poker table
+c 595 373 ; OK: keep the cards
+w 4
+c 85 394 ; a dollar
+w 6
+c 75 394 ; call
+w 6
+c 105 394 ; call
+w 6
+c 255 394 ; "let me see how much I have left"
+S usar dolares falsos > ases ; quick, while the hand is down: the fake hundred and the four aces
+
+== Big Town: la cárcel
+s hablar dickson
+k tenemos que largarnos
+s coger piedra
+s usar piedra > pettyboom ; he drops a dart
+s coger dardo
+s usar dardo > argolla ; the escape
+s ir camino ; carrying Dickson
+s ir pueblo ; the station at night
+
+== Big Town: el telégrafo
+s abrir puerta ; the telegraphist: "close the door, there's a draught"
+w 10 ; the wind slams it shut
+s abrir puerta
+s mover palancas
+s mover palancas
+s abrir puerta
+s mover palancas ; he comes out to reset them and runs into the shut door
+w 15
+s mover palancas
+s abrir puerta
+s ir puerta
+s coger libro ; the Morse code book
+s mirar libro de morse
+s usar aparato ; a telegram: the train comes, the sheriff leaves his office
+s ir puerta
+s mirar llave ; a cell key
+c 610 375 ; the map
+
+== Fort Apache: la estrella
+s ir fort apache
+s ir puerta ; into the fort
+b puerta#3
+s abrir puerta#3 ; the sergeant's room
+s ir puerta#3
+s dar whisky > sargento ; "leave it on the mantelpiece"
+s ir puerta ; out
+s ir puerta#3 ; back in: he is drinking
+s hablar señoras
+k dandole a la botella ; they go for him
+s mirar medalla#13 ; the Star of Free Mexico, on the board
+s coger medalla#13
+s mirar medalla y sacacorchos ; the star and a corkscrew

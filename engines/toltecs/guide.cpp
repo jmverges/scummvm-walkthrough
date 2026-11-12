@@ -144,6 +144,9 @@ static Common::String upper850(const Common::String &in) {
 
 // A walkthrough object name folded for comparing, keeping a "#n" suffix (the n-th of several with that name).
 static Common::String foldName(const Common::String &utf8) {
+	const size_t bar = utf8.findFirstOf('|');
+	if (bar != Common::String::npos)
+		return foldName(utf8.substr(0, bar)) + "|" + foldName(utf8.substr(bar + 1));
 	const size_t hash = utf8.findLastOf('#');
 	if (hash == Common::String::npos)
 		return upper850(toCp850(utf8));
@@ -199,6 +202,10 @@ bool ToltecsGuide::parseLine(const Common::String &text, Step &st) const {
 		st.verb = args.substr(0, sp);
 		st.verb.toLowercase();
 		Common::String rest = args.substr(sp + 1);
+		rest.trim();
+		st.firstInScene = rest.hasPrefix("=");
+		if (st.firstInScene)
+			rest = rest.substr(1);
 		size_t gt = rest.findFirstOf('>');
 		st.first = foldName(gt == Common::String::npos ? rest : rest.substr(0, gt));
 		if (gt != Common::String::npos)
@@ -506,6 +513,11 @@ Common::Array<ToltecsGuide::Spot> ToltecsGuide::spotsNamed(const Common::String 
 		name = fullName.substr(0, hash);
 		name.trim();
 	}
+	const size_t bar = name.findFirstOf('|');   // "NAME|SHOWN": the record's name, then the one the verb line shows
+	if (bar != Common::String::npos) {
+		name = name.substr(0, bar);
+		name.trim();
+	}
 	const Common::Array<int> current = currentTables();
 	for (uint i = 0; i < current.size(); i++) {
 		const Table &t = _tables[current[i]];
@@ -677,6 +689,10 @@ bool ToltecsGuide::runAim(Action &a) {
 		Common::String bare = a.name;
 		if (bare.findLastOf('#') != Common::String::npos) {
 			bare = bare.substr(0, bare.findLastOf('#'));
+			bare.trim();
+		}
+		if (bare.findFirstOf('|') != Common::String::npos) {
+			bare = bare.substr(bare.findFirstOf('|') + 1);
 			bare.trim();
 		}
 		// the name on the verb line, or as a label over it (the map and the handcar's map show names that way)
@@ -900,8 +916,9 @@ void ToltecsGuide::execute(const Step &st) {
 		// the object out of view: walk toward it first (with no verb chosen: a click on the floor with a verb does
 		// nothing)
 		// with a second object the first one is an item of the inventory (it may also name a hotspot of the scene
-		// that is gone: the sponge, once taken), and the one to walk to is the second
-		const bool firstIsItem = !st.second.empty();
+		// that is gone: the sponge, once taken), and the one to walk to is the second; "=" makes it a hotspot of the
+		// scene (the barrel on the handcar, used with the water tank)
+		const bool firstIsItem = !st.second.empty() && !st.firstInScene;
 		bool visible = false;
 		const Common::String &target = firstIsItem ? st.second : st.first;
 		const Common::Array<Spot> spots = spotsNamed(target);
@@ -1466,6 +1483,10 @@ void ToltecsGuide::runCommand(const Common::String &text) {
 		const byte *data = x >= 0 && x < kMaxScriptSlots ? _vm->_script->getSlotData(x) : nullptr;
 		if (data && (uint32)y < _vm->_script->getSlotSize(x))
 			logf("text %d +%d: %s", x, y, scriptText(data + y, data + _vm->_script->getSlotSize(x)).c_str());
+	} else if (c == "debuglevel") {
+		// debuglevel N: the engine's debug output (2: every script opcode)
+		gDebugLevel = x;
+		logf("debug level %d", x);
 	} else if (c == "quit") {
 		_vm->quitGame();
 	} else if (parseLine(line, st)) {

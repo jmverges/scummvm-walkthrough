@@ -41,7 +41,9 @@ class ToltecsEngine;
  * File format, one entry per line (UTF-8; names as the game shows them, any case):
  *   == Section title
  *   s <verb> <name> [> <name>] [; comment]   a sentence: the verb in the bottom bar, then the object (a hotspot of the
- *                                            scene or an inventory item), then the second one if any. Verbs: abrir,
+ *                                            scene or an inventory item), then the second one if any (with two, the
+ *                                            first one is an item; "=" before it for a hotspot of the scene; a
+ *                                            hotspot whose verb line shows another name: "NAME|SHOWN"). Verbs: abrir,
  *                                            cerrar, coger, dar, usar, mover, hablar, mirar, ir (no verb: walk to it)
  *   b <name> [; comment]        a few steps away from a hotspot, onto the floor below it (an action on a hotspot whose
  *                               spot he already stands at does nothing: he walks there first and acts on arriving)
@@ -78,6 +80,7 @@ private:
 		int a = 0, b = 0;
 		Common::String verb, first, second, text;   // names in the game's code page (cp850)
 		bool now = false;
+		bool firstInScene = false;   // "usar =X > Y": X is a hotspot of the scene, not an item
 		Common::String comment, section;
 	};
 	struct Action {
