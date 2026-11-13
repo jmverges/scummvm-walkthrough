@@ -1320,6 +1320,13 @@ void ToltecsGuide::tick() {
 	const bool waitStep = st.kind == Step::kWait || st.kind == Step::kSceneWait || st.kind == Step::kVerbWait;
 	const bool screenStep = st.kind == Step::kScreenClick || st.kind == Step::kScreenRight ||
 		st.kind == Step::kScreenDouble;
+	if (st.kind == Step::kSentence && st.verb == "hablar" && choice && _current + 1 < (int)_steps.size() &&
+		_steps[_current + 1].kind == Step::kDialogue) {
+		// the game opened the dialogue by itself (the cashier when he sees Fray Anselmo's habit): talking is done
+		logf("step %d: the dialogue is open already", _current + 1);
+		next();
+		return;
+	}
 	if (st.kind == Step::kDialogue) {
 		if (!choice)
 			return;   // a dialogue line: once the dialogue waits for one
