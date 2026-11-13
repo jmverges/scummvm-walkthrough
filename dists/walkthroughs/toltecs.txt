@@ -18,6 +18,7 @@ s coger pico
 s usar estaca > fray gordo ; knocks him out
 s coger sotana
 s usar burro
+w 3
 c 170 371 ; the donkey's ways: Camino (left), to the monastery
 
 == El monasterio
@@ -46,6 +47,7 @@ k yo se donde estan
 k he visto a uno de ellos
 s coger sombrero ; the donkey won't let him
 s usar burro
+w 3
 c 490 371 ; Cañón (right): to Big Town
 
 == Big Town: el establo
@@ -84,9 +86,7 @@ s usar palanquin ; the handcar is broken
 == Big Town: el almacén
 s abrir caja ; the big box by the store
 s mirar caja ; logs inside: takes them
-b puerta#6
 s abrir puerta#6 ; the store's door
-b puerta#6
 s ir puerta#6
 s hablar tendero ; Bobby
 k mi nombre es
@@ -96,9 +96,7 @@ s coger puros
 s ir puerta#2 ; out
 
 == Big Town: la oficina del sheriff
-b puerta#1
 s abrir puerta#1 ; right of the bank
-b puerta#1
 s ir puerta#1
 s hablar gordito ; Mortimer Pettyboom, the deputy
 k quien es usted
@@ -119,11 +117,8 @@ s ir puerta ; back
 s ir puerta#1 ; out to the street
 
 == Big Town: el banco
-b puerta#4
 s abrir puerta#4 ; the bank
-b puerta#4
 s ir puerta#4
-g 740 200 ; to the cashier's window
 s hablar cajero
 k quiero abrir una cuenta
 k fenimore fillmore
@@ -141,6 +136,7 @@ k esta bien lo acepto ; 20 dollars
 s hablar cajero
 k busco a un tal fray anselmo ; the one with a golden skull
 k si ese mismo ; only for close relatives
+s ir puerta ; out of the bank
 
 == Big Town: el salón
 s ir salon ; the layabout stops him
@@ -203,9 +199,7 @@ k moreno
 k blanca
 k un ojo
 k botas ; he lodges next door to her
-b puerta#1
 s abrir puerta#1 ; the sheriff's office again
-b puerta#1
 s ir puerta#1
 s hablar gordito
 k creo que ya se que es lo que sobra
@@ -220,9 +214,7 @@ k atiende usted la barberia
 s hablar vieja
 k que esta remendando ; her son should bring her thread
 k es que yo no conozco ; his name is Bobby
-b puerta#6
 s abrir puerta#6 ; the store
-b puerta#6
 s ir puerta#6
 s hablar tendero
 k bobby su madre le llama ; he leaves the store
@@ -233,9 +225,7 @@ s coger zanahorias
 s ir puerta#2 ; out
 
 == Big Town: la iglesia
-b puerta#2
 s abrir puerta#2 ; the church
-b puerta#2
 s ir puerta#2
 s hablar parroco
 k bueno ; his sermon
@@ -246,14 +236,11 @@ k tal vez si usted se impone
 k le dejo reverendo
 s mirar candelabro
 s mirar confesionario
-b puerta#2
 s abrir puerta#2 ; the sacristy, on the right
-b puerta#2
 s ir puerta#2
 s mirar tiquet ; Fray Anselmo throws him out
-b puerta#1
+w 4
 s abrir puerta#1 ; out of the church
-b puerta#1
 s ir puerta#1
 
 == Big Town: el palanquín
@@ -278,6 +265,7 @@ s ir entrada ; back to the handcar
 s ir poblado indio
 
 == El poblado indio
+a 65
 s coger cuchillo ; stuck in the post
 s ir descosido ; into the tent through the rip
 s coger vela
@@ -321,9 +309,7 @@ s coger tela ; caught in the tree
 s coger tela ; a torn balloon
 s mirar globo
 s usar cuchillo > chicle ; the gum on the tree
-b puerta
 s abrir puerta ; Tom's cabin
-b puerta
 s ir puerta
 s coger caña
 s hablar tom
@@ -356,9 +342,7 @@ k que planes tiene leconte ; an attack on the Indians
 k que tiene de malo la paz
 k estas seguro de que leconte ; he is after some Indian trophies
 k te dejo con tus practicas
-b puerta#1
 s abrir puerta#1 ; the kitchen (the triangle over its door)
-b puerta#1
 s ir puerta#1
 s mirar horno
 s mirar hornalla
@@ -404,9 +388,7 @@ c 610 375 ; the map
 s ir fort apache
 s ir puerta ; into the fort
 s mirar ventana ; the colonel has gone: the door is free
-b puerta#2
 s abrir puerta#2 ; the colonel's quarters
-b puerta#2
 s ir puerta#2
 s mover tonel ; the barrel rolls out, onto the handcar
 s coger uniforme
@@ -416,9 +398,7 @@ s usar esponja > alarma
 s ir puerta#2 ; out to the yard
 
 == Fort Apache: la cárcel y la lavandería
-b puerta#4
 s abrir puerta#4 ; the fort's jail
-b puerta#4
 s ir puerta#4
 s hablar cabo ; the jailer, "not asleep"
 k esto parece un calabozo
@@ -430,9 +410,7 @@ k ha muerto ; the Anti-Alcohol League got him
 k pasemos a otro tema
 k que hacemos aqui
 s ir puerta ; out
-b puerta#5
 s abrir puerta#5 ; the Chinese laundry
-b puerta#5
 s ir puerta#5
 s hablar chino
 k me llamo fenimore
@@ -455,9 +433,7 @@ s ir puerta ; out
 b puerta#2
 s ir puerta#2 ; the colonel's quarters again (left open)
 s usar llave > cerradura ; the locked door
-b puerta#1
 s abrir puerta#1
-b puerta#1
 s ir puerta#1
 s mirar cerradura ; the safe
 s mirar manivela
@@ -472,9 +448,7 @@ s usar cerillas > horno ; a fire
 s usar cafetera > hornalla
 s coger cafetera ; hot coffee
 s ir puerta ; out
-b puerta#3
 s abrir puerta#3 ; sergeant Smith and the two ladies of the Anti-Alcohol League
-b puerta#3
 s ir puerta#3
 s hablar sargento
 k me llamo fenimore
@@ -512,7 +486,6 @@ s ir big town
 
 == Big Town: el globo y la iglesia
 s dar globo > vieja ; she mends it
-b puerta#2
 s abrir puerta#2 ; the church
 s ir puerta#2
 s usar vela > candelabro
@@ -520,7 +493,6 @@ s usar cerillas > vela ; the smoke makes the priest dizzy
 s usar loro > confesionario
 s hablar parroco
 k digale a fray anselmo ; Anselmo comes out to confess the parrot
-b puerta#2
 s abrir puerta#2 ; the sacristy
 s ir puerta#2
 s coger tiquet ; Fray Anselmo's deposit at the bank: a golden skull
@@ -528,23 +500,18 @@ s abrir baul
 s mirar baul ; pistols inside
 s coger baul ; the gun belt
 s ir puerta ; back into the church
-b puerta#1
 s abrir puerta#1 ; out
 s ir puerta#1
 
 == Big Town: la caja fuerte
-b puerta#4
 s abrir puerta#4 ; the bank
 s ir puerta#4
 s usar sotana ; dressed as Fray Anselmo
-g 740 200 ; to the cashier's window
 s hablar cajero
 k en efecto
 k tenga ; the ticket: the safe is broken, the locksmith comes next week
 k el mas incompetente
 k retiren sus fondos
-k volvere luego
-s usar sotana ; off again
 s hablar cajero
 k cerrar mi cuenta
 k este banco es un desastre ; would Fenimore try to open the safe?
@@ -556,6 +523,7 @@ s ir puerta ; out of the bank
 s ir salon
 g 470 275 ; up the stairs
 s usar nube magica ; rain indoors: the barman puts his bucket by the door
+w 5
 c 480 330 ; down the stairs
 s coger cubo
 s ir puerta#3 ; out to the street
@@ -574,7 +542,6 @@ s ir salon ; Sam is back at the piano and the girls dance
 s ir puerta ; out
 
 == Big Town: la habitación de Dickson
-b puerta#2
 s abrir puerta#2 ; the church
 s ir puerta#2
 s ir campanario ; up the belfry
@@ -597,7 +564,6 @@ c 610 375 ; the map
 == El monasterio: Juan Bostezos
 s ir monasterio
 s usar cafetera > mexicano ; the coffee wakes him up
-s hablar mexicano
 k uno de esos juaristas
 k usted es un impostor ; "ask me something only a rebel would know"
 k donde suelen refugiarse
@@ -630,15 +596,10 @@ s hablar sheriff
 k quiero jugar
 k tengo algunos dolares
 s usar silla ; at the poker table
+w 20 ; the deal, then "Cartas?"
 c 595 373 ; OK: keep the cards
-w 4
-c 85 394 ; a dollar
-w 6
-c 75 394 ; call
-w 6
-c 105 394 ; call
-w 6
-c 255 394 ; "let me see how much I have left"
+w 16 ; the others draw
+c 195 394 ; C: "un momentito, voy a ver cuanto me queda"
 S usar dolares falsos > ases ; quick, while the hand is down: the fake hundred and the four aces
 
 == Big Town: la cárcel
@@ -661,6 +622,9 @@ s abrir puerta
 s mover palancas ; he comes out to reset them and runs into the shut door
 w 15
 s mover palancas
+w 15 ; the door shuts again
+s mover palancas ; out he comes, into the shut door: knocked out by the levers
+w 6
 s abrir puerta
 s ir puerta
 s coger libro ; the Morse code book
@@ -673,7 +637,6 @@ c 610 375 ; the map
 == Fort Apache: la estrella
 s ir fort apache
 s ir puerta ; into the fort
-b puerta#3
 s abrir puerta#3 ; the sergeant's room
 s ir puerta#3
 s dar whisky > sargento ; "leave it on the mantelpiece"
@@ -690,9 +653,10 @@ k que clase de carcelero
 k sintomas de desnutricion
 k de veras tienes hambre ; only rice, and the cook comes tonight
 k podria traerte algo de comer ; "leave it in the kitchen and ring the mess call"
-b puerta#1
 s abrir puerta#1 ; the kitchen
 s ir puerta#1
+s usar arroz > cuenco ; the laundry's rice into the kitchen bowl
+s usar sacacorchos > tabasco ; open the bottle
 s usar tabasco > cuenco ; the rice cooking since the first visit, with hot sauce
 s ir puerta ; out
 s usar triangulo ; the mess call: the jailer goes to eat
@@ -713,8 +677,6 @@ k hartos de estar aqui
 s hablar soldados
 k esperando a alguien
 s hablar soldados
-k negociaciones con los indios
-b puerta#2
 s abrir puerta#2 ; Leconte's quarters
 s ir puerta#2
 s abrir puerta#1
@@ -750,6 +712,7 @@ c 610 375 ; the map
 
 == Big Town: el plan
 s ir big town
+s ir pueblo
 s ir salon ; Leconte and Fray Anselmo
 s hablar leconte
 k tengo un plan
@@ -783,12 +746,7 @@ s ir puerta
 s ir puerta#6 ; out to the yard
 s usar cuerda > cañon ; up onto the wall by the cannon
 s mover cañon
-s usar bola > cañon
-s mover cañon
-s usar cuerda > cañon
-s usar bola > cañon ; the shot blows the top off the tower
-s mover cañon
-s usar cuerda > cañon ; back down
+s usar bola > cañon ; the shot blows the top off the tower, and he climbs down
 s ir puerta#1 ; into the building again
 g 900 250 ; along the corridor to the right
 s abrir puerta#4

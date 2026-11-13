@@ -38,6 +38,8 @@
 
 namespace Toltecs {
 
+static const int kMapScene = 161;      // the map of the region ("ir X" rides to the place)
+static const uint32 kMapWait = 15000;    // ms a step on the map waits for the scene to change
 static const uint32 kSettle = 1000;      // ms a step waits before it can be done (the walk or the talk starts)
 static const uint32 kIdleSettle = 800;   // ms the game must stay idle (a character turns before he answers)
 static const uint32 kNoReaction = 2000;  // ms after which a step that changed nothing is done (or tried again)
@@ -1267,6 +1269,24 @@ void ToltecsGuide::tick() {
 			_stateSince = now;
 			return;
 		}
+		if (cur.kind == Step::kSentence && _stepScene == kMapScene && (int)_vm->_sceneResIndex == kMapScene &&
+			now - _stateSince < kMapWait)
+			return;   // a place picked on the map: the ride there ends before the next step (it needs that scene)
+		if (cur.kind == Step::kSentence && cur.verb == "ir" && cur.first.hasPrefix("PUERTA") && _current > 0 &&
+			(int)_vm->_sceneResIndex == _stepScene && _doorRetries < 2) {
+			const Step &prev = _steps[_current - 1];
+			if (prev.kind == Step::kSentence && prev.verb == "abrir" && prev.first == cur.first) {
+				// the door did not let him through (opened while he was still walking, or shut again): open it once
+				// more, then through
+				_doorRetries++;
+				logf("step %d: still outside, opening the door again", _current + 1);
+				setCurrent(_current - 1);
+				_state = kWaitIdle;
+				return;
+			}
+		}
+		if (!(cur.kind == Step::kSentence && cur.verb == "abrir"))
+			_doorRetries = 0;
 		next();
 		return;
 	}

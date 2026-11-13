@@ -159,6 +159,7 @@ private:
 	int _retries = 0;   // screen clicks repeated because nothing happened
 	int _stepScene = 0;   // the scene the step started in
 	bool _verbChosen = false;
+	int _doorRetries = 0;   // times this door was opened again because "ir PUERTA" did not go through
 	bool _dropTried = false;   // a failure of this step already right-clicked to drop a verb   // the step clicked a verb in the bar (a failure drops it with a right click)
 	bool _hideCursor, _logVerb;
 	int _saveSections, _sectionSaved;
