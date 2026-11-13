@@ -45,6 +45,7 @@ struct ToltecsGameDescription;
 class AnimationPlayer;
 class ArchiveReader;
 class Input;
+class ToltecsGuide;
 class MenuSystem;
 class MoviePlayer;
 class Music;
@@ -166,6 +167,7 @@ public:
 	Screen *_screen;
 	SegmentMap *_segmap;
 	Sound *_sound;
+	ToltecsGuide *_guide;
 
 	Common::String _sysStrings[kSysStrCount];
 

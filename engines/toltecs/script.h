@@ -46,6 +46,7 @@ public:
 	void runScript();
 
 	byte *getSlotData(int slotIndex) const { return _slots[slotIndex].data; }
+	uint32 getSlotSize(int slotIndex) const { return _slots[slotIndex].size; }
 
 	int16 getGameVar(uint variable);
 	void setGameVar(uint variable, int16 value);
