@@ -119,6 +119,7 @@ s ir puerta#1 ; out to the street
 == Big Town: el banco
 s abrir puerta#4 ; the bank
 s ir puerta#4
+g 740 200 ; to the cashier's window
 s hablar cajero
 k quiero abrir una cuenta
 k fenimore fillmore
@@ -746,7 +747,12 @@ s ir puerta
 s ir puerta#6 ; out to the yard
 s usar cuerda > cañon ; up onto the wall by the cannon
 s mover cañon
-s usar bola > cañon ; the shot blows the top off the tower, and he climbs down
+s usar bola > cañon ; the shot blows the top off the tower
+w 4
+s mover cañon ; down again: the rope does nothing while it points up
+w 4
+s usar cuerda > cañon ; back down
+a 191
 s ir puerta#1 ; into the building again
 g 900 250 ; along the corridor to the right
 s abrir puerta#4
